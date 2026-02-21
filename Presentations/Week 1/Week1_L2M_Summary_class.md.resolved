@@ -1,0 +1,383 @@
+# Week 1: Lab2Market Planning & Execution Framework
+## Project Management, CRM Setup & The 100-Interview Strategy
+
+*A comprehensive knowledge base for Week 1 of the Lab2Market program.*
+
+---
+
+## Table of Contents
+1. [Week 1 Overview](#1-week-1-overview)
+2. [The Importance of Effective Planning](#2-the-importance-of-effective-planning)
+3. [SMART Goals Framework](#3-smart-goals-framework)
+4. [The 100-Interview Execution Plan](#4-the-100-interview-execution-plan)
+5. [Customer Discovery Metrics Framework](#5-customer-discovery-metrics-framework)
+6. [Project Planning Tools](#6-project-planning-tools)
+7. [Time Management & Prioritization](#7-time-management--prioritization)
+8. [Your CRM System](#8-your-crm-system)
+9. [Weekly Check-In Template](#9-weekly-check-in-template)
+
+---
+
+## 1. Week 1 Overview
+
+### Key Sessions
+1. **Project & Time Management** (Joanna Buczkowska-McCumber)
+2. **Customer Discovery Weekly Framework**
+3. **CRM Setup & Tracking Systems**
+
+### Core Purpose
+Week 1 establishes the **operational infrastructure** for your 10-week validation journey. You will learn how to:
+- Plan and execute 100+ customer interviews
+- Track assumptions and validate hypotheses systematically
+- Prioritize high-impact work
+- Report findings in a structured way
+
+---
+
+## 2. The Importance of Effective Planning
+
+### Why Planning Matters in Startups
+
+> **"Planning is not about predicting the future. It is about deciding how progress will happen."**
+
+### The Cost of Poor Planning
+
+| **Consequence** | **Impact** |
+|----------------|-----------|
+| **Chaos** | No clear direction, reactive decision-making |
+| **Resource Wastage** | Time/money spent on non-validating activities |
+| **Delayed Progress** | Weeks pass with no evidence gathered |
+| **Missed Opportunities** | Key customers overlooked, wrong segment targeted |
+| **Overwhelm & Burnout** | Working hard but not smart |
+
+**At the startup level, poor planning leads to**:
+- Poor growth
+- Financial loss
+- Closure
+
+### The Jessica Livingston Principle (Y Combinator)
+> "The most successful founders are always totally focused on their product and their users. To the point of being fanatical. The best founders don't have time to get caught up in other things."
+
+### Why Planning Matters
+
+**In early-stage startups**:
+- Time, attention, and energy are **limited**
+- Uncertainty is **high** and answers are **incomplete**
+- Not all work moves the venture **forward**
+
+**Planning**:
+- Translates goals into **concrete, repeatable action**
+- Protects time for work that **creates evidence**
+- Reduces wasted effort on activities that **feel productive but don't change decisions**
+- Makes progress **visible** week over week
+- Enables **adjustment** when assumptions prove wrong
+
+---
+
+## 3. SMART Goals Framework
+
+### Goal Setting Definition
+> "A process of identifying specific objectives that an individual or organization aims to achieve within a certain timeframe."
+
+### The SMART Criteria
+
+| **Letter** | **Criteria** | **Example** |
+|-----------|-------------|------------|
+| **S** | Specific | "Complete 100 customer interviews" (not "talk to customers") |
+| **M** | Measurable | "15 interviews per week" (quantifiable) |
+| **A** | Achievable | Realistic given resources and time constraints |
+| **R** | Relevant | Directly supports validation of business model |
+| **T** | Time-bound | "By March 26, 2026" |
+
+### Key Principles for Goal Setting
+
+1. **Understand the 'Why'**
+   - What is my goal in the program?
+   - Why does it matter?
+   - What does success look like?
+
+2. **Break Down Large Goals**
+   - 100 interviews → 15 per week → 3 per day
+
+3. **Incorporate Feedback and Accountability Mechanisms**
+   - Weekly check-ins with facilitators
+   - Share CRM with your team
+
+4. **Stay Flexible and Adapt**
+   - Pivot based on evidence, not stubbornness
+
+5. **Consistent Tracking and Evaluation**
+   - Update CRM daily
+   - Review patterns weekly
+
+---
+
+## 4. The 100-Interview Execution Plan
+
+### The Core Questions
+
+Before you start, answer these:
+
+1. **Where are my prospects coming from?**
+   - LinkedIn, industry conferences, referrals, alumni networks?
+
+2. **How many do I need to reach out to achieve my desired outcomes?**
+   - Assume 10-20% conversion rate
+   - To get 15 interviews/week → Need 75-150 outreaches/week
+
+3. **How will I know I have validated a hypothesis in the business model?**
+   - What's the threshold? (e.g., "8 out of 10 must say X")
+
+4. **Why am I doing this interview?**
+   - What specific assumption am I testing?
+
+5. **What questions do I need to be asking?**
+   - Map questions to hypotheses
+
+### Design Your Execution Plan
+
+**Components**:
+- **Number of interviews**: 100 total, ~15/week
+- **Prospect sources**: LinkedIn, conferences, referrals
+- **Outreach channels**: Email, phone, LinkedIn messages
+- **Interview format**: 15-20 minutes, structured questions
+- **Tracking system**: CRM (AirTable recommended)
+
+---
+
+## 5. Customer Discovery Metrics Framework
+
+### Start-of-Session Metrics (Report These Immediately)
+
+At every weekly check-in, you will report:
+
+1. **Outreaches this week**: ____ (unique people contacted)
+2. **Interviews completed this week**: ____ (live customer conversations)
+3. **Conversion rate**: interviews ÷ outreaches = ____%
+
+### Weekly Performance Ladder
+
+| **Level** | **Outreaches** | **Interviews** | **What It Means** |
+|----------|---------------|---------------|------------------|
+| **Excellent** | 300+ | 15+ | Serious pipeline creating compounding learning |
+| **Strong** | 200-299 | 10-14 | Solid progress, on track |
+| **Meeting the bar** | 100-199 | 5-9 | Minimum viable effort |
+| **At risk** | 75-99 | 3-4 | Falling behind, need intervention |
+| **Failing** | ≤50 | ≤2 | Not enough data to validate anything |
+
+---
+
+## 6. The Three Questions Framework
+
+Your weekly check-in is structured around **three critical questions**:
+
+### Question 1: What Did You Uncover This Week?
+
+**Your answer must be a FINDING, not an activity log.**
+
+**Include**:
+- **Specific insight**: What you learned in plain language
+- **Evidence**: Who/segment + how many (n=) + a quote/behavior
+- **Pattern + exception**: What was consistent, what contradicted it
+- **Surprise**: What changed or sharpened your thinking
+
+**Good sounds like**:
+> "We learned that offshore rig managers prioritize DNV compliance over cost savings (segment=Oil & Gas Operations, n=8). Evidence: 'We don't care if it's cheaper; we care if it passes the audit.' Pattern: All 8 cited regulatory approval as #1 barrier. Contradiction: 2 mentioned cost, but only after compliance. Surprise: Nobody cared about our 'speed' value prop."
+
+**Bad sounds like**:
+> "We talked to people and they liked it."
+
+---
+
+### Question 2: Why Does It Matter?
+
+**"Matters" means it changes a decision about your Business Model Canvas.**
+
+Link your finding to one of these:
+- **Pain intensity/frequency**
+- **Current workaround/alternatives**
+- **Willingness to pay / budget owner**
+- **Decision process** (buyers, blockers, triggers)
+- **Adoption friction** (trust, compliance, integration, switching costs)
+- **Urgency / timing** (why now)
+
+**Use This Chain**:
+- **Finding**: [What you learned]
+- **Implication**: [What it means for your business model]
+- **Decision we're making**: [How this changes your strategy]
+
+**Example**:
+> **Finding**: DNV compliance is #1 priority.  
+> **Implication**: Our "cost savings" pitch is falling flat; we need to lead with "automated compliance."  
+> **Decision**: We're rewriting our value proposition to emphasize regulatory approval first, cost second.
+
+---
+
+### Question 3: What Is the Next Thing You Need to Know?
+
+**The next thing is your RISKIEST assumption.**
+
+Make it testable:
+- **Specific** (not "learn more")
+- **Decidable** (yes/no or threshold)
+- **Action-linked** (it determines build/position/price/target)
+
+**Format**:
+- **Next question**: [What you need to validate]
+- **Hypothesis**: [What you believe is true]
+- **Test**: Who/how many/what artifact + success threshold
+
+**Example**:
+> **Next question**: Will QA Directors pay $100K/year for automated compliance tracking?  
+> **Hypothesis**: If we can eliminate one major audit failure risk, they will allocate budget from their compliance line item.  
+> **Test**: Show pricing slide to 10 QA Directors. Success = 7+ say "this is in my budget range."
+
+---
+
+## 7. Project Planning Tools
+
+### 1. Critical Path Analysis
+Finds the most efficient path through a complex project by identifying dependencies and bottlenecks.
+
+### 2. Brainstorming
+> "The plan before the plan."
+
+Uses collective team experience to give the full picture before creating a structured plan.
+
+### 3. Work Breakdown Structure (WBS)
+Rank tasks by breaking down the project:
+- Start with the end goal (100 interviews)
+- Break into phases (Weeks 1-10)
+- Break into milestones (15 interviews/week)
+- Break into tasks (Outreach, Interview, Log, Analyze)
+
+### 4. Gantt Chart
+Visual timeline showing:
+- Tasks
+- Dependencies
+- Deadlines
+- Progress
+
+### 5. Cause and Effect Diagram (Fishbone Diagram)
+Identifies risks and issues that can develop over the project lifecycle.
+
+---
+
+## 8. Time Management & Prioritization
+
+### The Eisenhower Matrix (Time Management Quadrant System)
+
+| | **URGENT** | **NOT URGENT** |
+|---|-----------|---------------|
+| **IMPORTANT** | **Q1: Do First** (Crises, deadlines, interviews scheduled today) | **Q2: Schedule** (Planning, customer research, learning) |
+| **NOT IMPORTANT** | **Q3: Delegate** (Interruptions, some emails) | **Q4: Eliminate** (Time wasters, busywork) |
+
+### Prioritization for Customer Discovery
+
+**Focus on what gets you to 100 interviews**:
+
+| **Activity** | **Quadrant** | **Action** |
+|-------------|-------------|-----------|
+| Conducting scheduled interviews | Q1 | Do immediately |
+| Planning next week's outreach | Q2 | Schedule time |
+| Responding to non-urgent emails | Q3 | Batch process |
+| Perfecting slide deck design | Q4 | Eliminate (for now) |
+
+### The Golden Rule
+> **"If it doesn't help you book, run, or learn from interviews, it must be consciously limited."**
+
+---
+
+## 9. Your CRM System
+
+### What to Track
+
+Your CRM (AirTable recommended) should capture:
+
+1. **Prospects, Outreach, Interviews, Outcomes**
+2. **Hypothesis, Experiments, Validation**
+3. **Aha Moments, Learnings, Trends**
+
+### Standard Fields to Log
+
+| **Field** | **Purpose** |
+|----------|------------|
+| **Name, Title, Company** | Basic contact info |
+| **Role Bias** | Buyer vs User vs Influencer |
+| **Current Solution Cost** | Anchor price for willingness to pay |
+| **"The Problem" (Verbatim Quote)** | Evidence in THEIR words, not yours |
+| **Follow-up Date** | Next action |
+| **Segment Label** | Which customer archetype |
+| **Interview Date** | Tracking progress toward 100 |
+| **Key Insights** | Pattern recognition |
+
+### The "Truth" Record
+**Critical**: Capture "The Problem in *Their* Words" (verbatim), not your interpretation.
+
+**Bad**:
+> "Customer wants faster delivery."
+
+**Good**:
+> "Customer said: 'When the part takes 7 days to arrive, we lose $2M in downtime. Speed is everything.'"
+
+---
+
+## 10. Weekly Check-In Template
+
+### Copy/Paste Response Template
+
+```
+UNCOVERED:
+[Insight] (segment=[X], n=[#]).
+Evidence: "[Verbatim quote]"
+Pattern: [What was consistent across interviews]
+Contradiction: [What didn't fit the pattern]
+Surprise: [What changed your thinking]
+
+WHY IT MATTERS:
+This affects our assumption that [X].
+Implication: [What it means for the business model]
+Decision: [How this changes our strategy]
+
+NEXT THING TO KNOW:
+Riskiest assumption: [What could invalidate the business model]
+Hypothesis: [What we believe is true]
+Test + threshold: [Who we'll talk to, how many, what success looks like]
+```
+
+---
+
+## 11. Action Items for Week 1
+
+- [x] **Set up CRM**: Add columns for segment, verbatim quotes, role bias
+- [ ] **Share CRM with facilitator**: Grant access for accountability
+- [ ] **Get familiar with AirTable**: Watch tutorial
+- [ ] **Re-watch "How to Get Interviews"**: On Notion platform
+- [ ] **Design your 100-interview execution plan**: Map sources, targets, questions
+- [ ] **Set SMART goals**: What does success look like by Week 10?
+- [ ] **Schedule first 15 interviews**: Use outreach tactics from Week 2
+
+---
+
+## Key Quotes & Principles
+
+> **"By failing to prepare, you are preparing to fail."** – Benjamin Franklin
+
+> **"I must govern the clock, not be governed by it."** – Golda Meir
+
+> **"Without leaps of imagination or dreaming, we lose the excitement of possibilities. Dreaming, after all, is a form of planning."** – Gloria Steinem
+
+> **"Prioritization is about deciding what's important. Focus is about allocating a disproportionate share of your attention and resources toward the priority."**
+
+---
+
+## Summary: Week 1 Foundations
+
+**Week 1 gives you**:
+1. A **structured approach** to planning your validation journey
+2. A **metrics framework** to measure progress
+3. A **CRM system** to capture evidence
+4. A **prioritization model** to focus on high-impact work
+5. A **weekly reporting template** to stay accountable
+
+**Next Steps**: Apply these frameworks to execute Week 2's customer discovery tactics (outreach, interviewing, listening).

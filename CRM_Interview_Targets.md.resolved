@@ -1,0 +1,270 @@
+# Customer Discovery CRM & Interview Target Research
+## Lab2Market Ocean Technology Project
+
+---
+
+## 1. Target Customer Segments (Prioritized)
+
+> [!IMPORTANT]
+> **Multi-Sided Platform**: You must interview ALL 5 stakeholder types. Prioritize Clients (money side) and Facilities (supply side) first.
+
+### Segment 1: Clients (Manufacturers/Buyers) ⭐ PRIMARY
+**Why this segment**: They pay for the platform, have the urgent pain (finding certified facilities)
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Procurement Manager | Boeing, Lockheed Martin, GE Aviation (aerospace) | "procurement" + "additive manufacturing" |
+| Operations Director | Medtronic, Stryker, Johnson &amp; Johnson (medical devices) | "operations" + "medical device manufacturing" |
+| Supply Chain Manager | Ford, GM, Tesla (automotive) | "supply chain" + "3D printing" OR "additive" |
+| Manufacturing Engineer | Protolabs customers, local manufacturers | "manufacturing engineer" + "prototyping" |
+
+**Expected Pain Points to Validate**:
+- Finding certified local 3D printing facilities takes weeks
+- High shipping costs from distant suppliers
+- Uncertainty about regulatory compliance/certifications
+
+---
+
+### Segment 2: 3D Printing Facilities ⭐ CO-PRIMARY (SUPPLY SIDE)
+**Why this segment**: Need to fill idle capacity, willing to pay commission for leads
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Owner / Operator | Local 3D printing service bureaus | "3D printing service" + "owner" OR "operator" |
+| Business Development Manager | Protolabs, Xometry, Shapeways competitors | "business development" + "additive manufacturing" |
+| Sales Manager | Contract manufacturers with 3D printing | "sales" + "contract manufacturing" + "3D" |
+
+**Expected Pain Points to Validate**:
+- 30-40% idle machine capacity
+- Customer acquisition costs $5-10K per client
+- Hard to prove certifications to new buyers
+
+---
+
+### Segment 3: Labs (Testing &amp; Certification) ⭐ SECONDARY
+**Why this segment**: Enablers of certification workflow, would pay for streamlined process
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Quality Manager | UL, TÜV, SGS, Intertek | "quality manager" + "testing" OR "certification" |
+| Lab Director | ASTM-certified labs, materials testing facilities | "lab director" + "materials testing" |
+| Certification Officer | ISO certification bodies | "certification" + "ISO" OR "ASTM" |
+
+**Expected Pain Points to Validate**:
+- Manual, paper-based certification workflows
+- No visibility into request pipeline
+- Administrative burden
+
+---
+
+### Segment 4: OEMs (Equipment Manufacturers) ⭐ TERTIARY
+**Why this segment**: Want distributed manufacturing but fear IP/quality loss
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Engineering Manager | Caterpillar, John Deere, industrial equipment OEMs | "engineering manager" + "product development" |
+| Manufacturing Director | HP, Stratasys, 3D Systems (3D printer OEMs) | "manufacturing" + "additive" |
+| Product Development Lead | Consumer goods companies exploring 3D printing | "product development" + "3D printing" |
+
+**Expected Pain Points to Validate**:
+- Can't scale production without losing quality control
+- IP protection concerns with 3rd-party manufacturers
+- No standardized distributed manufacturing process
+
+---
+
+### Segment 5: Authorities (Regulatory Bodies) ⭐ QUATERNARY
+**Why this segment**: Need better compliance tracking, would legitimize platform
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Compliance Officer | FDA (medical), FAA (aerospace), ISO/ASTM committees | "compliance" + "additive manufacturing" |
+| Standards Development Lead | ASTM F42 Committee, ISO TC 261 | "standards" + "3D printing" OR "additive" |
+| Regulatory Affairs Manager | Industry-specific regulatory bodies | "regulatory affairs" + [industry] |
+
+**Expected Pain Points to Validate**:
+- Water quality monitoring gaps
+- Environmental impact reporting for regulators
+- Disease outbreak early detection
+
+---
+
+## 2. Interview Target List (100 Total)
+
+### Week-by-Week Breakdown
+
+| **Week** | **Segment** | **Target #** | **Goal** |
+|---------|-----------|------------|---------|
+| 1-2 | Offshore Energy | 30 | Validate pain intensity and current solutions |
+| 3-4 | Maritime Fleet | 30 | Compare pain points and willingness to pay |
+| 5-6 | Aquaculture | 20 | Test adjacent market fit |
+| 7-8 | Regulators & Influencers | 10 | Understand compliance landscape |
+| 9-10 | Follow-ups & Refinement | 10 | Deep dive  with early adopters |
+
+---
+
+## 3. CRM Template (AirTable Structure)
+
+### Required Columns
+
+| **Column Name** | **Type** | **Purpose** | **Example** |
+|----------------|---------|------------|------------|
+| **Contact Name** | Text | Full name | "Sarah Johnson" |
+| **Title** | Text | Job title | "Procurement Manager" |
+| **Company** | Text | Organization | "Boeing Defense" |
+| **Stakeholder Type** | Single Select | Platform segment | "Client", "3D Facility", "Lab", "OEM", "Authority" |
+| **Role Bias** | Single Select | Buying influence | "Buyer", "User", "Influencer", "Blocker" |
+| **LinkedIn URL** | URL | Profile link | https://linkedin.com/in/... |
+| **Email** | Email | Contact email | sarah.johnson@boeing.com |
+| **Phone** | Phone | Contact number | +1-xxx-xxx-xxxx |
+| **Outreach Date** | Date | When contacted | 2026-01-25 |
+| **Outreach Method** | Single Select | Channel used | "LinkedIn", "Email", "Phone", "Referral" |
+| **Interview Status** | Single Select | Progress tracker | "Not Contacted", "Reached Out", "Scheduled", "Completed", "Declined" |
+| **Interview Date** | Date | Scheduled/completed date | 2026-02-01 |
+| **Pain Intensity (1-10)** | Number | Self-reported pain level | 9 |
+| **Problem (Verbatim)** | Long Text | THEIR words | "We spend 3 weeks finding facilities, then another 2 weeks for certification" |
+| **Current Solution** | Long Text | What they use now | "Google search + cold calling + manual vetting" |
+| **Current Solution Cost** | Currency | Annual spend/waste | $75,000 (in wasted time) |
+| **Key Insight** | Long Text | Main takeaway | "Would pay for LOCAL facilities - shipping costs kill margins" |
+| **Willingness to Pay** | Currency | Budget range/commission % | "$15K/year subscription" OR "12% commission acceptable" |
+| **Follow-up Date** | Date | Next action | 2026-02-15 |
+| **Referrals** | Long Text | Who they recommended | "John at Lockheed, 3D Print Shop in Denver" |
+| **Tags** | Multiple Select | Quick filters | "Early Adopter", "Price Sensitive", "Champion" |
+
+---
+
+## 4. Research Sources for Building Your List
+
+### LinkedIn Advanced Search
+**Filters to use**:
+- **Title**: "VP Operations", "Director HSE", "Fleet Manager"
+- **Industry**: "Oil & Energy", "Maritime", "Aquaculture"
+- **Location**: Norway, UK, Houston (TX), Aberdeen (Scotland), Singapore
+- **Company Size**: 1,000+ employees (established budgets)
+
+### Industry Conferences (Check Speaker Lists)
+- **Offshore Technology Conference (OTC)** - Houston, May 2026
+- **Nor-Shipping** - Oslo, June 2026
+- **Offshore Wind Europe** - Amsterdam, 2026
+- **Aquaculture Europe** - Rotterdam, 2026
+
+### Industry Publications (Find Authors & Contributors)
+- *Offshore Engineer* magazine
+- *Maritime Executive*
+- *Fish Farmer* magazine
+- DNV/Lloyd's Register whitepapers
+
+### Alumni Networks
+- Search your university's alumni database for:
+  - Ocean engineering graduates
+  - Maritime MBA programs
+  - Oil & gas professionals
+
+### Trade Associations (Membership Directories)
+- **International Association of Drilling Contractors (IADC)**
+- **International Maritime Organization (IMO)**
+- **Global Aquaculture Alliance**
+
+---
+
+## 5. Outreach Strategy (Getting to 15 Interviews/Week)
+
+### The Math
+- **Goal**: 15 interviews/week
+- **Conversion Rate**: 10-20%
+- **Required Outreaches**: 75-150/week
+
+### Weekly Outreach Mix
+| **Channel** | **# Per Week** | **Expected Conversion** | **Interviews** |
+|------------|---------------|----------------------|---------------|
+| **LinkedIn Messages** | 50 | 15% | 7-8 |
+| **Email** | 40 | 12% | 5 |
+| **Phone/Voicemail** | 30 | 10% | 3 |
+| **Referrals** | 10 | 50%+ | 5+ (gold!) |
+| **TOTAL** | 130 | ~15% avg | **15-20** |
+
+---
+
+## 6. Sample Outreach Templates
+
+### LinkedIn Message Template
+```
+Hi [Name],
+
+I'm a researcher at [University] working on ocean monitoring technology as part of the Canadian Lab2Market program. I noticed your work in [specific project/area] and thought you might have valuable insights to share.
+
+I'm NOT selling anything—just looking to learn from industry experts like yourself about the challenges you face with [monitoring/compliance/operations] in offshore environments.
+
+Would you be open to a 15-minute call this week or next? I'm happy to work around your schedule.
+
+Thanks for considering,
+[Your Name]
+[Contact Info]
+```
+
+### Email Template
+```
+Subject: 15-min chat about offshore monitoring challenges?
+
+Hi [Name],
+
+My name is [Your Name], and I'm a [degree] student at [University] participating in the Lab2Market program. I'm researching how offshore operators handle real-time monitoring and compliance reporting.
+
+As [their title] at [Company], I imagine you have firsthand experience with these challenges—and I'd love to learn from your perspective.
+
+Key point: I'm not selling anything. I'm purely in learning mode right now.
+
+Would you have 15-20 minutes for a quick call in the next two weeks? I can work around your availability.
+
+Best regards,
+[Your Name]
+[Email | LinkedIn]
+```
+
+---
+
+## 7. AirTable Setup Instructions
+
+### Step 1: Create Your Base
+1. Go to airtable.com
+2. Click "Create a base"
+3. Name it: "L2M Customer Discovery - [Your Project Name]"
+
+### Step 2: Set Up Your Table
+1. Create columns using the template in Section 3 above
+2. Use the correct field types (Single Select, Date, Currency, etc.)
+
+### Step 3: Create Views
+- **View 1**: "This Week's Outreach" (filter: Outreach Date = this week)
+- **View 2**: "Interviews Scheduled" (filter: Interview Status = Scheduled)
+- **View 3**: "Completed Interviews" (filter: Interview Status = Completed)
+- **View 4**: "Follow-ups Needed" (filter: Follow-up Date ≤ today)
+
+### Step 4: Share with Facilitator
+1. Click "Share" button (top right)
+2. Click "Invite by email"
+3. Enter your facilitator's email
+4. Set permission to "Editor" or "Commenter" (ask your facilitator which they prefer)
+5. Send invitation
+
+---
+
+## 8. First 30 Contacts to Add (Action Item)
+
+**This Week's Goal**: Populate CRM with 30 qualified contacts from Segment 1 (Offshore Energy)
+
+**Recommended Approach**:
+1. Spend 2 hours on LinkedIn finding 30 VP/Director-level offshore operators
+2. Add them to AirTable with all available info (LinkedIn, company, title)
+3. Draft personalized outreach messages (use AI for first draft, then humanize)
+4. Send 10 messages per day for 3 days
+5. Track responses and schedule interviews
+
+---
+
+## Next Steps
+- [ ] Set up AirTable base
+- [ ] Add first 30 contacts (Offshore Energy segment)
+- [ ] Share AirTable with facilitator
+- [ ] Send first 10 outreach messages
+- [ ] Schedule goal: 3 interviews by end of Week 2

@@ -1,0 +1,107 @@
+awesome—here are three ready-to-record scripts about your Mitacs project (AddManuChain) in the three classic structures. Each one is written for ~60–90 seconds, first-person, with beat labels and on-screen prompts so you can record clean takes.
+
+---
+
+# 3-Act Structure
+
+**Title card (On-screen):** “AddManuChain — fixing downtime with AI + 3D printing”
+
+**Act I — Setup (0:00–0:20)**
+“Hi, I’m Mahmoud from Dalhousie. In our Mitacs project, we kept hearing the same story from remote industries—offshore rigs, shipyards, mining sites. A tiny part fails, the line stops, and everyone waits days or weeks for a replacement. That’s expensive, risky, and avoidable.”
+
+*(On-screen B-roll: frozen conveyor, idle crew, email ‘lead time: 14 days’)*
+
+**Act II — Confrontation (0:20–1:00)**
+“So we built **AddManuChain**: a digital inventory plus distributed 3D-printing network.
+I open the dashboard, pick a certified blueprint, and route it to the nearest trained printer operator.
+The platform manages everything: printer health, materials, and job queues; it also checks **quality assurance**—are the people certified, is the device calibrated, is the material approved? Then **quality control**—in-process monitoring and post-print tests with a clear pass/fail trail.
+If stock is low, our supply-chain view flags risk and suggests alternatives. Even billing and compliance are one click—because auditing matters in oil, gas, and marine.”
+
+*(On-screen: “Printers ✓ | Materials ✓ | QA/Certs ✓ | QC/Tests ✓ | Audit trail ✓”)*
+
+**Act III — Resolution (1:00–1:20)**
+“The result? Parts made **on site, on demand**, with traceable quality. Downtime drops, safety improves, and teams keep working. That’s AddManuChain—turning days of waiting into hours of producing.”
+
+**CTA (1:20–1:30)**
+“If you want to pilot this at your facility, let’s talk. I’m Mahmoud, and this is our Mitacs journey.”
+
+---
+
+# Disney/Pixar “Story Spine”
+
+**Title card:** “Once Upon a Time in the North Atlantic…”
+
+**Once upon a time…**
+“Once upon a time, remote operators ran great machines in harsh places.”
+
+**Every day…**
+“Every day, a small failure could stall everything while a replacement part crawled through the supply chain.”
+
+**Until one day…**
+“Until one day, our Mitacs team asked: what if parts were **digital**—and printed where they’re needed?”
+
+**Because of that…**
+“Because of that, we built AddManuChain, a platform that stores certified blueprints, routes jobs to trained operators, and keeps printers healthy.”
+
+**Because of that…**
+“Because of that, quality wasn’t a guess: operators, materials, and devices are all certified, and every print has a QC report you can show an auditor.”
+
+**Because of that…**
+“Because of that, purchasing and planning got smarter—stock levels, lead times, and risks appear before things break.”
+
+**Until finally…**
+“Until finally, when a pump housing cracked offshore, they didn’t wait two weeks—they printed a certified replacement overnight.”
+
+**And ever since then…**
+“And ever since then, downtime fell, safety rose, and digital inventory became standard. I’m Mahmoud, and that’s how our Mitacs project turned ‘waiting’ into ‘working.’”
+
+*(On-screen tags through the beats: Digital Inventory • Distributed AM • QA/QC • Audit Trail • Risk Alerts)*
+
+---
+
+# Hero’s Journey
+
+**Title card:** “The Call to Adventure: Ending Downtime”
+
+**1. Ordinary World (0:00–0:10)**
+“I was juggling research and industry calls. Same pain everywhere: a 10-dollar part could stop a million-dollar process.”
+
+**2. Call to Adventure (0:10–0:18)**
+“A partner said, ‘Can you make parts appear where we are, not where the warehouse is?’”
+
+**3. Refusal / Doubt (0:18–0:25)**
+“I hesitated—regulations, certifications, safety. 3D printing in oil and gas isn’t a casual hack.”
+
+**4. Mentor & Allies (0:25–0:35)**
+“With my supervisor and our Mitacs partners, we mapped the path: **digital inventory + certified production**.”
+
+**5. Crossing the Threshold (0:35–0:45)**
+“We built the first prototype—printers connected, materials tracked, and a certification gate for people, devices, and materials.”
+
+**6. Tests, Allies, Enemies (0:45–1:00)**
+“Printers failed mid-job, materials ran out, audits demanded evidence. We added live printer health, supply-chain alerts, QA workflows, and QC reports with full traceability.”
+
+**7. Approach to the Inmost Cave (1:00–1:10)**
+“Then came the real test: a time-critical part offshore, strict compliance, zero room for error.”
+
+**8. Ordeal (1:10–1:20)**
+“We ran the job through AddManuChain—trained operator, certified device, approved material, in-process monitoring, post-print inspection. Every step logged.”
+
+**9. Reward (1:20–1:28)**
+“The part passed. The line restarted the same shift. Downtime cost—slashed.”
+
+**10. The Road Back (1:28–1:35)**
+“We templated the workflow so others could repeat it safely.”
+
+**11. Resurrection (1:35–1:45)**
+“AddManuChain wasn’t just a print button—it became a **trust platform**: QA, QC, supply chain, planning, and billing in one place.”
+
+**12. Return with the Elixir (1:45–1:55)**
+“Now we offer pilots for remote sites, First Nations micro-manufacturing, and shipyards. The elixir is simple: **parts when and where you need them—with proof they’re safe**.”
+
+**Outro (1:55–2:00)**
+“I’m Mahmoud. That’s our Mitacs journey—bringing reliability to the edge of the map.”
+
+---
+
+Want a version in Farsi, or shorter 30-second cuts for LinkedIn/TikTok? I can compress each script and add shot lists and B-roll cues.

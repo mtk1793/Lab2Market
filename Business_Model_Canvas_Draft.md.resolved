@@ -1,0 +1,388 @@
+# Business Model Canvas - First Draft
+## Lab2Market 3D Printing Ecosystem Platform
+
+*Based on Osterwalder's Business Model Generation framework*
+
+---
+
+## Overview
+
+This is your **first draft** Business Model Canvas. Every box contains **hypotheses** (guesses) that must be tested through customer interviews. Expect this to change significantly after your first 30 interviews.
+
+---
+
+## The 9 Building Blocks
+
+### ① Value Proposition ⭐ START HERE
+
+> [!IMPORTANT]
+> **Multi-Sided Platform**: We deliver DIFFERENT value propositions to each stakeholder type. This is critical for platform businesses.
+
+#### For Clients (Manufacturers/Buyers) - PRIMARY REVENUE SOURCE
+
+**Which customer problems are we trying to solve?**
+- Finding certified local 3D printing facilities takes weeks of research
+- Long lead times and high shipping costs from distant suppliers
+- Regulatory compliance uncertainty—hard to prove parts are certified
+
+**What value do we deliver?**
+- **Functional Value**: 
+  - Searchable database → Find certified facilities in minutes
+  - Local matching algorithm → Reduce shipping costs by 40-60%
+  - Integrated certification tracking → One-click compliance proof
+- **Emotional Value**:
+  - Confidence in supplier quality
+  - No fear of production delays
+  - Peace of mind on compliance
+
+---
+
+####For 3D Printing Facilities - SUPPLY SIDE
+
+**Problems solved**:
+- Idle machine capacity (average 30-40% underutilized)
+- Expensive customer acquisition ($5-10K per client)
+- Hard to prove certifications to new clients
+
+**Value delivered**:
+- Marketplace brings qualified leads → Fill capacity
+- Verified badge system → Build credibility
+- Lower customer acquisition costs
+
+---
+
+#### For Labs (Testing & Certification)
+
+**Problems solved**:
+- Manual certification workflow (paper-based, slow)
+- No visibility into request pipeline
+
+**Value delivered**:
+- Digital certification workflow → 60% admin time reduction
+- Dashboard for resource planning
+
+---
+
+#### For OEMs (Equipment Manufacturers)
+
+**Problems solved**:
+- Can't scale distributed manufacturing without losing quality control
+- IP protection concerns with 3rd-party manufacturers
+
+**Value delivered**:
+- Standardized quality requirements across facilities
+- Secure design file sharing with access controls
+
+---
+
+#### For Authorities (Regulatory Bodies)
+
+**Problems solved**:
+- No centralized compliance tracking system
+- Reactive enforcement only
+
+**Value delivered**:
+- Audit trail of all certifications
+- Proactive regulatory oversight
+
+---
+
+### ② Customer Segments ⭐ TEST THIS
+
+> [!IMPORTANT]
+> **Platform Business Model**: We serve 5 distinct customer segments simultaneously. Each has different jobs-to-be-done and archetypes.
+
+**Who are our most important customers?**
+
+| **Segment** | **Priority** | **Estimated Size** | **Archetype** |
+|------------|-------------|---------|--------------|
+| **Clients (Manufacturers/Buyers)** | PRIMARY | ~50,000 small-medium manufacturers globally | "The Time-Pressed Procure Manager" |
+| **3D Printing Facilities** | CO-PRIMARY | ~5,000 service bureaus/contract manufacturers | "The Capacity-Seeking Operator" |
+| **Labs (Certification/Testing)** | SECONDARY | ~500 testing facilities globally | "The Overwhelmed Quality Manager" |
+| **OEMs (Equipment Manufacturers)** | TERTIARY | ~1,000 major OEMs | "The Control-Seeking Engineer" |
+| **Authorities (Regulatory Bodies)** | QUATERNARY | ~50 regulatory bodies (ISO, ASTM, national) | "The Compliance Guardian" |
+
+**What are their archetypes?**
+- **The Time-Pressed Procurement Manager**: Needs parts fast, certified, and local. Budget: $50K-$500K/year on 3D printed parts.
+- **The Capacity-Seeking Operator**: Has idle machines, needs more qualified clients. Current CAC: $5-10K per client.
+- **The Overwhelmed Quality Manager**: Drowning in manual certification paperwork. Would pay for streamlined workflow.
+- **The Control-Seeking Engineer**: Wants distributed manufacturing but fears losing IP/quality control.
+- **The Compliance Guardian**: Responsible for public safety, needs better visibility into certifications.
+
+**What job do they want us to get done for them?**
+- **Clients**: Find certified local 3D printing facilities quickly
+- **Facilities**: Fill idle capacity with paying customers
+- **Labs**: Streamline certification workflow digitally
+- **OEMs**: Enable distributed manufacturing safely
+- **Authorities**: Track certifications centrally
+
+> [!CAUTION]
+> **Chicken-and-Egg Risk**: Must onboard ALL segments for platform to work. Recommend starting with Clients + Facilities first (two-sided), then adding Labs, then OEMs/Authorities.
+
+---
+
+### ③ Channels
+
+**Through which channels do our customer segments want to be reached?**
+
+**Awareness** (How do they learn about us?):
+- Industry conferences (OTC, Nor-Shipping)
+- LinkedIn thought leadership (whitepapers on offshore safety)
+- Trade publications (Offshore Engineer, Maritime Executive)
+- Referrals from early adopters
+
+**Evaluation** (How do they assess our value?):
+- Pilot programs (3-month trial on one platform)
+- ROI calculator tool (input downtime costs → see potential savings)
+- Case studies from similar operators
+
+**Purchase** (How can they buy?):
+- Direct sales (enterprise sales team)
+- Channel partners (e.g., equipment vendors, class societies)
+
+**Delivery** (How do we deliver the value?):
+- SaaS platform (cloud dashboard)
+- On-site sensor installation by certified partners
+- Remote monitoring center (24/7 support)
+
+**After-sales** (How do we support them?):
+- Dedicated account manager
+- Quarterly business reviews
+- Training programs for operators
+
+**Hypothesis to Test**: Do they prefer buying direct or through existing equipment vendors?
+
+---
+
+### ④ Customer Relationships
+
+**How will we get, keep, and grow customers?**
+
+**Acquisition**:
+- Personal sales calls (high-touch B2B)
+- Free pilot programs (prove value before full contract)
+- Referral incentives (discount for introductions)
+
+**Retention**:
+- Quarterly business reviews showing ROI
+- Continuous platform improvements based on feedback
+- Annual compliance reports (prove value to executives)
+
+**Growth** (upsell/cross-sell):
+- Start with one platform → Expand to entire fleet
+- Add-on modules (e.g., crew safety tracking, fuel optimization)
+
+**Hypothesis to Test**: Will they commit after a 3-month pilot, or do they need 6-12 months of proof?
+
+---
+
+### ⑤ Revenue Streams
+
+**How do we make money? What's the revenue model? Pricing tactics?**
+
+> [!IMPORTANT]
+> **Hybrid Platform Model**: We monetize from MULTIPLE stakeholder types to reduce chicken-and-egg risk and align incentives.
+
+| **Revenue Stream** | **Who Pays** | **Model** | **Price Point** | **Justification** |
+|-------------------|-------------|---------|----------------|------------------|
+| **Marketplace Commission** | 3D Printing Facilities | Per-transaction | 10-15% of job value | Only pay when they get business through platform |
+| **Client Premium Subscription** | Clients (Manufacturers) | Annual | $5K-$25K/year | Access to priority matching, expedited certification, analytics|
+| **Certification Licensing Fee** | Labs | Annual | $10K-$50K/year | To be listed as "verified partner" on platform |
+| **OEM Enterprise License** | OEMs | Annual | $50K-$150K/year | Distributed manufacturing management dashboard |
+| **Freemium Basic Access** | Clients | Free | $0 | Basic search and contact (convert to premium later) |
+
+**Total Annual Revenue Potential (at scale)**:
+- **Year 1**: 100 facilities × 10 jobs/month × $1,000 avg × 12% commission = **$1.44M**
+- **Year 2**: + 50 premium clients × $15K = **$750K**
+- **Year 3**: + 20 labs × $25K + 10 OEMs × $100K = **$1.5M**
+- **Year 3 Total**: **~$3.7M ARR**
+
+**Why This Model Works**:
+- **Facilities pay only when successful** (aligned incentives)
+- **Clients get free basic access** (reduces adoption friction)
+- **Premium features** unlock revenue from power users
+- **Labs & OEMs pay for access to ecosystem** (B2B SaaS model)
+
+**Hypothesis to Test**:
+- Will facilities accept 10-15% commission? (Compare to their current CAC)
+- What % of free clients convert to premium? (Target: 10-20%)
+- What premium features do clients care most about?
+- Would OEMs pay $100K+ for distributed manufacturing dashboard?
+
+---
+
+### ⑥ Key Partners
+
+**Who are our key partners?**
+
+| **Partner Type** | **Examples** | **What We Get** |
+|-----------------|------------|----------------|
+| **Regulatory Bodies** | ISO, ASTM, national authorities (FDA for medical, FAA for aerospace) | Regulatory compliance frameworks, credibility |
+| **Certification Labs** | UL, TÜV, SGS, local testing labs | Certification workflow integration, verified partner network |
+| **Material Suppliers** | Stratasys, 3D Systems, HP 3D Printing | Material specifications, quality standards |
+| **Industry Associations** | AMUG (Additive Manufacturing Users Group), ASTM F42 | Market access, industry validation |
+| **Technology Partners** | Cloud providers (AWS/Azure), payment processors (Stripe) | Infrastructure, transaction processing |
+
+**Who are our key suppliers?**
+- Cloud infrastructure (critical for platform)
+- Payment processing (for commissions)
+- Mapping/location services (for local matching algorithm)
+
+**What are we getting from them?**
+- **Regulatory Bodies**: Compliance frameworks and credibility
+- **Labs**: Integration partnerships for certification workflow
+- **Material Suppliers**: Standardized specs across facilities
+
+**Hypothesis to Test**: Will regulatory bodies partner with us or see us as competition to their manual processes?
+
+---
+
+### ⑦ Key Activities
+
+**What key activities do we require?**
+
+**Platform Development**:
+- Matching algorithm development (connect clients with local certified facilities)
+- User dashboard (separate interfaces for each stakeholder type)
+- Certification tracking system integration
+
+**Stakeholder Onboarding** (MOST CRITICAL!):
+- Recruit and onboard 3D printing facilities (verify credentials)
+- Recruit clients (manufacturers/buyers)
+- Partner with certification labs (integrate workflow)
+- Establish relationships with regulatory authorities
+
+**Quality Assurance**:
+- Vet and verify 3D printing facility certifications
+- Monitor transaction quality and disputes
+- Maintain verified badge system
+
+**Marketing/Sales**:
+- Attend industry conferences (RAPID + TCT, Formnext, AMUG)
+- Content marketing (whitepapers on certified local 3D printing)
+- Multi-sided sales (different pitches for each stakeholder)
+
+**Customer Success**:
+- Support for each stakeholder type (different needs)
+- Dispute resolution (between clients and facilities)
+- Training programs (how to use platform effectively)
+
+**Hypothesis to Test**: Can we automate facility verification, or do we need manual vetting for credibility?
+
+---
+
+### ⑧ Key Resources
+
+**What key resources do we require?**
+
+**Financial**:
+- Initial funding: $2M for MVP development + first 10 pilots
+- Runway: 18-24 months to reach revenue
+
+**Physical**:
+- None initially (asset-light model)
+- Later: Monitoring center facility (Year 2)
+
+**Intellectual Property**:
+- ML algorithms for predictive maintenance
+- Proprietary compliance reporting templates
+- Sensor integration protocols
+
+**Human Resources**:
+- **Co-founders**: Ocean engineer + software/ML expert
+- **Core team (Year 1)**: 5-8 people
+  - Lead ML engineer
+  - Sales/BD lead (industry veteran)
+  - Customer success manager
+  - DevOps engineer
+- **Advisory board**: Class society expert, offshore operator (former)
+
+**Hypothesis to Test**: Can we hire a credible sales lead from the industry, or do we need a co-founder with that background?
+
+---
+
+### ⑨ Cost Structure
+
+**What are the most important costs inherent in our business model? Fixed? Variable?**
+
+**Fixed Costs** (Year 1):
+- **Team salaries**: ~$700K (7 people @ $100K avg)
+  - Platform engineers (2): $250K
+  - Full-stack developer: $120K
+  - Business development / stakeholder onboarding (2): $180K
+  - Customer success: $80K
+  - Product manager: $70K
+- **Cloud infrastructure**: ~$30K/year (AWS/Azure for platform hosting)
+- **Payment processing infrastructure**: ~$20K/year (Stripe, escrow setup)
+- **Office/admin**: ~$50K/year
+- **TOTAL FIXED**: ~$800K/year
+
+**Variable Costs** (per stakeholder/transaction):
+- **Facility verification**: $500-$1K per facility (one-time credential check)
+- **Payment processing fees**: 2.9% of transaction value (Stripe fees)
+- **Customer support**: ~$5K/year per active stakeholder (scales)
+- **Marketing/acquisition**: Variable based on channel
+
+**R&D Costs** (Pre-revenue):
+- **Platform MVP development**: $400K (Year 0)
+  - Matching algorithm
+  - Multi-stakeholder dashboards
+  - Certification tracking integration
+- **Stakeholder onboarding pilots**: $150K (incentives to join early)
+
+**Customer Acquisition Cost (CAC) by Segment**: 
+- **Clients**: $2-5K (content marketing, conferences)
+- **Facilities**: $1-3K (direct outreach, trade shows)
+- **Labs**: $10-20K (partnership sales cycle)
+- **OEMs**: $50-100K (enterprise sales, long cycles)
+
+**Platform Economics**:
+- **CAC**: ~$3K average (blended)
+- **LTV** (3-year): Client $45K, Facility $36K (based on commission), Lab $75K
+- **LTV:CAC Ratio**: 10:1+ (healthy for platform)
+
+**Hypothesis to Test**: 
+- Can we reduce facility verification costs through automation?
+- What's the true CAC for each stakeholder type?
+- Will payment processing fees eat into margins at scale?
+
+---
+
+## Summary: Key Hypotheses to Validate
+
+### Riskiest Assumptions (Test These First!)
+
+1. **Pain Intensity**: Do offshore operators rate equipment downtime as an 8+/10 problem?
+   - **Test**: Ask "On a scale of 1-10..." in first 10 interviews
+   - **Threshold**: 8/10 must say "8 or higher"
+
+2. **Willingness to Pay**: Will they pay $150K+/year for this solution?
+   - **Test**: Show pricing slide in interviews 11-20
+   - **Threshold**: 7/10 say "this is in our budget range"
+
+3. **Decision Authority**: Can we identify the buyer in 6 months?
+   - **Test**: Ask "Who signs off on technology purchases like this?"
+   - **Threshold**: Can map decision chain in 8/10 interviews
+
+4. **Channel Preference**: Do they want to buy direct or through existing vendors?
+   - **Test**: Ask "How do you typically purchase monitoring systems?"
+   - **Threshold**: Clear pattern emerges by interview 30
+
+5. **Class Society Partnership**: Will DNV/ABS partner with us?
+   - **Test**: Set up exploratory meetings with 2-3 class societies by Week 6
+   - **Threshold**: 1+ expresses serious interest in collaboration
+
+---
+
+## Next Steps
+
+1. **Print this canvas** (or use a large whiteboard)
+2. **Color-code each box**:
+   - 🟢 Green = Validated (evidence from 8+ interviews)
+   - 🟡 Yellow = Partially validated (some evidence, needs more)
+   - 🔴 Red = Invalidated (need to pivot)
+   - ⚪ White = Not yet tested (still a guess)
+3. **Update weekly** based on interview findings
+4. **Share with team** for alignment
+
+**Remember**: This entire canvas is a HYPOTHESIS. Expect 50%+ of it to change after your first 30 interviews.

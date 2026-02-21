@@ -1,0 +1,101 @@
+Company ID,Company Name,Parent Company,Sector,Subsector,Region Focus,Country,HQ City,Asset Type,Compliance Intensity,Priority (1-5),Discovery Stage,Hypothesis Fit,Target Functions,Entry Path,Warm Intro Available (Y/N),Website,Notes
+1,ExxonMobil Canada,ExxonMobil,Oil & Gas Operator,Upstream,North America,Canada,Calgary,Offshore,High,1,Targeted,"H1,H2,H5","Maintenance, Reliability, Supply Chain",LinkedIn,N,exxonmobil.ca,Offshore operations in Atlantic Canada
+2,BP Canada Energy Group,BP,Oil & Gas Operator,Upstream,North America,Canada,Calgary,Offshore,High,1,Targeted,"H1,H2,H5","Maintenance, QA, Compliance",LinkedIn,N,bp.com,Major offshore operator
+3,Equinor Canada,Equinor,Oil & Gas Operator,Upstream,North America,Canada,St. John's,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Engineering, Digital",LinkedIn,N,equinor.ca,Hebron platform operator
+4,Cenovus Energy,Cenovus Energy,Oil & Gas Operator,Oil Sands,North America,Canada,Calgary,Plant,High,1,Targeted,"H1,H2,H4","Maintenance, Supply Chain, Engineering",LinkedIn,N,cenovus.com,Remote oil sands operations
+5,Suncor Energy,Suncor Energy,Oil & Gas Operator,Oil Sands,North America,Canada,Calgary,Plant,High,1,Targeted,"H1,H2,H4","Reliability, Maintenance, Compliance",LinkedIn,N,suncor.com,Major oil sands producer
+6,Canadian Natural Resources (CNRL),CNRL,Oil & Gas Operator,Oil Sands,North America,Canada,Calgary,Plant,High,1,Targeted,"H1,H2,H4","Maintenance, Engineering, Supply Chain",LinkedIn,N,cnrl.com,Largest Canadian oil producer
+7,Imperial Oil,ExxonMobil,Oil & Gas Operator,Oil Sands,North America,Canada,Calgary,Plant,High,1,Targeted,"H1,H2,H4","Reliability, QA, Compliance",LinkedIn,N,imperialoil.ca,Kearl oil sands project
+8,TC Energy,TC Energy,Oil & Gas Services,Midstream,North America,Canada,Calgary,Plant,High,2,Targeted,"H1,H4","Maintenance, Engineering, Compliance",LinkedIn,N,tcenergy.com,Pipeline infrastructure
+9,Enbridge,Enbridge,Oil & Gas Services,Midstream,North America,Canada,Calgary,Plant,High,2,Targeted,"H1,H4","Reliability, Maintenance, Engineering",LinkedIn,N,enbridge.com,Pipeline and terminal operations
+10,Irving Oil,Irving Oil,Oil & Gas Operator,Downstream,North America,Canada,Saint John,Plant,High,2,Targeted,"H1,H2,H4","Maintenance, Supply Chain, QA",LinkedIn,N,irvingoil.com,Refinery operations
+11,Irving Shipbuilding,Irving Shipbuilding,Shipbuilding,Naval,North America,Canada,Halifax,Yard,High,1,Targeted,"H2,H3,H5,H6","QA, Compliance, Engineering, Supply Chain",LinkedIn,N,irvingshipbuilding.com,Royal Canadian Navy contractor
+12,Seaspan (Vancouver Shipyards),Seaspan,Shipbuilding,Naval,North America,Canada,Vancouver,Yard,High,1,Targeted,"H2,H3,H5,H6","QA, Compliance, Engineering, Digital",LinkedIn,N,seaspan.com,National Shipbuilding Strategy
+13,Chantier Davie,Chantier Davie,Shipbuilding,Naval,North America,Canada,Lévis,Yard,High,1,Targeted,"H2,H3,H5,H6","Engineering, QA, Supply Chain",LinkedIn,N,davie.ca,Icebreaker and naval vessels
+14,Babcock Canada,Babcock International,Defense,Naval MRO,North America,Canada,Victoria,Yard,High,2,Targeted,"H2,H3,H5","Maintenance, Engineering, Compliance",LinkedIn,N,babcockinternational.com,Submarine maintenance
+15,Canadian Coast Guard,Government of Canada,Defense,Fleet MRO,North America,Canada,Ottawa,Fleet,High,2,Targeted,"H1,H2,H5","Maintenance, Supply Chain, Engineering",LinkedIn,N,ccg-gcc.gc.ca,Government fleet operations
+16,Teck Resources,Teck Resources,Mining,Copper/Coal/Zinc,North America,Canada,Vancouver,Mine,High,1,Targeted,"H1,H2,H4,H7","Maintenance, Reliability, Engineering",LinkedIn,N,teck.com,Remote mine sites
+17,Barrick,Barrick Gold,Mining,Gold,North America,Canada,Toronto,Mine,High,1,Targeted,"H1,H2,H4,H7","Maintenance, Supply Chain, Reliability",LinkedIn,N,barrick.com,Global gold producer
+18,Agnico Eagle,Agnico Eagle,Mining,Gold,North America,Canada,Toronto,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Maintenance, Engineering",LinkedIn,N,agnicoeagle.com,Northern mine operations
+19,Kinross,Kinross Gold,Mining,Gold,North America,Canada,Toronto,Mine,Med,2,Targeted,"H1,H2,H4","Maintenance, Supply Chain",LinkedIn,N,kinross.com,International operations
+20,First Quantum Minerals,First Quantum,Mining,Copper,North America,Canada,Vancouver,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Engineering, Supply Chain",LinkedIn,N,first-quantum.com,Large-scale copper mines
+21,Lundin Mining,Lundin Mining,Mining,Copper/Zinc,North America,Canada,Toronto,Mine,Med,2,Targeted,"H1,H2,H4","Maintenance, Engineering",LinkedIn,N,lundinmining.com,Base metals producer
+22,Hudbay Minerals,Hudbay Minerals,Mining,Copper/Zinc/Gold,North America,Canada,Toronto,Mine,Med,2,Targeted,"H1,H2,H4","Reliability, Maintenance",LinkedIn,N,hudbayminerals.com,Integrated mining company
+23,B2Gold,B2Gold,Mining,Gold,North America,Canada,Vancouver,Mine,Med,2,Targeted,"H1,H2,H4","Maintenance, Supply Chain",LinkedIn,N,b2gold.com,International gold producer
+24,Nutrien,Nutrien,Mining,Potash,North America,Canada,Saskatoon,Mine,High,2,Targeted,"H1,H2,H4","Maintenance, Engineering, Reliability",LinkedIn,N,nutrien.com,Potash and fertilizer
+25,Vale Base Metals (Canada),Vale,Mining,Nickel,North America,Canada,Sudbury,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Maintenance, Engineering",LinkedIn,N,vale.com,Sudbury nickel operations
+26,Saudi Aramco,Saudi Aramco,Oil & Gas Operator,Upstream,Middle East,Saudi Arabia,Dhahran,Offshore,High,1,Targeted,"H1,H2,H3,H5","Maintenance, Reliability, Digital",Conference,N,aramco.com,Largest oil producer globally
+27,ADNOC,ADNOC,Oil & Gas Operator,Upstream,Middle East,UAE,Abu Dhabi,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Engineering, Digital",Conference,N,adnoc.ae,UAE national oil company
+28,QatarEnergy,QatarEnergy,Oil & Gas Operator,Upstream,Middle East,Qatar,Doha,Offshore,High,1,Targeted,"H1,H2,H5","Maintenance, Reliability, Compliance",Conference,N,qatarenergy.qa,LNG and offshore operations
+29,Kuwait Petroleum (KPC),KPC,Oil & Gas Operator,Upstream,Middle East,Kuwait,Kuwait City,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Engineering",Conference,N,kpc.com.kw,National oil company
+30,Petrobras,Petrobras,Oil & Gas Operator,Upstream,South America,Brazil,Rio de Janeiro,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Maintenance, Digital",Conference,N,petrobras.com.br,Deep water offshore leader
+31,ExxonMobil,ExxonMobil,Oil & Gas Operator,Upstream,Global,USA,Houston,Offshore,High,1,Targeted,"H1,H2,H3,H5","Maintenance, Reliability, Engineering",LinkedIn,N,exxonmobil.com,Global supermajor
+32,Chevron,Chevron,Oil & Gas Operator,Upstream,Global,USA,San Ramon,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Digital, Engineering",LinkedIn,N,chevron.com,Global supermajor
+33,Shell,Shell,Oil & Gas Operator,Upstream,Global,Netherlands,The Hague,Offshore,High,1,Targeted,"H1,H2,H3,H5","Maintenance, Digital, Reliability",Conference,N,shell.com,Global supermajor
+34,BP,BP,Oil & Gas Operator,Upstream,Global,UK,London,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Engineering, Digital",Conference,N,bp.com,Global supermajor
+35,TotalEnergies,TotalEnergies,Oil & Gas Operator,Upstream,Global,France,Paris,Offshore,High,1,Targeted,"H1,H2,H3,H5","Maintenance, Reliability, Digital",Conference,N,totalenergies.com,Global supermajor
+36,Equinor,Equinor,Oil & Gas Operator,Upstream,Europe,Norway,Stavanger,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Digital, Engineering",Conference,N,equinor.com,Norwegian offshore leader
+37,Eni,Eni,Oil & Gas Operator,Upstream,Europe,Italy,Rome,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Reliability",Conference,N,eni.com,Italian supermajor
+38,ConocoPhillips,ConocoPhillips,Oil & Gas Operator,Upstream,Global,USA,Houston,Offshore,High,1,Targeted,"H1,H2,H5","Reliability, Maintenance, Engineering",LinkedIn,N,conocophillips.com,Independent E&P
+39,Occidental (Oxy),Occidental Petroleum,Oil & Gas Operator,Upstream,Global,USA,Houston,Offshore,Med,2,Targeted,"H1,H2","Maintenance, Engineering",LinkedIn,N,oxy.com,US independent
+40,Repsol,Repsol,Oil & Gas Operator,Upstream,Europe,Spain,Madrid,Offshore,Med,2,Targeted,"H1,H2,H5","Maintenance, Reliability",Conference,N,repsol.com,Spanish operator
+41,OMV,OMV,Oil & Gas Operator,Upstream,Europe,Austria,Vienna,Offshore,Med,3,Targeted,"H1,H2",Maintenance,LinkedIn,N,omv.com,Austrian operator
+42,Galp,Galp Energia,Oil & Gas Operator,Upstream,Europe,Portugal,Lisbon,Offshore,Med,3,Targeted,"H1,H2",Maintenance,LinkedIn,N,galp.com,Portuguese operator
+43,Petronas,Petronas,Oil & Gas Operator,Upstream,Asia,Malaysia,Kuala Lumpur,Offshore,High,2,Targeted,"H1,H2,H5","Reliability, Maintenance",Conference,N,petronas.com,Malaysian national oil company
+44,Pertamina,Pertamina,Oil & Gas Operator,Upstream,Asia,Indonesia,Jakarta,Offshore,Med,3,Targeted,"H1,H2",Maintenance,Conference,N,pertamina.com,Indonesian national oil company
+45,PetroChina,CNPC,Oil & Gas Operator,Upstream,Asia,China,Beijing,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Reliability",Conference,N,petrochina.com.cn,Chinese NOC
+46,Sinopec,Sinopec Group,Oil & Gas Operator,Upstream,Asia,China,Beijing,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Reliability",Conference,N,sinopec.com,Chinese NOC
+47,CNPC,CNPC,Oil & Gas Operator,Upstream,Asia,China,Beijing,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Engineering",Conference,N,cnpc.com.cn,Chinese NOC
+48,Woodside Energy,Woodside Energy,Oil & Gas Operator,Upstream,Asia Pacific,Australia,Perth,Offshore,High,1,Targeted,"H1,H2,H3,H5","Reliability, Digital, Maintenance",Conference,N,woodside.com,Australian LNG operator
+49,Santos,Santos,Oil & Gas Operator,Upstream,Asia Pacific,Australia,Adelaide,Offshore,High,2,Targeted,"H1,H2,H5","Maintenance, Reliability",Conference,N,santos.com,Australian operator
+50,Gazprom Neft,Gazprom,Oil & Gas Operator,Upstream,Europe,Russia,St Petersburg,Offshore,High,5,Targeted,"H1,H2",Maintenance,Conference,N,gazprom-neft.com,Geopolitically sensitive
+51,Transocean,Transocean,Drilling,Offshore Drilling,Global,Switzerland,Steinhausen,Rig,High,1,Targeted,"H1,H2,H3,H5,H6","Maintenance, Reliability, Engineering, Compliance",LinkedIn,N,deepwater.com,Largest offshore driller
+52,Valaris,Valaris,Drilling,Offshore Drilling,Global,UK,London,Rig,High,1,Targeted,"H1,H2,H3,H5,H6","Reliability, Maintenance, Compliance",LinkedIn,N,valaris.com,Major offshore driller
+53,Noble Corporation,Noble Corporation,Drilling,Offshore Drilling,Global,UK,London,Rig,High,1,Targeted,"H1,H2,H3,H5,H6","Maintenance, Engineering, Compliance",LinkedIn,N,noblecorp.com,Offshore drilling contractor
+54,Seadrill,Seadrill,Drilling,Offshore Drilling,Global,Bermuda,Hamilton,Rig,High,2,Targeted,"H1,H2,H5,H6","Reliability, Maintenance, Compliance",LinkedIn,N,seadrill.com,Harsh environment driller
+55,Diamond Offshore,Diamond Offshore,Drilling,Offshore Drilling,Global,USA,Houston,Rig,Med,2,Targeted,"H1,H2,H6","Maintenance, Compliance",LinkedIn,N,diamondoffshore.com,Offshore drilling contractor
+56,Stena Drilling,Stena AB,Drilling,Offshore Drilling,Europe,UK,Aberdeen,Rig,High,2,Targeted,"H1,H2,H5,H6","Reliability, Compliance",LinkedIn,N,stenadrilling.com,North Sea operator
+57,Shelf Drilling,Shelf Drilling,Drilling,Offshore Drilling,Global,UAE,Dubai,Rig,Med,3,Targeted,"H1,H2,H6","Maintenance, Compliance",LinkedIn,N,shelfdrilling.com,Shallow water specialist
+58,Odfjell Drilling,Odfjell Drilling,Drilling,Offshore Drilling,Europe,Norway,Stavanger,Rig,High,2,Targeted,"H1,H2,H5,H6","Reliability, Engineering, Compliance",LinkedIn,N,odfjelldrilling.com,Norwegian driller
+59,COSL (China Oilfield Services),CNOOC,Drilling,Offshore Drilling,Asia,China,Beijing,Rig,High,3,Targeted,"H1,H2,H6","Maintenance, Compliance",Conference,N,cosl.com.cn,Chinese offshore services
+60,Saipem,Saipem,Drilling,Offshore Contracting,Europe,Italy,Milan,Rig,High,2,Targeted,"H1,H2,H5,H6","Engineering, Compliance, Maintenance",Conference,N,saipem.com,Integrated contractor
+61,MSC,MSC,Shipping,Container,Global,Switzerland,Geneva,Fleet,High,1,Targeted,"H1,H2,H3,H5,H6","Maintenance, Reliability, Supply Chain, Compliance",LinkedIn,N,msc.com,Largest container line
+62,Maersk,A.P. Moller-Maersk,Shipping,Container,Global,Denmark,Copenhagen,Fleet,High,1,Targeted,"H1,H2,H3,H5,H6","Reliability, Digital, Maintenance, Compliance",Conference,N,maersk.com,Global shipping leader
+63,CMA CGM,CMA CGM Group,Shipping,Container,Global,France,Marseille,Fleet,High,1,Targeted,"H1,H2,H3,H5,H6","Maintenance, Reliability, Compliance",Conference,N,cma-cgm.com,French shipping giant
+64,COSCO Shipping Lines,COSCO Group,Shipping,Container,Global,China,Shanghai,Fleet,High,2,Targeted,"H1,H2,H5,H6","Maintenance, Compliance",Conference,N,coscon.com,Chinese state carrier
+65,Hapag-Lloyd,Hapag-Lloyd,Shipping,Container,Global,Germany,Hamburg,Fleet,High,1,Targeted,"H1,H2,H3,H5,H6","Reliability, Maintenance, Compliance",Conference,N,hapag-lloyd.com,German carrier
+66,ONE (Ocean Network Express),MOL/NYK/K Line,Shipping,Container,Global,Japan,Tokyo,Fleet,High,1,Targeted,"H1,H2,H3,H5,H6","Maintenance, Digital, Compliance",Conference,N,one-line.com,Japanese consortium
+67,Evergreen Marine,Evergreen Group,Shipping,Container,Global,Taiwan,Taipei,Fleet,High,2,Targeted,"H1,H2,H5,H6","Maintenance, Compliance",Conference,N,evergreen-marine.com,Taiwanese carrier
+68,Yang Ming,Yang Ming,Shipping,Container,Asia,Taiwan,Taipei,Fleet,Med,2,Targeted,"H1,H2,H6","Maintenance, Compliance",Conference,N,yangming.com,Taiwanese carrier
+69,ZIM,ZIM,Shipping,Container,Global,Israel,Haifa,Fleet,Med,2,Targeted,"H1,H2,H6","Maintenance, Compliance",LinkedIn,N,zim.com,Israeli carrier
+70,Wan Hai Lines,Wan Hai Lines,Shipping,Container,Asia,Taiwan,Taipei,Fleet,Med,3,Targeted,"H1,H6","Maintenance, Compliance",Conference,N,wanhai.com,Regional carrier
+71,PIL (Pacific International Lines),PIL,Shipping,Container,Asia,Singapore,Singapore,Fleet,Med,2,Targeted,"H1,H2,H6","Maintenance, Compliance",LinkedIn,N,pilship.com,Singapore carrier
+72,X-Press Feeders,X-Press Feeders,Shipping,Container Feeder,Global,Singapore,Singapore,Fleet,Med,3,Targeted,"H1,H6",Maintenance,LinkedIn,N,x-pressfeeders.com,Feeder specialist
+73,Matson,Matson,Shipping,Container,Pacific,USA,Honolulu,Fleet,Med,2,Targeted,"H1,H2,H6","Maintenance, Compliance",LinkedIn,N,matson.com,US Pacific carrier
+74,Seaspan,Seaspan,Shipping,Container,Global,Hong Kong,Hong Kong,Fleet,High,2,Targeted,"H1,H2,H5,H6","Maintenance, Reliability, Compliance",LinkedIn,N,seaspancorp.com,Container ship lessor
+75,Hafnia,Hafnia,Shipping,Tanker,Global,Singapore,Singapore,Fleet,High,2,Targeted,"H1,H2,H5,H6","Reliability, Maintenance, Compliance",LinkedIn,N,hafniabw.com,Product tanker operator
+76,Huntington Ingalls Industries (HII),HII,Shipbuilding,Naval,North America,USA,Newport News,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","QA, Compliance, Engineering, Digital",LinkedIn,N,huntingtoningalls.com,US Navy prime contractor
+77,General Dynamics Electric Boat,General Dynamics,Shipbuilding,Naval,North America,USA,Groton,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","Engineering, QA, Compliance, Digital",LinkedIn,N,gdeb.com,Submarine builder
+78,Bath Iron Works (GD),General Dynamics,Shipbuilding,Naval,North America,USA,Bath,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","QA, Engineering, Compliance",LinkedIn,N,gdbiw.com,Destroyer builder
+79,Fincantieri,Fincantieri,Shipbuilding,Naval,Europe,Italy,Trieste,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","Engineering, QA, Compliance",Conference,N,fincantieri.com,Italian shipbuilder
+80,Naval Group,Naval Group,Shipbuilding,Naval,Europe,France,Paris,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","QA, Compliance, Engineering",Conference,N,naval-group.com,French naval shipbuilder
+81,BAE Systems (Naval Ships),BAE Systems,Shipbuilding,Naval,Europe,UK,London,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","Engineering, QA, Compliance, Digital",LinkedIn,N,baesystems.com,UK naval shipbuilder
+82,Damen Shipyards Group,Damen,Shipbuilding,Commercial/Naval,Europe,Netherlands,Gorinchem,Yard,High,2,Targeted,"H2,H3,H5,H6","QA, Engineering, Compliance",Conference,N,damen.com,Modular shipbuilder
+83,Austal,Austal,Shipbuilding,Naval,Asia Pacific,Australia,Henderson,Yard,High,1,Targeted,"H2,H3,H5,H6,H7","QA, Compliance, Engineering",LinkedIn,N,austal.com,Aluminum high-speed vessels
+84,HD Hyundai Heavy Industries,HD Hyundai,Shipbuilding,Commercial/Naval,Asia,South Korea,Ulsan,Yard,High,2,Targeted,"H2,H3,H5,H6","Engineering, QA",Conference,N,hd-hhi.com,Korean shipbuilder
+85,Mitsubishi Heavy Industries (Shipbuilding),Mitsubishi Heavy,Shipbuilding,Naval,Asia,Japan,Tokyo,Yard,High,2,Targeted,"H2,H3,H5,H6,H7","QA, Engineering, Compliance",Conference,N,mhi.com,Japanese shipbuilder
+86,BHP,BHP Group,Mining,Iron Ore/Copper,Global,Australia,Melbourne,Mine,High,1,Targeted,"H1,H2,H3,H4,H7","Reliability, Digital, Maintenance, Engineering",Conference,N,bhp.com,World's largest miner
+87,Rio Tinto,Rio Tinto,Mining,Iron Ore/Copper/Aluminum,Global,UK/Australia,London/Melbourne,Mine,High,1,Targeted,"H1,H2,H3,H4,H7","Digital, Reliability, Maintenance, Engineering",Conference,N,riotinto.com,Global mining giant
+88,Vale,Vale,Mining,Iron Ore/Nickel,Global,Brazil,Rio de Janeiro,Mine,High,1,Targeted,"H1,H2,H4,H7","Maintenance, Reliability, Engineering",Conference,N,vale.com,Brazilian mining giant
+89,Glencore,Glencore,Mining,Diversified,Global,Switzerland,Baar,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Maintenance, Supply Chain",Conference,N,glencore.com,Diversified miner trader
+90,Anglo American,Anglo American,Mining,Platinum/Diamonds/Copper,Global,UK,London,Mine,High,1,Targeted,"H1,H2,H4,H7","Maintenance, Reliability, Engineering",Conference,N,angloamerican.com,Diversified miner
+91,Freeport-McMoRan,Freeport-McMoRan,Mining,Copper/Gold,Global,USA,Phoenix,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Maintenance, Engineering",LinkedIn,N,fcx.com,Copper producer
+92,Newmont,Newmont,Mining,Gold,Global,USA,Denver,Mine,High,1,Targeted,"H1,H2,H4,H7","Maintenance, Reliability, Engineering",LinkedIn,N,newmont.com,World's largest gold miner
+93,Barrick,Barrick Gold,Mining,Gold,Global,Canada,Toronto,Mine,High,1,Targeted,"H1,H2,H4,H7","Reliability, Maintenance, Engineering",LinkedIn,N,barrick.com,Global gold producer
+94,Fortescue,Fortescue Metals,Mining,Iron Ore,Asia Pacific,Australia,Perth,Mine,High,1,Targeted,"H1,H2,H3,H4,H7","Digital, Reliability, Maintenance",Conference,N,fmgl.com.au,Australian iron ore
+95,Antofagasta,Antofagasta,Mining,Copper,South America,UK,London,Mine,High,2,Targeted,"H1,H2,H4,H7","Maintenance, Reliability",Conference,N,antofagasta.co.uk,Chilean copper
+96,Southern Copper,Southern Copper,Mining,Copper,South America,USA,Phoenix,Mine,High,2,Targeted,"H1,H2,H4","Maintenance, Reliability",LinkedIn,N,southernperu.com,Peru/Mexico operations
+97,Zijin Mining,Zijin Mining Group,Mining,Gold/Copper,Asia,China,Fujian,Mine,Med,3,Targeted,"H1,H2,H4",Maintenance,Conference,N,zijinmining.com,Chinese miner
+98,CMOC Group,CMOC,Mining,Copper/Cobalt,Asia,China,Luoyang,Mine,Med,3,Targeted,"H1,H2,H4",Maintenance,Conference,N,cmoc.com,Chinese miner
+99,Coal India,Coal India,Mining,Coal,Asia,India,Kolkata,Mine,Med,3,Targeted,"H1,H4",Maintenance,Conference,N,coalindia.in,Indian state coal
+100,KGHM Polska Miedź,KGHM,Mining,Copper/Silver,Europe,Poland,Lubin,Mine,High,2,Targeted,"H1,H2,H4,H7","Maintenance, Reliability, Engineering",Conference,N,kghm.com,Polish copper producer

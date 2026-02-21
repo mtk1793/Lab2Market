@@ -1,0 +1,184 @@
+# AirTable CRM Setup Guide
+## How to Share with Your Facilitator
+
+---
+
+## Step-by-Step Instructions
+
+### Step 1: Create Your AirTable Account
+1. Go to **airtable.com**
+2. Click **"Sign up for free"**
+3. Use your university email (easier for your facilitator to verify)
+
+---
+
+### Step 2: Create Your Base
+1. After logging in, click **"Start from scratch"** or **"Create a base"**
+2. Name it: **"L2M Customer Discovery - [Your Project Name]"**
+   - Example: "L2M Customer Discovery - Ocean Monitoring Tech"
+
+---
+
+### Step 3: Set Up Your Table Structure
+
+Use the columns from the **CRM_Interview_Targets.md** document I created for you. Here's the quick setup:
+
+#### Required Columns (in order):
+
+| **Column Name** | **Field Type** |
+|----------------|---------------|
+| Contact Name | Single line text |
+| Title | Single line text |
+| Company | Single line text |
+| Segment | Single select (options: "Offshore Energy", "Maritime Fleet", "Aquaculture") |
+| Role Bias | Single select (options: "Buyer", "User", "Influencer", "Blocker") |
+| LinkedIn URL | URL |
+| Email | Email |
+| Phone | Phone number |
+| Outreach Date | Date |
+| Outreach Method | Single select (options: "LinkedIn", "Email", "Phone", "Referral") |
+| Interview Status | Single select (options: "Not Contacted", "Reached Out", "Scheduled", "Completed", "Declined") |
+| Interview Date | Date |
+| Pain Intensity (1-10) | Number (0-10 scale) |
+| Problem (Verbatim) | Long text |
+| Current Solution | Long text |
+| Current Solution Cost | Currency (USD) |
+| Key Insight | Long text |
+| Willingness to Pay | Currency (USD) |
+| Follow-up Date | Date |
+| Referrals | Long text |
+| Tags | Multiple select (options: "Early Adopter", "Skeptic", "Champion", "Decision Maker") |
+
+---
+
+### Step 4: Create Useful Views
+
+AirTable "Views" are filtered/sorted versions of your data. Set these up:
+
+1. **View: "This Week's Outreach"**
+   - Filter: `Outreach Date` is `this week`
+   - Sort: Outreach Date (ascending)
+
+2. **View: "Interviews Scheduled"**
+   - Filter: `Interview Status` is `Scheduled`
+   - Sort: Interview Date (ascending)
+
+3. **View: "Completed Interviews"**
+   - Filter: `Interview Status` is `Completed`
+   - Sort: Interview Date (descending)
+
+4. **View: "Follow-ups Needed"**
+   - Filter: `Follow-up Date` is `on or before` `today`
+   - Sort: Follow-up Date (ascending)
+
+5. **View: "Kanban Board"** (optional but useful)
+   - Group by: `Interview Status`
+   - Shows cards moving from "Not Contacted" → "Reached Out" → "Scheduled" → "Completed"
+
+---
+
+### Step 5: Add Sample Data
+
+Before sharing with your facilitator, add **3-5 sample contacts** so they can see how you're using it.
+
+Example:
+| Contact Name | Title | Company | Segment | Interview Status |
+|-------------|-------|---------|---------|-----------------|
+| John Smith | VP Operations | Shell | Offshore Energy | Reached Out |
+| Jane Doe | Fleet Manager | Maersk | Maritime Fleet | Not Contacted |
+
+---
+
+### Step 6: Share with Your Facilitator
+
+#### Option A: Share via Email (Recommended)
+1. Click the **"Share"** button (top-right corner of your base)
+2. Click **"Invite by email"**
+3. Enter your facilitator's email address
+4. Set permission level:
+   - **Editor**: They can view and edit (use this if they want to add notes)
+   - **Commenter**: They can view and comment (read-only with feedback)
+   - **Read-only**: They can only view (good for privacy)
+5. Click **"Send invite"**
+
+**Ask your facilitator which permission level they prefer!**
+
+#### Option B: Share via Link
+1. Click the **"Share"** button
+2. Click **"Create a shareable link"**
+3. Set link permission (Editor, Commenter, or Read-only)
+4. Copy the link
+5. Send it to your facilitator via email or Slack
+
+---
+
+### Step 7: Notify Your Facilitator
+
+Send them an email like this:
+
+```
+Subject: AirTable CRM Access - L2M Customer Discovery
+
+Hi [Facilitator Name],
+
+I've set up my AirTable CRM for tracking customer discovery interviews. I've shared it with you at the [Editor/Commenter/Read-only] level.
+
+Here's the link: [paste link if using Option B]
+
+The base is called "L2M Customer Discovery - [Your Project Name]"
+
+Currently, I have [X] contacts loaded and I'm targeting [Y] interviews this week.
+
+Let me know if you have any issues accessing it or if you'd prefer a different permission level.
+
+Thanks,
+[Your Name]
+```
+
+---
+
+### Step 8: Keep It Updated
+
+**Daily habit**:
+- Add new contacts as you find them
+- Update "Interview Status" as you progress
+- Log "Key Insights" immediately after each interview (while fresh!)
+
+**Weekly review**:
+- Check "Follow-ups Needed" view
+- Count completed interviews for your weekly check-in
+- Update any stale data
+
+---
+
+## Troubleshooting
+
+### "My facilitator can't access the base"
+- Check if they're using the correct email
+- Verify the invite didn't go to spam
+- Try sharing via link instead of email invite
+
+### "I want to change the permission level"
+1. Click "Share"
+2. Find their email in the list
+3. Click the permission dropdown
+4. Change to desired level
+
+### "Can I use Google Sheets instead?"
+- Technically yes, but AirTable is **strongly recommended** because:
+  - Better views and filters
+  - Kanban boards for visual tracking
+  - Easier collaboration
+  - Industry standard for L2M
+
+---
+
+## Next Steps After Setup
+
+1. ✅ Share with facilitator
+2. Add your first 30 contacts from the research in [CRM_Interview_Targets.md](file:///C:/Users/mtk17/.gemini/antigravity/brain/1e0b7907-a400-46bb-ba66-c4ebe5cfeb5f/CRM_Interview_Targets.md)
+3. Start outreach using templates
+4. Log every interaction immediately
+5. Review weekly with your team
+
+**Good luck!**

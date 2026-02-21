@@ -1,0 +1,236 @@
+# Customer Discovery CRM & Interview Target Research
+## Lab2Market Ocean Technology Project
+
+---
+
+## 1. Target Customer Segments (Prioritized)
+
+### Segment 1: Offshore Energy Operators ⭐ PRIMARY
+**Why this segment**: Highest pain intensity, largest budgets, regulatory-driven
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| VP Operations | Equinor, Shell, BP, Chevron, ExxonMobil | "offshore operations" + "director" |
+| HSE Director | Subsea 7, TechnipFMC, Saipem | "health safety environment" + "offshore" |
+| Platform Manager | ConocoPhillips, Aker BP | "platform manager" + "oil gas" |
+| Asset Integrity Manager | Petrobras, Woodside Energy | "asset integrity" + "offshore" |
+
+**Expected Pain Points to Validate**:
+- Equipment downtime costs ($2M+/day)
+- DNV/ABS audit preparation burden
+- Real-time monitoring gaps in harsh weather
+
+---
+
+### Segment 2: Maritime Fleet Managers ⭐ SECONDARY
+**Why this segment**: Similar regulatory pressures, established procurement cycles
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Fleet Operations Director | Maersk, MSC, CMA CGM | "fleet operations" + "maritime" |
+| Marine Superintendent | Hapag-Lloyd, ONE (Ocean Network Express) | "marine superintendent" |
+| Ship Captain (Bulk/Container) | Genco Shipping, Diana Shipping | "ship captain" + "bulk carrier" |
+| Class Society Surveyor | DNV, Lloyd's Register, ABS | "surveyor" + "classification society" |
+
+**Expected Pain Points to Validate**:
+- Fuel efficiency losses due to poor weather routing
+- IMO compliance reporting complexity
+- Crew safety concerns in severe weather
+
+---
+
+### Segment 3: Aquaculture Facility Managers ⭐ TERTIARY
+**Why this segment**: Emerging market, environmental compliance focus
+
+| **Target Titles** | **Companies to Research** | **LinkedIn Search Terms** |
+|------------------|------------------------|------------------------|
+| Farm Manager | Mowi, Lerøy Seafood, SalMar | "aquaculture" + "farm manager" |
+| Environmental Compliance Officer | Grieg Seafood, Cooke Aquaculture | "environmental compliance" + "aquaculture" |
+| Operations Manager | Cermaq, Scottish Sea Farms | "operations" + "salmon" OR "fish farm" |
+
+**Expected Pain Points to Validate**:
+- Water quality monitoring gaps
+- Environmental impact reporting for regulators
+- Disease outbreak early detection
+
+---
+
+## 2. Interview Target List (100 Total)
+
+### Week-by-Week Breakdown
+
+| **Week** | **Segment** | **Target #** | **Goal** |
+|---------|-----------|------------|---------|
+| 1-2 | Offshore Energy | 30 | Validate pain intensity and current solutions |
+| 3-4 | Maritime Fleet | 30 | Compare pain points and willingness to pay |
+| 5-6 | Aquaculture | 20 | Test adjacent market fit |
+| 7-8 | Regulators & Influencers | 10 | Understand compliance landscape |
+| 9-10 | Follow-ups & Refinement | 10 | Deep dive  with early adopters |
+
+---
+
+## 3. CRM Template (AirTable Structure)
+
+### Required Columns
+
+| **Column Name** | **Type** | **Purpose** | **Example** |
+|----------------|---------|------------|------------|
+| **Contact Name** | Text | Full name | "John Smith" |
+| **Title** | Text | Job title | "VP Offshore Operations" |
+| **Company** | Text | Organization | "Shell Energy" |
+| **Segment** | Single Select | Customer archetype | "Offshore Energy", "Maritime Fleet", "Aquaculture" |
+| **Role Bias** | Single Select | Buying influence | "Buyer", "User", "Influencer", "Blocker" |
+| **LinkedIn URL** | URL | Profile link | https://linkedin.com/in/... |
+| **Email** | Email | Contact email | john.smith@shell.com |
+| **Phone** | Phone | Contact number | +1-xxx-xxx-xxxx |
+| **Outreach Date** | Date | When contacted | 2026-01-20 |
+| **Outreach Method** | Single Select | Channel used | "LinkedIn", "Email", "Phone", "Referral" |
+| **Interview Status** | Single Select | Progress tracker | "Not Contacted", "Reached Out", "Scheduled", "Completed", "Declined" |
+| **Interview Date** | Date | Scheduled/completed date | 2026-01-25 |
+| **Pain Intensity (1-10)** | Number | Self-reported pain level | 8 |
+| **Problem (Verbatim)** | Long Text | THEIR words | "We lose $2M every time weather shuts us down" |
+| **Current Solution** | Long Text | What they use now | "Manual weather reports + spreadsheets" |
+| **Current Solution Cost** | Currency | Annual spend | $500,000 |
+| **Key Insight** | Long Text | Main takeaway | "DNV compliance is #1 priority, not cost" |
+| **Willingness to Pay** | Currency | Budget range mentioned | $100,000 - $250,000 |
+| **Follow-up Date** | Date | Next action | 2026-02-01 |
+| **Referrals** | Long Text | Who they recommended | "Jane Doe at BP, Mike at Equinor" |
+| **Tags** | Multiple Select | Quick filters | "Early Adopter", "Skeptic", "Champion" |
+
+---
+
+## 4. Research Sources for Building Your List
+
+### LinkedIn Advanced Search
+**Filters to use**:
+- **Title**: "VP Operations", "Director HSE", "Fleet Manager"
+- **Industry**: "Oil & Energy", "Maritime", "Aquaculture"
+- **Location**: Norway, UK, Houston (TX), Aberdeen (Scotland), Singapore
+- **Company Size**: 1,000+ employees (established budgets)
+
+### Industry Conferences (Check Speaker Lists)
+- **Offshore Technology Conference (OTC)** - Houston, May 2026
+- **Nor-Shipping** - Oslo, June 2026
+- **Offshore Wind Europe** - Amsterdam, 2026
+- **Aquaculture Europe** - Rotterdam, 2026
+
+### Industry Publications (Find Authors & Contributors)
+- *Offshore Engineer* magazine
+- *Maritime Executive*
+- *Fish Farmer* magazine
+- DNV/Lloyd's Register whitepapers
+
+### Alumni Networks
+- Search your university's alumni database for:
+  - Ocean engineering graduates
+  - Maritime MBA programs
+  - Oil & gas professionals
+
+### Trade Associations (Membership Directories)
+- **International Association of Drilling Contractors (IADC)**
+- **International Maritime Organization (IMO)**
+- **Global Aquaculture Alliance**
+
+---
+
+## 5. Outreach Strategy (Getting to 15 Interviews/Week)
+
+### The Math
+- **Goal**: 15 interviews/week
+- **Conversion Rate**: 10-20%
+- **Required Outreaches**: 75-150/week
+
+### Weekly Outreach Mix
+| **Channel** | **# Per Week** | **Expected Conversion** | **Interviews** |
+|------------|---------------|----------------------|---------------|
+| **LinkedIn Messages** | 50 | 15% | 7-8 |
+| **Email** | 40 | 12% | 5 |
+| **Phone/Voicemail** | 30 | 10% | 3 |
+| **Referrals** | 10 | 50%+ | 5+ (gold!) |
+| **TOTAL** | 130 | ~15% avg | **15-20** |
+
+---
+
+## 6. Sample Outreach Templates
+
+### LinkedIn Message Template
+```
+Hi [Name],
+
+I'm a researcher at [University] working on ocean monitoring technology as part of the Canadian Lab2Market program. I noticed your work in [specific project/area] and thought you might have valuable insights to share.
+
+I'm NOT selling anything—just looking to learn from industry experts like yourself about the challenges you face with [monitoring/compliance/operations] in offshore environments.
+
+Would you be open to a 15-minute call this week or next? I'm happy to work around your schedule.
+
+Thanks for considering,
+[Your Name]
+[Contact Info]
+```
+
+### Email Template
+```
+Subject: 15-min chat about offshore monitoring challenges?
+
+Hi [Name],
+
+My name is [Your Name], and I'm a [degree] student at [University] participating in the Lab2Market program. I'm researching how offshore operators handle real-time monitoring and compliance reporting.
+
+As [their title] at [Company], I imagine you have firsthand experience with these challenges—and I'd love to learn from your perspective.
+
+Key point: I'm not selling anything. I'm purely in learning mode right now.
+
+Would you have 15-20 minutes for a quick call in the next two weeks? I can work around your availability.
+
+Best regards,
+[Your Name]
+[Email | LinkedIn]
+```
+
+---
+
+## 7. AirTable Setup Instructions
+
+### Step 1: Create Your Base
+1. Go to airtable.com
+2. Click "Create a base"
+3. Name it: "L2M Customer Discovery - [Your Project Name]"
+
+### Step 2: Set Up Your Table
+1. Create columns using the template in Section 3 above
+2. Use the correct field types (Single Select, Date, Currency, etc.)
+
+### Step 3: Create Views
+- **View 1**: "This Week's Outreach" (filter: Outreach Date = this week)
+- **View 2**: "Interviews Scheduled" (filter: Interview Status = Scheduled)
+- **View 3**: "Completed Interviews" (filter: Interview Status = Completed)
+- **View 4**: "Follow-ups Needed" (filter: Follow-up Date ≤ today)
+
+### Step 4: Share with Facilitator
+1. Click "Share" button (top right)
+2. Click "Invite by email"
+3. Enter your facilitator's email
+4. Set permission to "Editor" or "Commenter" (ask your facilitator which they prefer)
+5. Send invitation
+
+---
+
+## 8. First 30 Contacts to Add (Action Item)
+
+**This Week's Goal**: Populate CRM with 30 qualified contacts from Segment 1 (Offshore Energy)
+
+**Recommended Approach**:
+1. Spend 2 hours on LinkedIn finding 30 VP/Director-level offshore operators
+2. Add them to AirTable with all available info (LinkedIn, company, title)
+3. Draft personalized outreach messages (use AI for first draft, then humanize)
+4. Send 10 messages per day for 3 days
+5. Track responses and schedule interviews
+
+---
+
+## Next Steps
+- [ ] Set up AirTable base
+- [ ] Add first 30 contacts (Offshore Energy segment)
+- [ ] Share AirTable with facilitator
+- [ ] Send first 10 outreach messages
+- [ ] Schedule goal: 3 interviews by end of Week 2

@@ -1,0 +1,589 @@
+Business Model Design and
+Customer Discovery
+Randy Gillespie, MSc, FGC
+January 22, 2026
+
+RE-CAP KEY MESSAGES
+BUSINESS MODEL DESIGN
+AGENDA CUSTOMER DISCOVERY
+ASSIGNMENT
+RESOURCES
+
+RECAP
+
+Lab2Market Prime Directive
+Your job is to
+validate that a problem/need exists,
+understand who has it
+and, only then,
+determine how best to solve it.
+You are not trying to educate your customers;
+you are trying to learn from them.
+
+Talking to humans
+1.
+Be yourself
+Be real; be you
+o
+2.
+Find the right people
+Referrals + web/AI (industry groups, conferences, etc.)
+o
+3.
+Set up the interview
+Background research + interview script + scheduling
+o
+4.
+Listen
+Their job; their joys; their challenges
+o
+5.
+Learn
+What worked? What didn’t? Update/revise your assumptions
+o
+
+The interview ‘formula’
+Part 1: The welcome
+Purpose of interview (2 – 3 minutes)
+o
+Part 2: Positioning your customer
+Ask about their company/job; seek their advice
+o
+Part 3: Rank the problem
+Nice to have; need to have; don’t want/need
+o
+Part 4: The hook
+Would you mind if I follow up? Can you suggest others?
+o
+Leverage the power of ‘why’
+
+Business Model Design
+
+Lean Startup Method
+• Risk reduction methodology
+• Three components:
+• Business Model (framework of core business
+assumptions and hypotheses)
+• Customer Discovery (a way to test core
+assumptions and hypotheses)
+• Agile Engineering (iterative product development)
+
+Business Model
+Describes how your startup creates, delivers
+•
+and captures value.
+A blueprint of the ‘what’, ‘why’ and ‘how’ your
+•
+startup functions
+In the past - complicated; no ‘standardized’
+•
+approach
+
+Business model canvas
+Source: A. Osterwalder, Business Model Generation
+
+Business Model Canvas
+Key Key Value Customer Customer
+partners activities proposition relationships segments
+Feasibility Desirability
+Key
+Channels
+resources
+Costs Revenue
+Viability
+
+Importance of visualizing your business model
+Clarity & Comprehension Collaboration
+Visual models simplify complex A shared visual canvas encourages
+business relationships, making them team brainstorming, ensuring diverse
+easier to understand and remember perspectives are considered in
+for all stakeholders. strategy development.
+Gap Identification Agility
+Visualization highlights missing Quickly iterate and adapt business
+elements or misalignments, allowing strategies by visually mapping
+for early detection and correction changes and their impacts across the
+before implementation. model.
+
+Common mistakes and how to avoid them
+Overly Complex Canvases Neglecting Customer Validation
+Mistake: Too many elements too Mistake: Skipping customer
+early create confusion. Prevention: discovery wastes resources.
+Start simple and prioritize critical Prevention: Run iterative tests and
+assumptions. gather continuous stakeholder
+feedback.
+Ignoring Market Dynamics Lack ofE CXoEllCaUboTrIaOtNion
+Mistake: Failing to learn and adapt
+Mistake: Working in isolation hides
+risks obsolescence. Prevention:
+blind spots. Prevention: Foster team
+Monitor trends and adjust strategies
+collaboration and open
+regularly.
+communication.
+
+Product – Market Fit
+Guess
+Guess
+Guess
+Guess
+Guess
+Start here Test here
+Guess
+Guess
+Guess Guess
+Source: A. Osterwalder, Business Model Generation
+
+--Foresight--
+Business
+Regulatory Society and culture
+Ecosystem
+Technology Key Socioeconomic
+Trends
+-
+- Market segments
+s Supplier and partners
+i -
+s -
+M
+y KP KA VP CR CS
+l Needs and problems
+a Stakeholders a
+n r
+k
+a
+e
+e v Competitors
+y
+r t s u s e c r KR CH e c r o
+F
+k r a
+M
+Market issues a t
+i do s e n
+t nF t
+i I a
+t
+e l
+y
+p Switching costs
+New entrants C$ R$ s
+m
+i
+s
+o -
+Revenue attractiveness -
+C
+Substitute products
+-
+-
+Macro-
+economic
+Global market conditions Forces Economic infrastructure
+Capital markets Commodities and other resources
+--Macroeconomics--
+Source: A. Osterwalder, Business Model Generation
+
+Business environment – market analysis
+Market Forces Key questions Fishing industry seascape
+Market issues What are the key issues? What shifts are Social licence; declining resource;
+underway? Where is the market heading? increasing emphasis on environment and
+resource sustainability.
+Market segments Most important Customer Segments? Harvesters; processors; buyers;
+Biggest growth potential? Which are restaurants; retail outlets; consumers.
+declining?
+Problems and needs Where is demand increasing? Safety; efficiency; environment;
+Decreasing? sustainability; profit.
+Switching costs How easy/hard is it for customers to find Industry is ‘conservative’; resistant to
+similar products/services? change.
+Revenue attractiveness What are customers willing to pay for? Traceability; lobster vs cod; McDonalds vs
+Where are largest margins? Can Basho/Five Fishermen
+customers find cheaper?
+
+Business environment – competitive analysis
+Industry Forces Key questions My startup
+Competitors Who are the dominant players? What are ?????
+their competitive
+advantages/disadvantages?
+New entrants Who? How are they different? What ?????
+barriers have they overcome?
+Competitive advantages/disadvantages?
+Substitute products/services Which could replace yours? Cost ?????
+comparison? Switching costs?
+Suppliers and others Key players in your value chain? Does
+your business model depend on others?
+Stakeholders Which influence your business model? ?????
+Employees? Regulators?
+
+Business environment – foresight
+Key Trends Key questions My startup
+Technology Major trends inside and outside your ?????
+market? Opportunities? Disruptive
+threats?
+Regulatory Who regulates? Which regulations affect ?????
+your business model? Which affect
+customer demand?
+Society and culture What shifts in cultural or societal values ?????
+affect your business model? Which
+influence buyer behaviour?
+Socioeconomic Key demographic trends? What is ?????
+income/wealth distribution in your market?
+Disposable income? Spending patterns?
+
+Business environment – macroeconomics
+Macroeconomic Forces Key questions My startup
+Global market conditions Boom or bust? GDP growth? ?????
+Unemployment rate?
+Capital markets How easy/hard is it to secure investment? ?????
+Funding? Credit? Cost of borrowing?
+Commodities and other resources Current status of markets for commodities ?????
+and other resources essential to your
+business model? Cost? Availability?
+Economic infrastructure Transportation? Communications? ?????
+Regulations? Energy supply? Taxation?
+Law enforcement?
+
+Understanding your
+‘business’ ecosystem
+CUSTOMERS
+LEGEND:
+SUPPLIERS
+FLOW OF
+GOODS/MATERIALS
+PARTNERS
+FLOW OF INFORMATION YOUR STARTUP
+RESEARCH
+FLOW OF MONEY
+&
+DEVELOPMENT
+REGULATORS
+
+PARTNERS
+DISTRIBUTORS
+& RETAILERS
+
+QUESTIONS?
+
+Customer Discovery:
+The basics
+
+Customer discovery: Purpose
+Validate Problem–Solution Fit
+Engage early with potential customers to confirm the problem is
+real and your proposed solution addresses their pain points.
+Test Assumptions with Evidence
+Use rapid experimentation via interviews, observations to turn
+hypotheses into validated learning and thereby reduce market
+risk.
+Improve Odds of PMF
+Startups that rigorously and continuously practice customer
+discovery have a significantly higher chance of achieving
+product–market fit.
+
+Principles of customer discovery
+Testable Hypotheses Unbiased Conversations
+Formulate clear, testable
+Engage with customers openly,
+assumptions about customer needs
+avoiding leading questions. Example:
+or behaviours. Example: 'Customers
+'Tell me about the last time you used
+will pay for a meal delivery.’ (Recall
+[similar product].'
+Carol’s example)
+Problem Over Solution Iterate on Feedback
+Focus on understanding the Refine your assumptions based on
+customer's problem before proposing customer input. Outcome: Improved
+solutions. Example: 'What is your product-market fit and higher
+biggest frustration with current adoption rates. (Reduce market risk)
+tools?’ (Learn, don’t teach)
+
+Customer Discovery is:
+• A way to (in)validate business model hypotheses
+• A way to understand people (future customers)
+and their motivations (problem/need)
+• A way to learn about your ecosystem
+• Reduces risk of building something that nobody
+wants or needs
+
+Customer Discovery is not:
+• Collecting a list of product ‘features’ from
+prospective customers
+• Running a bunch of focus groups
+• Selling your product/service
+
+Customer Discovery Process
+Identify organizations
+Identify people
+Understand their job,
+problems/needs
+Repeat
+Reach out
+Phone*, email
+Conduct interview
+
+Customer discovery: a non-linear process
+
+100 Customer Interviews
+By March 26, 2026
+
+Customer interviews – why 100?
+• It’s a good start
+• Data drives results
+• Pattern recognition and analysis (statistical
+significance)
+• Test hypotheses from many angles
+
+Understanding your customers
+s
+t
+h
+g
+i
+s
+n
+I
+f
+o
+r
+e
+b
+m
+u
+N
+~30
+Insights begin to be generated at customer interviews. You
+need a big enough dataset to discern patterns!
+Number of Interviews (Time)
+
+Customer Discovery ‘DO’s’
+• More interviews is better than fewer interviews
+• Get comfortable with being uncomfortable. You will
+struggle; you will have to get creative
+• Focus on gaining insights into both corporate and
+employee problems and needs
+• Listen and observe
+• Watch for patterns to emerge; be ready to iterate or
+pivot accordingly
+
+Customer Discovery ‘DO NOTs’
+• DO NOT assume you already understand the
+corporate and/or employee problems or needs
+• DO NOT interview people you already know
+• DO NOT avoid the hard truths (be ready to iterate or
+pivot)
+• DO NOT SELL!
+• DO NOT abandon hope….
+
+How do you ensure good data?
+“Everything we hear
+is an opinion not a
+fact.
+Everything we see is
+a perspective not the
+truth.”
+Marcus Aurelius.
+
+It’s a
+Sail!
+It’s a
+Whale!
+It’s
+It’s a
+a
+Harpoon!
+Rope!
+It’s an
+It’s a
+Eel!
+Wharf!
+
+Ensuring good data – avoiding bias
+Anchoring bias - Depending too heavily on an initial piece of
+information offered (the ‘anchor’) when making subsequent
+judgments.
+Confirmation bias - The tendency to search for, interpret,
+favour, and recall information in a way that confirms or
+supports one's prior beliefs or values.
+Suggestibility bias - Being inclined to accept and act on the
+suggestions of others.
+Insensitivity to sample size - Judging the validity or
+significance of information without consideration of sample
+size.
+
+Interview planning
+• 100 interviews is a daunting number and requires
+careful planning to achieve
+• Break down into chunks of 15 per week
+• 15 interviews completed during Orientation (by
+February 5)
+• 15/week for remainder of the program (February 5 –
+March 26)
+
+Interview cadence
+By the end of: New interviews Total interviews
+February 5, 2026 15 15
+February 12, 2026 15 30
+February 19, 2026 15 45
+March 5, 2026 15 60
+March 12, 2026 15 75
+March 19, 2026 15 90
+March 26, 2026 10 100
+
+Interview planning
+• Securing an interview can take weeks
+• Don’t expect to reach out to 15 people and get
+15 interviews. Typically for every 15 requests you
+will get ~5 responses and confirm ~1 – 3
+interviews (i.e. 10 – 20% conversion rate)
+
+Interview planning
+• You will need to make between 75 and 150 new
+requests each week. This will vary depending on:
+• How well you craft your message
+• Your industry/market (some can be very diverse)
+• Types of customers you are going after:
+• Individuals
+• Companies – 1 company does not equal 1 customer;
+individuals within the company play different roles (end
+user, buyer, decision-maker, etc.)
+
+Customer interviews – getting started
+1. Leverage your network (‘warm’ contacts)
+• Who can your TL and mentor connect you with?
+• Who can other L2M teams connect you with?
+2. LinkedIn (try Professional, it’s worth it)
+3. Web search (Corporate web sites, Industry
+associations, etc.); alerts (Google, etc.); AI (Gemini
+Deep Research, etc.)
+4. As you progress:
+• Who can your interviewees connect you with (referrals)?
+• Who to contact in new segments/subsegments that you
+uncover?
+
+Customer interviews – tips and tricks
+• Take advantage of the fact that you are a student or post-
+doc
+• Ask for insights and advice, not specifically an “interview”
+• Plan your questions carefully, but be prepared to adapt to
+your interviewee’s answers (have a ‘structured
+conversation’)
+• Penultimate question – “Is there anything you would like to
+add?”
+• Always ask for referrals before concluding the interview
+• Use Airtable CRM and Business Model Canvas to keep track
+of your findings
+
+Bottom line
+When in doubt – talk to your customers!
+
+QUESTIONS?
+
+In summary
+
+Empowering success: BMC + Customer Discovery
+Strategic Validation
+Use the BMC to map assumptions and test them quickly with real
+customers.
+Risk Reduction
+Iterate on evidence, not guesses, to avoid costly misalignment and waste.
+Customer Alignment
+Continuously refine value propositions to reflect real needs and jobs-to-be-
+done.
+Sustained Growth
+Habitual customer discovery will keep you responsive to market trends.
+
+Why is this important?
+The right business model can
+increase the value of your company
+by 5X to 10X
+Source: Harvard i-lab | Startup Secrets: Business Model - YouTube
+
+Understanding your
+‘business’ ecosystem
+CUSTOMERS
+LEGEND:
+FLOW OF
+GOODS/MATERIALS
+PARTNERS
+FLOW OF INFORMATION YOUR STARTUP
+RESEARCH
+FLOW OF MONEY
+&
+DEVELOPMENT
+REGULATORS
+
+100 Customer Interviews
+By March 26, 2026
+
+Interview cadence
+By the end of: New interviews Total interviews
+February 5, 2026 15 15
+February 12, 2026 15 30
+February 19, 2026 15 45
+March 5, 2026 15 60
+March 12, 2026 15 75
+March 19, 2026 15 90
+March 26, 2026 10 100
+
+Your assignment
+
+By January 29, 2026:
+1. Finalize a first DRAFT of your Value Proposition
+and Customer Segment hypotheses. Discuss
+with your TL and mentor and add to your BMC;
+2. Continue to build your CRM (200+ contacts).
+Ask your TL, mentor and facilitator for warm
+contacts;
+3. Finalize a first DRAFT of interview questions;
+discuss/finalize with your facilitator and TL.
+
+By January 29, 2026:
+4. REACH OUT to customers (email, phone, or
+both)
+5. Conduct one interview (minimum) by January
+29, 2026
+6. Record and transcribe interview(s); review and
+update your Business Model Canvas and CRM as
+you go.
+
+Resources
+
+•
+Texts:
+Blank, S. and B. Dorf, 2020. The Startup Owner’s Manual. John Wiley
+o
+and Sons, Inc., 571p.
+Osterwalder, A., Pigneur, Y., Bernarda, G., Smith, A. and T.
+o
+Papadakos, 2014. Value Proposition Design, John Wiley and Sons,
+Inc., 290p.
+Osterwalder, A. and Y. Pigneur, 2010. Business Model Generation.
+o
+John Wiley and Sons, Inc., 280p.
+Constable, G., 2014. Talking to Humans. 86p.
+o
+Levine, Uri, 2023. Fall in love with the problem, not the solution: A
+o
+handbook for entrepreneurs. Matt Holt, 394p.
+Moore, Geoffrey, A., 2014. Crossing the Chasm. Harper Collins. 273p.
+o
+
+Videos:
+•
+Conducting Customer Discovery Interviews - startupweekend
+(wistia.com)
+•
+Harvard i-lab | Startup Secrets: Business Model - YouTube
+•
+(41) Osterwalder explaining the Business Model Canvas in 6
+Minutes – YouTube
+•
+Falling in love with the problem - Uri Levine
+•
+Web site/blog:
+Steve Blank Innovation and Entrepreneurship
+o
+
+THANK YOU
+[January 18, 2024]
+
