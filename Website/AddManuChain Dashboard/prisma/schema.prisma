@@ -1,0 +1,182 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   @default("operator")
+  company   String
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]  @relation("UserOrders")
+}
+
+model Blueprint {
+  id            String   @id @default(cuid())
+  blueprintId   String   @unique // e.g., BP-1024
+  name          String
+  category      String
+  material      String
+  oem           String
+  certification String
+  status        String   @default("active") // active, pending_review, inactive
+  printCount    Int      @default(0)
+  description   String?
+  filePath      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  orders        Order[]
+}
+
+model PrintCenter {
+  id             String   @id @default(cuid())
+  centerId       String   @unique // e.g., PC-001
+  name           String
+  location       String
+  status         String   @default("online") // online, busy, offline
+  certification  String
+  totalPrinters  Int
+  activePrinters Int      @default(0)
+  capacity       Int      @default(0) // percentage
+  currentJobs    Int      @default(0)
+  completedToday Int      @default(0)
+  contactName    String
+  contactEmail   String
+  materials      String   // JSON array of materials
+  specialties    String   // JSON array of specialties
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  orders         Order[]
+  materialStocks MaterialStock[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderId       String      @unique // e.g., ORD-2847
+  partName      String
+  status        String      @default("pending") // pending, printing, quality_check, shipped, delivered
+  priority      String      @default("medium") // low, medium, high
+  quantity      Int         @default(1)
+  eta           DateTime?
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  requesterId   String
+  requester     User        @relation("UserOrders", fields: [requesterId], references: [id])
+  blueprintId   String?
+  blueprint     Blueprint?  @relation(fields: [blueprintId], references: [id])
+  centerId      String?
+  center        PrintCenter? @relation(fields: [centerId], references: [id])
+  shipment      Shipment?
+  auditLogs     AuditLog[]
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id])
+  action      String
+  details     String?
+  userId      String?
+  createdAt   DateTime @default(now())
+}
+
+model Shipment {
+  id                String   @id @default(cuid())
+  trackingId        String   @unique
+  orderId           String   @unique
+  order             Order    @relation(fields: [orderId], references: [id])
+  status            String   @default("preparing") // preparing, in_transit, out_for_delivery, delivered, delayed
+  origin            String
+  destination       String
+  carrier           String
+  estimatedDelivery DateTime
+  actualDelivery    DateTime?
+  distance          Int      @default(0)
+  progress          Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Partner {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String
+  type        String   // OEM, Integrator, Distributor, Service Provider
+  status      String   @default("pending") // active, pending, inactive
+  address     String
+  notes       String?
+  blueprints  Int      @default(0)
+  totalPrints Int      @default(0)
+  revenue     Int      @default(0)
+  joinedDate  DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Material {
+  id           String   @id @default(cuid())
+  name         String
+  category     String
+  totalStock   Int      @default(0)
+  unit         String   @default("kg")
+  minStock     Int      @default(0)
+  maxStock     Int      @default(0)
+  reorderPoint Int      @default(0)
+  status       String   @default("adequate") // adequate, low, critical
+  unitCost     Int      @default(0)
+  leadTime     Int      @default(0) // days
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  stocks       MaterialStock[]
+}
+
+model MaterialStock {
+  id         String   @id @default(cuid())
+  materialId String
+  material   Material @relation(fields: [materialId], references: [id])
+  centerId   String
+  center     PrintCenter @relation(fields: [centerId], references: [id])
+  stock      Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Certification {
+  id          String   @id @default(cuid())
+  name        String
+  type        String
+  issuer      String
+  holder      String
+  status      String   @default("active") // active, pending, expiring_soon, expired
+  issueDate   DateTime
+  expiryDate  DateTime
+  scope       String
+  documentUrl String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model DashboardStats {
+  id              String   @id @default(cuid())
+  totalOrders     Int      @default(0)
+  activeOrders    Int      @default(0)
+  deliveredParts  Int      @default(0)
+  avgLeadTime     Float    @default(0)
+  costSavings     Int      @default(0)
+  totalBlueprints Int      @default(0)
+  activeCenters   Int      @default(0)
+  updatedAt       DateTime @updatedAt
+}

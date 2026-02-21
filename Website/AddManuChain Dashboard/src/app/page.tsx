@@ -1,0 +1,103 @@
+'use client'
+
+// Dashboard for AddManuChain - v2
+import { useState } from 'react'
+import {
+  Sidebar,
+  Header,
+  OverviewPage,
+  OrdersPage,
+  BlueprintsPage,
+  CentersPage,
+  AnalyticsPage,
+  SettingsPage,
+  AuditLogPage,
+  PartnersPage,
+  ShipmentsPage,
+  MaterialsPage,
+  CertificationsPage,
+} from '@/components/dashboard'
+import { cn } from '@/lib/utils'
+
+export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState('overview')
+
+  const getPageTitle = () => {
+    switch (activeTab) {
+      case 'overview':
+        return { title: 'Dashboard Overview', subtitle: 'Welcome back, John' }
+      case 'orders':
+        return { title: 'Orders', subtitle: 'Manage and track your part orders' }
+      case 'blueprints':
+        return { title: 'Blueprint Library', subtitle: 'Manage certified CAD blueprints' }
+      case 'centers':
+        return { title: 'Print Centers', subtitle: 'Monitor certified AM facilities' }
+      case 'shipments':
+        return { title: 'Shipments', subtitle: 'Track delivery logistics' }
+      case 'materials':
+        return { title: 'Materials Inventory', subtitle: 'Raw material stock management' }
+      case 'partners':
+        return { title: 'OEM Partners', subtitle: 'Manage partner relationships' }
+      case 'analytics':
+        return { title: 'Analytics', subtitle: 'Performance insights and reports' }
+      case 'audit':
+        return { title: 'Audit Logs', subtitle: 'System activity and compliance tracking' }
+      case 'certifications':
+        return { title: 'Certifications', subtitle: 'Compliance and certification management' }
+      case 'settings':
+        return { title: 'Settings', subtitle: 'Manage your account preferences' }
+      default:
+        return { title: 'Dashboard', subtitle: '' }
+    }
+  }
+
+  const renderPage = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <OverviewPage />
+      case 'orders':
+        return <OrdersPage />
+      case 'blueprints':
+        return <BlueprintsPage />
+      case 'centers':
+        return <CentersPage />
+      case 'shipments':
+        return <ShipmentsPage />
+      case 'materials':
+        return <MaterialsPage />
+      case 'partners':
+        return <PartnersPage />
+      case 'analytics':
+        return <AnalyticsPage />
+      case 'audit':
+        return <AuditLogPage />
+      case 'certifications':
+        return <CertificationsPage />
+      case 'settings':
+        return <SettingsPage />
+      default:
+        return <OverviewPage />
+    }
+  }
+
+  const pageInfo = getPageTitle()
+
+  return (
+    <div className="min-h-screen bg-[#F8FAFC]">
+      {/* Sidebar */}
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* Main Content */}
+      <div className={cn('transition-all duration-300', 'ml-64')}>
+        {/* Header */}
+        <Header
+          title={pageInfo.title}
+          subtitle={pageInfo.subtitle}
+        />
+
+        {/* Page Content */}
+        <main className="min-h-[calc(100vh-64px)]">{renderPage()}</main>
+      </div>
+    </div>
+  )
+}
