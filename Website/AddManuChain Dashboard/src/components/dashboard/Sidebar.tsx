@@ -20,6 +20,17 @@ import {
   GraduationCap,
 } from 'lucide-react'
 import { useState } from 'react'
+import { useSession } from 'next-auth/react'
+
+// Define which roles can access which menu items
+const rolePermissions: Record<string, string[]> = {
+  admin: ['overview', 'orders', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
+  customer_admin: ['overview', 'orders', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
+  operator: ['overview', 'orders', 'blueprints', 'shipments', 'settings'],
+  oem_partner: ['overview', 'blueprints', 'analytics', 'certifications', 'settings'],
+  print_center: ['overview', 'orders', 'blueprints', 'shipments', 'materials', 'settings'],
+  cert_authority: ['overview', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
+}
 
 const menuSections = [
   {
@@ -69,6 +80,17 @@ interface SidebarProps {
 
 export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
+  const { data: session } = useSession()
+  
+  // Get user's role, default to 'operator' if not found
+  const userRole = session?.user?.role || 'operator'
+  const allowedItems = rolePermissions[userRole] || rolePermissions.operator
+  
+  // Filter menu sections to only show items the user has access to
+  const filteredMenuSections = menuSections.map(section => ({
+    ...section,
+    items: section.items.filter(item => allowedItems.includes(item.id))
+  })).filter(section => section.items.length > 0) // Remove empty sections
 
   return (
     <aside
@@ -113,7 +135,7 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
       {/* Navigation - Scrollable */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
-        {menuSections.map((section, sectionIdx) => (
+        {filteredMenuSections.map((section, sectionIdx) => (
           <div key={sectionIdx}>
             {!collapsed && (
               <h3 className="px-3 mb-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -163,8 +185,8 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white truncate">John Operator</p>
-              <p className="text-xs text-slate-400 truncate">Horizon Maritime</p>
+              <p className="text-sm font-medium text-white truncate">{session?.user?.name || 'User'}</p>
+              <p className="text-xs text-slate-400 truncate">{session?.user?.company || 'Company'}</p>
             </div>
           )}
         </div>

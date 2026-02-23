@@ -1,12 +1,55 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
 async function main() {
   console.log('Starting comprehensive seed...')
 
-  // ==================== USERS ====================
+  // Hash passwords for demo accounts
+  const adminPassword = await bcrypt.hash('admin123', 10)
+  const operatorPassword = await bcrypt.hash('operator123', 10)
+  const partnerPassword = await bcrypt.hash('partner123', 10)
+
+  // ==================== USERS (with authentication) ====================
   const users = await Promise.all([
+    // Demo Admin Account
+    prisma.user.upsert({
+      where: { email: 'admin@almatech.com' },
+      update: {},
+      create: {
+        email: 'admin@almatech.com',
+        name: 'Platform Admin',
+        role: 'admin',
+        company: 'Alma-Tech',
+        password: adminPassword,
+      },
+    }),
+    // Demo Operator Account
+    prisma.user.upsert({
+      where: { email: 'operator@statoil.com' },
+      update: {},
+      create: {
+        email: 'operator@statoil.com',
+        name: 'Rig Operator',
+        role: 'operator',
+        company: 'Statoil',
+        password: operatorPassword,
+      },
+    }),
+    // Demo Partner Account
+    prisma.user.upsert({
+      where: { email: 'partner@oem.com' },
+      update: {},
+      create: {
+        email: 'partner@oem.com',
+        name: 'OEM Partner',
+        role: 'oem_partner',
+        company: 'Baker Hughes',
+        password: partnerPassword,
+      },
+    }),
+    // Existing users
     prisma.user.upsert({
       where: { email: 'j.operator@horizonmaritime.com' },
       update: {},
@@ -23,7 +66,7 @@ async function main() {
       create: {
         email: 's.chen@noblecorp.com',
         name: 'Sarah Chen',
-        role: 'manager',
+        role: 'customer_admin',
         company: 'Noble Corp',
       },
     }),
@@ -43,7 +86,7 @@ async function main() {
       create: {
         email: 'd.brown@rosenmaritime.com',
         name: 'David Brown',
-        role: 'manager',
+        role: 'customer_admin',
         company: 'Rosen Maritime',
       },
     }),
@@ -1645,8 +1688,10 @@ async function main() {
   // ==================== ENVIRONMENTAL IMPACT ====================
   const envImpacts = await Promise.all([
     ...orders.slice(0, 10).map((order, idx) => 
-      prisma.environmentalImpact.create({
-        data: {
+      prisma.environmentalImpact.upsert({
+        where: { orderId: order.id },
+        update: {},
+        create: {
           orderId: order.id,
           co2SavedKg: 45 + idx * 12,
           milesAvoided: 850 + idx * 200,

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useSession } from 'next-auth/react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -33,6 +34,8 @@ import {
 import { Users, Search, Filter, Plus, Eye, Edit, Trash2, Building, Mail, Phone, FileBox, TrendingUp } from 'lucide-react'
 import { toast } from 'sonner'
 import { partners as initialPartners } from '@/lib/static-data'
+import { hasPageAccess, UserRole } from '@/lib/permissions'
+import { UnauthorizedAccess } from './UnauthorizedAccess'
 
 const partnerTypes = ['OEM', 'Integrator', 'Distributor', 'Service Provider']
 const partnerStatuses = ['active', 'pending', 'inactive']
@@ -51,6 +54,14 @@ const typeColors: Record<string, string> = {
 }
 
 export function PartnersPage() {
+  const { data: session } = useSession()
+  const userRole = session?.user?.role as UserRole
+  
+  // Check if user has permission to access this page
+  if (!hasPageAccess(userRole, 'partners')) {
+    return <UnauthorizedAccess requiredRoles={['Platform Admin']} />
+  }
+
   const [partners, setPartners] = useState(initialPartners)
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState('all')

@@ -1,53 +1,450 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# AddManuChain Dashboard
+**Digital Inventory Platform for Offshore Oil & Gas**
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+🚀 **On-demand, certified metal parts in days, not weeks**
 
-## ✨ Technology Stack
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-6-2D3748)](https://prisma.io/)
+[![NextAuth.js](https://img.shields.io/badge/NextAuth.js-4-purple)](https://next-auth.js.org/)
 
-This scaffold provides a robust foundation built with:
+---
 
-### 🎯 Core Framework
-- **⚡ Next.js 16** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+## 📖 Overview
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+AddManuChain is Alma-Tech's flagship platform that transforms offshore supply chains by replacing physical "just-in-case" inventories with digital "just-on-time" manufacturing. When a critical part fails at sea, every hour costs $50,000–$100,000. Our platform connects OEM blueprint owners, certified 3D printing centers, and offshore operators to deliver DNV/Lloyd's Register certified parts in 3-5 days instead of 21+ days.
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### 🎯 Key Value Propositions
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Fetch** - Promise-based HTTP request
+- **81% Lead Time Reduction** - From 21 days to 4 days average
+- **81% Warehouse Cost Savings** - $450K → $85K annually
+- **Design Flexibility** - 15+ custom iterations vs 1-2 traditional
+- **Environmental Impact** - Significant CO₂ reduction through local manufacturing
+- **End-to-End Service** - Full implementation support (Assessment → Training → Maintenance)
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+---
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+## ✨ Features
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+### 🔧 Core Operations
+- **Digital Blueprint Library** - Certified CAD files with OEM attribution
+- **On-Demand Ordering** - Real-time order placement and tracking
+- **Print Center Network** - Certified facility management and capacity monitoring
+- **Shipment Tracking** - End-to-end logistics visibility
 
-## 🎯 Why This Scaffold?
+### 🤝 Ecosystem Management
+- **OEM Partnerships** - Blueprint IP licensing and revenue tracking
+- **Certification Authorities** - Regulatory body relationship management (DNV, Lloyd's Register, ABS)
+- **Customer Success** - 5-phase implementation tracking (Assessment → Adoption → Integration → Training → Maintenance)
+- **Training Management** - Onboarding, safety, and advanced operations training
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
+### 📊 Analytics & Insights
+- **Comparative Analytics** - Just-on-Time vs Just-in-Case metrics
+- **ROI Dashboard** - Cost savings, lead time reduction, design flexibility
+- **Environmental Impact** - CO₂ saved, miles avoided, waste reduction
+- **Business Intelligence** - KPIs, trends, forecasting
+
+### 🔒 Security & Compliance
+- **Role-Based Access Control** - 6 user roles (Admin, Customer Admin, Operator, OEM Partner, Print Center, Cert Authority)
+- **Authentication** - NextAuth.js with credential-based login
+- **Audit Logs** - Complete activity tracking for compliance
+- **Data Encryption** - Sensitive data protection
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ ([Download](https://nodejs.org/))
+- npm or yarn package manager
+- Git ([Download](https://git-scm.com/))
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/addmanuchain.git
+cd "AddManuChain Dashboard"
+```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Setup environment variables**
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add:
+```bash
+DATABASE_URL="file:./dev.db"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="generate-with-openssl-rand-base64-32"
+```
+
+Generate secret:
+```bash
+# Mac/Linux
+openssl rand -base64 32
+
+# Windows PowerShell
+[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }))
+```
+
+4. **Initialize database**
+```bash
+npx prisma db push
+npx tsx prisma/seed.ts
+```
+
+5. **Start development server**
+```bash
+npm run dev
+```
+
+6. **Open browser**
+Navigate to `http://localhost:3000`
+
+### Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Admin** | admin@almatech.com | admin123 |
+| **Operator** | operator@statoil.com | operator123 |
+| **Partner** | partner@oem.com | partner123 |
+
+⚠️ **Change these before production!**
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+- **Next.js 16** - React framework with App Router
+- **TypeScript 5** - Type-safe development
+- **Tailwind CSS 4** - Utility-first styling
+- **shadcn/ui** - High-quality component library
+- **Recharts** - Data visualization
+- **Framer Motion** - Animations
+
+### Backend
+- **Next.js API Routes** - RESTful API
+- **Prisma ORM** - Type-safe database access
+- **SQLite** (dev) / **PostgreSQL** (prod) - Database
+- **NextAuth.js** - Authentication
+- **bcryptjs** - Password hashing
+
+### DevOps
+- **Vercel** - Deployment platform (recommended)
+- **Sentry** - Error tracking
+- **Vercel Analytics** - Performance monitoring
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── api/              # API routes
+│   │   ├── auth/         # NextAuth endpoints
+│   │   ├── orders/       # Order CRUD
+│   │   ├── blueprints/   # Blueprint management
+│   │   ├── authorities/  # Certification authorities
+│   │   └── ...
+│   ├── login/            # Login page
+│   ├── page.tsx          # Dashboard home
+│   └── layout.tsx        # Root layout
+├── components/
+│   ├── dashboard/        # Dashboard pages
+│   │   ├── OverviewPage.tsx
+│   │   ├── OrdersPage.tsx
+│   │   ├── BlueprintsPage.tsx
+│   │   ├── AuthoritiesPage.tsx
+│   │   ├── CustomerSuccessPage.tsx
+│   │   ├── AnalyticsPage.tsx
+│   │   └── ...
+│   └── ui/               # shadcn/ui components
+├── hooks/
+│   └── use-dashboard.ts  # Custom React hooks with SWR
+├── lib/
+│   ├── auth.ts           # NextAuth configuration
+│   └── utils.ts          # Utility functions
+└── types/
+    └── next-auth.d.ts    # TypeScript type extensions
+
+prisma/
+├── schema.prisma         # Database schema
+└── seed.ts               # Seed data
+
+public/                   # Static assets
+```
+
+---
+
+## 🗄️ Database Schema
+
+### Core Models
+- **User** - Authentication and user management
+- **Blueprint** - Digital part library
+- **Order** - Part orders and tracking
+- **PrintCenter** - Certified facilities
+- **Shipment** - Logistics tracking
+
+### Partner & Certification
+- **Partner** - OEM relationships
+- **Certification** - Compliance documents
+- **CertificationAuthority** - Regulatory bodies
+- **CertificationRequest** - Approval workflow
+
+### Customer Success
+- **CustomerEngagement** - Implementation tracking
+- **TrainingSession** - Training management
+- **ComparativeMetrics** - ROI analytics
+- **EnvironmentalImpact** - Sustainability tracking
+
+### Supporting Models
+- **Material** - Raw material inventory
+- **AuditLog** - Activity tracking
+- **CustomizationRequest** - Design modifications
+
+[View Full Schema](prisma/schema.prisma)
+
+---
+
+## 🔐 Authentication & Authorization
+
+### User Roles
+
+| Role | Permissions | Use Case |
+|------|-------------|----------|
+| **admin** | Full system access | Platform management |
+| **customer_admin** | Company-wide access | Operations manager |
+| **operator** | Place orders, track status | Rig technician |
+| **oem_partner** | Manage blueprints | IP owner |
+| **print_center** | Update job status | Facility operator |
+| **cert_authority** | Review certifications | Regulatory body |
+
+### Protected Routes
+
+All routes except `/login` and `/api/auth/*` require authentication. Middleware automatically redirects unauthenticated users.
+
+```typescript
+// src/middleware.ts
+export { default } from 'next-auth/middleware'
+```
+
+---
+
+## 📚 Documentation
+
+Comprehensive guides available:
+
+- **[Deployment Guide](DEPLOYMENT.md)** - Production deployment (Vercel, Railway, Self-hosted)
+- **[User Guide](USER_GUIDE.md)** - Feature documentation and workflows
+- **[Monitoring Guide](MONITORING.md)** - Sentry, analytics, and logging
+
+---
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server on port 3000
+
+# Build
+npm run build        # Production build
+npm run start        # Start production server
+
+# Database
+npm run db:push      # Sync Prisma schema to database
+npm run db:migrate   # Create migration
+npm run db:reset     # Reset database (WARNING: deletes data)
+
+# Code Quality
+npm run lint         # Run ESLint
+```
+
+### Database Management
+
+```bash
+# View database in browser
+npx prisma studio
+
+# Generate Prisma Client after schema changes
+npx prisma generate
+
+# Seed database with demo data
+npx tsx prisma/seed.ts
+```
+
+---
+
+## 🚀 Deployment
+
+### Option 1: Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Set environment variables:
+   - `DATABASE_URL`
+   - `NEXTAUTH_URL`
+   - `NEXTAUTH_SECRET`
+4. Deploy!
+
+**Database:** Use PlanetScale (MySQL) or Supabase (PostgreSQL)
+
+[Full Deployment Guide →](DEPLOYMENT.md)
+
+### Option 2: Railway
+
+1. Sign up at [Railway](https://railway.app)
+2. Deploy from GitHub
+3. Add PostgreSQL service
+4. Configure environment variables
+5. Automatic deployments on push
+
+### Option 3: Self-Hosted
+
+Requirements: Ubuntu 22.04, Node.js 18+, PM2, Nginx
+
+```bash
+npm run build
+pm2 start npm --name "addmanuchain" -- start
+```
+
+[Detailed Instructions →](DEPLOYMENT.md#option-3-self-hosted-vpscloud)
+
+---
+
+## 📊 Key Metrics (Example Data)
+
+Based on seed data and pilot deployments:
+
+| Metric | Traditional OEM | AddManuChain | Improvement |
+|--------|----------------|--------------|-------------|
+| **Lead Time** | 21 days | 4 days | **81% faster** |
+| **Warehouse Costs** | $450K/year | $85K/year | **81% savings** |
+| **Design Iterations** | 1-2 | 15+ | **13x flexibility** |
+| **Repair Rate** | 0% | 65% | **Waste reduction** |
+| **CO₂ Emissions** | Baseline | -1,247 kg | **Environmental** |
+
+---
+
+## 🤝 Contributing
+
+### Development Workflow
+
+1. Create feature branch: `git checkout -b feature/your-feature`
+2. Make changes and test locally
+3. Run linter: `npm run lint`
+4. Commit: `git commit -m "feat: your feature description"`
+5. Push: `git push origin feature/your-feature`
+6. Create Pull Request
+
+### Code Style
+
+- Follow TypeScript best practices
+- Use Prettier for formatting (configured in project)
+- Write meaningful commit messages (Conventional Commits)
+- Add comments for complex logic
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"Prisma Client not found"**
+```bash
+npx prisma generate
+```
+
+**"NextAuth session undefined"**
+- Check `NEXTAUTH_URL` and `NEXTAUTH_SECRET` in `.env`
+- Restart dev server
+
+**Build fails**
+- Clear `.next` folder: `rm -rf .next`
+- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
+
+**Database errors**
+```bash
+npx prisma db push --force-reset
+npx tsx prisma/seed.ts
+```
+
+[More Troubleshooting →](USER_GUIDE.md#troubleshooting)
+
+---
+
+## 📞 Support
+
+- **Email:** support@addmanuchain.com
+- **Documentation:** [docs.addmanuchain.com](https://docs.addmanuchain.com)
+- **Issues:** [GitHub Issues](https://github.com/yourusername/addmanuchain/issues)
+
+---
+
+## 📄 License
+
+Copyright © 2026 Alma-Tech. All rights reserved.
+
+This is proprietary software. Unauthorized copying, distribution, or modification is prohibited.
+
+---
+
+## 🙏 Acknowledgments
+
+**Founders:**
+- Alireza Vahedi Nemani (CEO) - PhD Candidate, Materials Engineering, Dalhousie University
+- Mahya Ghaffari (CTO) - PhD Candidate, Materials Engineering, Dalhousie University
+
+**Advisors:**
+- Dr. Ali Nasiri - Assistant Professor & Canada Research Chair, Ocean Engineering, Dalhousie
+- Harsimran Malhi - Business Advisor, 7 years at Halliburton, Oxford MBA
+
+**Supported By:**
+- Emera IdeaHub
+- CleanTech Commons
+- Lab2Market Program
+
+---
+
+**Version:** 1.0.0  
+**Last Updated:** February 23, 2026  
+**Status:** MVP Ready for Pilot Launch
+
+---
+
+## 🎯 Roadmap
+
+### Q2 2026
+- [ ] Mobile-responsive improvements
+- [ ] Bulk blueprint upload
+- [ ] Enhanced reporting (PDF/Excel export)
+- [ ] Email notifications
+
+### Q3 2026
+- [ ] Real-time printer status (IoT integration)
+- [ ] Predictive analytics
+- [ ] ERP/PLM API integrations
+- [ ] Multi-language support
+
+### Q4 2026
+- [ ] AI-based quality control
+- [ ] Dynamic pricing engine
+- [ ] White-label options
+- [ ] Marketplace features
+
+---
+
+**🚀 Ready to revolutionize offshore supply chains!**
 - **🔐 Auth Included** - NextAuth.js for secure authentication flows
 - **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
 - **🌍 i18n Ready** - Multi-language support with Next Intl
