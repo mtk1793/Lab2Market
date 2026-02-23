@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from 'next-auth/react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -14,8 +13,6 @@ import {
 } from '@/components/ui/select'
 import { FileText, Filter, RefreshCw, Package, Edit, Clock, CheckCircle } from 'lucide-react'
 import { auditLogs } from '@/lib/static-data'
-import { hasPageAccess, UserRole } from '@/lib/permissions'
-import { UnauthorizedAccess } from './UnauthorizedAccess'
 
 const actionColors: Record<string, string> = {
   ORDER_CREATED: 'bg-[#0EA5E9]/10 text-[#0EA5E9]',
@@ -36,14 +33,6 @@ const actionIcons: Record<string, any> = {
 }
 
 export function AuditLogPage() {
-  const { data: session } = useSession()
-  const userRole = session?.user?.role as UserRole
-  
-  // Check if user has permission to access this page
-  if (!hasPageAccess(userRole, 'audit')) {
-    return <UnauthorizedAccess requiredRoles={['Platform Admin', 'Certification Authority']} />
-  }
-
   const [actionFilter, setActionFilter] = useState('all')
 
   const filteredLogs = auditLogs.filter(log => {

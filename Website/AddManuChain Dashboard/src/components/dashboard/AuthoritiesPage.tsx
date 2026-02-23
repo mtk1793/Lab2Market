@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from 'next-auth/react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -34,8 +33,6 @@ import {
 import { Shield, Search, Filter, Plus, Eye, Clock, CheckCircle, XCircle, Mail, Phone, Globe } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuthorities, useCertRequests } from '@/hooks/use-dashboard'
-import { hasPageAccess, UserRole } from '@/lib/permissions'
-import { UnauthorizedAccess } from './UnauthorizedAccess'
 
 const authorityTypes = ['Marine & Offshore', 'Marine & Industrial', 'Marine & Aerospace', 'Quality Standards', 'Oil & Gas', 'Aerospace']
 
@@ -52,14 +49,6 @@ const requestStatusColors: Record<string, string> = {
 }
 
 export function AuthoritiesPage() {
-  const { data: session } = useSession()
-  const userRole = session?.user?.role as UserRole
-  
-  // Check if user has permission to access this page
-  if (!hasPageAccess(userRole, 'authorities')) {
-    return <UnauthorizedAccess requiredRoles={['Platform Admin', 'Certification Authority']} />
-  }
-
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
