@@ -23,9 +23,10 @@ import {
   Pie,
   Cell,
 } from 'recharts'
-import { TrendingUp, DollarSign, Clock, Package, Factory } from 'lucide-react'
-import { useStats, useOrders, useBlueprints, useCenters } from '@/hooks/use-dashboard'
+import { TrendingUp, DollarSign, Clock, Package, Factory, ArrowRight, Leaf } from 'lucide-react'
+import { useStats, useOrders, useBlueprints, useCenters, useComparativeMetrics, useEnvironmentalImpact } from '@/hooks/use-dashboard'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useState } from 'react'
 
 const categoryColors: Record<string, string> = {
   'Structural': '#0EA5E9',
@@ -38,10 +39,31 @@ const categoryColors: Record<string, string> = {
 }
 
 export function AnalyticsPage() {
+  const [selectedCustomer, setSelectedCustomer] = useState('CUST-001')
   const { stats, isLoading: statsLoading } = useStats()
   const { orders } = useOrders()
   const { blueprints } = useBlueprints()
   const { centers } = useCenters()
+  const { comparativeMetrics } = useComparativeMetrics(selectedCustomer)
+  const { environmentalImpact } = useEnvironmentalImpact()
+
+  // Calculate environmental totals
+  const envTotals = {
+    co2Saved: environmentalImpact.reduce((sum: number, record: any) => sum + record.co2SavedKg, 0),
+    milesAvoided: environmentalImpact.reduce((sum: number, record: any) => sum + record.milesAvoided, 0),
+    wasteReduced: environmentalImpact.reduce((sum: number, record: any) => sum + record.wasteReduced, 0),
+  }
+
+  // Calculate comparative averages from metrics
+  const comparativeAvg = comparativeMetrics.length > 0 ? {
+    leadTimeReduction: comparativeMetrics.reduce((sum: number, m: any) => sum + m.leadTimeReduction, 0) / comparativeMetrics.length,
+    warehouseSavings: comparativeMetrics.reduce((sum: number, m: any) => sum + m.warehouseSavings, 0) / comparativeMetrics.length,
+    traditionalLeadTime: comparativeMetrics.reduce((sum: number, m: any) => sum + m.traditionalLeadTime, 0) / comparativeMetrics.length,
+    almatechLeadTime: comparativeMetrics.reduce((sum: number, m: any) => sum + m.almatechLeadTime, 0) / comparativeMetrics.length,
+    partsRepaired: comparativeMetrics.reduce((sum: number, m: any) => sum + m.partsRepaired, 0),
+    partsReplaced: comparativeMetrics.reduce((sum: number, m: any) => sum + m.partsReplaced, 0),
+    designIterations: comparativeMetrics.reduce((sum: number, m: any) => sum + m.designIterations, 0),
+  } : null
 
   if (statsLoading) {
     return (
@@ -370,6 +392,171 @@ export function AnalyticsPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Comparative Analysis Section */}
+      {comparativeAvg && (
+        <>
+          <div className="flex items-center justify-between mt-8">
+            <h2 className="text-lg font-semibold text-[#0F172A]">Just-on-Time vs Just-in-Case Comparison</h2>
+            <Badge className="bg-[#14B8A6]/10 text-[#14B8A6] hover:bg-[#14B8A6]/20">
+              Avg {comparativeAvg.leadTimeReduction.toFixed(1)}% faster
+            </Badge>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Lead Time Comparison Card */}
+            <Card className="bg-white border-slate-200">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-[#0F172A]">Lead Time Reduction</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                    <div>
+                      <p className="text-sm text-slate-500 mb-1">Traditional (OEM)</p>
+                      <p className="text-3xl font-bold text-slate-600">{Math.round(comparativeAvg.traditionalLeadTime)} days</p>
+                    </div>
+                    <ArrowRight className="w-8 h-8 text-[#0EA5E9]" />
+                    <div>
+                      <p className="text-sm text-slate-500 mb-1">AddManuChain</p>
+                      <p className="text-3xl font-bold text-[#0EA5E9]">{Math.round(comparativeAvg.almatechLeadTime)} days</p>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-[#14B8A6]/10 rounded-lg">
+                    <p className="text-sm font-medium text-[#14B8A6] mb-1">Time Saved</p>
+                    <p className="text-2xl font-bold text-[#14B8A6]">
+                      {Math.round(comparativeAvg.traditionalLeadTime - comparativeAvg.almatechLeadTime)} days
+                      <span className="text-sm font-normal ml-2">({comparativeAvg.leadTimeReduction.toFixed(1)}% reduction)</span>
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Warehouse Cost Savings Card */}
+            <Card className="bg-white border-slate-200">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-[#0F172A]">Warehouse Cost Savings</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                    <div>
+                      <p className="text-sm text-slate-500 mb-1">Traditional Inventory</p>
+                      <p className="text-3xl font-bold text-slate-600">
+                        ${Math.round(comparativeMetrics[comparativeMetrics.length - 1]?.traditionalWarehouseCost / 1000)}K
+                      </p>
+                    </div>
+                    <ArrowRight className="w-8 h-8 text-[#0EA5E9]" />
+                    <div>
+                      <p className="text-sm text-slate-500 mb-1">Digital Inventory</p>
+                      <p className="text-3xl font-bold text-[#0EA5E9]">
+                        ${Math.round(comparativeMetrics[comparativeMetrics.length - 1]?.almatechWarehouseCost / 1000)}K
+                      </p>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-[#14B8A6]/10 rounded-lg">
+                    <p className="text-sm font-medium text-[#14B8A6] mb-1">Monthly Savings</p>
+                    <p className="text-2xl font-bold text-[#14B8A6]">
+                      ${Math.round((comparativeMetrics[comparativeMetrics.length - 1]?.traditionalWarehouseCost - comparativeMetrics[comparativeMetrics.length - 1]?.almatechWarehouseCost) / 1000)}K
+                      <span className="text-sm font-normal ml-2">({comparativeAvg.warehouseSavings.toFixed(1)}% reduction)</span>
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Additional Comparative Metrics */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Part Repair vs Replace */}
+            <Card className="bg-white border-slate-200">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-[#0F172A]">Part Repair Rate</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-slate-500">Repaired</span>
+                    <span className="text-2xl font-bold text-[#14B8A6]">{comparativeAvg.partsRepaired}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-slate-500">Replaced</span>
+                    <span className="text-2xl font-bold text-[#0EA5E9]">{comparativeAvg.partsReplaced}</span>
+                  </div>
+                  <div className="pt-3 border-t border-slate-200">
+                    <p className="text-sm text-slate-500">Material Savings</p>
+                    <p className="text-lg font-bold text-[#0F172A]">
+                      {((comparativeAvg.partsRepaired / (comparativeAvg.partsRepaired + comparativeAvg.partsReplaced)) * 100).toFixed(1)}% repaired
+                    </p>
+                  </div>
+                  <div className="p-3 bg-[#F59E0B]/10 rounded-lg">
+                    <p className="text-xs text-[#F59E0B]">
+                      Traditional OEM model requires 100% replacement. AddManuChain enables selective repair.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Design Flexibility */}
+            <Card className="bg-white border-slate-200">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-[#0F172A]">Design Flexibility</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="text-center p-4 bg-slate-50 rounded-lg">
+                    <p className="text-4xl font-bold text-[#0EA5E9]">{comparativeAvg.designIterations}</p>
+                    <p className="text-sm text-slate-500 mt-2">Custom Design Iterations</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <p className="text-sm font-medium text-blue-600 mb-2">Traditional OEM</p>
+                    <p className="text-xs text-slate-600">❌ No design flexibility</p>
+                    <p className="text-xs text-slate-600">❌ Fixed specifications</p>
+                  </div>
+                  <div className="p-3 bg-[#14B8A6]/10 rounded-lg">
+                    <p className="text-sm font-medium text-[#14B8A6] mb-2">AddManuChain</p>
+                    <p className="text-xs text-[#0F172A]">✓ Custom modifications</p>
+                    <p className="text-xs text-[#0F172A]">✓ Rapid iteration</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Environmental Impact */}
+            <Card className="bg-white border-slate-200">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-[#0F172A] flex items-center gap-2">
+                  <Leaf className="w-5 h-5 text-[#14B8A6]" />
+                  Environmental Impact
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="p-3 bg-[#14B8A6]/10 rounded-lg">
+                    <p className="text-sm text-slate-500">CO₂ Saved</p>
+                    <p className="text-2xl font-bold text-[#14B8A6]">{Math.round(envTotals.co2Saved)} kg</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <p className="text-sm text-slate-500">Miles Avoided</p>
+                    <p className="text-2xl font-bold text-[#0EA5E9]">{envTotals.milesAvoided.toLocaleString()}</p>
+                  </div>
+                  <div className="p-3 bg-orange-50 rounded-lg">
+                    <p className="text-sm text-slate-500">Waste Reduced</p>
+                    <p className="text-2xl font-bold text-[#F59E0B]">{envTotals.wasteReduced.toFixed(1)} kg</p>
+                  </div>
+                  <div className="pt-3 border-t border-slate-200">
+                    <p className="text-xs text-slate-600">
+                      On-site production eliminates long-distance transportation and reduces environmental footprint.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </>
+      )}
     </div>
   )
 }

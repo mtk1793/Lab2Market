@@ -16,6 +16,8 @@ import {
   ShipmentsPage,
   MaterialsPage,
   CertificationsPage,
+  AuthoritiesPage,
+  CustomerSuccessPage,
 } from '@/components/dashboard'
 import { cn } from '@/lib/utils'
 
@@ -44,6 +46,10 @@ export default function Dashboard() {
         return { title: 'Audit Logs', subtitle: 'System activity and compliance tracking' }
       case 'certifications':
         return { title: 'Certifications', subtitle: 'Compliance and certification management' }
+      case 'authorities':
+        return { title: 'Certification Authorities', subtitle: 'Manage relationships with certifying bodies' }
+      case 'services':
+        return { title: 'Customer Success', subtitle: 'End-to-end service and training management' }
       case 'settings':
         return { title: 'Settings', subtitle: 'Manage your account preferences' }
       default:
@@ -73,6 +79,10 @@ export default function Dashboard() {
         return <AuditLogPage />
       case 'certifications':
         return <CertificationsPage />
+      case 'authorities':
+        return <AuthoritiesPage />
+      case 'services':
+        return <CustomerSuccessPage />
       case 'settings':
         return <SettingsPage />
       default:

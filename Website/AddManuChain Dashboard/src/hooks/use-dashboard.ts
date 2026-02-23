@@ -83,3 +83,133 @@ export function useBlueprint(id: string) {
     mutate,
   }
 }
+
+export function useAuthorities(type?: string, status?: string, search?: string) {
+  const params = new URLSearchParams()
+  if (type && type !== 'all') params.append('type', type)
+  if (status && status !== 'all') params.append('status', status)
+  if (search) params.append('search', search)
+  
+  const query = params.toString()
+  const url = `/api/authorities${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    authorities: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useCertRequests(status?: string, authorityId?: string) {
+  const params = new URLSearchParams()
+  if (status && status !== 'all') params.append('status', status)
+  if (authorityId) params.append('authorityId', authorityId)
+  
+  const query = params.toString()
+  const url = `/api/cert-requests${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    certRequests: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useEngagements(phase?: string, status?: string, search?: string) {
+  const params = new URLSearchParams()
+  if (phase && phase !== 'all') params.append('phase', phase)
+  if (status && status !== 'all') params.append('status', status)
+  if (search) params.append('search', search)
+  
+  const query = params.toString()
+  const url = `/api/engagements${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    engagements: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useTrainingSessions(customerId?: string, status?: string, type?: string) {
+  const params = new URLSearchParams()
+  if (customerId) params.append('customerId', customerId)
+  if (status && status !== 'all') params.append('status', status)
+  if (type && type !== 'all') params.append('type', type)
+  
+  const query = params.toString()
+  const url = `/api/training${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    trainingSessions: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useComparativeMetrics(customerId?: string, startDate?: string, endDate?: string) {
+  const params = new URLSearchParams()
+  if (customerId) params.append('customerId', customerId)
+  if (startDate) params.append('startDate', startDate)
+  if (endDate) params.append('endDate', endDate)
+  
+  const query = params.toString()
+  const url = `/api/comparative${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    comparativeMetrics: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useEnvironmentalImpact(orderId?: string) {
+  const params = new URLSearchParams()
+  if (orderId) params.append('orderId', orderId)
+  
+  const query = params.toString()
+  const url = `/api/environmental${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    environmentalImpact: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+
+export function useCustomizationRequests(status?: string, blueprintId?: string) {
+  const params = new URLSearchParams()
+  if (status && status !== 'all') params.append('status', status)
+  if (blueprintId) params.append('blueprintId', blueprintId)
+  
+  const query = params.toString()
+  const url = `/api/customization${query ? `?${query}` : ''}`
+  
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher)
+  
+  return {
+    customizationRequests: data || [],
+    isLoading,
+    isError: error,
+    mutate,
+  }
+}
+

@@ -1272,6 +1272,489 @@ async function main() {
   })
   console.log('Updated dashboard stats')
 
+  // ==================== CERTIFICATION AUTHORITIES ====================
+  const authorities = await Promise.all([
+    prisma.certificationAuthority.upsert({
+      where: { authorityId: 'CA-001' },
+      update: {},
+      create: {
+        authorityId: 'CA-001',
+        name: 'Det Norske Veritas',
+        acronym: 'DNV',
+        type: 'Marine & Offshore',
+        contactEmail: 'certification@dnv.com',
+        contactPhone: '+47-67-57-99-00',
+        specializations: JSON.stringify(['Marine Engineering', 'Offshore Structures', 'Pressure Vessels']),
+        approvedParts: 156,
+        averageLeadTime: 45,
+        websiteUrl: 'https://www.dnv.com',
+        status: 'active',
+      },
+    }),
+    prisma.certificationAuthority.upsert({
+      where: { authorityId: 'CA-002' },
+      update: {},
+      create: {
+        authorityId: 'CA-002',
+        name: "Lloyd's Register",
+        acronym: 'LR',
+        type: 'Marine & Industrial',
+        contactEmail: 'marine@lr.org',
+        contactPhone: '+44-20-7709-9166',
+        specializations: JSON.stringify(['Marine Classification', 'Quality Assurance', 'Industrial Equipment']),
+        approvedParts: 203,
+        averageLeadTime: 38,
+        websiteUrl: 'https://www.lr.org',
+        status: 'active',
+      },
+    }),
+    prisma.certificationAuthority.upsert({
+      where: { authorityId: 'CA-003' },
+      update: {},
+      create: {
+        authorityId: 'CA-003',
+        name: 'American Bureau of Shipping',
+        acronym: 'ABS',
+        type: 'Marine & Offshore',
+        contactEmail: 'abs@eagle.org',
+        contactPhone: '+1-281-877-5800',
+        specializations: JSON.stringify(['Marine Vessels', 'Offshore Units', 'Structural Steel']),
+        approvedParts: 178,
+        averageLeadTime: 42,
+        websiteUrl: 'https://www.eagle.org',
+        status: 'active',
+      },
+    }),
+    prisma.certificationAuthority.upsert({
+      where: { authorityId: 'CA-004' },
+      update: {},
+      create: {
+        authorityId: 'CA-004',
+        name: 'Bureau Veritas',
+        acronym: 'BV',
+        type: 'Marine & Aerospace',
+        contactEmail: 'marine@bureauveritas.com',
+        contactPhone: '+33-1-55-24-70-00',
+        specializations: JSON.stringify(['Marine Engineering', 'Aerospace Components', 'Material Testing']),
+        approvedParts: 134,
+        averageLeadTime: 50,
+        websiteUrl: 'https://www.bureauveritas.com',
+        status: 'active',
+      },
+    }),
+    prisma.certificationAuthority.upsert({
+      where: { authorityId: 'CA-005' },
+      update: {},
+      create: {
+        authorityId: 'CA-005',
+        name: 'International Organization for Standardization',
+        acronym: 'ISO',
+        type: 'Quality Standards',
+        contactEmail: 'central@iso.org',
+        contactPhone: '+41-22-749-01-11',
+        specializations: JSON.stringify(['Quality Management', 'Environmental Standards', 'Safety Protocols']),
+        approvedParts: 89,
+        averageLeadTime: 60,
+        websiteUrl: 'https://www.iso.org',
+        status: 'active',
+      },
+    }),
+  ])
+  console.log(`Created ${authorities.length} certification authorities`)
+
+  // ==================== CERTIFICATION REQUESTS ====================
+  const certRequests = await Promise.all([
+    prisma.certificationRequest.upsert({
+      where: { requestId: 'CR-2024-001' },
+      update: {},
+      create: {
+        requestId: 'CR-2024-001',
+        blueprintId: blueprints[0].id,
+        authorityId: authorities[0].id,
+        status: 'approved',
+        submittedDate: new Date('2024-11-15'),
+        reviewedDate: new Date('2024-12-28'),
+        notes: 'All material tests passed. Approved for marine use.',
+        reviewerName: 'Dr. Hans Mueller',
+        documentUrl: '/certs/CR-2024-001-approval.pdf',
+      },
+    }),
+    prisma.certificationRequest.upsert({
+      where: { requestId: 'CR-2025-012' },
+      update: {},
+      create: {
+        requestId: 'CR-2025-012',
+        blueprintId: blueprints[1].id,
+        authorityId: authorities[1].id,
+        status: 'under_review',
+        submittedDate: new Date('2025-01-10'),
+        notes: 'Awaiting final stress test results.',
+        reviewerName: 'Sarah Mitchell',
+      },
+    }),
+    prisma.certificationRequest.upsert({
+      where: { requestId: 'CR-2026-003' },
+      update: {},
+      create: {
+        requestId: 'CR-2026-003',
+        blueprintId: blueprints[2].id,
+        authorityId: authorities[2].id,
+        status: 'submitted',
+        submittedDate: new Date('2026-02-15'),
+        notes: 'Initial submission for ABS review.',
+        reviewerName: 'Michael Torres',
+      },
+    }),
+    prisma.certificationRequest.upsert({
+      where: { requestId: 'CR-2025-089' },
+      update: {},
+      create: {
+        requestId: 'CR-2025-089',
+        blueprintId: blueprints[3].id,
+        authorityId: authorities[0].id,
+        status: 'rejected',
+        submittedDate: new Date('2025-10-05'),
+        reviewedDate: new Date('2025-11-20'),
+        notes: 'Material specification does not meet marine grade requirements. Resubmit with revised specs.',
+        reviewerName: 'Dr. Hans Mueller',
+      },
+    }),
+  ])
+  console.log(`Created ${certRequests.length} certification requests`)
+
+  // ==================== CUSTOMER ENGAGEMENTS ====================
+  const engagements = await Promise.all([
+    prisma.customerEngagement.upsert({
+      where: { customerId: 'CUST-001' },
+      update: {},
+      create: {
+        customerId: 'CUST-001',
+        customerName: 'Horizon Maritime',
+        industry: 'Offshore Oil & Gas',
+        phase: 'maintenance',
+        assessmentDate: new Date('2024-03-15'),
+        adoptionDate: new Date('2024-05-20'),
+        integrationDate: new Date('2024-07-10'),
+        trainingDate: new Date('2024-08-05'),
+        maintenanceStartDate: new Date('2024-09-01'),
+        accountManager: 'Sarah Chen',
+        healthScore: 92,
+        rigCount: 12,
+        status: 'active',
+        notes: 'Excellent partnership. Exploring expansion to 8 more rigs.',
+      },
+    }),
+    prisma.customerEngagement.upsert({
+      where: { customerId: 'CUST-002' },
+      update: {},
+      create: {
+        customerId: 'CUST-002',
+        customerName: 'Noble Corp',
+        industry: 'Offshore Drilling',
+        phase: 'training',
+        assessmentDate: new Date('2025-01-10'),
+        adoptionDate: new Date('2025-03-15'),
+        integrationDate: new Date('2025-05-20'),
+        trainingDate: new Date('2026-01-15'),
+        accountManager: 'Michael Torres',
+        healthScore: 85,
+        rigCount: 8,
+        status: 'active',
+        notes: 'On track for full deployment Q2 2026.',
+      },
+    }),
+    prisma.customerEngagement.upsert({
+      where: { customerId: 'CUST-003' },
+      update: {},
+      create: {
+        customerId: 'CUST-003',
+        customerName: 'Equinor',
+        industry: 'Offshore Oil & Gas',
+        phase: 'integration',
+        assessmentDate: new Date('2025-06-01'),
+        adoptionDate: new Date('2025-08-15'),
+        integrationDate: new Date('2025-11-10'),
+        accountManager: 'Lisa Wang',
+        healthScore: 78,
+        rigCount: 15,
+        status: 'active',
+        notes: 'Large-scale deployment in progress. Minor delays due to certification approvals.',
+      },
+    }),
+    prisma.customerEngagement.upsert({
+      where: { customerId: 'CUST-004' },
+      update: {},
+      create: {
+        customerId: 'CUST-004',
+        customerName: 'Transocean',
+        industry: 'Offshore Drilling',
+        phase: 'adoption',
+        assessmentDate: new Date('2025-11-20'),
+        adoptionDate: new Date('2026-01-15'),
+        accountManager: 'David Reynolds',
+        healthScore: 70,
+        rigCount: 10,
+        status: 'active',
+        notes: 'Proof of concept successful. Moving to pilot program.',
+      },
+    }),
+    prisma.customerEngagement.upsert({
+      where: { customerId: 'CUST-005' },
+      update: {},
+      create: {
+        customerId: 'CUST-005',
+        customerName: 'Valaris',
+        industry: 'Offshore Drilling',
+        phase: 'assessment',
+        assessmentDate: new Date('2026-02-01'),
+        accountManager: 'Sarah Chen',
+        healthScore: 65,
+        rigCount: 6,
+        status: 'active',
+        notes: 'Initial assessment phase. Very interested in cost savings model.',
+      },
+    }),
+  ])
+  console.log(`Created ${engagements.length} customer engagements`)
+
+  // ==================== TRAINING SESSIONS ====================
+  const trainingSessions = await Promise.all([
+    prisma.trainingSession.upsert({
+      where: { sessionId: 'TS-2024-001' },
+      update: {},
+      create: {
+        sessionId: 'TS-2024-001',
+        customerId: engagements[0].id,
+        title: 'Metal AM Operations Fundamentals',
+        type: 'Operation',
+        scheduledDate: new Date('2024-08-05'),
+        duration: 480, // 8 hours
+        trainer: 'Dr. Alireza Vahedi Nemani',
+        location: 'Horizon Maritime - Halifax Facility',
+        attendees: JSON.stringify(['John Operator', 'Mike Stevens', 'Rachel Adams', 'Tom Wilson']),
+        status: 'completed',
+        materials: '/training/operations-fundamentals.pdf',
+        feedback: 'Excellent session. Very hands-on and practical.',
+      },
+    }),
+    prisma.trainingSession.upsert({
+      where: { sessionId: 'TS-2024-002' },
+      update: {},
+      create: {
+        sessionId: 'TS-2024-002',
+        customerId: engagements[0].id,
+        title: 'Quality Control & Inspection',
+        type: 'Quality Control',
+        scheduledDate: new Date('2024-08-19'),
+        duration: 360, // 6 hours
+        trainer: 'Dr. Mahya Ghaffari',
+        location: 'Horizon Maritime - Halifax Facility',
+        attendees: JSON.stringify(['Sarah Chen', 'David Brown', 'Lisa Wang']),
+        status: 'completed',
+        materials: '/training/quality-control.pdf',
+        feedback: 'Critical knowledge for maintaining certification compliance.',
+      },
+    }),
+    prisma.trainingSession.upsert({
+      where: { sessionId: 'TS-2026-015' },
+      update: {},
+      create: {
+        sessionId: 'TS-2026-015',
+        customerId: engagements[1].id,
+        title: 'Advanced Maintenance Procedures',
+        type: 'Maintenance',
+        scheduledDate: new Date('2026-03-10'),
+        duration: 420, // 7 hours
+        trainer: 'Dr. Ali Nasiri',
+        location: 'Noble Corp - Calgary Training Center',
+        attendees: JSON.stringify(['Mike Johnson', 'Anna Peterson', 'Carlos Mendez']),
+        status: 'scheduled',
+        materials: '/training/maintenance-advanced.pdf',
+      },
+    }),
+    prisma.trainingSession.upsert({
+      where: { sessionId: 'TS-2026-020' },
+      update: {},
+      create: {
+        sessionId: 'TS-2026-020',
+        customerId: engagements[2].id,
+        title: 'Safety Protocols for Additive Manufacturing',
+        type: 'Safety',
+        scheduledDate: new Date('2026-03-25'),
+        duration: 240, // 4 hours
+        trainer: 'Harsimran Malhi',
+        location: 'Equinor - Stavanger Office',
+        attendees: JSON.stringify(['Erik Hansen', 'Maria Silva', 'John Peterson', 'Emma Johnson']),
+        status: 'scheduled',
+        materials: '/training/safety-protocols.pdf',
+      },
+    }),
+  ])
+  console.log(`Created ${trainingSessions.length} training sessions`)
+
+  // ==================== COMPARATIVE METRICS ====================
+  const comparativeMetrics = await Promise.all([
+    prisma.comparativeMetrics.create({
+      data: {
+        customerId: 'CUST-001',
+        metricMonth: new Date('2025-12-01'),
+        traditionalLeadTime: 21,
+        almatechLeadTime: 4,
+        leadTimeReduction: 81.0,
+        traditionalWarehouseCost: 450000,
+        almatechWarehouseCost: 85000,
+        warehouseSavings: 81.1,
+        partsRepaired: 12,
+        partsReplaced: 45,
+        designIterations: 8,
+      },
+    }),
+    prisma.comparativeMetrics.create({
+      data: {
+        customerId: 'CUST-001',
+        metricMonth: new Date('2026-01-01'),
+        traditionalLeadTime: 18,
+        almatechLeadTime: 3,
+        leadTimeReduction: 83.3,
+        traditionalWarehouseCost: 450000,
+        almatechWarehouseCost: 82000,
+        warehouseSavings: 81.8,
+        partsRepaired: 15,
+        partsReplaced: 52,
+        designIterations: 11,
+      },
+    }),
+    prisma.comparativeMetrics.create({
+      data: {
+        customerId: 'CUST-002',
+        metricMonth: new Date('2026-01-01'),
+        traditionalLeadTime: 25,
+        almatechLeadTime: 5,
+        leadTimeReduction: 80.0,
+        traditionalWarehouseCost: 320000,
+        almatechWarehouseCost: 65000,
+        warehouseSavings: 79.7,
+        partsRepaired: 8,
+        partsReplaced: 28,
+        designIterations: 5,
+      },
+    }),
+  ])
+  console.log(`Created ${comparativeMetrics.length} comparative metrics`)
+
+  // ==================== ENVIRONMENTAL IMPACT ====================
+  const envImpacts = await Promise.all([
+    ...orders.slice(0, 10).map((order, idx) => 
+      prisma.environmentalImpact.create({
+        data: {
+          orderId: order.id,
+          co2SavedKg: 45 + idx * 12,
+          milesAvoided: 850 + idx * 200,
+          transportMethod: idx % 3 === 0 ? 'helicopter' : idx % 3 === 1 ? 'vessel' : 'truck',
+          wasteReduced: 2.5 + idx * 0.8,
+          calculationMethod: 'EPA Carbon Footprint Calculator - Marine Transport',
+        },
+      })
+    ),
+  ])
+  console.log(`Created ${envImpacts.length} environmental impact records`)
+
+  // ==================== BLUEPRINT VERSIONS ====================
+  const blueprintVersions = await Promise.all([
+    prisma.blueprintVersion.create({
+      data: {
+        blueprintId: blueprints[0].id,
+        version: 'v1.0',
+        changes: 'Initial design',
+        reason: 'Original OEM specifications',
+        approvedBy: 'Engineering Team',
+        approvedDate: new Date('2024-01-15'),
+        filePath: '/blueprints/BP-1024/v1.0.step',
+        status: 'approved',
+      },
+    }),
+    prisma.blueprintVersion.create({
+      data: {
+        blueprintId: blueprints[0].id,
+        version: 'v1.1',
+        changes: 'Optimized bearing surface geometry for extended life',
+        reason: 'Customer feedback - improved durability',
+        approvedBy: 'Dr. Mahya Ghaffari',
+        approvedDate: new Date('2024-06-10'),
+        filePath: '/blueprints/BP-1024/v1.1.step',
+        performanceData: JSON.stringify({ 'lifespan_improvement': '35%', 'weight_reduction': '8%' }),
+        status: 'approved',
+      },
+    }),
+    prisma.blueprintVersion.create({
+      data: {
+        blueprintId: blueprints[1].id,
+        version: 'v2.0',
+        changes: 'Redesigned flow channels for 20% higher efficiency',
+        reason: 'Performance optimization request from Noble Corp',
+        approvedBy: 'Engineering Team',
+        approvedDate: new Date('2025-03-22'),
+        filePath: '/blueprints/BP-0892/v2.0.step',
+        performanceData: JSON.stringify({ 'flow_improvement': '20%', 'pressure_rating': '15% higher' }),
+        status: 'approved',
+      },
+    }),
+  ])
+  console.log(`Created ${blueprintVersions.length} blueprint versions`)
+
+  // ==================== CUSTOMIZATION REQUESTS ====================
+  const customizationRequests = await Promise.all([
+    prisma.customizationRequest.upsert({
+      where: { requestId: 'CUST-REQ-001' },
+      update: {},
+      create: {
+        requestId: 'CUST-REQ-001',
+        blueprintId: blueprints[2].id,
+        requesterId: users[0].id,
+        requesterName: users[0].name,
+        description: 'Modify sensor bracket to accommodate larger sensor housing (45mm vs 40mm)',
+        justification: 'New sensor model required for upgraded monitoring system',
+        status: 'approved',
+        estimatedCost: 1200,
+        estimatedTime: 5,
+        assignedTo: 'Design Team Alpha',
+      },
+    }),
+    prisma.customizationRequest.upsert({
+      where: { requestId: 'CUST-REQ-002' },
+      update: {},
+      create: {
+        requestId: 'CUST-REQ-002',
+        blueprintId: blueprints[3].id,
+        requesterId: users[1].id,
+        requesterName: users[1].name,
+        description: 'Add reinforcement ribs to impeller blades for high-vibration environment',
+        justification: 'Operating conditions more severe than original design parameters',
+        status: 'pending',
+        estimatedCost: 2500,
+        estimatedTime: 12,
+        assignedTo: 'Dr. Ali Nasiri',
+      },
+    }),
+    prisma.customizationRequest.upsert({
+      where: { requestId: 'CUST-REQ-003' },
+      update: {},
+      create: {
+        requestId: 'CUST-REQ-003',
+        blueprintId: blueprints[0].id,
+        requesterId: users[2].id,
+        requesterName: users[2].name,
+        description: 'Change material from Ti-6Al-4V to stainless steel 316L for cost reduction',
+        justification: 'Application does not require titanium-grade corrosion resistance',
+        status: 'implemented',
+        estimatedCost: 800,
+        estimatedTime: 3,
+        assignedTo: 'Materials Engineering',
+      },
+    }),
+  ])
+  console.log(`Created ${customizationRequests.length} customization requests`)
+
   console.log('\n✅ Seed completed successfully!')
   console.log(`
     Summary:
@@ -1284,6 +1767,14 @@ async function main() {
     - ${materials.length} materials
     - ${materialStocks.length} material stocks
     - ${certifications.length} certifications
+    - ${authorities.length} certification authorities
+    - ${certRequests.length} certification requests
+    - ${engagements.length} customer engagements
+    - ${trainingSessions.length} training sessions
+    - ${comparativeMetrics.length} comparative metrics
+    - ${envImpacts.length} environmental impact records
+    - ${blueprintVersions.length} blueprint versions
+    - ${customizationRequests.length} customization requests
   `)
 }
 

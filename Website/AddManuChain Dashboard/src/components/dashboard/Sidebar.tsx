@@ -17,6 +17,7 @@ import {
   Truck,
   Boxes,
   Shield,
+  GraduationCap,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -41,6 +42,7 @@ const menuSections = [
     title: 'Partners',
     items: [
       { id: 'partners', label: 'OEM Partners', icon: Users },
+      { id: 'services', label: 'Customer Success', icon: GraduationCap },
     ],
   },
   {
@@ -49,6 +51,7 @@ const menuSections = [
       { id: 'analytics', label: 'Analytics', icon: BarChart3 },
       { id: 'audit', label: 'Audit Logs', icon: FileText },
       { id: 'certifications', label: 'Certifications', icon: Shield },
+      { id: 'authorities', label: 'Authorities', icon: Shield },
     ],
   },
   {

@@ -180,3 +180,136 @@ model DashboardStats {
   activeCenters   Int      @default(0)
   updatedAt       DateTime @updatedAt
 }
+
+model CertificationAuthority {
+  id              String   @id @default(cuid())
+  authorityId     String   @unique
+  name            String
+  acronym         String
+  type            String   // Marine, Aerospace, Oil & Gas, ISO
+  contactEmail    String
+  contactPhone    String
+  specializations String   // JSON array
+  approvedParts   Int      @default(0)
+  averageLeadTime Int      @default(0) // days
+  websiteUrl      String?
+  status          String   @default("active") // active, inactive
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  requests        CertificationRequest[]
+}
+
+model CertificationRequest {
+  id            String   @id @default(cuid())
+  requestId     String   @unique
+  blueprintId   String
+  authorityId   String
+  authority     CertificationAuthority @relation(fields: [authorityId], references: [id])
+  status        String   @default("submitted") // submitted, under_review, approved, rejected
+  submittedDate DateTime @default(now())
+  reviewedDate  DateTime?
+  notes         String?
+  documentUrl   String?
+  reviewerName  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model CustomerEngagement {
+  id                    String   @id @default(cuid())
+  customerId            String   @unique
+  customerName          String
+  industry              String
+  phase                 String   @default("assessment") 
+  // assessment, adoption, integration, training, maintenance
+  assessmentDate        DateTime?
+  adoptionDate          DateTime?
+  integrationDate       DateTime?
+  trainingDate          DateTime?
+  maintenanceStartDate  DateTime?
+  accountManager        String
+  healthScore           Int      @default(0) // 0-100
+  rigCount              Int      @default(0)
+  notes                 String?
+  status                String   @default("active") // active, paused, completed
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  trainingSessions      TrainingSession[]
+}
+
+model TrainingSession {
+  id           String   @id @default(cuid())
+  sessionId    String   @unique
+  customerId   String
+  customer     CustomerEngagement @relation(fields: [customerId], references: [id])
+  title        String
+  type         String   // Operation, Maintenance, Quality Control, Safety
+  scheduledDate DateTime
+  duration     Int      // minutes
+  trainer      String
+  location     String
+  attendees    String   // JSON array
+  status       String   @default("scheduled") // scheduled, completed, cancelled
+  materials    String?  // Links to training materials
+  feedback     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ComparativeMetrics {
+  id                        String   @id @default(cuid())
+  customerId                String
+  metricMonth               DateTime
+  traditionalLeadTime       Int      // days
+  almatechLeadTime          Int      // days
+  leadTimeReduction         Float    // percentage
+  traditionalWarehouseCost  Int      // dollars
+  almatechWarehouseCost     Int      // dollars
+  warehouseSavings          Float    // percentage
+  partsRepaired             Int      @default(0)
+  partsReplaced             Int      @default(0)
+  designIterations          Int      @default(0) // custom designs enabled
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+}
+
+model EnvironmentalImpact {
+  id                  String   @id @default(cuid())
+  orderId             String   @unique
+  co2SavedKg          Float    @default(0)
+  milesAvoided        Int      @default(0)
+  transportMethod     String?  // helicopter, vessel, truck
+  wasteReduced        Float    @default(0) // kg
+  calculationMethod   String?
+  createdAt           DateTime @default(now())
+}
+
+model BlueprintVersion {
+  id            String   @id @default(cuid())
+  blueprintId   String
+  version       String
+  changes       String?
+  reason        String?
+  approvedBy    String?
+  approvedDate  DateTime?
+  filePath      String
+  performanceData String? // JSON
+  status        String   @default("draft") // draft, approved, deprecated
+  createdAt     DateTime @default(now())
+}
+
+model CustomizationRequest {
+  id              String   @id @default(cuid())
+  requestId       String   @unique
+  blueprintId     String
+  requesterId     String
+  requesterName   String
+  description     String
+  justification   String?
+  status          String   @default("pending") // pending, approved, rejected, implemented
+  estimatedCost   Int?
+  estimatedTime   Int?     // days
+  assignedTo      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
