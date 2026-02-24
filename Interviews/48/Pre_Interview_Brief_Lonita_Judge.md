@@ -66,8 +66,6 @@ Lonita is the **COO of Horizon Maritime** — one of Atlantic Canada's leading m
 **B1 — Remote Access Technology background:**
 > *"You spent time at Remote Access Technology as Director of Safety and Quality. That name suggests technology for remote or hard-to-access environments — which is exactly our core market. What types of remote operations challenges did you encounter there related to equipment, parts, and maintenance? Was digital supply chain ever discussed as a solution?"*
 
-**B2 — Female leadership in NL offshore:**
-> *"You're a COO in a traditionally male-dominated industry in a province where the offshore sector is dominant. If you were pitching AddManuChain to a room of Horizon Maritime vessel captains and HSE managers, what language and framing would you use? What does a room like that respond to — cost savings, safety/reliability, or something else?"*
 
 ---
 

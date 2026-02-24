@@ -53,9 +53,9 @@ A full 13-section document synthesizing all 46 interviews into: what changed, wh
 | Person Dwayne Referred | Company | Status |
 |------------------------|---------|--------|
 | **Brad Elliott** | Equinor (Technology/Innovation, St. John's) | CRM added — ready to reach out after Bay du Nord announcement |
-| **Heather Davis** | Auker Solutions (Digitalization team, St. John's) | CRM added — warm intro via Dwayne; key design firm for O&G AM |
+| **Heather Davis** (No Reposne YET!!!) | Auker Solutions (Digitalization team, St. John's) | CRM added — warm intro via Dwayne; key design firm for O&G AM |
 | **Tyler Beatty** | ExxonMobil (Innovation, St. John's) | ✅ Already interviewed (#33) — confirmed ExxonMobil's $17.5M Memorial SMART Lab AM investment |
-| **PolyUnity** | Healthcare AM (polymers, hospitals) | ✅ Already studied — confirmed as ecosystem partner (David Haire also mentioned them) |
+| **PolyUnity** (NO RESPONSE YET!!! with Mr Stephan Ryan) | Healthcare AM (polymers, hospitals) | ✅ Already studied — confirmed as ecosystem partner (David Haire also mentioned them) |
 
 ---
 
@@ -72,6 +72,8 @@ A full 13-section document synthesizing all 46 interviews into: what changed, wh
 
 ### Ask #4 (Optional) — Co-Innovation Centre Network
 > *"Are there any companies in the Co-Innovation Centre ecosystem working on AM, spare parts logistics, or digital supply chains for offshore or defense that I haven't talked to yet? Even a name drop in the hallway would help."*
+
+IRAP Opportunity!!!!!!!!!!
 
 ---
 
