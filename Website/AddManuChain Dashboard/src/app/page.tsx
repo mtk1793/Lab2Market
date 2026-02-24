@@ -18,6 +18,7 @@ import {
   CertificationsPage,
   AuthoritiesPage,
   CustomerSuccessPage,
+  DigitalInventoryPage,
 } from '@/components/dashboard'
 import { cn } from '@/lib/utils'
 
@@ -30,6 +31,8 @@ export default function Dashboard() {
         return { title: 'Dashboard Overview', subtitle: 'Welcome back, John' }
       case 'orders':
         return { title: 'Orders', subtitle: 'Manage and track your part orders' }
+      case 'digital_inventory':
+        return { title: 'Digital Inventory', subtitle: 'AI-driven parts forecasting and onsite readiness' }
       case 'blueprints':
         return { title: 'Blueprint Library', subtitle: 'Manage certified CAD blueprints' }
       case 'centers':
@@ -63,6 +66,8 @@ export default function Dashboard() {
         return <OverviewPage />
       case 'orders':
         return <OrdersPage />
+      case 'digital_inventory':
+        return <DigitalInventoryPage />
       case 'blueprints':
         return <BlueprintsPage />
       case 'centers':

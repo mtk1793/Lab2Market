@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Dialog,
   DialogContent,
@@ -46,6 +48,15 @@ export function CentersPage() {
     totalPrinters: 1,
     contactName: '',
     contactEmail: '',
+  })
+  const [onsitePlan, setOnsitePlan] = useState({
+    mode: 'onsite',
+    location: '',
+    accessWindow: '',
+    safetyRequirements: '',
+    equipmentNeeds: '',
+    supportContacts: '',
+    notes: '',
   })
 
   const filteredCenters = centers.filter(center => {
@@ -96,8 +107,15 @@ export function CentersPage() {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <Tabs defaultValue="network" className="w-full">
+        <TabsList className="bg-white border border-slate-200">
+          <TabsTrigger value="network">Network</TabsTrigger>
+          <TabsTrigger value="onsite">Onsite Printing</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="network" className="space-y-6">
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card className="bg-white border-slate-200">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
@@ -402,6 +420,90 @@ export function CentersPage() {
           )}
         </DialogContent>
       </Dialog>
+        </TabsContent>
+
+        <TabsContent value="onsite" className="space-y-6">
+          <Card className="bg-white border-slate-200">
+            <CardContent className="p-6 space-y-4">
+              <div>
+                <h3 className="text-lg font-semibold text-[#0F172A]">Onsite Printing Engagement</h3>
+                <p className="text-sm text-slate-500">
+                  Define onsite requirements for rapid deployment, inspection, and certification workflows.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Engagement Mode</Label>
+                  <Select
+                    value={onsitePlan.mode}
+                    onValueChange={(value) => setOnsitePlan({ ...onsitePlan, mode: value })}
+                  >
+                    <SelectTrigger className="bg-white">
+                      <SelectValue placeholder="Select mode" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="onsite">Onsite</SelectItem>
+                      <SelectItem value="virtual">Virtual</SelectItem>
+                      <SelectItem value="hybrid">Hybrid</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>Site Location</Label>
+                  <Input
+                    placeholder="Platform, shipyard, or facility"
+                    value={onsitePlan.location}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, location: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Access Window</Label>
+                  <Input
+                    placeholder="e.g., 2-week offshore window"
+                    value={onsitePlan.accessWindow}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, accessWindow: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Support Contacts</Label>
+                  <Input
+                    placeholder="Operations lead or HSE contact"
+                    value={onsitePlan.supportContacts}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, supportContacts: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label>Safety Requirements</Label>
+                  <Textarea
+                    rows={3}
+                    placeholder="Induction, certifications, PPE, safety protocols"
+                    value={onsitePlan.safetyRequirements}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, safetyRequirements: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label>Equipment & Facility Needs</Label>
+                  <Textarea
+                    rows={3}
+                    placeholder="Power, ventilation, QA tools, storage, network access"
+                    value={onsitePlan.equipmentNeeds}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, equipmentNeeds: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label>Notes</Label>
+                  <Textarea
+                    rows={3}
+                    placeholder="Additional onsite coordination notes"
+                    value={onsitePlan.notes}
+                    onChange={(e) => setOnsitePlan({ ...onsitePlan, notes: e.target.value })}
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }

@@ -18,18 +18,19 @@ import {
   Boxes,
   Shield,
   GraduationCap,
+  Sparkles,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 
 // Define which roles can access which menu items
 const rolePermissions: Record<string, string[]> = {
-  admin: ['overview', 'orders', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
-  customer_admin: ['overview', 'orders', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
-  operator: ['overview', 'orders', 'blueprints', 'shipments', 'settings'],
-  oem_partner: ['overview', 'blueprints', 'analytics', 'certifications', 'settings'],
-  print_center: ['overview', 'orders', 'blueprints', 'shipments', 'materials', 'settings'],
-  cert_authority: ['overview', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
+  admin: ['overview', 'orders', 'digital_inventory', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
+  customer_admin: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
+  operator: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'settings'],
+  oem_partner: ['overview', 'digital_inventory', 'blueprints', 'analytics', 'certifications', 'settings'],
+  print_center: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'materials', 'settings'],
+  cert_authority: ['overview', 'digital_inventory', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
 }
 
 const menuSections = [
@@ -44,6 +45,7 @@ const menuSections = [
     title: 'Supply Chain',
     items: [
       { id: 'blueprints', label: 'Blueprint Library', icon: FileBox },
+      { id: 'digital_inventory', label: 'Digital Inventory', icon: Sparkles },
       { id: 'centers', label: 'Print Centers', icon: Factory },
       { id: 'shipments', label: 'Shipments', icon: Truck },
       { id: 'materials', label: 'Materials', icon: Boxes },

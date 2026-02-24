@@ -1,0 +1,106 @@
+Mitacs Plus Research Proposal Form
+INSTRUCTIONS FOR APPLICANTS
+An incomplete or modified proposal form will delay the evaluation process. Aside from Section 1.4 Project Sub-Objectives & Timeline, please do not modify, remove text, or delete instructions from any section or reformat this form in any way.
+Once this form is complete, please upload it to the Proposal section of your application in Mitacs Plus. 
+If you intend to include letters of support or other supporting materials along with this research proposal, please ensure that those files are clearly named, uploaded in the appropriate location in Mitacs Plus, and that you have referred to those materials in this proposal.
+For guidance on eligible research activities, please refer to Mitacs's Responsible Conduct of Research Policy. For guidance on the use of generative Artificial Intelligence in the preparation of Mitacs proposals, please refer to Mitacs's Policy on the Use of Artificial Intelligence in Proposal Development and Review.
+
+1.1 Project Summary:
+Please provide:
+an overview of the research problem
+a detailed description of the main activities of the partner organization and the challenge(s) the partner aims to solve through this project, and 
+an outline of the anticipated social or economic benefits of the project for the partner organization(s).
+Please note that this section will be used to recruit the reviewers. (Maximum 300 words)
+1.2 Project Context:
+Research Problem or Question: Clearly state the research problem or question that your project attempts to investigate, solve, and/or answer. (Maximum 50 words)
+Background and Review of Relevant Prior Work: Provide a literature review sufficient to contextualize the importance/significance of the research problem or question, incorporating relevant citations. References to academic literature must be cited in the text in a style typical of your field and compiled in the “References” section below. Reviewers should understand the state-of-the-art and knowledge gaps in the research area that will be addressed through the objectives of the research project. (Minimum 500 words)
+1.3 Overall Project Objectives:
+Please state the overall goal of the project.
+1.4 Project Sub-Objectives & Timeline:
+Based on the duration of your project (1 year or shorter, or longer than 1 year), please complete the appropriate table below and delete the other.
+
+
+Project Timeline for Single-Year Projects (1 year or less): 
+Provide a list of sub-objectives and respective tasks that you have planned to achieve the overall project objective(s).
+Indicate when each task will be performed and by which intern it will be performed. Do not include intern names; instead use the degree level and number. For e.g., if you have two PhD students, label them as “PhD 1” and “PhD 2”. You will be asked to name the interns after submission.
+Mark the intended week(s) with an ‘x’ or highlight the appropriate boxes. 
+Ensure there are no gaps in the timeline and that the effort required to complete each task matches the amount of time allocated for each intern.
+Ensure that there are tasks allocated to each intern.
+You may add or remove rows/columns from the table as necessary, depending on the number of sub-objectives, specific tasks and the duration of your project.
+
+↖  Use the + button (hover over bottom left corner of any row) to add a new Sub-Objective or Specific Tasks
+
+
+Project Timeline for Multi-Year Projects (over 1 year): 
+Provide a list of sub-objectives, broken down by month, that you have planned to achieve the overall project objective(s).
+Indicate when each task will be performed and by which intern it will be performed. Do not include intern names; instead use the degree level and number. For e.g., if you have two PhD students, label them as “PhD 1” and “PhD 2”. You will be asked to name the interns after submission.
+Mark the intended week(s) with an ‘x’ or highlight the appropriate boxes. 
+Ensure there are no gaps in the timeline and that the effort required to complete each task matches the amount of time allocated for each intern.
+Ensure that there are tasks allocated to each intern.
+You may add or remove rows/columns from the table as necessary, depending on the number of sub-objectives, specific tasks and the duration of your project.
+*Note that the same intern(s) could be involved in more than one sub-objective(s) and that more than one intern(s) could be involved in the same sub-objective(s).
+
+
+↖ Use the + button (hover over bottom left corner of any row) to add a new Sub-Objective
+
+
+1.5 Methodology/Approach:
+Describe the method(s) that will be used to achieve the project objectives, including technical details such as equipment, procedures, and/or study participants. 
+
+Provide enough detail so that reviewers can determine if the proposed methodology is appropriate and sufficient to achieve the objectives/sub-objectives.
+1.6 Deliverables:
+Which of the following results do you expect the project to produce? 
+
+Please select all that apply. At least one deliverable must be selected.
+
+   Reports for the partner organization     
+   Presentations to the partner organization's staff  
+   Patent applications  
+   Conference presentations 
+   New research tools or methods 
+   Other intellectual property claims (copyrights, trademarks, industrial designs) 
+   Plans to commercialize a new technology     
+   New products or services   
+   Opportunities for the partner organization to hire new staff  
+   Expansion to new markets 
+   Publication in peer-reviewed journals, book chapters or technical publications  
+   Thesis chapter(s) 
+   Other (if other, please specify): 
+
+1.7 Partner Interaction: 
+Please select only one option below to indicate the nature of the partner interaction:  
+
+Onsite        Virtual        Hybrid  
+
+Describe:
+the activities the intern(s) will perform with the partner organization
+the individuals the intern(s) will interact directly with and how the partner organization’s staff will support and champion the project
+the resources (e.g., tools, data, facilities, etc.) provided to support the intern(s), and 
+information about the partner’s physical premises (location) and/or virtual platform(s) where work will be conducted.
+Describe the nature of academic supervision during the internship period. Explain the type and frequency of interactions (e.g., meetings, phone calls, etc.) between the intern and academic supervisor. 
+Describe how the project aligns with the interns(s) academic studies and supports their future career development. For example: expanding their professional network, gaining knowledge in a business or applied research context, developing skills in problem-solving, project management, creative thinking, communication, etc.
+1.8 Benefit to the Partner Organization and to Canada:   
+Explain how the project addresses the needs of the partner organization and benefits Canada. Please select all that apply. At least one option must be selected. 
+   Research and Development (R&D) to improve a product, process or market innovation 
+   Improved productivity for partner organization 
+   Contribution to the development of skilled talent in Canada
+   Use of project results to address a societal challenge  
+   Fostering new collaborations (e.g. with the academic institution, academic supervisor)  
+   Other (if other, please specify): 
+Based on the option(s) selected above, please describe how the benefit(s) is/are expected to be realized through this project.
+1.9 Indigenous Community Involvement or Impact (if applicable):
+Internships that involve or impact Indigenous communities must comply with Mitacs’s Indigenous Research Policy. 
+Please provide information on:
+Indigenous community support for the project, and their role in shaping its objectives & approach
+plans for Indigenous community access, use, and governance of resulting knowledge / data, and
+the team’s background in Indigenous research, including any planned training / mentorship the intern(s) will receive to address deficits in experience. 
+You may also submit 1-2 letter(s) of support from Indigenous Elders, Knowledge Keepers, or Indigenous scholars who are members of the partner community / communities and possess the authority to speak on community interests. To submit letter(s) of support, please ensure that the file is clearly named, uploaded in the Indigenous Community Involvement and Impact section in Mitacs Plus, and that you have referred to the letter(s) in this proposal.
+1.10 Relationship with Past/Present Mitacs Projects:
+Do any project participants (i.e. academic supervisor and/or partner organization) have other current or upcoming submissions to Mitacs (submitted recently, concurrently with this application, or planned for the near future)?
+ Yes 	     No 
+If yes, please explain whether the current application is related to other submissions and provide details on how they are connected (e.g., if unrelated due to different research areas; or if related, how they complement each other, how the tasks will be distributed, how communication and supervision will be organized, and what resources will be shared, etc.). Please also share any relevant project IT#(s), if known.
+Has your project team submitted any applications to Mitacs in the past?
+ Yes       No 
+If yes, please describe whether the current project is related to any past projects, and provide specifics about the relationship(s), including relevant project IT#(s). For example, explain if the projects are unrelated due to different research areas, or if related, outline the achievements of past projects and how the current application builds upon previous results.
+1.11 References:
+Please provide a list of academic references cited in this proposal. 
