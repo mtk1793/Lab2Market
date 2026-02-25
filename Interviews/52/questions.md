@@ -71,14 +71,14 @@ This is potentially the **most strategically important interview in the entire L
 ## 5 CORE QUESTIONS
 
 **Q1 — The digitalization roadmap at Aker:**
-> *"Scott, you've led the CoLab implementation at Hebron — 2,900 design reviews, cutting cycles from weeks to days. Heather, you're driving Omega 365 for project and asset management. Together, you're digitizing the engineering workflow at Aker. Where does spare parts and manufacturing fit into that roadmap? Is there a digital thread that goes from 'designer identifies a part' all the way to 'part is manufactured and installed offshore' — or does the chain break somewhere?"*
+> *"Mr. Humber, you've led the CoLab implementation at Hebron — 2,900 design reviews, cutting cycles from weeks to days. Ms. Davis, you're driving Omega 365 for project and asset management. Together, you're digitizing the engineering workflow at Aker. Where does spare parts and manufacturing fit into that roadmap? Is there a digital thread that goes from 'designer identifies a part' all the way to 'part is manufactured and installed offshore' — or does the chain break somewhere?"*
 
 **Follow-ups:** Where is the biggest gap in the digital thread today? Is the manufacturing handoff still paper-based or email-driven? Does the engineer who designs a replacement part track what happens to it after the design file leaves Aker?
 
 ---
 
 **Q2 — AM part identification — the designer's lens:**
-> *"Heather, Dwayne Hopkins told us you're one of the people who identifies which components are AM candidates. When you look at a part on Hebron or another offshore asset and decide 'this could be 3D-printed' — what's your decision process? What criteria matter: geometry, material, criticality, lead time of the original OEM part? And how many parts on a typical offshore platform would you estimate are realistic AM candidates today?"*
+> *"Ms. Davis, Dwayne Hopkins told us you're one of the people who identifies which components are AM candidates. When you look at a part on Hebron or another offshore asset and decide 'this could be 3D-printed' — what's your decision process? What criteria matter: geometry, material, criticality, lead time of the original OEM part? And how many parts on a typical offshore platform would you estimate are realistic AM candidates today?"*
 
 **Follow-ups:** Is there a formal AM screening process at Aker, or is it ad hoc? Do you use any software tools to flag AM candidates, or is it engineering judgment? Would an AI tool that automatically screens parts and generates business case analysis be useful — or would you not trust it?
 
@@ -92,7 +92,7 @@ This is potentially the **most strategically important interview in the entire L
 ---
 
 **Q4 — Certification cost and timeline — the real numbers:**
-> *"Heather, you spent 12 years at DNV doing structural certification for offshore units — FPSOs, semi-submersibles, TLPs. You know the certification process from the inside. For AM-produced parts going onto an offshore platform in NL waters: what does the certification actually cost? How long does it take? And is it a one-time qualification per part design (qualify once, reproduce without re-certifying), or does every single print run need its own certification?"*
+> *"Ms. Davis, you spent 12 years at DNV doing structural certification for offshore units — FPSOs, semi-submersibles, TLPs. You know the certification process from the inside. For AM-produced parts going onto an offshore platform in NL waters: what does the certification actually cost? How long does it take? And is it a one-time qualification per part design (qualify once, reproduce without re-certifying), or does every single print run need its own certification?"*
 
 **Follow-ups:** Is the certification barrier technical (can't prove the part meets spec) or bureaucratic (the process is slow and expensive)? Would a platform that manages the certification documentation automatically — 'Certification-as-a-Service' — make a meaningful difference? What does C-NLOPB specifically require for AM parts vs. traditionally manufactured parts?
 
@@ -132,7 +132,7 @@ This is potentially the **most strategically important interview in the entire L
 
 ---
 
-## CONTEXT TO SHARE WITH SCOTT & HEATHER
+## CONTEXT TO SHARE WITH MR. HUMBER & MS. DAVIS
 
 - AddManuChain: Canadian platform for digital spare parts inventory + AM production + certification-as-a-service
 - We've done 51 interviews so far — including with Atlantic XL (Sean Morgan, John Lidstone), Equinor (Douglas Garcia-Golindano), Lloyd's Register, Irving Shipbuilding, C-CORE, and multiple NL ecosystem players
@@ -147,14 +147,14 @@ This is potentially the **most strategically important interview in the entire L
 ## IMPORTANT NOTES ON FRAMING
 
 **This is a joint interview — play to both strengths.**
-- **Scott** is the digitalization leader and technology evaluator. He thinks about roadmaps, tools, ROI, and implementation. Ask him about how tools get adopted and what the decision process looks like.
-- **Heather** is the engineer with deep certification and design review expertise. She thinks about whether a part can actually be trusted. Ask her about the technical and regulatory barriers.
+- **Mr. Humber** is the digitalization leader and technology evaluator. He thinks about roadmaps, tools, ROI, and implementation. Ask him about how tools get adopted and what the decision process looks like.
+- **Ms. Davis** is the engineer with deep certification and design review expertise. She thinks about whether a part can actually be trusted. Ask her about the technical and regulatory barriers.
 
 **Don't pitch — ask for their workflow.** The most valuable output of this interview is a detailed understanding of the Aker workflow from part identification to AM production. If you can map that workflow and identify the gaps, you have the basis for a product that Aker would actually use.
 
-**The CoLab precedent is your best proof point.** Scott already convinced Aker to deploy a digital tool (CoLab) that cut review cycles from weeks to days. Ask him what it took to make that happen — the same playbook applies to AddManuChain adoption.
+**The CoLab precedent is your best proof point.** Mr. Humber already convinced Aker to deploy a digital tool (CoLab) that cut review cycles from weeks to days. Ask him what it took to make that happen — the same playbook applies to AddManuChain adoption.
 
-**Heather is the gateway.** Hopkins said she can open doors. End the interview with clear referral asks — Aker global AM lead, ExxonMobil spare parts, and any other NL operators.
+**Ms. Davis is the gateway.** Hopkins said she can open doors. End the interview with clear referral asks — Aker global AM lead, ExxonMobil spare parts, and any other NL operators.
 
 ---
 

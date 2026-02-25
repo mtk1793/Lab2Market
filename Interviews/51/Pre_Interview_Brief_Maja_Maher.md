@@ -43,49 +43,49 @@ Maja is the **founder and CEO of Voltai** — a Nova Scotia-based ocean cleantec
 
 ## INTERVIEW GOALS
 
-- [ ] Understand Voltai's manufacturing supply chain — where parts are made, lead times, pain points in scaling marine-grade hardware production
-- [ ] Test whether AM / digital inventory is relevant for ocean tech startups building custom marine hardware
-- [ ] Explore the autonomous vessel angle — how parts reliability and remote maintenance create demand for digital spare parts
-- [ ] Learn about the Canadian Coast Guard / DFO procurement pathway and whether AddManuChain could align with government innovation mandates
-- [ ] Get founder-to-founder perspective on commercializing ocean tech in Atlantic Canada — what's working, what's broken
+- [ ] Understand Voltai's business plan and commercialization path (target customers, revenue model, near-term milestones)
+- [ ] Learn how Voltai is already using 3D printing today (what parts, materials, qualification, in-house vs. external)
+- [ ] Identify where digital inventory + certification could strengthen Voltai's current workflow
+- [ ] Explore how AM choices affect cost, lead time, and reliability in marine deployments
+- [ ] Get founder-to-founder perspective on scaling hardware ocean tech in Atlantic Canada
 - [ ] Explore referrals into the COVE ecosystem, Ocean Startup Project network, and Invest Nova Scotia contacts
 
 ---
 
 ## 5 CORE QUESTIONS
 
-**Q1 — Manufacturing supply chain for marine-grade hardware:**
-> *"Voltai is building ultra-high-density generators that go directly onto vessels and offshore platforms — real hardware in a harsh marine environment. Where are you manufacturing your components today? What does your supply chain look like, and what are the biggest bottlenecks when you need a custom part — lead times, minimum order quantities, finding suppliers who can work with marine-grade specs?"*
+**Q1 — Business plan and commercialization path:**
+> *"Voltai has a compelling technology story. Can you walk me through the business plan at a high level — who the first paying customers are, how you price and sell, and the next 12-18 month milestones you are optimizing for?"*
 
-**Follow-ups:** Are you manufacturing in Nova Scotia or still relying on Ontario? How many unique parts go into a Voltai generator? Have you ever lost development time because a part wasn't available?
-
----
-
-**Q2 — Additive manufacturing for custom marine components:**
-> *"Your generators are compact, high-density, and custom-designed — that sounds like a geometry and materials profile where 3D printing could be valuable. Has Voltai explored additive manufacturing for any of its components? And if a platform existed that let you store your qualified part designs digitally and print them on-demand at a certified facility like Atlantic XL in St. John's — would that change how you think about your supply chain and inventory?"*
-
-**Follow-ups:** What materials are your key components made from? Are there parts where traditional manufacturing limits your design? Would on-demand local production reduce your time-to-iterate?
+**Follow-ups:** Pilot-to-commercial conversion steps? Hardware sales vs. recurring service? What is the biggest revenue risk right now?
 
 ---
 
-**Q3 — Autonomous vessels and parts reliability:**
-> *"You're working with Sma'knis Marine Security and Marine Thinking on an autonomous RHIB, and your technology powers unmanned surface vehicles. When a vessel has no crew, there's nobody to improvise a repair if something fails. How do you think about parts reliability and redundancy for autonomous systems? And does the shift toward unmanned marine operations create a stronger case for having a digital parts inventory that can produce replacements fast — before the next deployment?"*
+**Q2 — How you are already using 3D printing:**
+> *"I understand Voltai is already using 3D printers. Which parts are you printing today, and why those parts? Is printing done in-house or through partners, and what materials and qualification steps do you rely on?"*
 
-**Follow-ups:** What's the failure mode that worries you most on an unmanned vessel? How quickly do autonomous operators need replacement parts? Is there a preventive maintenance model for autonomous marine systems?
-
----
-
-**Q4 — Canadian Coast Guard, DFO, and government procurement:**
-> *"Voltai was born from an Innovative Solutions Canada Challenge sponsored by DFO and the Canadian Coast Guard. You've been inside the government innovation procurement process. From your experience — how receptive are these agencies to adopting Canadian-made technology? And would a 'Buy Canadian' or sovereign supply chain mandate help platforms like ours (and companies like yours) get traction with government fleets?"*
-
-**Follow-ups:** Is the Coast Guard actively looking for Canadian suppliers for vessel components? Do you see a path where ocean tech startups collectively push for Canadian-first procurement? What was the hardest part of the ISC Challenge process?
+**Follow-ups:** What is the decision rule for print vs. machine? Any reliability or certification hurdles? What failed prints taught you the most?
 
 ---
 
-**Q5 — Building an ocean tech company in Atlantic Canada — what's missing:**
-> *"You relocated from Ontario to Nova Scotia specifically to be closer to the ocean and the ecosystem here — COVE, Ocean Startup Project, Innovacorp, Invest Nova Scotia. As a founder who has been through it: what's working in this ecosystem, and what's still missing? If you could wave a magic wand and have one platform, service, or piece of infrastructure that doesn't exist yet — what would it be?"*
+**Q3 — Manufacturing workflow and where digital inventory could help:**
+> *"If I map your current workflow from design to build to deployment, where do delays or rework happen most often? If you had a digital parts library with version control, qualified designs, and a repeatable certification record, which part of your workflow would improve first?"*
 
-**Follow-ups:** What resources at COVE do you use most? Is access to marine-grade manufacturing a bottleneck for startups here? Do you see other ocean tech founders struggling with the same supply chain issues?
+**Follow-ups:** Design iteration speed? Documentation for customers? Supplier handoffs? What data do you wish you had at your fingertips?
+
+---
+
+**Q4 — Supply chain economics and AM trade-offs:**
+> *"When you compare printed parts vs. conventional manufacturing for your components, what are the real trade-offs you see in cost, lead time, and performance? Where does AM clearly win, and where does it still lose?"*
+
+**Follow-ups:** Which parts are most sensitive to lead time? Are you optimizing for cost, performance, or speed today? What would change your AM usage mix?
+
+---
+
+**Q5 — Fitting the AddManuChain pitch into Voltai's reality:**
+> *"If AddManuChain offered a certified digital inventory for your parts, with trusted print partners and automated certification records, where would that fit into your business plan? Would it help you scale pilots, de-risk deployments, or open new customers?"*
+
+**Follow-ups:** Who would need to trust the certification record (customers, insurers, regulators)? Would you pay per part, per fleet, or per project? What proof would you need before adopting it?
 
 ---
 
@@ -105,11 +105,11 @@ Maja is the **founder and CEO of Voltai** — a Nova Scotia-based ocean cleantec
 
 | # | Hypothesis | Question |
 |---|------------|----------|
-| H1 | Ocean tech startups face significant parts sourcing / manufacturing pain | Q1 |
-| H2 | AM is relevant for custom marine hardware (not just O&G spare parts) | Q2 |
-| H3 | Autonomous vessels create stronger demand for digital spare parts | Q3 |
-| H4 | Canadian government procurement favors (or could favor) Canadian-made platforms | Q4 |
-| H5 | Atlantic Canada's ocean tech ecosystem lacks manufacturing infrastructure | Q5 |
+| H1 | Voltai's commercial plan hinges on scaling hardware efficiently | Q1 |
+| H2 | Voltai already uses AM for specific parts with clear decision rules | Q2 |
+| H3 | Digital inventory could reduce iteration and documentation friction | Q3 |
+| H4 | AM trade-offs are currently balanced by lead time and reliability | Q4 |
+| H5 | AddManuChain can plug into Voltai's scale-up plan | Q5 |
 | H6 | CEOTR / Dalhousie partnership could validate AM marine components | B1 |
 
 ---

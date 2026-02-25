@@ -1,152 +1,172 @@
-# Interview 21: Arad Gharagozli - Galaxia Mission Systems
-**Scheduled Date:** TBD  
-**Interview Type:** Customer Discovery  
-**Location:** Nova Scotia, Canada (Local!)
+# Interview #21 — Pre-Interview Brief
+## Arad Gharagozli — Founder & CEO, Galaxia Mission Systems
+**Organization:** Galaxia Mission Systems — Nova Scotia, Canada  
+**Date:** TBD  
+**Prepared:** February 24, 2026
 
 ---
 
-## Contact Information
+## INTERVIEWEE PROFILE
 
-| Field | Value |
-|-------|-------|
+| Field | Detail |
+|-------|--------|
 | **Name** | Arad Gharagozli |
-| **Title** | Founder & CEO |
-| **Organization** | Galaxia Mission Systems |
+| **Role** | Founder & CEO |
+| **Company** | Galaxia Mission Systems |
+| **Sector** | Space & Defence — Intelligent Satellite Manufacturing |
+| **Location** | Nova Scotia, Canada (Local!) |
+| **Education** | NSCC (Electronic Engineering Technology) → Dalhousie University (M.Eng., Mechanical Engineering) ← **DALHOUSIE ALUM** |
+| **Training** | Canadian Space Agency, European Space Agency |
 | **LinkedIn** | [linkedin.com/in/aradg](https://www.linkedin.com/in/aradg/) |
-| **Website** | [arad.me](https://arad.me) |
-| **Location** | Nova Scotia, Canada |
-| **Interview Status** | Pending |
 
 ---
 
-## About Arad Gharagozli
+## WHY THIS INTERVIEW MATTERS
 
-### Background
-- **Education:** 
-  - Electronic Engineering Technology (NSCC)
-  - Electrical Engineering (Undergraduate)
-  - **Master's in Mechanical Engineering - Dalhousie University** ← DALHOUSIE ALUM!
-- **Training:** Canadian Space Agency, European Space Agency
-- **Founded:** Dalhousie Space Systems Lab during undergrad
-
-### Company: Galaxia Mission Systems
-- **Focus:** Manufacturing intelligent satellites
-- **Specialty:** Advanced space-intelligence platforms for defense and commercial
-- **Technology:** Satellites that process data in orbit using AI
-- **Status:** One of Canada's fastest-growing spacecraft manufacturers
+- **Local Nova Scotia company** — same region, easy to build an ongoing relationship
+- **Dalhousie alumni connection** — natural rapport, shared network
+- **Space + Defence crossover** — aligns directly with the sovereign resilience and government anchor strategy validated across 50+ interviews
+- **AM is standard in the space sector** — Bachar Elzein (Reaction Dynamics, Interview #50) confirmed that rockets use AM extensively and trust it at a level commercial aviation does not. Satellites occupy a similar position: small volumes, high precision, short production runs — exactly where AM shines.
+- **AI in orbit** — Arad's AI-processing satellites align with AddManuChain's AI inventory vision
 
 ---
 
-## Strategic Relevance
+## CONTEXT FROM BACHAR ELZEIN (Interview #50 — Reaction Dynamics)
 
-| Factor | Relevance to Lab2Market |
-|--------|------------------------|
-| **Space Industry** | HIGH PRIORITY sector (per Harvey Doane interview) |
-| **Nova Scotia Local** | Same region as you - easy to meet |
-| **Dalhousie Alum** | Natural connection point |
-| **Satellite Manufacturing** | Likely uses AM for prototyping/production |
-| **Defense Applications** | Aligns with Lee Vessey/Thales work |
-| **AI Focus** | Aligns with your AI inventory vision |
+Before this interview, Bachar Elzein (CEO of a Canadian rocket company) gave us critical calibration:
 
----
+> *"A rocket has to live 4 minutes. An airplane has to live 40 years."*
 
-## Interview Questions
+> *"A typical rocket engine has 500 to 5,000 parts. Ours has 3 — because of additive manufacturing."*
 
-### Opening (2-3 minutes)
+> *"We say 'thank you' and we test everything ourselves to 3,000 psi. We found mistakes in data sheets shared with 60 other companies."*
 
-1. **As a fellow Dalhousie grad, I'm excited to connect! Can you tell me about your journey from the Dalhousie Space Systems Lab to founding Galaxia?**
-
-2. **What's the current state of Galaxia—how many satellites have you built, and what's your production capacity?**
+**Key lesson for Arad's interview:** Space and aerospace companies already trust AM for production parts, not just prototypes. Certification in space is driven by testing, not supplier trust. We want to understand how satellite manufacturers handle this, and whether digital inventory of AM-qualified parts would be relevant given their low-volume, high-precision production environment.
 
 ---
 
-### Manufacturing & Supply Chain (10 minutes)
-
-3. **Walk me through how you manufacture a satellite—what are the main components and manufacturing processes?**
-   - *Probe:* Where does additive manufacturing fit in your production?
-   - *Probe:* What percentage of parts are 3D printed vs. traditional manufacturing?
-
-4. **For spare parts and replacement components, how do you currently manage inventory?**
-   - *Probe:* Do you stock parts? Hold digital files? Order on-demand?
-   - *Probe:* What's your biggest pain point in parts availability?
-
-5. **Satellites have extremely tight tolerances and certification requirements. How do you handle quality assurance for AM parts?**
-   - *Probe:* What certifications are required?
-   - *Probe:* Any parts you CAN'T use AM for due to certification?
-
-6. **What's your supply chain like—are you sourcing mostly from Canada or internationally?**
-   - *Probe:* Any supply chain disruptions that have impacted production?
-   - *Probe:* Interest in more localized/on-demand manufacturing?
+## 5 CORE QUESTIONS
 
 ---
 
-### Space Industry Context (5 minutes)
+### Q1 — Manufacturing workflow and AM's role
 
-7. **Harvey Doane (Interview 16) told me the space industry prioritizes Safety > Time > Cost. Does that match your experience?**
-   - *Probe:* How do you balance speed-to-market with quality requirements?
+**🇬🇧 English:**
+> *"Arad, Galaxia is one of Canada's fastest-growing spacecraft manufacturers. Can you walk me through how a satellite actually gets built — from design to finished hardware? Where does additive manufacturing fit into that process today, and how has your confidence in using AM for production parts evolved since you founded the company?"*
 
-8. **For defense applications specifically, how do you handle IP protection and security requirements?**
-   - *Probe:* Would on-premise/local processing be important for a digital inventory solution?
+**🇮🇷 فارسی:**
+> *«آراد، گالاکسیا یکی از سریع‌ترین شرکت‌های سازنده فضاپیما در کاناداست. می‌تونی از مرحله طراحی تا محصول نهایی برام توضیح بدی که چطور یه ماهواره ساخته می‌شه؟ چاپ سه‌بعدی الان کجای این فرآیند قرار داره، و اعتمادت به استفاده از AM برای قطعات تولیدی از وقتی شرکت رو تأسیس کردی چطور تغییر کرده؟»*
 
-9. **What's the biggest operational challenge Galaxia faces right now that technology could help solve?**
-
----
-
-### Digital Inventory / AM Platform (5 minutes)
-
-10. **I'm researching a platform that would help companies manage digital inventory—storing part files digitally and printing on-demand rather than warehousing. Would that concept be relevant for Galaxia?**
-    - *Probe:* What would make it valuable?
-    - *Probe:* What would be barriers to adoption?
-
-11. **If you could wave a magic wand and solve one spare parts or manufacturing challenge, what would it be?**
+**Follow-ups:** What percentage of parts are AM-produced vs. traditionally manufactured? Are there parts you would like to print but can't yet due to certification or material constraints?
 
 ---
 
-### Local Ecosystem (3 minutes)
+### Q2 — Spare parts, inventory, and supply chain
 
-12. **What's it like building a space company in Nova Scotia? What's the local ecosystem like for advanced manufacturing?**
-    - *Probe:* Any gaps in local capabilities?
-    - *Probe:* Are there other space/aerospace companies here I should talk to?
+**🇬🇧 English:**
+> *"When Galaxia needs a replacement component — whether for a satellite in production, test equipment, or ground infrastructure — how do you currently handle that? Do you hold physical stock, maintain digital files, or order on-demand? And what's the biggest supply chain pain point you've run into — especially for any parts that come from overseas suppliers?"*
 
-13. **Any connection to PAL Aerospace or Maritime Launch Services?**
+**🇮🇷 فارسی:**
+> *«وقتی گالاکسیا به یه قطعه جایگزین نیاز داره — چه برای ماهواره‌ای که داره تولید می‌شه، چه برای تجهیزات آزمایشی یا زیرساخت زمینی — الان چطور مدیریتش می‌کنی؟ موجودی فیزیکی نگه می‌داری، فایل‌های دیجیتال داری، یا سفارش آنی می‌دی؟ و بزرگ‌ترین چالش زنجیره تأمینت چیه — بخصوص برای قطعاتی که از تأمین‌کننده‌های خارجی میان؟»*
 
----
-
-### Closing (2 minutes)
-
-14. **What advice would you give to someone trying to sell into the space industry?**
-
-15. **Is there anyone else in your network you'd recommend I speak with?**
-
-16. **Would you be open to a follow-up conversation or potentially a pilot if we develop something relevant?**
+**Follow-ups:** Has a supply chain disruption ever directly impacted a production timeline? How long are typical lead times for specialized components?
 
 ---
 
-## Key Hypotheses to Validate
+### Q3 — Certification: how do you actually prove an AM part is safe?
 
-- [ ] Space companies use AM for production (not just prototyping)
-- [ ] Certification is a barrier for AM adoption in space
-- [ ] Local/Nova Scotia manufacturing capability is valued
-- [ ] Digital inventory concept is relevant for satellite manufacturing
-- [ ] Defense applications require on-premise data processing
+**🇬🇧 English:**
+> *"Bachar Elzein at Reaction Dynamics told me their philosophy is: 'trust nobody, test everything' — they re-rate every valve themselves regardless of what a supplier certifies it to, because they've caught errors in manufacturer data sheets. For satellites, what's your equivalent approach? When you use an AM-produced part in a satellite, what does the certification and validation process actually look like — and who needs to sign off on it?"*
 
----
+**🇮🇷 فارسی:**
+> *«باشار الزین از Reaction Dynamics بهم گفت فلسفه‌شون اینه: "به هیچ‌کس اعتماد نکن، همه چیز رو خودت تست کن" — اونا هر شیر رو خودشون مجدداً رتبه‌بندی می‌کنن، چون اشتباهاتی تو دیتاشیت‌های سازنده پیدا کردن. برای ماهواره‌ها، معادل این رویکرد چیه؟ وقتی از یه قطعه AM در یه ماهواره استفاده می‌کنی، فرآیند تأیید و اعتبارسنجی واقعاً چه شکلیه — و چه کسی باید تأییدش کنه؟»*
 
-## Connection Points
-
-- **Dalhousie Alumni** - Strongest connection
-- **Nova Scotia Local** - Easy to meet in person
-- **Dr. Ali Nasiri** - May know Arad through Dalhousie Engineering
-- **Lee Vessey (Thales)** - Defense overlap
-- **Harvey Doane** - Space industry context
+**Follow-ups:** Do you work with a classification body or standards organization (CSA, ESA standards, DND)? Is there a certification that would unlock AM adoption for parts you currently can't use it for?
 
 ---
 
-## Notes
+### Q4 — Defence, sovereignty, and IP protection
 
-This is a **HIGH PRIORITY** interview because:
-1. **Local Nova Scotia company** - Easy access, potential ongoing relationship
-2. **Dalhousie connection** - Natural rapport
-3. **Space industry** - High-value target sector
-4. **Defense applications** - Aligns with sovereign resilience theme
-5. **AI focus** - Resonates with your platform vision
+**🇬🇧 English:**
+> *"Galaxia focuses on defence and commercial intelligence satellites — platforms where data sovereignty and IP protection are existential concerns. If a platform existed that stored your qualified AM part files digitally and allowed on-demand printing at certified facilities in Canada — how important would it be that the files never leave Canadian soil, and that every print is logged and traceable? Would those security features be a 'nice to have' or a hard requirement for defence customers?"*
+
+**🇮🇷 فارسی:**
+> *«گالاکسیا روی ماهواره‌های اطلاعاتی دفاعی و تجاری تمرکز داره — پلتفرم‌هایی که حاکمیت داده و حفاظت از IP در اونا حیاتیه. اگه یه پلتفرم وجود داشت که فایل‌های AM واجد شرایطت رو به صورت دیجیتال نگه می‌داشت و امکان چاپ آنی در تأسیسات تأیید شده در کانادا رو می‌داد — چقدر مهم می‌بود که فایل‌ها از خاک کانادا خارج نشن، و هر چاپ ثبت و قابل ردیابی باشه؟ این ویژگی‌های امنیتی برای مشتریان دفاعی "خوب ولی ضروری نیست" هستن یا یه الزام سخت؟»*
+
+**Follow-ups:** What security or data standards do your defence customers require? Have you had to turn down partnerships because a supplier couldn't meet these requirements?
+
+---
+
+### Q5 — The Canada opportunity: ecosystem and platform fit
+
+**🇬🇧 English:**
+> *"We've spoken with over 50 experts — from the Canadian Navy, Lloyd's Register, Irving Shipbuilding, Aker Solutions, and Equinor — and one thing that comes up consistently is that Canada needs its own digital AM ecosystem, not just access to global platforms. As someone building a space company in Nova Scotia, do you feel that gap? And if AddManuChain established itself as the Canadian platform — connecting qualified AM facilities, OEMs, certification bodies, and operators — would that be something Galaxia would engage with, either as a buyer of printing capacity or as a provider of your own expertise?"*
+
+**🇮🇷 فارسی:**
+> *«ما با بیش از ۵۰ متخصص صحبت کردیم — از نیروی دریایی کانادا، Lloyd's Register، Irving Shipbuilding، Aker Solutions و Equinor — و یه چیزی که مداوم مطرح می‌شه اینه که کانادا به اکوسیستم AM دیجیتال خودش نیاز داره، نه فقط دسترسی به پلتفرم‌های جهانی. به عنوان کسی که داره یه شرکت فضایی در نوا اسکوشیا می‌سازه، این شکاف رو احساس می‌کنی؟ و اگه AddManuChain خودش رو به عنوان پلتفرم کانادایی تثبیت کنه — که تأسیسات AM واجد شرایط، سازندگان OEM، نهادهای صدور گواهینامه و اپراتورها رو به هم وصل می‌کنه — این چیزیه که گالاکسیا باهاش درگیر می‌شه، چه به عنوان خریدار ظرفیت چاپ چه به عنوان ارائه‌دهنده تخصصت؟»*
+
+**Follow-ups:** Who at Galaxia would make the decision to adopt a platform like this? What would the ROI case need to show?
+
+---
+
+## 2 BONUS QUESTIONS
+
+---
+
+### B1 — AM for repair: adding material to worn parts
+
+**🇬🇧 English:**
+> *"Bachar Elzein mentioned a technology called Directed Energy Deposition — where instead of printing a new part, you add material directly onto a worn or damaged part to restore it. For satellite or ground infrastructure components that experience wear, is that kind of repair-by-AM something that's on your radar, or is replacement always the answer in your world?"*
+
+**🇮🇷 فارسی:**
+> *«باشار الزین از فناوری‌ای به نام Directed Energy Deposition صحبت کرد — جایی که به جای چاپ یه قطعه جدید، مستقیماً روی یه قطعه فرسوده یا آسیب‌دیده مواد اضافه می‌کنی تا بازسازیش کنی. برای اجزای ماهواره یا زیرساخت زمینی که دچار سایش می‌شن، آیا این نوع تعمیر با AM چیزیه که رادارته، یا در دنیای شما تعویض همیشه جواب نهاییه؟»*
+
+---
+
+### B2 — Referrals into the space and defence ecosystem
+
+**🇬🇧 English:**
+> *"Three specific asks: First — within the Canadian space and defence manufacturing ecosystem, who else should I be talking to that I'm probably missing? Second — is there anyone at DND, CSA, or the Canadian Space Agency procurement side who you think would give me 20 minutes on the spare parts and supply chain challenge? Third — are you aware of any other Nova Scotia or Atlantic Canada companies doing advanced manufacturing for defence or aerospace that we haven't connected yet?"*
+
+**🇮🇷 فارسی:**
+> *«سه خواسته مشخص دارم: اول — در اکوسیستم تولید فضایی و دفاعی کانادا، به نظرت با چه کسی باید صحبت کنم که احتمالاً داره از دستم در می‌ره؟ دوم — آیا کسی در DND، CSA، یا بخش تدارکات آژانس فضایی کانادا هست که فکر می‌کنی ۲۰ دقیقه درباره چالش قطعات یدکی و زنجیره تأمین به من وقت بده؟ سوم — آیا از شرکت‌های دیگه‌ای در نوا اسکوشیا یا آتلانتیک کانادا که تولید پیشرفته برای دفاع یا هوافضا انجام می‌دن آگاهی داری که هنوز باهاشون ارتباط نگرفتم؟»*
+
+---
+
+## KEY HYPOTHESES TO VALIDATE
+
+| # | Hypothesis | Question |
+|---|------------|----------|
+| H1 | Space companies use AM for production parts, not just prototypes | Q1 |
+| H2 | Digital inventory of pre-qualified AM files is relevant for low-volume satellite production | Q2 |
+| H3 | "Trust nobody, test everything" is the real certification philosophy in space | Q3 |
+| H4 | Defence customers require Canadian data sovereignty as a hard requirement | Q4 |
+| H5 | Canada-specific AM platform fills a gap Galaxia recognizes | Q5 |
+| H6 | AM repair (deposition) is a separate and underexplored opportunity | B1 |
+
+---
+
+## CONTEXT TO SHARE WITH ARAD
+
+- We've completed 50+ interviews across Canadian Navy, O&G, maritime, aerospace, and defence
+- Lloyd's Register (Dave Whitehouse) gave positive feedback; we're in active conversation with Atlantic XL (first LR-certified AM facility in the Americas, St. John's NL)
+- Irving Shipbuilding and Aker Solutions (Hebron) are engaged
+- Bachar Elzein at Reaction Dynamics confirmed Canadian government AM funding is accessible (they secured it)
+- Lee Vessey (Thales Canada / Canadian Navy) has an active $360K AM initiative with federal matching funding
+- We're building AddManuChain as the Canadian platform — not competing with FieldNode, complementing it
+
+---
+
+## IMPORTANT NOTES ON FRAMING
+
+**Lead with the Dalhousie connection.** Same university means you speak the same language. Reference Dr. Ali Nasiri if relevant — he may know Arad through Dalhousie Engineering.
+
+**Don't pitch — map his workflow.** The most valuable output is understanding how Galaxia handles AM parts today and where the friction is.
+
+**Use Bachar's insights as a bridge.** Saying "a fellow Canadian aerospace founder told me..." is more powerful than citing a generic industry report.
+
+**Defence = data sovereignty.** For space and defence customers, *where* the data lives matters as much as *what* the data is. This is where AddManuChain's Canada-first positioning is strongest.
+
+---
+
+*Interview #21 | AddManuChain | Lab2Market Oceans Program 2026*
