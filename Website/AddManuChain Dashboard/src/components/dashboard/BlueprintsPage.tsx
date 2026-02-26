@@ -340,6 +340,7 @@ export function BlueprintsPage() {
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [form, setForm] = useState(blankForm)
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | undefined>()
+  const [addErrors, setAddErrors] = useState<{ name?: string; material?: string; oem?: string }>({})
 
   const categories = [...new Set(blueprints.map(b => b.category))]
 
@@ -372,8 +373,13 @@ export function BlueprintsPage() {
   }
 
   const handleAdd = () => {
-    if (!form.name.trim() || !form.material.trim() || !form.oem.trim()) {
-      toast.error('Name, Material, and OEM are required.')
+    const errors: typeof addErrors = {}
+    if (!form.name.trim()) errors.name = 'Required'
+    if (!form.material.trim()) errors.material = 'Required'
+    if (!form.oem.trim()) errors.oem = 'Required'
+    if (Object.keys(errors).length) {
+      setAddErrors(errors)
+      toast.error('Please fill in required fields.')
       return
     }
     const newId = `BP-${String(Math.floor(Math.random() * 8999) + 1000)}`
@@ -681,13 +687,29 @@ export function BlueprintsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="sm:col-span-2">
                 <Label className="text-sm font-medium mb-1.5 block">Part Name <span className="text-red-500">*</span></Label>
-                <Input placeholder="e.g. Thruster Bearing Housing" value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                <Input
+                  placeholder="e.g. Thruster Bearing Housing"
+                  value={form.name}
+                  onChange={e => {
+                    setForm(f => ({ ...f, name: e.target.value }))
+                    if (addErrors.name) setAddErrors(a => ({ ...a, name: undefined }))
+                  }}
+                  className={addErrors.name ? 'border-red-500' : ''}
+                />
+                {addErrors.name && <p className="text-xs text-red-500 mt-1">{addErrors.name}</p>}
               </div>
               <div>
                 <Label className="text-sm font-medium mb-1.5 block">Material <span className="text-red-500">*</span></Label>
-                <Input placeholder="e.g. Titanium Ti-6Al-4V" value={form.material}
-                  onChange={e => setForm(f => ({ ...f, material: e.target.value }))} />
+                <Input
+                  placeholder="e.g. Titanium Ti-6Al-4V"
+                  value={form.material}
+                  onChange={e => {
+                    setForm(f => ({ ...f, material: e.target.value }))
+                    if (addErrors.material) setAddErrors(a => ({ ...a, material: undefined }))
+                  }}
+                  className={addErrors.material ? 'border-red-500' : ''}
+                />
+                {addErrors.material && <p className="text-xs text-red-500 mt-1">{addErrors.material}</p>}
               </div>
               <div>
                 <Label className="text-sm font-medium mb-1.5 block">Category</Label>
@@ -696,8 +718,16 @@ export function BlueprintsPage() {
               </div>
               <div>
                 <Label className="text-sm font-medium mb-1.5 block">OEM / Company <span className="text-red-500">*</span></Label>
-                <Input placeholder="e.g. Rosen Maritime" value={form.oem}
-                  onChange={e => setForm(f => ({ ...f, oem: e.target.value }))} />
+                <Input
+                  placeholder="e.g. Rosen Maritime"
+                  value={form.oem}
+                  onChange={e => {
+                    setForm(f => ({ ...f, oem: e.target.value }))
+                    if (addErrors.oem) setAddErrors(a => ({ ...a, oem: undefined }))
+                  }}
+                  className={addErrors.oem ? 'border-red-500' : ''}
+                />
+                {addErrors.oem && <p className="text-xs text-red-500 mt-1">{addErrors.oem}</p>}
               </div>
               <div>
                 <Label className="text-sm font-medium mb-1.5 block">Certification Authority</Label>

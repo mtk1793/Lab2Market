@@ -100,7 +100,7 @@ export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMob
     <header className="sticky top-0 z-30 bg-[#F8FAFC] border-b border-slate-200">
       <div className="flex items-center justify-between h-16 px-6">
 {/* Mobile menu toggle + Title */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-1 min-w-0">
             {setMobileOpen && (
               <button
                 className="md:hidden p-1"
@@ -110,9 +110,9 @@ export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMob
                 <Menu className="w-6 h-6 text-slate-600" />
               </button>
             )}
-            <div>
-              <h1 className="text-xl font-bold text-[#0F172A]">{title}</h1>
-              {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+            <div className="min-w-0" onClick={e => e.stopPropagation()}>
+              <h1 className="text-xl font-bold text-[#0F172A] truncate">{title}</h1>
+              {subtitle && <p className="text-sm text-slate-500 truncate">{subtitle}</p>}
             </div>
         </div>
 

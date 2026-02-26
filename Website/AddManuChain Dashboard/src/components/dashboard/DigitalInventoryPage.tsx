@@ -556,7 +556,7 @@ export function DigitalInventoryPage() {
 
       {/* ── Quick Order Dialog ── */}
       <Dialog open={orderDialogOpen} onOpenChange={setOrderDialogOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Zap className="w-5 h-5 text-[#0EA5E9]" />
@@ -616,7 +616,7 @@ export function DigitalInventoryPage() {
 
       {/* ── Print Center Detail Dialog ── */}
       <Dialog open={centerDialogOpen} onOpenChange={setCenterDialogOpen}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-[#0EA5E9]" />

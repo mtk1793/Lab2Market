@@ -52,17 +52,17 @@ Three specific reasons this conversation matters for AddManuChain:
 
 ### Q2 — Blockchain and digital inventory: what did you actually try, and what worked?
 
-> *"You've been vocal about blockchain in shipping since at least 2018, and DCSA has been driving standardization for years. In practice — what did MSC actually pilot or deploy in digital supply chain, and what's your honest assessment of what moved the needle vs. what was a good idea that didn't land? We're building a platform that uses cryptographic tokens to authorize print orders for spare parts — the part doesn't exist until someone authorized it. I'm curious where you see that kind of 'digital rights management for physical things' fitting into the maritime supply chain conversation."*
+> *"You've been vocal about blockchain in shipping since at least 2018, and DCSA has been driving standardization for years. In practice — what did MSC actually pilot or deploy in digital supply chain, and what's your honest assessment of what moved the needle vs. what was a good idea that didn't land? 
 
 **Follow-ups:** Did blockchain in shipping solve a real problem or mostly a provenance/documentation problem? Where did standardization (DCSA) actually unlock something that bilateral agreements couldn't? Is the maritime industry genuinely ready to trust a token-based authorization system for physical parts, or is that 10 years away?
 
 ---
 
-### Q3 — Smart containers and IoT: if you know what's on the ship, can you predict what breaks?
+### Q3 — Predictive maintenance: has IoT actually helped you pre‑position spares?
 
-> *"TRAXENS, smart containers, real-time cargo monitoring — you've been pushing IoT into maritime for years. The obvious extension of that, from a maintenance perspective, is: if you have real-time sensor data from equipment on a vessel, you can predict what's going to fail before it does, and pre-position the right spare part at the right port. Has MSC — or the broader industry — actually gotten there? Or is predictive maintenance for maritime equipment still more aspiration than operational reality?"*
+> *"You've been an early adopter of TRAXENS containers and shipboard IoT. In theory, streaming sensor data should let you forecast failures and stage the right spare at the next port call. In practice, has MSC implemented that kind of prediction‑to‑supply pipeline, or is it still a future goal?"*
 
-**Follow-ups:** What's the biggest data gap between 'sensor on the ship' and 'part pre-positioned at the next port call'? Is the bottleneck data, logistics, or organizational — nobody owns predictive maintenance end-to-end? If a platform could close that loop — predict failure, authorize a certified replacement to be printed near the vessel's next port — is that a product the maritime industry would actually buy?
+**Follow-ups:** What’s the biggest obstacle — lack of data, logistics, or responsibility? If a system could go from a flagged failure to a certified part being 3D‑printed near the vessel, would MSC use it? 
 
 ---
 

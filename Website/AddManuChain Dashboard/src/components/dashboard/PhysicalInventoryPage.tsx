@@ -260,7 +260,11 @@ export function PhysicalInventoryPage() {
     }
 
     const handleAddPart = () => {
-        if (!newPart.name || !newPart.partNumber) {
+        const errs: typeof newPartErrors = {}
+        if (!newPart.name) errs.name = 'Required'
+        if (!newPart.partNumber) errs.partNumber = 'Required'
+        if (Object.keys(errs).length) {
+            setNewPartErrors(errs)
             toast.error('Part name and number are required')
             return
         }
@@ -691,7 +695,7 @@ export function PhysicalInventoryPage() {
 
             {/* Print Replacement Dialog */}
             <Dialog open={actionDialog === 'print'} onOpenChange={() => setActionDialog(null)}>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
                             <Printer className="w-5 h-5 text-indigo-600" />
@@ -729,7 +733,7 @@ export function PhysicalInventoryPage() {
 
             {/* Add Part Dialog */}
             <Dialog open={addPartOpen} onOpenChange={setAddPartOpen}>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                         <DialogTitle>Add Physical Part</DialogTitle>
                         <DialogDescription>Register a physical part in your inventory cabinet.</DialogDescription>
@@ -738,11 +742,29 @@ export function PhysicalInventoryPage() {
                         <div className="grid grid-cols-2 gap-3">
                             <div className="space-y-1">
                                 <Label className="text-xs">Part Name *</Label>
-                                <Input placeholder="e.g., Valve Body" value={newPart.name} onChange={e => setNewPart({ ...newPart, name: e.target.value })} className="h-8 text-sm" />
+                                <Input
+                                  placeholder="e.g., Valve Body"
+                                  value={newPart.name}
+                                  onChange={e => {
+                                    setNewPart({ ...newPart, name: e.target.value })
+                                    if (newPartErrors.name) setNewPartErrors(e => ({ ...e, name: undefined }))
+                                  }}
+                                  className={`h-8 text-sm ${newPartErrors.name ? 'border-red-500' : ''}`}
+                                />
+                                {newPartErrors.name && <p className="text-xs text-red-500 mt-1">{newPartErrors.name}</p>}
                             </div>
                             <div className="space-y-1">
                                 <Label className="text-xs">Part Number *</Label>
-                                <Input placeholder="PHY-XXXX" value={newPart.partNumber} onChange={e => setNewPart({ ...newPart, partNumber: e.target.value })} className="h-8 text-sm" />
+                                <Input
+                                  placeholder="PHY-XXXX"
+                                  value={newPart.partNumber}
+                                  onChange={e => {
+                                    setNewPart({ ...newPart, partNumber: e.target.value })
+                                    if (newPartErrors.partNumber) setNewPartErrors(e => ({ ...e, partNumber: undefined }))
+                                  }}
+                                  className={`h-8 text-sm ${newPartErrors.partNumber ? 'border-red-500' : ''}`}
+                                />
+                                {newPartErrors.partNumber && <p className="text-xs text-red-500 mt-1">{newPartErrors.partNumber}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3">
