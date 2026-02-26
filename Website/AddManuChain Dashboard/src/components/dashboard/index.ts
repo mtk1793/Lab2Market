@@ -1,6 +1,7 @@
 export { Sidebar } from './Sidebar'
 export { Header } from './Header'
 export { OverviewPage } from './OverviewPage'
+export { OnboardingTutorial, useOnboarding } from './OnboardingTutorial'
 export { OrdersPage } from './OrdersPage'
 export { BlueprintsPage } from './BlueprintsPage'
 export { CentersPage } from './CentersPage'

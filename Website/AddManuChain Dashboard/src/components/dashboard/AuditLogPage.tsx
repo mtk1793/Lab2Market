@@ -95,7 +95,7 @@ export function AuditLogPage() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Chain Integrity Banner */}
       <div className={`flex items-center gap-4 p-4 rounded-xl border ${allVerified
           ? 'bg-emerald-50 border-emerald-200'

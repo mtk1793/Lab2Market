@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X } from 'lucide-react'
+import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X, Menu } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
 import {
   DropdownMenu,
@@ -29,6 +29,8 @@ interface HeaderProps {
     onClick: () => void
   }
   onNavigate?: (tab: string) => void
+  mobileOpen?: boolean
+  setMobileOpen?: (open: boolean) => void
 }
 
 const getRoleBadgeColor = (role: string) => {
@@ -76,7 +78,7 @@ function buildSearchIndex() {
 
 const searchIndex = buildSearchIndex()
 
-export function Header({ title, subtitle, action, onNavigate }: HeaderProps) {
+export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMobileOpen }: HeaderProps) {
   const { data: session } = useSession()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
@@ -97,10 +99,21 @@ export function Header({ title, subtitle, action, onNavigate }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 bg-[#F8FAFC] border-b border-slate-200">
       <div className="flex items-center justify-between h-16 px-6">
-        {/* Title */}
-        <div>
-          <h1 className="text-xl font-bold text-[#0F172A]">{title}</h1>
-          {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+{/* Mobile menu toggle + Title */}
+          <div className="flex items-center gap-4">
+            {setMobileOpen && (
+              <button
+                className="md:hidden p-1"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Toggle menu"
+              >
+                <Menu className="w-6 h-6 text-slate-600" />
+              </button>
+            )}
+            <div>
+              <h1 className="text-xl font-bold text-[#0F172A]">{title}</h1>
+              {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+            </div>
         </div>
 
         {/* Actions */}

@@ -255,7 +255,7 @@ export function OrdersPage() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Token Display Banner */}
       {tokenVisible && (
         <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl animate-pulse">
@@ -374,6 +374,7 @@ export function OrdersPage() {
       {/* Orders Table */}
       <Card className="bg-white border-slate-200">
         <CardContent className="p-0">
+          <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="bg-slate-50">
@@ -497,6 +498,7 @@ export function OrdersPage() {
               })}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 

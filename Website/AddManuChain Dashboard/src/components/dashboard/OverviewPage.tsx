@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { format } from 'date-fns'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -117,7 +118,7 @@ export function OverviewPage() {
   ]
 
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5">
 
       {/* Alert banners */}
       {(drmReady > 0 || physOutOfStock > 0 || physLowStock > 0) && (
@@ -380,7 +381,7 @@ export function OverviewPage() {
                         <span style={{ color: TX_COLOR[tx.action] }}>{TX_LABEL[tx.action]}</span>
                         {' · '}{tx.quantity}× {tx.partName}
                       </p>
-                      <p className="text-[9px] text-slate-400">{tx.siteName} · {new Date(tx.timestamp).toLocaleDateString()}</p>
+                      <p className="text-[9px] text-slate-400">{tx.siteName} · {format(new Date(tx.timestamp), 'yyyy-MM-dd')}</p>
                     </div>
                   </div>
                 ))}

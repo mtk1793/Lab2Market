@@ -6,6 +6,8 @@ import {
   Sidebar,
   Header,
   OverviewPage,
+  OnboardingTutorial,
+  useOnboarding,
   OrdersPage,
   BlueprintsPage,
   CentersPage,
@@ -22,10 +24,11 @@ import {
   PrintApprovalPage,
   PhysicalInventoryPage,
 } from '@/components/dashboard'
-import { cn } from '@/lib/utils'
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const { showOnboarding, isLoading, completeOnboarding } = useOnboarding()
 
   const getPageTitle = () => {
     switch (activeTab) {
@@ -109,16 +112,28 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      {/* Sidebar */}
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      {/* Onboarding Tutorial for first-time users */}
+      {!isLoading && showOnboarding && (
+        <OnboardingTutorial onComplete={completeOnboarding} />
+      )}
+
+      {/* Sidebar (mobile controlled) */}
+      <Sidebar
+        activeTab={activeTab}
+        onTabChange={(t) => { setActiveTab(t); setMobileOpen(false); }}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
 
       {/* Main Content */}
-      <div className={cn('transition-all duration-300', 'ml-64')}>
+      <div className="ml-0 md:ml-64 transition-all duration-300">
         {/* Header */}
         <Header
           title={pageInfo.title}
           subtitle={pageInfo.subtitle}
           onNavigate={setActiveTab}
+          mobileOpen={mobileOpen}
+          setMobileOpen={setMobileOpen}
         />
 
         {/* Page Content */}

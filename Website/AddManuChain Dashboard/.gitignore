@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 local-*
+
+# local SQLite database
+*.db
+*.db-journal
 .claude
 .z-ai-config
 dev.log

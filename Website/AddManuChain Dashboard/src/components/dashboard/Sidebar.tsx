@@ -20,6 +20,7 @@ import {
   GraduationCap,
   Sparkles,
   KeyRound,
+  X,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
@@ -81,18 +82,30 @@ const menuSections = [
 interface SidebarProps {
   activeTab: string
   onTabChange: (tab: string) => void
+  mobileOpen?: boolean
+  onMobileClose?: () => void
 }
 
-export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <aside
-      className={cn(
-        'fixed left-0 top-0 z-40 h-screen bg-[#0F172A] border-r border-slate-800 transition-all duration-300 flex flex-col',
-        collapsed ? 'w-20' : 'w-64'
+    <>
+      {/* backdrop when mobile menu open */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-20 md:hidden"
+          onClick={onMobileClose}
+        />
       )}
-    >
+      <aside
+        className={cn(
+          'fixed left-0 top-0 z-40 h-full bg-[#0F172A] border-r border-slate-800 transition-all duration-300 flex flex-col',
+          collapsed ? 'w-20' : 'w-64',
+          mobileOpen ? 'block' : 'hidden',
+          'md:block'
+        )}
+      >
       {/* Logo */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
         <div className={cn('flex items-center gap-2', collapsed && 'hidden')}>
@@ -108,14 +121,23 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
             <Anchor className="w-5 h-5 text-white" />
           </div>
         )}
+        {/* Collapse button — desktop only */}
         <button
           onClick={() => setCollapsed(!collapsed)}
           className={cn(
-            'text-slate-400 hover:text-white transition-colors',
-            collapsed && 'hidden'
+            'hidden md:flex items-center justify-center text-slate-400 hover:text-white transition-colors',
+            collapsed && 'md:hidden'
           )}
         >
           <ChevronLeft className="w-5 h-5" />
+        </button>
+        {/* Close button — mobile only */}
+        <button
+          onClick={onMobileClose}
+          className="md:hidden flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5" />
         </button>
         {collapsed && (
           <button
@@ -186,5 +208,6 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
         </div>
       </div>
     </aside>
+  </>
   )
 }

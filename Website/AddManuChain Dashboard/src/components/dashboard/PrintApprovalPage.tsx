@@ -251,7 +251,7 @@ export function PrintApprovalPage() {
     const approvingOrderData = approvingOrder ? orders.find(o => o.id === approvingOrder.id) : null
 
     return (
-        <div className="p-6 space-y-6">
+        <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
             {/* Header Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Card className="bg-gradient-to-br from-purple-600 to-purple-700 border-none text-white">

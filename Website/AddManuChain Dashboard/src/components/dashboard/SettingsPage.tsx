@@ -13,11 +13,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { User, Building, Bell, Shield, CreditCard, Globe } from 'lucide-react'
+import { User, Building, Bell, Shield, CreditCard, Globe, HelpCircle, RotateCcw } from 'lucide-react'
+import { toast } from 'sonner'
 
 export function SettingsPage() {
+  const handleRestartTutorial = () => {
+    localStorage.removeItem('addmanuchain_onboarding_complete')
+    toast.success('Tutorial reset! Refresh the page to see the onboarding guide.')
+  }
+
   return (
-    <div className="p-6 space-y-6 max-w-4xl">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-4xl">
       {/* Profile Settings */}
       <Card className="bg-white border-slate-200">
         <CardHeader>
@@ -268,6 +274,53 @@ export function SettingsPage() {
               <p className="text-sm text-slate-500">Receive real-time order updates</p>
             </div>
             <Button variant="outline">Configure</Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Help & Support */}
+      <Card className="bg-white border-slate-200">
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center">
+              <HelpCircle className="w-5 h-5 text-[#8B5CF6]" />
+            </div>
+            <div>
+              <CardTitle className="text-lg font-semibold text-[#0F172A]">Help & Support</CardTitle>
+              <CardDescription>Get help and learn how to use the platform</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+            <div>
+              <p className="font-medium text-[#0F172A]">Platform Tutorial</p>
+              <p className="text-sm text-slate-500">Restart the onboarding guide to learn about all features</p>
+            </div>
+            <Button 
+              variant="outline" 
+              onClick={handleRestartTutorial}
+              className="gap-2"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Restart Tutorial
+            </Button>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium text-[#0F172A]">Documentation</p>
+              <p className="text-sm text-slate-500">View the full user guide and API documentation</p>
+            </div>
+            <Button variant="outline">View Docs</Button>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium text-[#0F172A]">Contact Support</p>
+              <p className="text-sm text-slate-500">Get help from our support team</p>
+            </div>
+            <Button variant="outline">Contact Us</Button>
           </div>
         </CardContent>
       </Card>
