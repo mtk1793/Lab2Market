@@ -1,206 +1,393 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import {
-  Package,
-  Clock,
-  CheckCircle,
-  DollarSign,
-  Factory,
-  FileBox,
-  AlertTriangle,
+  Package, Clock, CheckCircle, DollarSign, Factory, FileBox,
+  AlertTriangle, KeyRound, Boxes, ShieldCheck, Lock, Zap, Activity,
+  Building2, Award, Flame, Anchor, Ship, Warehouse,
 } from 'lucide-react'
-import { orders, printCenters, blueprints, dashboardStats } from '@/lib/static-data'
+import {
+  orders, printCenters, blueprints, dashboardStats,
+  physicalParts, physicalSites, inventoryTransactions,
+} from '@/lib/static-data'
 
-const statusColors: Record<string, string> = {
-  pending: 'bg-slate-100 text-slate-600',
-  printing: 'bg-[#0EA5E9]/10 text-[#0EA5E9]',
-  quality_check: 'bg-[#F59E0B]/10 text-[#F59E0B]',
-  shipped: 'bg-[#14B8A6]/10 text-[#14B8A6]',
-  delivered: 'bg-green-100 text-green-600',
+// ── tiny viz helpers ─────────────────────────────────────────────────────────
+
+function Sparkline({ values, color = '#0EA5E9', height = 20 }: { values: number[]; color?: string; height?: number }) {
+  if (values.length < 2) return null
+  const max = Math.max(...values) || 1
+  const pts = values.map((v, i) => `${(i / (values.length - 1)) * 80},${height - (v / max) * height}`).join(' ')
+  return (
+    <svg width={80} height={height} style={{ overflow: 'visible' }}>
+      <polyline points={pts} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
 }
 
-const statusLabels: Record<string, string> = {
-  pending: 'Pending',
-  printing: 'Printing',
-  quality_check: 'Quality Check',
-  shipped: 'Shipped',
-  delivered: 'Delivered',
+function RingChart({ pct, color, size = 48, stroke = 5 }: { pct: number; color: string; size?: number; stroke?: number }) {
+  const r = (size - stroke) / 2
+  const circ = 2 * Math.PI * r
+  const dash = (pct / 100) * circ
+  return (
+    <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e2e8f0" strokeWidth={stroke} />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke}
+        strokeDasharray={`${dash} ${circ - dash}`} strokeLinecap="round" />
+    </svg>
+  )
 }
+
+function StatusBar({ label, count, total, color }: { label: string; count: number; total: number; color: string }) {
+  const pct = total ? (count / total) * 100 : 0
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <span className="text-xs font-bold" style={{ color }}>{count}</span>
+      <div className="relative w-6 h-20 bg-slate-100 rounded-full overflow-hidden">
+        <div className="absolute bottom-0 left-0 right-0 rounded-full"
+          style={{ height: `${pct}%`, background: color }} />
+      </div>
+      <span className="text-[9px] text-slate-400 text-center leading-tight w-10">{label}</span>
+    </div>
+  )
+}
+
+// ── derived data ─────────────────────────────────────────────────────────────
+
+const STATUS_COLOR: Record<string, string> = {
+  pending: '#94a3b8', printing: '#0EA5E9', quality_check: '#F59E0B', shipped: '#14B8A6', delivered: '#10B981',
+}
+const STATUS_LABELS: Record<string, string> = {
+  pending: 'Pending', printing: 'Printing', quality_check: 'QC', shipped: 'Shipped', delivered: 'Done',
+}
+const SITE_ICON: Record<string, React.ElementType> = {
+  offshore_rig: Anchor, vessel: Ship, onshore_yard: Building2, warehouse: Warehouse,
+}
+
+const statusBreakdown = (['pending', 'printing', 'quality_check', 'shipped', 'delivered'] as const).map(s => ({
+  status: s, count: orders.filter(o => o.status === s).length,
+}))
+
+const drmLocked = orders.filter(o => !o.oemApproval.approved && !o.certApproval.approved && !['delivered'].includes(o.status)).length
+const drmPartial = orders.filter(o => (o.oemApproval.approved !== o.certApproval.approved) && !['delivered'].includes(o.status)).length
+const drmReady = orders.filter(o => o.oemApproval.approved && o.certApproval.approved && ['pending', 'printing'].includes(o.status)).length
+const nowPrinting = orders.filter(o => o.status === 'printing').length
+const tokensIssued = orders.filter(o => o.printAuthToken).length
+
+const physOutOfStock = physicalParts.filter(p => p.quantity === 0).length
+const physLowStock = physicalParts.filter(p => p.quantity > 0 && p.quantity < p.minStock).length
+const physCondemned = physicalParts.filter(p => p.condition === 'condemned').length
+const physTotalValue = physicalParts.reduce((s, p) => s + p.quantity * p.unitCost, 0)
+
+const recentActivity = [...inventoryTransactions]
+  .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+  .slice(0, 8)
+  .map(tx => ({
+    ...tx,
+    partName: physicalParts.find(p => p.id === tx.partId)?.name ?? '—',
+    siteName: physicalSites.find(s => s.id === tx.siteId)?.name ?? '—',
+  }))
+
+const TX_COLOR: Record<string, string> = {
+  received: '#10B981', consumed: '#94a3b8', condemned: '#ef4444',
+  transferred_in: '#0EA5E9', transferred_out: '#8B5CF6', inspected: '#F59E0B',
+}
+const TX_LABEL: Record<string, string> = {
+  received: 'Received', consumed: 'Consumed', condemned: 'Condemned',
+  transferred_in: '↓ Transfer In', transferred_out: '↑ Transfer Out', inspected: 'Inspected',
+}
+
+const bpBreakdown = [
+  { label: 'Active', count: blueprints.filter(b => b.status === 'active').length, color: '#10B981' },
+  { label: 'Pending', count: blueprints.filter(b => b.status === 'pending_review').length, color: '#F59E0B' },
+  { label: 'Archived', count: blueprints.filter(b => b.status === 'archived').length, color: '#64748b' },
+]
+
+const weeklyVelocity = [2, 3, 4, 3, 5, 4, orders.filter(o => o.status !== 'delivered').length]
+
+// ── component ────────────────────────────────────────────────────────────────
 
 export function OverviewPage() {
   const kpis = [
-    {
-      title: 'Active Orders',
-      value: dashboardStats.activeOrders.toString(),
-      change: `${dashboardStats.totalOrders} total`,
-      icon: Package,
-      color: '#0EA5E9',
-    },
-    {
-      title: 'Parts Delivered',
-      value: dashboardStats.deliveredParts.toLocaleString(),
-      change: 'Total delivered',
-      icon: CheckCircle,
-      color: '#14B8A6',
-    },
-    {
-      title: 'Avg. Lead Time',
-      value: `${dashboardStats.avgLeadTime} days`,
-      change: '-33% vs traditional',
-      icon: Clock,
-      color: '#F59E0B',
-    },
-    {
-      title: 'Cost Savings',
-      value: `$${Math.round(dashboardStats.costSavings / 1000)}K`,
-      change: 'YTD savings',
-      icon: DollarSign,
-      color: '#10B981',
-    },
+    { title: 'Active Orders', value: dashboardStats.activeOrders, suffix: '', sub: `${dashboardStats.totalOrders} total`, icon: Package, color: '#0EA5E9', ring: Math.round((dashboardStats.activeOrders / (dashboardStats.totalOrders || 1)) * 100) },
+    { title: 'Parts Delivered', value: dashboardStats.deliveredParts, suffix: '', sub: 'Certified deliveries', icon: CheckCircle, color: '#10B981', ring: 75 },
+    { title: 'Avg Lead Time', value: dashboardStats.avgLeadTime, suffix: 'd', sub: '−33% vs traditional', icon: Clock, color: '#F59E0B', ring: 33 },
+    { title: 'Cost Savings', value: `$${Math.round(dashboardStats.costSavings / 1000)}K`, suffix: '', sub: 'YTD vs. traditional', icon: DollarSign, color: '#8B5CF6', ring: 68 },
   ]
 
-  const recentOrders = orders.slice(0, 5)
-  const onlineCenters = printCenters.filter(c => c.status !== 'offline')
-  const pendingBlueprints = blueprints.filter(b => b.status === 'pending_review')
-
   return (
-    <div className="p-6 space-y-6">
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {kpis.map((kpi, index) => (
-          <Card key={index} className="bg-white border-slate-200">
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between">
+    <div className="p-6 space-y-5">
+
+      {/* Alert banners */}
+      {(drmReady > 0 || physOutOfStock > 0 || physLowStock > 0) && (
+        <div className="flex flex-wrap gap-3">
+          {drmReady > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 font-semibold"><ShieldCheck className="w-4 h-4" />{drmReady} order{drmReady > 1 ? 's' : ''} cleared — ready for Secure Print</div>}
+          {physOutOfStock > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 font-semibold"><AlertTriangle className="w-4 h-4" />{physOutOfStock} physical part{physOutOfStock > 1 ? 's' : ''} out of stock</div>}
+          {physLowStock > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 font-semibold"><Package className="w-4 h-4" />{physLowStock} part{physLowStock > 1 ? 's' : ''} below minimum stock</div>}
+        </div>
+      )}
+
+      {/* KPI row */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {kpis.map((kpi, i) => (
+          <Card key={i} className="bg-white border-slate-200">
+            <CardContent className="p-4">
+              <div className="flex items-start justify-between mb-2">
                 <div>
-                  <p className="text-sm text-slate-500 mb-1">{kpi.title}</p>
-                  <p className="text-3xl font-bold text-[#0F172A]">{kpi.value}</p>
-                  <p className="text-xs text-[#14B8A6] mt-1">{kpi.change}</p>
+                  <p className="text-[10px] text-slate-500">{kpi.title}</p>
+                  <p className="text-2xl font-bold text-[#0F172A]">{kpi.value}{kpi.suffix}</p>
+                  <p className="text-[10px] text-slate-400">{kpi.sub}</p>
                 </div>
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `${kpi.color}15` }}
-                >
-                  <kpi.icon className="w-6 h-6" style={{ color: kpi.color }} />
+                <div className="relative flex-shrink-0">
+                  <RingChart pct={kpi.ring} color={kpi.color} size={44} stroke={4} />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <kpi.icon className="w-4 h-4" style={{ color: kpi.color }} />
+                  </div>
                 </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkline values={weeklyVelocity} color={kpi.color} height={18} />
+                <span className="text-[9px] text-slate-400">7-day trend</span>
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Orders */}
-        <Card className="lg:col-span-2 bg-white border-slate-200">
-          <CardHeader>
-            <CardTitle className="text-lg font-semibold text-[#0F172A]">Recent Orders</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {recentOrders.map((order) => {
-                const center = printCenters.find(c => c.id === order.centerId)
-                return (
-                  <div
-                    key={order.id}
-                    className="flex items-center justify-between p-4 bg-slate-50 rounded-lg"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-[#0F172A]/5 flex items-center justify-center">
-                        <Package className="w-5 h-5 text-[#0F172A]" />
+      {/* Main grid */}
+      <div className="grid xl:grid-cols-3 gap-5">
+
+        {/* LEFT 2/3 */}
+        <div className="xl:col-span-2 space-y-5">
+
+          {/* Order Pipeline Breakdown */}
+          <Card className="bg-white border-slate-200">
+            <CardHeader className="pb-2 pt-4 px-5">
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                  <Package className="w-4 h-4 text-[#0EA5E9]" />Order Pipeline Breakdown
+                </CardTitle>
+                <span className="text-[10px] text-slate-400">{orders.length} orders total</span>
+              </div>
+            </CardHeader>
+            <CardContent className="px-5 pb-5">
+              <div className="flex gap-6">
+                {/* Bar chart */}
+                <div className="flex items-end gap-3">
+                  {statusBreakdown.map(s => (
+                    <StatusBar key={s.status} label={STATUS_LABELS[s.status]} count={s.count} total={orders.length} color={STATUS_COLOR[s.status]} />
+                  ))}
+                </div>
+                {/* Order list */}
+                <div className="flex-1 space-y-2 border-l border-slate-100 pl-5">
+                  {orders.slice(0, 5).map(order => {
+                    const center = printCenters.find(c => c.id === order.centerId)
+                    return (
+                      <div key={order.id} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: STATUS_COLOR[order.status] }} />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-medium text-[#0F172A] truncate">{order.partName}</p>
+                          <p className="text-[9px] text-slate-400">{order.orderId} · {center?.name ?? 'Pending'}</p>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                          {[order.oemApproval.approved, order.certApproval.approved].map((ap, j) => (
+                            <span key={j} className={`w-4 h-4 rounded-full border flex items-center justify-center text-[8px] ${ap ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : 'border-slate-200 text-slate-200'}`}>{ap ? '✓' : '○'}</span>
+                          ))}
+                        </div>
+                        <Badge className="text-[9px] px-1.5" style={{ background: `${STATUS_COLOR[order.status]}20`, color: STATUS_COLOR[order.status] }}>
+                          {STATUS_LABELS[order.status]}
+                        </Badge>
                       </div>
-                      <div>
-                        <p className="font-medium text-[#0F172A]">{order.partName}</p>
-                        <p className="text-sm text-slate-500">
-                          {order.orderId} • {center?.name || 'Pending assignment'}
-                        </p>
+                    )
+                  })}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* DRM Funnel */}
+          <Card className="bg-white border-slate-200">
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <KeyRound className="w-4 h-4 text-indigo-600" />DRM Approval Funnel
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-5">
+              <div className="flex items-center gap-2">
+                {[
+                  { label: 'Pending', val: drmLocked, color: '#94a3b8', Icon: Lock },
+                  { label: 'Partial', val: drmPartial, color: '#F59E0B', Icon: Clock },
+                  { label: 'Ready', val: drmReady, color: '#10B981', Icon: Zap },
+                  { label: 'Printing', val: nowPrinting, color: '#0EA5E9', Icon: Activity },
+                  { label: 'Tokens', val: tokensIssued, color: '#8B5CF6', Icon: ShieldCheck },
+                ].map((step, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                    <div className="h-14 w-full rounded-t-lg flex items-end justify-center pb-2"
+                      style={{ background: `${step.color}15` }}>
+                      <step.Icon className="w-4 h-4" style={{ color: step.color }} />
+                    </div>
+                    <span className="text-base font-bold" style={{ color: step.color }}>{step.val}</span>
+                    <span className="text-[9px] text-slate-400">{step.label}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[9px] text-slate-400 text-center mt-3">Lock → OEM sign-off → Cert Authority → Secure token → Encrypted G-code stream</p>
+            </CardContent>
+          </Card>
+
+          {/* Physical Site Health */}
+          <Card className="bg-white border-slate-200">
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <Boxes className="w-4 h-4 text-[#0EA5E9]" />Physical Site Health
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {physicalSites.map(site => {
+                  const sp = physicalParts.filter(p => p.siteId === site.id)
+                  const alerts = sp.filter(p => p.quantity === 0 || p.quantity < p.minStock).length
+                  const value = sp.reduce((s, p) => s + p.quantity * p.unitCost, 0)
+                  const health = sp.length ? Math.round(((sp.length - alerts) / sp.length) * 100) : 100
+                  const SIcon = SITE_ICON[site.type] || Building2
+                  return (
+                    <div key={site.id} className={`p-3 rounded-xl border ${alerts > 0 ? 'border-amber-200 bg-amber-50/40' : 'border-slate-100 bg-slate-50'}`}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <SIcon className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
+                        <p className="text-xs font-semibold text-[#0F172A] truncate">{site.name}</p>
+                      </div>
+                      <div className="h-1 bg-slate-200 rounded-full mb-2">
+                        <div className="h-full rounded-full" style={{ width: `${health}%`, background: health > 70 ? '#10B981' : health > 40 ? '#F59E0B' : '#ef4444' }} />
+                      </div>
+                      <div className="flex justify-between text-[9px] text-slate-500">
+                        <span>{sp.length} SKUs</span>
+                        {alerts > 0 && <span className="text-amber-600 font-semibold">⚠ {alerts}</span>}
+                        <span>${(value / 1000).toFixed(0)}k</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <Badge className={statusColors[order.status]}>
-                        {statusLabels[order.status]}
-                      </Badge>
-                      <span className="text-sm text-slate-500 w-20 text-right">
-                        {order.status === 'delivered' 
-                          ? 'Delivered' 
-                          : order.eta 
-                            ? new Date(order.eta).toLocaleDateString()
-                            : 'TBD'}
-                      </span>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* RIGHT 1/3 */}
+        <div className="space-y-5">
+
+          {/* Print Centers */}
+          <Card className="bg-white border-slate-200">
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <Factory className="w-4 h-4 text-[#14B8A6]" />Print Centers
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-4 space-y-3">
+              {printCenters.map(c => {
+                const color = c.status === 'online' ? '#14B8A6' : c.status === 'busy' ? '#F59E0B' : '#94a3b8'
+                const load = c.status === 'online' ? 35 : c.status === 'busy' ? 80 : 0
+                return (
+                  <div key={c.id}>
+                    <div className="flex justify-between mb-0.5">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: color }} />
+                        <span className="text-xs font-medium text-[#0F172A]">{c.name}</span>
+                      </div>
+                      <span className="text-[9px]" style={{ color }}>{c.status}</span>
+                    </div>
+                    <div className="h-1 bg-slate-100 rounded-full">
+                      <div className="h-full rounded-full" style={{ width: `${load}%`, background: color }} />
                     </div>
                   </div>
                 )
               })}
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Right Column */}
-        <div className="space-y-6">
-          {/* Print Center Status */}
+          {/* Blueprint Vault */}
           <Card className="bg-white border-slate-200">
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold text-[#0F172A]">Print Centers</CardTitle>
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <FileBox className="w-4 h-4 text-indigo-500" />Blueprint Vault
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {printCenters.map((center) => (
-                  <div key={center.id} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${
-                        center.status === 'online' ? 'bg-[#14B8A6]' :
-                        center.status === 'busy' ? 'bg-[#F59E0B]' : 'bg-slate-300'
-                      }`} />
-                      <span className="text-sm text-[#0F172A]">{center.name}</span>
+            <CardContent className="px-5 pb-5 flex items-center gap-4">
+              <div className="relative">
+                <RingChart pct={Math.round((bpBreakdown[0].count / blueprints.length) * 100)} color="#10B981" size={60} stroke={6} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-sm font-bold text-[#0F172A]">{blueprints.length}</span>
+                  <span className="text-[8px] text-slate-400">total</span>
+                </div>
+              </div>
+              <div className="flex-1 space-y-1.5">
+                {bpBreakdown.map(b => (
+                  <div key={b.label} className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full" style={{ background: b.color }} />
+                      <span className="text-xs text-slate-600">{b.label}</span>
                     </div>
-                    <Badge 
-                      variant="outline" 
-                      className={`${
-                        center.status === 'online' ? 'text-[#14B8A6] border-[#14B8A6]' :
-                        center.status === 'busy' ? 'text-[#F59E0B] border-[#F59E0B]' : 
-                        'text-slate-400 border-slate-400'
-                      }`}
-                    >
-                      {center.status.charAt(0).toUpperCase() + center.status.slice(1)}
-                    </Badge>
+                    <span className="text-xs font-bold text-[#0F172A]">{b.count}</span>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
 
-          {/* Quick Stats */}
+          {/* Physical Inventory */}
           <Card className="bg-white border-slate-200">
-            <CardHeader>
-              <CardTitle className="text-lg font-semibold text-[#0F172A]">Inventory Stats</CardTitle>
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <Boxes className="w-4 h-4 text-[#0EA5E9]" />Physical Inventory
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
+            <CardContent className="px-5 pb-5 space-y-2">
+              {[
+                { label: 'Out of Stock', val: physOutOfStock, color: '#ef4444', Icon: AlertTriangle },
+                { label: 'Low Stock', val: physLowStock, color: '#F59E0B', Icon: Package },
+                { label: 'Condemned', val: physCondemned, color: '#94a3b8', Icon: Flame },
+                { label: 'Total Value', val: `$${(physTotalValue / 1000).toFixed(0)}k`, color: '#10B981', Icon: DollarSign },
+              ].map(item => (
+                <div key={item.label} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <FileBox className="w-4 h-4 text-[#0EA5E9]" />
-                    <span className="text-sm text-slate-600">Available Blueprints</span>
+                    <item.Icon className="w-3.5 h-3.5" style={{ color: item.color }} />
+                    <span className="text-xs text-slate-600">{item.label}</span>
                   </div>
-                  <span className="font-semibold text-[#0F172A]">{blueprints.length}</span>
+                  <span className="text-sm font-bold" style={{ color: item.color }}>{item.val}</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Factory className="w-4 h-4 text-[#14B8A6]" />
-                    <span className="text-sm text-slate-600">Online Centers</span>
+              ))}
+              <p className="text-[10px] text-slate-400 pt-2 border-t border-slate-100">
+                {physicalSites.filter(s => s.status === 'active').length} active sites · {physicalParts.length} total SKUs
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Live Activity Feed */}
+          <Card className="bg-white border-slate-200">
+            <CardHeader className="pb-2 pt-4 px-5">
+              <CardTitle className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                <Activity className="w-4 h-4 text-slate-500" />Live Activity
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-auto" />
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-4">
+              <div className="space-y-2.5 max-h-44 overflow-y-auto pr-1">
+                {recentActivity.map(tx => (
+                  <div key={tx.id} className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: TX_COLOR[tx.action] }} />
+                    <div>
+                      <p className="text-[10px] text-[#0F172A] font-medium leading-tight">
+                        <span style={{ color: TX_COLOR[tx.action] }}>{TX_LABEL[tx.action]}</span>
+                        {' · '}{tx.quantity}× {tx.partName}
+                      </p>
+                      <p className="text-[9px] text-slate-400">{tx.siteName} · {new Date(tx.timestamp).toLocaleDateString()}</p>
+                    </div>
                   </div>
-                  <span className="font-semibold text-[#0F172A]">{onlineCenters.length}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />
-                    <span className="text-sm text-slate-600">Pending Review</span>
-                  </div>
-                  <span className="font-semibold text-[#F59E0B]">{pendingBlueprints.length}</span>
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>
+
         </div>
       </div>
     </div>

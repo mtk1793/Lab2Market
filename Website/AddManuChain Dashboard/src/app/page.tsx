@@ -19,6 +19,8 @@ import {
   AuthoritiesPage,
   CustomerSuccessPage,
   DigitalInventoryPage,
+  PrintApprovalPage,
+  PhysicalInventoryPage,
 } from '@/components/dashboard'
 import { cn } from '@/lib/utils'
 
@@ -31,6 +33,10 @@ export default function Dashboard() {
         return { title: 'Dashboard Overview', subtitle: 'Welcome back, John' }
       case 'orders':
         return { title: 'Orders', subtitle: 'Manage and track your part orders' }
+      case 'print_queue':
+        return { title: 'Print Queue', subtitle: 'DRM approval pipeline — OEM & Certification Authority sign-offs' }
+      case 'physical_inventory':
+        return { title: 'Physical Inventory', subtitle: 'Manage physical spare parts across all sites' }
       case 'digital_inventory':
         return { title: 'Digital Inventory', subtitle: 'AI-driven parts forecasting and onsite readiness' }
       case 'blueprints':
@@ -66,6 +72,10 @@ export default function Dashboard() {
         return <OverviewPage />
       case 'orders':
         return <OrdersPage />
+      case 'print_queue':
+        return <PrintApprovalPage />
+      case 'physical_inventory':
+        return <PhysicalInventoryPage />
       case 'digital_inventory':
         return <DigitalInventoryPage />
       case 'blueprints':
@@ -108,6 +118,7 @@ export default function Dashboard() {
         <Header
           title={pageInfo.title}
           subtitle={pageInfo.subtitle}
+          onNavigate={setActiveTab}
         />
 
         {/* Page Content */}

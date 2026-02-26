@@ -19,18 +19,19 @@ import {
   Shield,
   GraduationCap,
   Sparkles,
+  KeyRound,
 } from 'lucide-react'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 
 // Define which roles can access which menu items
 const rolePermissions: Record<string, string[]> = {
-  admin: ['overview', 'orders', 'digital_inventory', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
-  customer_admin: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
-  operator: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'settings'],
-  oem_partner: ['overview', 'digital_inventory', 'blueprints', 'analytics', 'certifications', 'settings'],
-  print_center: ['overview', 'orders', 'digital_inventory', 'blueprints', 'shipments', 'materials', 'settings'],
-  cert_authority: ['overview', 'digital_inventory', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
+  admin: ['overview', 'orders', 'print_queue', 'digital_inventory', 'physical_inventory', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
+  customer_admin: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
+  operator: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'settings'],
+  oem_partner: ['overview', 'print_queue', 'digital_inventory', 'blueprints', 'analytics', 'certifications', 'settings'],
+  print_center: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'materials', 'settings'],
+  cert_authority: ['overview', 'print_queue', 'digital_inventory', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
 }
 
 const menuSections = [
@@ -39,6 +40,7 @@ const menuSections = [
     items: [
       { id: 'overview', label: 'Overview', icon: LayoutDashboard },
       { id: 'orders', label: 'Orders', icon: Package, badge: 3 },
+      { id: 'print_queue', label: 'Print Queue', icon: KeyRound, badge: 5 },
     ],
   },
   {
@@ -46,6 +48,7 @@ const menuSections = [
     items: [
       { id: 'blueprints', label: 'Blueprint Library', icon: FileBox },
       { id: 'digital_inventory', label: 'Digital Inventory', icon: Sparkles },
+      { id: 'physical_inventory', label: 'Physical Inventory', icon: Boxes },
       { id: 'centers', label: 'Print Centers', icon: Factory },
       { id: 'shipments', label: 'Shipments', icon: Truck },
       { id: 'materials', label: 'Materials', icon: Boxes },

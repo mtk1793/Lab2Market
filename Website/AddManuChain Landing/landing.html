@@ -435,505 +435,687 @@
         <section id="features" class="py-20 bg-brand-navy">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
-                    <span class="text-xs font-mono text-brand-purple tracking-widest">CAPABILITIES</span>
+                    <span class="text-xs font-mono text-brand-purple tracking-widest">PLATFORM MODULES</span>
                     <h2 class="text-3xl md:text-5xl font-bold mt-4 font-display">Everything Your Supply Chain Needs</h2>
+                    <p class="text-brand-muted mt-3 text-sm">Six integrated modules. One unified platform.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Feature 1 -->
-                    <div class="card-glow p-6 rounded-xl reveal stagger-1">
-                        <div class="text-brand-blue mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                            </svg>
+                <!-- Flagship: DRM -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="card-glow p-7 rounded-2xl reveal stagger-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-indigo-400">FLAGSHIP MODULE</span>
+                                <h3 class="font-bold text-white text-lg">DRM Multi-Party Approval</h3>
+                            </div>
                         </div>
-                        <h3 class="font-bold mb-2">On-Demand Ordering</h3>
-                        <p class="text-brand-muted text-xs">Submit and track orders for certified spare parts in real
-                            time.</p>
+                        <p class="text-brand-muted text-sm mb-5">Every print order passes through a cryptographically
+                            secured approval chain. OEMs sign off on IP rights, then Certification Authorities verify
+                            the print center before a one-time encrypted G-code token is released to the printer.</p>
+                        <div class="flex items-center gap-2 text-xs">
+                            <div class="flex items-center gap-1.5 bg-brand-border/30 px-3 py-1.5 rounded-full">
+                                <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div><span
+                                    class="text-brand-muted">Awaiting</span>
+                            </div>
+                            <span class="text-brand-muted">→</span>
+                            <div
+                                class="flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-full">
+                                <div class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></div><span
+                                    class="text-indigo-400">OEM Sign-Off</span>
+                            </div>
+                            <span class="text-brand-muted">→</span>
+                            <div
+                                class="flex items-center gap-1.5 bg-brand-teal/10 border border-brand-teal/20 px-3 py-1.5 rounded-full">
+                                <div class="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse"></div><span
+                                    class="text-brand-teal">Cert Auth</span>
+                            </div>
+                            <span class="text-brand-muted">→</span>
+                            <div
+                                class="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+                                <span class="text-emerald-400">🔑 Token</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Feature 2 -->
-                    <div class="card-glow p-6 rounded-xl reveal stagger-2">
-                        <div class="text-brand-teal mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Physical Inventory -->
+                    <div class="card-glow p-7 rounded-2xl reveal stagger-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-brand-blue">NEW MODULE</span>
+                                <h3 class="font-bold text-white text-lg">Physical Parts Cabinet</h3>
+                            </div>
+                        </div>
+                        <p class="text-brand-muted text-sm mb-5">Per-site physical inventory management for offshore
+                            rigs, vessels, yards, and warehouses. Track quantity on hand, condition
+                            (new/serviceable/condemned), and minimum stock levels — all linked to their digital
+                            blueprints.</p>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-red-500/10 border border-red-500/20 p-2 rounded-lg">
+                                <div class="text-red-400 font-bold text-base">2</div>
+                                <div class="text-brand-muted">Out of Stock</div>
+                            </div>
+                            <div class="bg-amber-500/10 border border-amber-500/20 p-2 rounded-lg">
+                                <div class="text-amber-400 font-bold text-base">4</div>
+                                <div class="text-brand-muted">Low Stock</div>
+                            </div>
+                            <div class="bg-brand-teal/10 border border-brand-teal/20 p-2 rounded-lg">
+                                <div class="text-brand-teal font-bold text-base">$104k</div>
+                                <div class="text-brand-muted">Total Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- AI Digital Inventory -->
+                    <div class="card-glow p-6 rounded-2xl reveal stagger-1">
+                        <div class="w-10 h-10 rounded-xl bg-brand-purple/10 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-brand-purple" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
-                        <h3 class="font-bold mb-2">Distributed Network</h3>
-                        <p class="text-brand-muted text-xs">Access a network of certified AM facilities globally.</p>
+                        <h3 class="font-bold text-white mb-2">AI Digital Inventory</h3>
+                        <p class="text-brand-muted text-xs">AI-ranked risk queue surfaces blueprints most likely to be
+                            needed soon, based on asset age, usage patterns, and historical failure rates. Interactive
+                            Canada map shows geographic coverage.</p>
                     </div>
 
-                    <!-- Feature 3 -->
-                    <div class="card-glow p-6 rounded-xl reveal stagger-3">
-                        <div class="text-brand-purple mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Smart Reorder Bridge -->
+                    <div class="card-glow p-6 rounded-2xl reveal stagger-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Smart Reorder Bridge</h3>
+                        <p class="text-brand-muted text-xs">When stock falls below minimum, the system automatically
+                            suggests: Transfer from a surplus site nearby, or trigger a Print-on-Demand order through
+                            the DRM pipeline. Zero manual intervention.</p>
+                    </div>
+
+                    <!-- Blueprint Vault -->
+                    <div class="card-glow p-6 rounded-2xl reveal stagger-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-amber/10 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-brand-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                             </svg>
                         </div>
-                        <h3 class="font-bold mb-2">Blueprint Vault</h3>
+                        <h3 class="font-bold text-white mb-2">Blueprint Vault</h3>
                         <p class="text-brand-muted text-xs">Securely store and share OEM-certified digital blueprints.
-                        </p>
+                            Each file is encrypted, versioned, and linked to both physical parts in your cabinet and
+                            active print orders.</p>
                     </div>
+                </div>
 
-                    <!-- Feature 4 -->
-                    <div class="card-glow p-6 rounded-xl reveal stagger-4">
-                        <div class="text-brand-amber mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-bold mb-2">Compliance & Certs</h3>
-                        <p class="text-brand-muted text-xs">Manage and track ISO certifications and audits.</p>
-                    </div>
-
-                    <!-- Row 2 -->
-                    <div class="card-glow p-6 rounded-xl reveal stagger-1">
-                        <div class="text-brand-teal mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Row 3 -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="card-glow p-5 rounded-xl reveal stagger-1">
+                        <div class="text-brand-teal mb-3"><svg class="w-7 h-7" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-bold mb-2">Analytics Dashboard</h3>
-                        <p class="text-brand-muted text-xs">Gain insights on cost savings, lead times, and performance.
-                        </p>
+                            </svg></div>
+                        <h3 class="font-bold text-sm mb-1">Analytics Dashboard</h3>
+                        <p class="text-brand-muted text-xs">Cost savings, lead time trends, and performance KPIs.</p>
                     </div>
-
-                    <div class="card-glow p-6 rounded-xl reveal stagger-2">
-                        <div class="text-brand-blue mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="card-glow p-5 rounded-xl reveal stagger-2">
+                        <div class="text-brand-blue mb-3"><svg class="w-7 h-7" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-bold mb-2">Shipment Tracking</h3>
+                            </svg></div>
+                        <h3 class="font-bold text-sm mb-1">Shipment Tracking</h3>
                         <p class="text-brand-muted text-xs">Monitor delivery logistics from print to destination.</p>
                     </div>
-
-                    <div class="card-glow p-6 rounded-xl reveal stagger-3">
-                        <div class="text-brand-amber mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="card-glow p-5 rounded-xl reveal stagger-3">
+                        <div class="text-brand-amber mb-3"><svg class="w-7 h-7" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-bold mb-2">Partner Portal</h3>
-                        <p class="text-brand-muted text-xs">Onboard and manage OEM partners and libraries.</p>
+                            </svg></div>
+                        <h3 class="font-bold text-sm mb-1">Partner Portal</h3>
+                        <p class="text-brand-muted text-xs">Onboard and manage OEM partners and certificate authorities.
+                        </p>
                     </div>
-
-                    <div class="card-glow p-6 rounded-xl reveal stagger-4">
-                        <div class="text-brand-purple mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="card-glow p-5 rounded-xl reveal stagger-4">
+                        <div class="text-brand-purple mb-3"><svg class="w-7 h-7" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-bold mb-2">Audit Logs</h3>
-                        <p class="text-brand-muted text-xs">Full traceability of every part printed and shipped.</p>
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg></div>
+                        <h3 class="font-bold text-sm mb-1">Audit Logs + Hash Chain</h3>
+                        <p class="text-brand-muted text-xs">Tamper-evident hash chain audit trail for every print and
+                            transaction.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. WHO IS THIS FOR -->
-        <section id="segments" class="py-20 bg-brand-dark">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <span class="text-xs font-mono text-brand-teal tracking-widest">TARGET SEGMENTS</span>
-                    <h2 class="text-3xl md:text-5xl font-bold mt-4 font-display">Built for Industries That Can't Afford
-                        Downtime</h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Segment 1 -->
-                    <div class="flex gap-6 items-start reveal stagger-1 group">
-                        <div
-                            class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-blue/20 to-transparent border border-brand-blue/20 flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
-                            <span class="text-2xl">🛢️</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Offshore Oil & Gas</h3>
-                            <p class="text-brand-muted text-sm">Reduce downtime on remote platforms by printing critical
-                                MRO parts locally instead of waiting weeks for shipping.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 2 -->
-                    <div class="flex gap-6 items-start reveal stagger-2 group">
-                        <div
-                            class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-teal/20 to-transparent border border-brand-teal/20 flex items-center justify-center text-brand-teal group-hover:scale-110 transition-transform">
-                            <span class="text-2xl">🚢</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Marine & Shipping</h3>
-                            <p class="text-brand-muted text-sm">Keep vessels operational. Access the nearest certified
-                                print center at port or sea with full OEM certification.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 3 -->
-                    <div class="flex gap-6 items-start reveal stagger-3 group">
-                        <div
-                            class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-purple/20 to-transparent border border-brand-purple/20 flex items-center justify-center text-brand-purple group-hover:scale-110 transition-transform">
-                            <span class="text-2xl">🇨🇦</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Navy & Defense</h3>
-                            <p class="text-brand-muted text-sm">Secure, traceable, and certified spare parts on demand
-                                for mission-critical assets without lengthy procurement.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 4 -->
-                    <div class="flex gap-6 items-start reveal stagger-4 group">
-                        <div
-                            class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-amber/20 to-transparent border border-brand-amber/20 flex items-center justify-center text-brand-amber group-hover:scale-110 transition-transform">
-                            <span class="text-2xl">🏭</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Industrial MRO</h3>
-                            <p class="text-brand-muted text-sm">Eliminate slow-moving inventory costs by printing parts
-                                on demand with full digital traceability.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Feature 1 -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-1">
+            <div class="text-brand-blue mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
             </div>
-        </section>
+            <h3 class="font-bold mb-2">On-Demand Ordering</h3>
+            <p class="text-brand-muted text-xs">Submit and track orders for certified spare parts in real
+                time.</p>
+        </div>
 
-        <!-- 6. BY THE NUMBERS -->
-        <section id="stats" class="py-20 bg-brand-navy relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5"></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-12 reveal">
-                    <h2 class="text-3xl md:text-5xl font-bold font-display">The Opportunity Is Real</h2>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
-                    <div class="reveal stagger-1">
-                        <div class="text-4xl md:text-5xl font-bold gradient-text font-display">
-                            $89B
-                        </div>
-                        <div class="text-sm text-brand-muted mt-2">Global MRO Spare Parts Market (2024)</div>
-                    </div>
-                    <div class="reveal stagger-2">
-                        <div class="text-4xl md:text-5xl font-bold text-brand-amber font-display">
-                            $1M<span class="text-xl">/day</span>
-                        </div>
-                        <div class="text-sm text-brand-muted mt-2">Average Downtime Cost (Offshore)</div>
-                    </div>
-                    <div class="reveal stagger-3">
-                        <div class="text-4xl md:text-5xl font-bold text-brand-teal font-display">
-                            70%
-                        </div>
-                        <div class="text-sm text-brand-muted mt-2">Lead Time Reduction with AM</div>
-                    </div>
-                    <div class="reveal stagger-4">
-                        <div class="text-4xl md:text-5xl font-bold text-white font-display">
-                            40%
-                        </div>
-                        <div class="text-sm text-brand-muted mt-2">Inventory Cost Reduction</div>
-                    </div>
-                    <div class="reveal stagger-5 col-span-2 md:col-span-1">
-                        <div class="text-4xl md:text-5xl font-bold text-brand-blue font-display">
-                            15+
-                        </div>
-                        <div class="text-sm text-brand-muted mt-2">Certified Print Centers (Year 1)</div>
-                    </div>
-                </div>
+        <!-- Feature 2 -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-2">
+            <div class="text-brand-teal mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                </svg>
             </div>
-        </section>
+            <h3 class="font-bold mb-2">Distributed Network</h3>
+            <p class="text-brand-muted text-xs">Access a network of certified AM facilities globally.</p>
+        </div>
 
-        <!-- 7. WHY ADDMANUCHAIN -->
-        <section id="why" class="py-20 bg-brand-dark">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="reveal">
-                        <span class="text-xs font-mono text-brand-blue tracking-widest">COMPETITIVE ADVANTAGE</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mt-4 font-display">Why Not Just Call the Supplier?
-                        </h2>
-                        <p class="text-brand-muted mt-4 mb-8">Traditional suppliers weren't built for the on-demand era.
-                            AddManuChain bridges the gap between digital potential and physical delivery.</p>
-
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white">End-to-End Platform</h4>
-                                    <p class="text-sm text-brand-muted">From digital blueprint to certified delivered
-                                        part, all in one system.</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white">OEM-Certified Quality</h4>
-                                    <p class="text-sm text-brand-muted">Every part printed from an approved blueprint
-                                        with a quality audit trail.</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white">No Inventory Risk</h4>
-                                    <p class="text-sm text-brand-muted">Pay only for what you print, when you need it.
-                                        No warehousing costs.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reveal stagger-2">
-                        <!-- Testimonials Inserted here for balance -->
-                        <div class="space-y-6">
-                            <div class="bg-brand-card p-6 rounded-xl border border-brand-border">
-                                <p class="text-brand-muted text-sm italic mb-4">"The concept of distributed additive
-                                    manufacturing for spare parts is something we've been watching closely. A platform
-                                    that handles certification and traceability would solve our biggest hesitation."</p>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-full bg-brand-navy"></div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white">Senior Procurement Manager</div>
-                                        <div class="text-xs text-brand-muted">Offshore Energy Company</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-brand-card p-6 rounded-xl border border-brand-border">
-                                <p class="text-brand-muted text-sm italic mb-4">"We lose days waiting for simple
-                                    components. If we could print them at a certified facility nearby, it would change
-                                    everything."</p>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-full bg-brand-navy"></div>
-                                    <div>
-                                        <div class="text-xs font-bold text-white">Fleet Maintenance Director</div>
-                                        <div class="text-xs text-brand-muted">Shipping Company</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Feature 3 -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-3">
+            <div class="text-brand-purple mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
             </div>
-        </section>
+            <h3 class="font-bold mb-2">Blueprint Vault</h3>
+            <p class="text-brand-muted text-xs">Securely store and share OEM-certified digital blueprints.
+            </p>
+        </div>
 
-        <!-- 9. PLATFORM MODULES / PRICING -->
-        <section id="modules" class="py-20 bg-brand-navy">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <span class="text-xs font-mono text-brand-amber tracking-widest">PRICING</span>
-                    <h2 class="text-3xl md:text-5xl font-bold mt-4 font-display">Flexible Plans for Every Operation
-                        Scale</h2>
-                </div>
+        <!-- Feature 4 -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-4">
+            <div class="text-brand-amber mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">Compliance & Certs</h3>
+            <p class="text-brand-muted text-xs">Manage and track ISO certifications and audits.</p>
+        </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Starter -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-brand-border reveal stagger-1">
-                        <h3 class="text-xl font-bold mb-2">Starter</h3>
-                        <p class="text-brand-muted text-sm mb-6">Small operators, single site</p>
-                        <ul class="space-y-3 mb-8 text-sm text-brand-muted">
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Orders Module</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Blueprint Vault</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Basic Tracking</li>
-                        </ul>
-                        <a href="#contact"
-                            class="block text-center py-3 border border-brand-muted text-brand-muted rounded-lg hover:border-white hover:text-white transition-colors text-sm">
-                            Contact Us
-                        </a>
-                    </div>
+        <!-- Row 2 -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-1">
+            <div class="text-brand-teal mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">Analytics Dashboard</h3>
+            <p class="text-brand-muted text-xs">Gain insights on cost savings, lead times, and performance.
+            </p>
+        </div>
 
-                    <!-- Professional -->
+        <div class="card-glow p-6 rounded-xl reveal stagger-2">
+            <div class="text-brand-blue mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">Shipment Tracking</h3>
+            <p class="text-brand-muted text-xs">Monitor delivery logistics from print to destination.</p>
+        </div>
+
+        <div class="card-glow p-6 rounded-xl reveal stagger-3">
+            <div class="text-brand-amber mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">Partner Portal</h3>
+            <p class="text-brand-muted text-xs">Onboard and manage OEM partners and libraries.</p>
+        </div>
+
+        <div class="card-glow p-6 rounded-xl reveal stagger-4">
+            <div class="text-brand-purple mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">Audit Logs</h3>
+            <p class="text-brand-muted text-xs">Full traceability of every part printed and shipped.</p>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- 5. WHO IS THIS FOR -->
+    <section id="segments" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-xs font-mono text-brand-teal tracking-widest">TARGET SEGMENTS</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-4 font-display">Built for Industries That Can't Afford
+                    Downtime</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Segment 1 -->
+                <div class="flex gap-6 items-start reveal stagger-1 group">
                     <div
-                        class="bg-gradient-to-b from-brand-blue/10 to-brand-card rounded-xl p-8 border border-brand-blue/30 relative reveal stagger-2 scale-105 shadow-xl">
-                        <div
-                            class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-blue text-white text-xs px-3 py-1 rounded-full font-bold">
-                            RECOMMENDED</div>
-                        <h3 class="text-xl font-bold mb-2 text-white">Professional</h3>
-                        <p class="text-brand-muted text-sm mb-6">Multi-site operators</p>
-                        <ul class="space-y-3 mb-8 text-sm text-white">
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Everything in Starter</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Advanced Analytics</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Partner Portal</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Certification Management</li>
-                        </ul>
-                        <a href="#contact"
-                            class="block text-center py-3 bg-brand-blue text-white rounded-lg hover:bg-brand-teal transition-colors text-sm font-medium">
-                            Request Quote
-                        </a>
+                        class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-blue/20 to-transparent border border-brand-blue/20 flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">🛢️</span>
                     </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Offshore Oil & Gas</h3>
+                        <p class="text-brand-muted text-sm">Reduce downtime on remote platforms by printing critical
+                            MRO parts locally instead of waiting weeks for shipping.</p>
+                    </div>
+                </div>
 
-                    <!-- Enterprise -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-brand-border reveal stagger-3">
-                        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
-                        <p class="text-brand-muted text-sm mb-6">Large fleets or defense</p>
-                        <ul class="space-y-3 mb-8 text-sm text-brand-muted">
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Everything in Pro</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Custom Integrations</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Full Audit Logs</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>Dedicated Support (SLA)</li>
-                        </ul>
-                        <a href="#contact"
-                            class="block text-center py-3 border border-brand-muted text-brand-muted rounded-lg hover:border-white hover:text-white transition-colors text-sm">
-                            Contact Us
-                        </a>
+                <!-- Segment 2 -->
+                <div class="flex gap-6 items-start reveal stagger-2 group">
+                    <div
+                        class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-teal/20 to-transparent border border-brand-teal/20 flex items-center justify-center text-brand-teal group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">🚢</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Marine & Shipping</h3>
+                        <p class="text-brand-muted text-sm">Keep vessels operational. Access the nearest certified
+                            print center at port or sea with full OEM certification.</p>
+                    </div>
+                </div>
+
+                <!-- Segment 3 -->
+                <div class="flex gap-6 items-start reveal stagger-3 group">
+                    <div
+                        class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-purple/20 to-transparent border border-brand-purple/20 flex items-center justify-center text-brand-purple group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">🇨🇦</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Navy & Defense</h3>
+                        <p class="text-brand-muted text-sm">Secure, traceable, and certified spare parts on demand
+                            for mission-critical assets without lengthy procurement.</p>
+                    </div>
+                </div>
+
+                <!-- Segment 4 -->
+                <div class="flex gap-6 items-start reveal stagger-4 group">
+                    <div
+                        class="w-14 h-14 flex-shrink-0 rounded-lg bg-gradient-to-br from-brand-amber/20 to-transparent border border-brand-amber/20 flex items-center justify-center text-brand-amber group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">🏭</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Industrial MRO</h3>
+                        <p class="text-brand-muted text-sm">Eliminate slow-moving inventory costs by printing parts
+                            on demand with full digital traceability.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 10. PARTNERS & CERTIFICATIONS -->
-        <section id="partners" class="py-20 bg-brand-dark">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="text-xl font-bold text-brand-muted mb-12 reveal">Trusted By / Powered By</h2>
-                <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 reveal stagger-1">
-                    <div class="text-2xl font-bold text-white">MITACS</div>
-                    <div class="text-2xl font-bold text-white">Dalhousie University</div>
-                    <div class="text-lg font-mono text-brand-muted border border-brand-border px-4 py-2 rounded">ISO
-                        9001</div>
+    <!-- 6. BY THE NUMBERS -->
+    <section id="stats" class="py-20 bg-brand-navy relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold font-display">The Opportunity Is Real</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                <div class="reveal stagger-1">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text font-display">
+                        $89B
+                    </div>
+                    <div class="text-sm text-brand-muted mt-2">Global MRO Spare Parts Market (2024)</div>
+                </div>
+                <div class="reveal stagger-2">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-amber font-display">
+                        $1M<span class="text-xl">/day</span>
+                    </div>
+                    <div class="text-sm text-brand-muted mt-2">Average Downtime Cost (Offshore)</div>
+                </div>
+                <div class="reveal stagger-3">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-teal font-display">
+                        70%
+                    </div>
+                    <div class="text-sm text-brand-muted mt-2">Lead Time Reduction with AM</div>
+                </div>
+                <div class="reveal stagger-4">
+                    <div class="text-4xl md:text-5xl font-bold text-white font-display">
+                        40%
+                    </div>
+                    <div class="text-sm text-brand-muted mt-2">Inventory Cost Reduction</div>
+                </div>
+                <div class="reveal stagger-5 col-span-2 md:col-span-1">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-blue font-display">
+                        15+
+                    </div>
+                    <div class="text-sm text-brand-muted mt-2">Certified Print Centers (Year 1)</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 11. CONTACT / CTA -->
-        <section id="contact" class="py-20 bg-brand-navy">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-2xl mx-auto text-center mb-12 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display">Ready to Transform Your Supply Chain?</h2>
-                    <p class="text-brand-muted mt-4">Whether you're an operator, an OEM, or a print center — we'd love
-                        to talk.</p>
-                </div>
+    <!-- 7. WHY ADDMANUCHAIN -->
+    <section id="why" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-xs font-mono text-brand-blue tracking-widest">COMPETITIVE ADVANTAGE</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-4 font-display">Why Not Just Call the Supplier?
+                    </h2>
+                    <p class="text-brand-muted mt-4 mb-8">Traditional suppliers weren't built for the on-demand era.
+                        AddManuChain bridges the gap between digital potential and physical delivery.</p>
 
-                <form class="max-w-xl mx-auto bg-brand-card p-8 rounded-xl border border-brand-border reveal stagger-1">
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <input type="text" placeholder="Name"
-                            class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
-                        <input type="text" placeholder="Company"
-                            class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <input type="text" placeholder="Role / Title"
-                            class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
-                        <input type="email" placeholder="Email Address"
-                            class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
-                    </div>
-                    <textarea placeholder="What are you looking for?" rows="3"
-                        class="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm mb-4"></textarea>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button type="submit"
-                            class="flex-1 bg-brand-blue text-white font-medium py-3 rounded-lg hover:bg-brand-teal transition-colors">
-                            Send Message
-                        </button>
-                        <a href="mailto:contact@addmanuchain.com"
-                            class="flex-1 text-center border border-brand-border text-brand-muted py-3 rounded-lg hover:text-white hover:border-white transition-colors text-sm">
-                            contact@addmanuchain.com
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- 12. FOOTER -->
-        <footer class="py-12 bg-brand-dark border-t border-brand-border">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="flex items-center gap-2">
-                        <div
-                            class="w-8 h-8 rounded bg-brand-dark border border-brand-blue flex items-center justify-center">
-                            <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">End-to-End Platform</h4>
+                                <p class="text-sm text-brand-muted">From digital blueprint to certified delivered
+                                    part, all in one system.</p>
+                            </div>
                         </div>
-                        <span class="font-bold">AddManuChain</span>
-                        <span class="text-xs text-brand-muted ml-2 hidden sm:block">On-Demand. Certified.
-                            Delivered.</span>
-                    </div>
 
-                    <div class="flex gap-6 text-xs text-brand-muted">
-                        <a href="#" class="hover:text-white">Home</a>
-                        <a href="#features" class="hover:text-white">Features</a>
-                        <a href="https://addmanuchain-dashboard.vercel.app" class="hover:text-white">Dashboard</a>
-                        <a href="#contact" class="hover:text-white">Contact</a>
-                    </div>
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">OEM-Certified Quality</h4>
+                                <p class="text-sm text-brand-muted">Every part printed from an approved blueprint
+                                    with a quality audit trail.</p>
+                            </div>
+                        </div>
 
-                    <div class="text-xs text-brand-muted">
-                        © 2026 AddManuChain. All rights reserved.
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">No Inventory Risk</h4>
+                                <p class="text-sm text-brand-muted">Pay only for what you print, when you need it.
+                                    No warehousing costs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal stagger-2">
+                    <!-- Testimonials Inserted here for balance -->
+                    <div class="space-y-6">
+                        <div class="bg-brand-card p-6 rounded-xl border border-brand-border">
+                            <p class="text-brand-muted text-sm italic mb-4">"The concept of distributed additive
+                                manufacturing for spare parts is something we've been watching closely. A platform
+                                that handles certification and traceability would solve our biggest hesitation."</p>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-brand-navy"></div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Senior Procurement Manager</div>
+                                    <div class="text-xs text-brand-muted">Offshore Energy Company</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-brand-card p-6 rounded-xl border border-brand-border">
+                            <p class="text-brand-muted text-sm italic mb-4">"We lose days waiting for simple
+                                components. If we could print them at a certified facility nearby, it would change
+                                everything."</p>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-brand-navy"></div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Fleet Maintenance Director</div>
+                                    <div class="text-xs text-brand-muted">Shipping Company</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </section>
+
+    <!-- 9. PLATFORM MODULES / PRICING -->
+    <section id="modules" class="py-20 bg-brand-navy">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-xs font-mono text-brand-amber tracking-widest">PRICING</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-4 font-display">Flexible Plans for Every Operation
+                    Scale</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="bg-brand-card rounded-xl p-8 border border-brand-border reveal stagger-1">
+                    <h3 class="text-xl font-bold mb-2">Starter</h3>
+                    <p class="text-brand-muted text-sm mb-6">Small operators, single site</p>
+                    <ul class="space-y-3 mb-8 text-sm text-brand-muted">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Orders Module</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Blueprint Vault</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Basic Tracking</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block text-center py-3 border border-brand-muted text-brand-muted rounded-lg hover:border-white hover:text-white transition-colors text-sm">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Professional -->
+                <div
+                    class="bg-gradient-to-b from-brand-blue/10 to-brand-card rounded-xl p-8 border border-brand-blue/30 relative reveal stagger-2 scale-105 shadow-xl">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-blue text-white text-xs px-3 py-1 rounded-full font-bold">
+                        RECOMMENDED</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Professional</h3>
+                    <p class="text-brand-muted text-sm mb-6">Multi-site operators</p>
+                    <ul class="space-y-3 mb-8 text-sm text-white">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Everything in Starter</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Physical Parts Cabinet</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>DRM Approval Pipeline</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Advanced Analytics</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Partner Portal</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Certification Management</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block text-center py-3 bg-brand-blue text-white rounded-lg hover:bg-brand-teal transition-colors text-sm font-medium">
+                        Request Quote
+                    </a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-brand-card rounded-xl p-8 border border-brand-border reveal stagger-3">
+                    <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-brand-muted text-sm mb-6">Large fleets or defense</p>
+                    <ul class="space-y-3 mb-8 text-sm text-brand-muted">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Everything in Pro</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Custom Integrations</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Full Audit Logs</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-teal" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>Dedicated Support (SLA)</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block text-center py-3 border border-brand-muted text-brand-muted rounded-lg hover:border-white hover:text-white transition-colors text-sm">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. PARTNERS & CERTIFICATIONS -->
+    <section id="partners" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-xl font-bold text-brand-muted mb-12 reveal">Trusted By / Powered By</h2>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 reveal stagger-1">
+                <div class="text-2xl font-bold text-white">MITACS</div>
+                <div class="text-2xl font-bold text-white">Dalhousie University</div>
+                <div class="text-lg font-mono text-brand-muted border border-brand-border px-4 py-2 rounded">ISO
+                    9001</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CONTACT / CTA -->
+    <section id="contact" class="py-20 bg-brand-navy">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display">Ready to Transform Your Supply Chain?</h2>
+                <p class="text-brand-muted mt-4">Whether you're an operator, an OEM, or a print center — we'd love
+                    to talk.</p>
+            </div>
+
+            <form class="max-w-xl mx-auto bg-brand-card p-8 rounded-xl border border-brand-border reveal stagger-1">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="Name"
+                        class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
+                    <input type="text" placeholder="Company"
+                        class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
+                </div>
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="Role / Title"
+                        class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
+                    <input type="email" placeholder="Email Address"
+                        class="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm w-full">
+                </div>
+                <textarea placeholder="What are you looking for?" rows="3"
+                    class="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 focus:outline-none focus:border-brand-blue transition-colors text-white text-sm mb-4"></textarea>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button type="submit"
+                        class="flex-1 bg-brand-blue text-white font-medium py-3 rounded-lg hover:bg-brand-teal transition-colors">
+                        Send Message
+                    </button>
+                    <a href="mailto:contact@addmanuchain.com"
+                        class="flex-1 text-center border border-brand-border text-brand-muted py-3 rounded-lg hover:text-white hover:border-white transition-colors text-sm">
+                        contact@addmanuchain.com
+                    </a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 12. FOOTER -->
+    <footer class="py-12 bg-brand-dark border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded bg-brand-dark border border-brand-blue flex items-center justify-center">
+                        <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <span class="font-bold">AddManuChain</span>
+                    <span class="text-xs text-brand-muted ml-2 hidden sm:block">On-Demand. Certified.
+                        Delivered.</span>
+                </div>
+
+                <div class="flex gap-6 text-xs text-brand-muted">
+                    <a href="#" class="hover:text-white">Home</a>
+                    <a href="#features" class="hover:text-white">Features</a>
+                    <a href="https://addmanuchain-dashboard.vercel.app" class="hover:text-white">Dashboard</a>
+                    <a href="#contact" class="hover:text-white">Contact</a>
+                </div>
+
+                <div class="text-xs text-brand-muted">
+                    © 2026 AddManuChain. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
 
     </div>
 

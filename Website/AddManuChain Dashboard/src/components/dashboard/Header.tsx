@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown } from 'lucide-react'
+import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
 import {
   DropdownMenu,
@@ -13,6 +14,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import {
+  orders,
+  blueprints,
+  physicalParts,
+  physicalSites,
+} from '@/lib/static-data'
 
 interface HeaderProps {
   title: string
@@ -21,54 +28,70 @@ interface HeaderProps {
     label: string
     onClick: () => void
   }
+  onNavigate?: (tab: string) => void
 }
 
 const getRoleBadgeColor = (role: string) => {
   switch (role) {
-    case 'admin':
-      return 'bg-purple-100 text-purple-700'
-    case 'customer_admin':
-      return 'bg-blue-100 text-blue-700'
-    case 'oem_partner':
-      return 'bg-green-100 text-green-700'
-    case 'print_center':
-      return 'bg-orange-100 text-orange-700'
-    case 'cert_authority':
-      return 'bg-red-100 text-red-700'
-    default:
-      return 'bg-slate-100 text-slate-700'
+    case 'admin': return 'bg-purple-100 text-purple-700'
+    case 'customer_admin': return 'bg-blue-100 text-blue-700'
+    case 'oem_partner': return 'bg-green-100 text-green-700'
+    case 'print_center': return 'bg-orange-100 text-orange-700'
+    case 'cert_authority': return 'bg-red-100 text-red-700'
+    default: return 'bg-slate-100 text-slate-700'
   }
 }
 
 const getRoleLabel = (role: string) => {
   switch (role) {
-    case 'admin':
-      return 'Admin'
-    case 'customer_admin':
-      return 'Customer Admin'
-    case 'oem_partner':
-      return 'OEM Partner'
-    case 'print_center':
-      return 'Print Center'
-    case 'cert_authority':
-      return 'Cert Authority'
-    case 'operator':
-      return 'Operator'
-    default:
-      return role
+    case 'admin': return 'Admin'
+    case 'customer_admin': return 'Customer Admin'
+    case 'oem_partner': return 'OEM Partner'
+    case 'print_center': return 'Print Center'
+    case 'cert_authority': return 'Cert Authority'
+    case 'operator': return 'Operator'
+    default: return role
   }
 }
 
-export function Header({ title, subtitle, action }: HeaderProps) {
-  const { data: session } = useSession()
+// ─── Search index ─────────────────────────────────────────────────────────────
+function buildSearchIndex() {
+  const results: { label: string; sub: string; tab: string; keyword: string }[] = []
+  orders.forEach(o => {
+    results.push({ label: o.partName, sub: `Order ${o.orderId} · ${o.status}`, tab: 'orders', keyword: `${o.partName} ${o.orderId}`.toLowerCase() })
+  })
+  blueprints.forEach(b => {
+    results.push({ label: b.name, sub: `${b.blueprintId} · ${b.material}`, tab: 'blueprints', keyword: `${b.name} ${b.blueprintId} ${b.material}`.toLowerCase() })
+  })
+  physicalParts.forEach(p => {
+    const site = physicalSites.find(s => s.id === p.siteId)
+    results.push({ label: p.name, sub: `${p.partNumber} · ${site?.name ?? ''}`, tab: 'physical_inventory', keyword: `${p.name} ${p.partNumber}`.toLowerCase() })
+  })
+  results.push({ label: 'Print Queue', sub: 'DRM approval pipeline', tab: 'print_queue', keyword: 'print queue drm approval token' })
+  results.push({ label: 'Physical Inventory', sub: 'Spare parts cabinet by site', tab: 'physical_inventory', keyword: 'physical inventory parts stock' })
+  results.push({ label: 'Digital Inventory', sub: 'AI-ranked blueprint risk queue', tab: 'digital_inventory', keyword: 'digital inventory ai blueprint' })
+  results.push({ label: 'Audit Logs', sub: 'Hash chain integrity', tab: 'audit', keyword: 'audit log hash chain drm' })
+  return results
+}
 
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2)
+const searchIndex = buildSearchIndex()
+
+export function Header({ title, subtitle, action, onNavigate }: HeaderProps) {
+  const { data: session } = useSession()
+  const [query, setQuery] = useState('')
+  const [focused, setFocused] = useState(false)
+
+  const getInitials = (name: string) =>
+    name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
+
+  const searchResults = query.length >= 2
+    ? searchIndex.filter(r => r.keyword.includes(query.toLowerCase())).slice(0, 6)
+    : []
+
+  const handleSelect = (tab: string) => {
+    setQuery('')
+    setFocused(false)
+    onNavigate?.(tab)
   }
 
   return (
@@ -82,13 +105,51 @@ export function Header({ title, subtitle, action }: HeaderProps) {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          {/* Search */}
+
+          {/* Search with live dropdown */}
           <div className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 z-10" />
             <Input
               placeholder="Search parts, orders..."
-              className="w-64 pl-10 bg-white border-slate-200"
+              className="w-72 pl-10 pr-8 bg-white border-slate-200"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setTimeout(() => setFocused(false), 150)}
             />
+            {query && (
+              <button
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                onClick={() => setQuery('')}
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+
+            {/* Results dropdown */}
+            {focused && searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden">
+                {searchResults.map((r, idx) => (
+                  <button
+                    key={idx}
+                    className="w-full text-left flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors border-b border-slate-50 last:border-0"
+                    onMouseDown={() => handleSelect(r.tab)}
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-[#0F172A] truncate">{r.label}</p>
+                      <p className="text-xs text-slate-400 truncate">{r.sub}</p>
+                    </div>
+                    <span className="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full mt-0.5 flex-shrink-0">{r.tab.replace('_', ' ')}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {focused && query.length >= 2 && searchResults.length === 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-xl z-50 p-4 text-center text-sm text-slate-400">
+                No results for "{query}"
+              </div>
+            )}
           </div>
 
           {/* Notifications */}
@@ -161,4 +222,3 @@ export function Header({ title, subtitle, action }: HeaderProps) {
     </header>
   )
 }
-
