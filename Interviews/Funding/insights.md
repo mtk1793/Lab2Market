@@ -87,6 +87,53 @@ The session emphasized this strongly in the context of Canadian ventures. Non-di
 
 ---
 
+## Core Insight #7 — Technical founders must speak the language of investors
+
+Andre flagged this explicitly as a *specific red flag* that investors notice with science/PhD-background founders:
+
+> *"A concern that they just don't really understand their way around concepts around how a company is set up, and importantly how they raise money and what rights investors should reasonably expect."*
+
+Investors need to trust both the technology **and the operator**. Not knowing the difference between a pre- and post-money SAFE, or being vague about cap table mechanics, signals execution risk even when the tech is strong.
+
+**For AddManuChain:** Before any investor conversation, you should be able to explain:
+- Why you chose a SAFE over a convertible note
+- What your post-money valuation cap implies for founder dilution
+- What a liquidation preference is and why it matters at exit
+- What CCPC status requires and how you protect it
+
+You don't need to be a lawyer. You need to sound like a founder who takes the business seriously.
+
+---
+
+## Core Insight #8 — Osler offers deferred-cost startup packages (relevant to your budget)
+
+Osler explicitly onboards 30–40 early-stage companies per month with a startup package model that **defers legal costs** — fees are incurred but not billed until the company hits revenue or a funding milestone.
+
+This means the cost barrier to getting properly set up (IP assignments, founder agreements, shareholder docs) is **much lower than it appears**. The risk of not doing it vastly outweighs the deferred cost.
+
+**Action:** Contact Osler's Toronto emerging companies team (Andre Perey / Sahil Chopra) directly and ask about the startup package. Specifically request:
+- Standard SAFE template (Osler's Canadian version)
+- Founder equity / vesting agreement
+- IP assignment agreement template
+
+---
+
+## Core Insight #9 — Post-money SAFE stacking is the most commonly misunderstood dilution risk
+
+Concrete example from the session:
+
+> Raise $1M on a post-money SAFE with a $5M cap → you have **already sold at minimum 20% of the company** (and potentially more if the next round prices below $5M).
+
+Every additional post-money SAFE at the **same cap** stacks dilution out of the founders — not out of the future investor coming into the priced round. The future investors' percentage is protected; yours compresses.
+
+The session cited **$3 million raised** as the practical threshold where doing a priced preferred-share round starts to make more sense than continuing to issue SAFEs.
+
+**Watch for:**
+- Issuing SAFEs to multiple angels at different caps — model the full conversion scenario before each one
+- The "good problem" scenario where you raise more than planned via SAFEs: if you cross $3M on SAFEs, a priced round becomes urgent
+
+---
+
 ## Notable Statements from the Session
 
 > *"Strong tech doesn't fund itself if the company has governance noise."*
@@ -96,6 +143,10 @@ The session emphasized this strongly in the context of Canadian ventures. Non-di
 > *"Don't wait until you're fundraising to clean up. By then, cleanup creates delays that can kill deals."*
 
 > *"Cap + discount in the same SAFE is common — but make sure you understand which conversion mechanism is triggered and when."*
+
+> *"It's essential that you go up the learning curve yourselves — it's all part of the journey as a founder. It can't be overstated how impactful it can be on investors when they understand that a founder really does know their way around these concepts."*
+
+> *"Don't wait until the last minute to kick off the fundraising process — it takes much longer than founders expect."*
 
 ---
 

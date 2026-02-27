@@ -201,6 +201,9 @@ export function PhysicalInventoryPage() {
         blueprintId: 'none', unitCost: 0, notes: '',
     })
 
+    // Validation errors for the add-part dialog
+    const [newPartErrors, setNewPartErrors] = useState<{ name?: string; partNumber?: string }>({})
+
     const siteParts = (siteId: string) => parts.filter(p => p.siteId === siteId)
     const filteredParts = parts.filter(p => {
         const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

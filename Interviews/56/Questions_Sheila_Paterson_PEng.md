@@ -1,30 +1,28 @@
 # Interview Questions — Sheila Paterson P.Eng.
-**Possible roles to target:** Director of Strategic Priorities (Nova Scotia Energy & Natural Resources), former COO at COVE, corporate strategist/business development for Nova Scotia government, MRO process engineer, development manager, quality & process control engineer.
+**Interviewee:** Director of Strategic Priorities, NS Dept. of Energy & Natural Resources; former COO at COVE; 20+ years in marine, aerospace MRO, and clean tech.  
+**Project context:** AddManuChain — an ecosystem for additive manufacturing and 3D printing of spare parts, built around digital inventory, OEM IP management, and supply chain resilience for maritime and industrial sectors.
 
-Use these prompts as conversation starters during an interview with Sheila:
+---
 
-1. **Government Priorities & Blue Economy**
-   - As Director of Strategic Priorities for NS Energy & Natural Resources, what emerging opportunities in offshore wind, renewable energy, and clean hydrogen are you most focused on today? How do you see the blue economy evolving over the next 5 years?
-   - How does the provincial government view the role of innovation hubs like COVE in driving these energy transitions?
+### Q1 — Supply chain resilience post-COVID from a government lens
+From your role shaping NS energy and industrial strategy, how has the province's thinking shifted on local manufacturing capability since COVID and the recent US tariff volatility? Is digital-first, on-demand spare part production something the government would actively support as a supply chain resilience strategy?
 
-2. **COVE Experience & Ecosystem Building**
-   - During your six‑year tenure as COO of COVE, what were the biggest operational challenges in building and scaling a marine innovation hub from ideation to full operation?
-   - What lessons did you learn about fostering collaboration between startups, researchers, and large corporations in the ocean tech space?
+### Q2 — Commercialisation path for an early-stage maritime supply chain platform
+You spent years at the NS government encouraging commercialisation of new technologies — especially in marine and energy sectors. For a platform like ours that touches OEMs, 3D printing facilities, and digital inventory, what is the most practical on-ramp into the Nova Scotia market? Are there specific programs (ACOA, NSBI, scale-up funds) or procurement vehicles we should be targeting first?
 
-3. **Commercialization & Supply Chain Development**
-   - You spent many years encouraging commercialization and capacity development, particularly under the National Shipbuilding Strategy. What advice would you give to early-stage companies trying to break into naval supply chains?
-   - Which policy levers or programs (e.g. ecoNova Scotia) have been most effective at getting SMEs to adopt clean-tech solutions?
+### Q3 — OEM trust and IP: lessons from the National Shipbuilding Strategy
+Under the National Shipbuilding Strategy, you led work on supplier capacity and innovation partnerships. OEMs are the critical gatekeepers for digital blue­prints in our model. Based on your experience working with industrial IP holders in the marine and defence space, what does it actually take to earn that trust, and how long does it realistically take?
 
-4. **Technical & Process Engineering Background**
-   - How has your engineering background (MRO improvements at IMP Group, process engineering at Celestica) influenced your approach to strategic priorities and innovation management in government?
-   - Are there specific quality or continuous-improvement principles you still apply when evaluating new marine technologies?
+### Q4 — MRO and process improvement: where does additive manufacturing fit?
+At IMP Group you drove continuous-improvement across a 1 500-person aerospace MRO operation while contracts shifted from cost-plus to fixed-price — exactly the pressure maritime operators face today. In your view, which maintenance and spare-part workflows are the most promising candidates for additive manufacturing to replace or supplement traditional procurement?
 
-5. **Talent & Workforce Development**
-   - COVE recently launched an internship program to bring bright minds into marine defence innovation. What skills and mindsets are you hoping to cultivate through that initiative?
-   - How can universities and industry better collaborate to prepare the local workforce for growth in the blue economy?
+### Q5 — Regulatory and certification readiness in NS
+As Director of Strategic Priorities for energy, you work at the intersection of clean investment and regulation. What is the current regulatory appetite in Nova Scotia for certifying additively-manufactured parts in marine or energy applications? Are there classification bodies or government working groups we should be engaging with early to shape that framework?
 
-6. **Advice & Networks**
-   - For entrepreneurs in additive manufacturing, supply chain, or digital inventory, what is the single most valuable piece of advice you would offer based on your extensive government and industry experience?
-   - Are there other contacts or departments within the Nova Scotia government that you recommend we speak with to further our work?
+---
 
-Feel free to adapt, expand, or reorder these based on the flow of conversation.
+### Bonus Q1 — COVE as a platform for ecosystem pilots
+During your time as COO, COVE hosted many industry-government-research collaborations. Would COVE (or a similar hub) be a viable site to run a live pilot of our digital inventory and on-demand printing model with a marine operator? Who specifically at COVE would be the right contact?
+
+### Bonus Q2 — Referrals
+You sit at the nexus of government, marine industry, and innovation funding in Atlantic Canada. Are there two or three people — on the OEM side, within DFO or DND supply chains, or in the offshore energy sector — you would suggest we speak with next?
