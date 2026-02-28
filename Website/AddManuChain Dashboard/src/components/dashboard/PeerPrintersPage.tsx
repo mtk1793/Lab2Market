@@ -47,6 +47,9 @@ import {
   Wifi,
   WifiOff,
   Award,
+  Upload,
+  X,
+  FileCode,
 } from 'lucide-react'
 import { toast } from 'sonner'
 
@@ -320,6 +323,7 @@ export function PeerPrintersPage() {
     notes: '',
     blueprintRef: '',
   })
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
 
   // ── Filtered printers
   const filtered = printers.filter(p => {
@@ -374,6 +378,7 @@ export function PeerPrintersPage() {
     }
     setIsRequestOpen(false)
     setRequestForm({ partName: '', quantity: '1', material: '', urgency: 'standard', notes: '', blueprintRef: '' })
+    setUploadedFile(null)
     toast.success(`Print request sent to ${selectedPrinter?.ownerName}! Expect a response within 2 hours.`)
   }
 
@@ -1001,6 +1006,39 @@ export function PeerPrintersPage() {
                 value={requestForm.blueprintRef}
                 onChange={e => setRequestForm(f => ({ ...f, blueprintRef: e.target.value }))}
               />
+            </div>
+            <div>
+              <Label className="text-xs">Attach Print File (optional)</Label>
+              <p className="text-[10px] text-muted-foreground mb-1">Supported: .stl, .obj, .step, .stp, .3mf</p>
+              {uploadedFile ? (
+                <div className="flex items-center gap-2 mt-1 p-2 rounded-md border bg-muted/40">
+                  <FileCode className="w-4 h-4 text-[#0EA5E9] shrink-0" />
+                  <span className="text-xs truncate flex-1">{uploadedFile.name}</span>
+                  <span className="text-[10px] text-muted-foreground shrink-0">{(uploadedFile.size / 1024).toFixed(0)} KB</span>
+                  <button
+                    type="button"
+                    onClick={() => setUploadedFile(null)}
+                    className="text-muted-foreground hover:text-destructive transition-colors"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <label className="mt-1 flex items-center justify-center gap-2 h-16 border-2 border-dashed rounded-md cursor-pointer hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/5 transition-colors">
+                  <Upload className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">Click to upload or drag & drop</span>
+                  <input
+                    type="file"
+                    className="sr-only"
+                    accept=".stl,.obj,.step,.stp,.3mf,.amf"
+                    onChange={e => {
+                      const f = e.target.files?.[0]
+                      if (f) setUploadedFile(f)
+                      e.target.value = ''
+                    }}
+                  />
+                </label>
+              )}
             </div>
             <div>
               <Label className="text-xs">Additional Notes</Label>
