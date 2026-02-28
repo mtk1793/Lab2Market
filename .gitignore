@@ -1,3 +1,6 @@
 .DS_Store
 *.rar
 Website/AddManuChain/
+.venv/
+__pycache__/
+*.pyc

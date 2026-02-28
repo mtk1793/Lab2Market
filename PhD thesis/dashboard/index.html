@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPSM — PhD Proposal Dashboard | Mahmoud Kiasari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="dashboard-layout">
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav class="sidebar">
+    <div class="sidebar-brand">
+        <div class="logo-icon">C</div>
+        <div>
+            <h2>CAPSM</h2>
+            <p>PhD Dashboard</p>
+        </div>
+    </div>
+    <div class="sidebar-nav">
+        <div class="nav-section-title">Overview</div>
+        <a class="nav-item active" data-page="overview">
+            <span class="icon">📊</span><span>Dashboard</span>
+        </a>
+        <a class="nav-item" data-page="hypothesis">
+            <span class="icon">🎯</span><span>Hypothesis</span>
+        </a>
+
+        <div class="nav-section-title">Framework</div>
+        <a class="nav-item" data-page="architecture">
+            <span class="icon">🧠</span><span>Architecture</span>
+        </a>
+        <a class="nav-item" data-page="system1">
+            <span class="icon">⚡</span><span>System-1 CNN-LSTM</span>
+        </a>
+        <a class="nav-item" data-page="system2">
+            <span class="icon">🔮</span><span>System-2 QIRL</span>
+        </a>
+        <a class="nav-item" data-page="hirl">
+            <span class="icon">🎯</span><span>HIRL Framework</span>
+        </a>
+        <a class="nav-item" data-page="pinn">
+            <span class="icon">🛡️</span><span>PINN Safety</span>
+        </a>
+        <a class="nav-item" data-page="metacognition">
+            <span class="icon">🔄</span><span>Metacognition</span>
+        </a>
+
+        <div class="nav-section-title">Power System</div>
+        <a class="nav-item" data-page="topology">
+            <span class="icon">🔌</span><span>IEEE 9-Bus</span>
+        </a>
+        <a class="nav-item" data-page="loadflow">
+            <span class="icon">📈</span><span>Load Flow</span>
+        </a>
+        <a class="nav-item" data-page="facts">
+            <span class="icon">⚙️</span><span>FACTS Devices</span>
+        </a>
+        <a class="nav-item" data-page="ev">
+            <span class="icon">🔋</span><span>EV / V2G</span>
+        </a>
+
+        <div class="nav-section-title">Validation</div>
+        <a class="nav-item" data-page="performance">
+            <span class="icon">📐</span><span>Targets</span>
+        </a>
+        <a class="nav-item" data-page="cyber">
+            <span class="icon">🔓</span><span>Cyber Attacks</span>
+        </a>
+        <a class="nav-item" data-page="scaling">
+            <span class="icon">📡</span><span>Test Systems</span>
+        </a>
+        <a class="nav-item" data-page="timeline">
+            <span class="icon">📅</span><span>Timeline</span>
+        </a>
+    </div>
+</nav>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<main class="main-content">
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-left">
+            <h1 id="page-title">CAPSM Dashboard — Overview</h1>
+            <p>Mahmoud Kiasari • Dalhousie University • 2026</p>
+        </div>
+        <div class="header-right">
+            <div class="live-indicator">
+                <div class="live-dot"></div>
+                <span>Live Simulation</span>
+            </div>
+            <button class="edit-toggle" id="edit-mode-btn" onclick="toggleEditMode()">
+                <span class="edit-dot"></span><span>Edit Mode</span>
+            </button>
+            <button class="header-btn" onclick="toggleTheme()">Theme</button>
+            <button class="header-btn gear" onclick="openSettings()">
+                <span class="gear-icon">⚙️</span><span>All Settings</span>
+            </button>
+            <button class="export-btn" onclick="exportConfig()">⬇ Export</button>
+        </div>
+    </header>
+
+    <div class="page-content">
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: OVERVIEW
+     ═══════════════════════════════════════════════ -->
+<section class="section-page active" id="page-overview">
+    <!-- INLINE EDITOR: Overview -->
+    <div class="tab-editor" id="editor-overview">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Overview Settings</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Author</label>
+                <input type="text" data-cfg="author" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Affiliation</label>
+                <input type="text" data-cfg="affiliation" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Year</label>
+                <input type="number" data-cfg="year" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>S1 Response</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>S2 Decision</label>
+                <input type="number" data-cfg="s2_response_ms" step="1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>PINN Compliance</label>
+                <input type="number" data-cfg="pinn_compliance" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Fault Accuracy</label>
+                <input type="number" data-cfg="fault_accuracy" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>QIRL Speedup</label>
+                <input type="number" data-cfg="qirl_speedup" step="0.1" data-live="1">
+                <span class="field-unit">×</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Cognitive Adaptive Power System Management</div>
+    <div class="section-desc">
+        A dual-process metacognitive framework that combines fast reflexive control (System-1, CNN-LSTM, &lt;5ms) 
+        with deliberative optimization (System-2, QIRL, &lt;50ms), governed by metacognitive arbitration and 
+        enforced by physics-informed neural network safety constraints.
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+        <div class="kpi-card blue">
+            <div class="kpi-icon blue">⚡</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&lt;5 ms</div>
+                <div class="kpi-label">System-1 Response Time</div>
+            </div>
+        </div>
+        <div class="kpi-card purple">
+            <div class="kpi-icon purple">🧠</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&lt;50 ms</div>
+                <div class="kpi-label">System-2 Decision Cycle</div>
+            </div>
+        </div>
+        <div class="kpi-card emerald">
+            <div class="kpi-icon emerald">🛡️</div>
+            <div class="kpi-content">
+                <div class="kpi-value">99.8%</div>
+                <div class="kpi-label">PINN Constraint Compliance</div>
+            </div>
+        </div>
+        <div class="kpi-card amber">
+            <div class="kpi-icon amber">🎯</div>
+            <div class="kpi-content">
+                <div class="kpi-value">96.8%</div>
+                <div class="kpi-label">Fault Detection Accuracy</div>
+            </div>
+        </div>
+        <div class="kpi-card red">
+            <div class="kpi-icon red">🚀</div>
+            <div class="kpi-content">
+                <div class="kpi-value">2×</div>
+                <div class="kpi-label">QIRL Speedup vs DQN</div>
+            </div>
+        </div>
+        <div class="kpi-card cyan">
+            <div class="kpi-icon cyan">🔌</div>
+            <div class="kpi-content">
+                <div class="kpi-value">9-Bus</div>
+                <div class="kpi-label">IEEE Test System (Primary)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Two-column: Architecture Overview + Live Monitor -->
+    <div class="grid-2">
+        <!-- Architecture Quick View -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">CAPSM Architecture</div>
+                    <div class="card-subtitle">Dual-process cognitive control framework</div>
+                </div>
+                <span class="card-badge badge-blue">4 LAYERS</span>
+            </div>
+            <!-- Simplified architecture flow -->
+            <div class="arch-layer" style="border-left: 3px solid var(--accent-amber);">
+                <div class="arch-layer-header">
+                    <span class="arch-layer-name" style="color: var(--accent-amber);">Metacognitive Arbitration</span>
+                    <span class="arch-layer-time badge-amber card-badge">ALWAYS ON</span>
+                </div>
+                <div class="arch-layer-desc">Confidence (C<sub>t</sub>), Novelty (N<sub>t</sub>), Urgency (U<sub>t</sub>) → mode switching</div>
+            </div>
+            <div class="flow-arrow">↕</div>
+            <div class="grid-2" style="gap:12px;">
+                <div class="arch-layer" style="border-left: 3px solid var(--accent-blue);">
+                    <div class="arch-layer-header">
+                        <span class="arch-layer-name" style="color: var(--accent-blue-light);">System-1</span>
+                        <span class="arch-layer-time badge-blue card-badge">&lt; 5 ms</span>
+                    </div>
+                    <div class="arch-layer-desc">CNN-LSTM reflexive controller — fault response, voltage support</div>
+                </div>
+                <div class="arch-layer" style="border-left: 3px solid var(--accent-purple);">
+                    <div class="arch-layer-header">
+                        <span class="arch-layer-name" style="color: var(--accent-purple);">System-2</span>
+                        <span class="arch-layer-time badge-purple card-badge">&lt; 50 ms</span>
+                    </div>
+                    <div class="arch-layer-desc">QIRL deliberative optimizer — economic dispatch, EV scheduling</div>
+                </div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="arch-layer" style="border-left: 3px solid var(--accent-emerald);">
+                <div class="arch-layer-header">
+                    <span class="arch-layer-name" style="color: var(--accent-emerald);">PINN Safety Layer</span>
+                    <span class="arch-layer-time badge-emerald card-badge">&gt;99.8%</span>
+                </div>
+                <div class="arch-layer-desc">Physics-informed constraint enforcement — Kirchhoff's laws, V/I limits, AC power flow</div>
+            </div>
+        </div>
+
+        <!-- Charts Column -->
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Bus Voltage Profile</div>
+                        <div class="card-subtitle">IEEE 9-Bus steady-state voltages (pu)</div>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="chart-bus-voltages"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Generation Dispatch</div>
+                        <div class="card-subtitle">Active &amp; reactive power by generator</div>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="chart-gen-dispatch"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Gaps Overview Chart -->
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <div class="card-title">Research Gap Coverage</div>
+                <div class="card-subtitle">5 identified gaps addressed by CAPSM components</div>
+            </div>
+        </div>
+        <div class="chart-wrapper" style="max-height: 280px;">
+            <canvas id="chart-gaps-radar"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: HYPOTHESIS
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-hypothesis">
+    <!-- INLINE EDITOR: Hypothesis -->
+    <div class="tab-editor" id="editor-hypothesis">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Hypothesis Settings</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Project Title</label>
+                <input type="text" data-cfg="title" data-live="1" style="min-width:340px;">
+            </div>
+            <div class="tab-editor-field">
+                <label>Subtitle</label>
+                <input type="text" data-cfg="subtitle" data-live="1" style="min-width:340px;">
+            </div>
+            <div class="tab-editor-field">
+                <label>S1 Response (ms)</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>PINN Compliance (%)</label>
+                <input type="number" data-cfg="pinn_compliance" step="0.1" data-live="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Central Hypothesis &amp; Research Gaps</div>
+    <div class="section-desc">
+        The foundational thesis driving the CAPSM framework, identifying 5 critical gaps in modern power system AI control.
+    </div>
+
+    <!-- Central Hypothesis -->
+    <div class="hypothesis-banner">
+        <div class="label">Central Hypothesis</div>
+        <div class="text">
+            "A dual-process, metacognitively guided, physics-informed control architecture — inspired by human cognitive science 
+            — can simultaneously achieve sub-5ms fault response, near-optimal economic dispatch, &gt;99.8% constraint compliance, 
+            and cyber-attack resilience in modern power grids with high renewable/EV penetration."
+        </div>
+    </div>
+
+    <!-- Research Gaps -->
+    <div class="section-title" style="font-size:1.1rem;">Research Gaps</div>
+    <div class="grid-2 mt-2" style="grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));" id="gaps-container">
+        <!-- Gap 1 -->
+        <div class="gap-card">
+            <div class="gap-id">G1</div>
+            <h3>Single-Speed Control Paradigm</h3>
+            <div class="description">
+                Existing AI controllers operate at a single temporal resolution — either fast reflex OR slow optimization 
+                — but never both integrated. No architecture combines sub-5 ms fault response with multi-minute economic 
+                optimization in a unified cognitive framework.
+            </div>
+            <div class="addressed-by">
+                ✓ Addressed by: Dual-process System-1 / System-2 architecture with metacognitive arbitration
+            </div>
+        </div>
+        <!-- Gap 2 -->
+        <div class="gap-card">
+            <div class="gap-id">G2</div>
+            <h3>Sample Inefficiency of Deep RL</h3>
+            <div class="description">
+                Standard DQN/PPO require millions of episodes to converge in high-dimensional grid environments. 
+                Convergence is too slow for real-time adaptation during cascading failures or topology changes.
+            </div>
+            <div class="addressed-by">
+                ✓ Addressed by: Quantum-Inspired RL (QIRL) with superposition-based exploration and tunneling
+            </div>
+        </div>
+        <!-- Gap 3 -->
+        <div class="gap-card">
+            <div class="gap-id">G3</div>
+            <h3>Physics-Blind Neural Controllers</h3>
+            <div class="description">
+                Most neural network controllers ignore fundamental power system physics (Kirchhoff's laws, AC power flow equations). 
+                This leads to unsafe control actions that violate voltage, current, and thermal limits.
+            </div>
+            <div class="addressed-by">
+                ✓ Addressed by: Physics-Informed Neural Network (PINN) safety layer enforcing AC power flow constraints
+            </div>
+        </div>
+        <!-- Gap 4 -->
+        <div class="gap-card">
+            <div class="gap-id">G4</div>
+            <h3>Scalability of Multi-Agent Coordination</h3>
+            <div class="description">
+                Centralized RL does not scale beyond small test systems. Distributed approaches lack coordination, 
+                leading to oscillatory or conflicting control actions across regions.
+            </div>
+            <div class="addressed-by">
+                ✓ Addressed by: Hierarchical Multi-Agent RL (HMARL) with regional agents and global coordinator
+            </div>
+        </div>
+        <!-- Gap 5 -->
+        <div class="gap-card">
+            <div class="gap-id">G5</div>
+            <h3>Cyber-Physical Resilience Under Attack</h3>
+            <div class="description">
+                Power grid control systems are increasingly vulnerable to cyber attacks (FDI, DoS, man-in-the-middle). 
+                Existing controllers have no integrated mechanism to detect and recover from coordinated cyber-physical attacks.
+            </div>
+            <div class="addressed-by">
+                ✓ Addressed by: Metacognitive anomaly detection + CAPSM's dual-process fallback architecture
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: ARCHITECTURE
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-architecture">
+    <!-- INLINE EDITOR: Architecture -->
+    <div class="tab-editor" id="editor-architecture">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Architecture Settings</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>S1 Response</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>S2 Decision</label>
+                <input type="number" data-cfg="s2_response_ms" step="1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>PINN Compliance</label>
+                <input type="number" data-cfg="pinn_compliance" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Fault Accuracy</label>
+                <input type="number" data-cfg="fault_accuracy" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">CAPSM Framework Architecture</div>
+    <div class="section-desc">
+        Four-layer cognitive architecture inspired by dual-process theory (Kahneman, 2011). 
+        The framework integrates fast reflexive control, deliberative optimization, metacognitive oversight, 
+        and physics-informed safety enforcement.
+    </div>
+
+    <!-- Full Architecture Diagram -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Architecture Diagram</div>
+            <span class="card-badge badge-blue">INTERACTIVE</span>
+        </div>
+        <div style="padding: 20px;">
+            <!-- SVG Architecture Diagram -->
+            <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+                <!-- Background -->
+                <defs>
+                    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.15" />
+                        <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.15" />
+                    </linearGradient>
+                    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15" />
+                        <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.15" />
+                    </linearGradient>
+                    <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.15" />
+                        <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.15" />
+                    </linearGradient>
+                    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.15" />
+                        <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.15" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+
+                <!-- PMU Inputs (left) -->
+                <rect x="20" y="180" width="120" height="160" rx="10" fill="url(#grad-blue)" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="80" y="205" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">PMU DATA</text>
+                <text x="80" y="225" text-anchor="middle" fill="#8b9dc3" font-size="9">Bus 4-9</text>
+                <text x="80" y="245" text-anchor="middle" fill="#8b9dc3" font-size="9">V, I, θ, f</text>
+                <text x="80" y="265" text-anchor="middle" fill="#8b9dc3" font-size="9">30-120 Hz</text>
+                <text x="80" y="290" text-anchor="middle" fill="#8b9dc3" font-size="9">36 channels</text>
+                <text x="80" y="310" text-anchor="middle" fill="#5a6d8a" font-size="8">+ SCADA, EV SoC</text>
+
+                <!-- Arrows from PMU to Metacognition -->
+                <line x1="140" y1="260" x2="170" y2="90" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="140" y1="260" x2="170" y2="260" stroke="#2563eb" stroke-width="1.5"/>
+                <line x1="140" y1="260" x2="170" y2="400" stroke="#2563eb" stroke-width="1.5"/>
+
+                <!-- Metacognitive Arbitration (top center) -->
+                <rect x="170" y="30" width="560" height="110" rx="12" fill="url(#grad-amber)" stroke="#f59e0b" stroke-width="1.5"/>
+                <text x="450" y="58" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="800">METACOGNITIVE ARBITRATION</text>
+                <text x="250" y="82" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">Confidence (Cₜ)</text>
+                <text x="250" y="98" text-anchor="middle" fill="#8b9dc3" font-size="9">1 - Var(Q)/Var_max</text>
+                <text x="250" y="115" text-anchor="middle" fill="#8b9dc3" font-size="9">τ_c = 0.7</text>
+                <text x="450" y="82" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">Novelty (Nₜ)</text>
+                <text x="450" y="98" text-anchor="middle" fill="#8b9dc3" font-size="9">‖s - μ‖ / σ</text>
+                <text x="450" y="115" text-anchor="middle" fill="#8b9dc3" font-size="9">τ_n = 2.0σ</text>
+                <text x="650" y="82" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">Urgency (Uₜ)</text>
+                <text x="650" y="98" text-anchor="middle" fill="#8b9dc3" font-size="9">max(|ΔV/Δt|, |Δf/Δt|)</text>
+                <text x="650" y="115" text-anchor="middle" fill="#8b9dc3" font-size="9">τ_u = 0.3</text>
+
+                <!-- Decision arrows -->
+                <line x1="340" y1="140" x2="310" y2="180" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowOrange)"/>
+                <line x1="560" y1="140" x2="590" y2="180" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowOrange)"/>
+                <text x="280" y="165" fill="#f59e0b" font-size="9" font-weight="700">α=1</text>
+                <text x="600" y="165" fill="#f59e0b" font-size="9" font-weight="700">α=0</text>
+
+                <!-- System-1 (left center) -->
+                <rect x="170" y="180" width="270" height="160" rx="12" fill="url(#grad-blue)" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="305" y="208" text-anchor="middle" fill="#60a5fa" font-size="13" font-weight="800">SYSTEM-1: REFLEXIVE</text>
+                <text x="305" y="230" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">CNN-LSTM Controller</text>
+                <text x="305" y="252" text-anchor="middle" fill="#8b9dc3" font-size="9">z(t) = LSTM(CNN(Xₜ))</text>
+                <text x="305" y="268" text-anchor="middle" fill="#8b9dc3" font-size="9">u_fast = f_θ(z(t))</text>
+                <rect x="210" y="280" width="190" height="42" rx="6" fill="rgba(37,99,235,0.1)" stroke="#2563eb" stroke-width="1" stroke-dasharray="3"/>
+                <text x="305" y="297" text-anchor="middle" fill="#60a5fa" font-size="9" font-weight="600">⚡ Response: &lt; 5 ms</text>
+                <text x="305" y="313" text-anchor="middle" fill="#8b9dc3" font-size="8">Fault detection: ≥96.8%</text>
+
+                <!-- System-2 (right center) -->
+                <rect x="460" y="180" width="270" height="160" rx="12" fill="url(#grad-purple)" stroke="#8b5cf6" stroke-width="1.5"/>
+                <text x="595" y="208" text-anchor="middle" fill="#8b5cf6" font-size="13" font-weight="800">SYSTEM-2: DELIBERATIVE</text>
+                <text x="595" y="230" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">QIRL Optimizer</text>
+                <text x="595" y="252" text-anchor="middle" fill="#8b9dc3" font-size="9">ψ = Σᵢ αᵢ|aᵢ⟩ (complex amplitudes)</text>
+                <text x="595" y="268" text-anchor="middle" fill="#8b9dc3" font-size="9">P(aᵢ|s) = |αᵢ|² (Born rule)</text>
+                <rect x="500" y="280" width="190" height="42" rx="6" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3"/>
+                <text x="595" y="297" text-anchor="middle" fill="#8b5cf6" font-size="9" font-weight="600">🧠 Decision: &lt; 50 ms</text>
+                <text x="595" y="313" text-anchor="middle" fill="#8b9dc3" font-size="8">2× speedup vs DQN</text>
+
+                <!-- Merge arrows to PINN -->
+                <line x1="305" y1="340" x2="380" y2="400" stroke="#2563eb" stroke-width="1.5"/>
+                <line x1="595" y1="340" x2="520" y2="400" stroke="#8b5cf6" stroke-width="1.5"/>
+
+                <!-- PINN Safety Layer (bottom center) -->
+                <rect x="260" y="400" width="380" height="100" rx="12" fill="url(#grad-green)" stroke="#10b981" stroke-width="1.5"/>
+                <text x="450" y="428" text-anchor="middle" fill="#10b981" font-size="13" font-weight="800">PINN SAFETY LAYER</text>
+                <text x="450" y="448" text-anchor="middle" fill="#e8edf5" font-size="10" font-weight="600">Physics-Informed Neural Network</text>
+                <text x="450" y="468" text-anchor="middle" fill="#8b9dc3" font-size="9">L = L_data + λ_pf·L_AC + λ_lim·L_constraints</text>
+                <text x="450" y="488" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">🛡️ Compliance: &gt;99.8% | Kirchhoff + V/I limits</text>
+
+                <!-- Output arrow -->
+                <line x1="640" y1="450" x2="750" y2="450" stroke="#10b981" stroke-width="2"/>
+                <rect x="750" y="420" width="130" height="60" rx="10" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+                <text x="815" y="443" text-anchor="middle" fill="#10b981" font-size="10" font-weight="700">CONTROL</text>
+                <text x="815" y="460" text-anchor="middle" fill="#8b9dc3" font-size="8">FACTS, EV, Gen</text>
+                <text x="815" y="473" text-anchor="middle" fill="#8b9dc3" font-size="8">Dispatch Signals</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Architecture Details Grid -->
+    <div class="grid-2 mt-3">
+        <div class="card">
+            <div class="card-title">Information Flow</div>
+            <div class="mt-2">
+                <div class="eq-block">
+                    <div class="eq-label">1. Sensor Fusion</div>
+                    <div class="eq-line">X_t ∈ ℝ^{N_bus × 6 × T_window}</div>
+                    <div class="eq-line">PMU (30-120 Hz) + SCADA + Weather + Market</div>
+                    <div class="eq-label">2. Metacognitive Assessment</div>
+                    <div class="eq-line">C_t = 1 - Var(Q) / Var_max</div>
+                    <div class="eq-line">α_t = 𝟙(C_t &gt; τ_c ∧ U_t &gt; τ_u)</div>
+                    <div class="eq-label">3. Dual-Process Execution</div>
+                    <div class="eq-line">u = α_t · u_S1 + (1-α_t) · u_S2</div>
+                    <div class="eq-label">4. Safety Projection</div>
+                    <div class="eq-line">u_safe = PINN_project(u, state)</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Cognitive Science Foundation</div>
+            <div class="section-desc mt-2" style="max-width:100%;">
+                CAPSM draws from <strong>Kahneman's dual-process theory</strong> (2011):
+            </div>
+            <table class="data-table mt-1">
+                <thead>
+                    <tr><th>Aspect</th><th>System-1 (Fast)</th><th>System-2 (Slow)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cognition</td><td>Intuitive / Automatic</td><td>Deliberate / Analytical</td></tr>
+                    <tr><td>Speed</td><td>Milliseconds</td><td>Seconds to minutes</td></tr>
+                    <tr><td>CAPSM Model</td><td>CNN-LSTM</td><td>QIRL</td></tr>
+                    <tr><td>Response</td><td>&lt; 5 ms</td><td>&lt; 50 ms</td></tr>
+                    <tr><td>Task</td><td>Fault reflex</td><td>Economic dispatch</td></tr>
+                    <tr><td>Activated</td><td>High urgency</td><td>Normal operation</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: SYSTEM-1
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-system1">
+    <!-- INLINE EDITOR: System-1 -->
+    <div class="tab-editor" id="editor-system1">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">System-1 Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Response Time</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Fault Detection</label>
+                <input type="number" data-cfg="fault_accuracy" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Frequency</label>
+                <input type="number" data-cfg="frequency" step="1" data-live="1">
+                <span class="field-unit">Hz</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">System-1: CNN-LSTM Reflexive Controller</div>
+    <div class="section-desc">
+        Fast fault detection and voltage support using convolutional spatial processing (CNN) and temporal 
+        sequence memory (LSTM). Targets sub-5ms response for protective relay coordination.
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Network Architecture</div>
+                <span class="card-badge badge-blue">CNN-LSTM</span>
+            </div>
+            <div class="eq-block">
+                <div class="eq-label">Input</div>
+                <div class="eq-line">X_t ∈ ℝ^{N_bus × 6 × T_window}</div>
+                <div class="eq-line">  N_bus = 9, channels = {Va,Vb,Vc,Ia,Ib,Ic}</div>
+                <div class="eq-line">  T_window = 30 samples @ 120 Hz = 250 ms</div>
+                <div class="eq-label">CNN Feature Extraction</div>
+                <div class="eq-line">h_spatial = CNN_1D(X_t)  # spatial correlations across buses</div>
+                <div class="eq-line">  Conv1D → BatchNorm → ReLU → MaxPool (×3 layers)</div>
+                <div class="eq-label">LSTM Temporal Processing</div>
+                <div class="eq-line">z(t) = LSTM(h_spatial)  # temporal fault signatures</div>
+                <div class="eq-line">  Hidden size: 128, 2 layers, dropout=0.2</div>
+                <div class="eq-label">Output</div>
+                <div class="eq-line">u_fast = f_θ(z(t))  # reactive injection command</div>
+                <div class="eq-line">  Dense → Tanh → scale to ±100 MVAR</div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-title">Performance Targets</div>
+                <div class="mt-2">
+                    <div class="gauge-container">
+                        <div class="gauge-ring">
+                            <svg viewBox="0 0 60 60">
+                                <circle class="gauge-bg" cx="30" cy="30" r="24"/>
+                                <circle class="gauge-fill" cx="30" cy="30" r="24" 
+                                    stroke="#2563eb" stroke-dasharray="150.8" stroke-dashoffset="4.8"/>
+                            </svg>
+                            <span class="gauge-value" style="color:#60a5fa;">96.8</span>
+                        </div>
+                        <div class="gauge-info">
+                            <h4>Fault Detection</h4>
+                            <p>≥96.8% accuracy target</p>
+                        </div>
+                    </div>
+                    <div class="gauge-container">
+                        <div class="gauge-ring">
+                            <svg viewBox="0 0 60 60">
+                                <circle class="gauge-bg" cx="30" cy="30" r="24"/>
+                                <circle class="gauge-fill" cx="30" cy="30" r="24" 
+                                    stroke="#06b6d4" stroke-dasharray="150.8" stroke-dashoffset="0.3"/>
+                            </svg>
+                            <span class="gauge-value" style="color:#06b6d4;">5ms</span>
+                        </div>
+                        <div class="gauge-info">
+                            <h4>Response Time</h4>
+                            <p>&lt; 5 ms hardware, &lt; 0.2 ms phasor sim</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Fault Scenarios</div>
+                <table class="data-table mt-1">
+                    <thead><tr><th>Type</th><th>Location</th><th>Duration</th></tr></thead>
+                    <tbody>
+                        <tr><td>3-Phase Fault</td><td>Bus 5</td><td>5 cycles (83.3 ms)</td></tr>
+                        <tr><td>Line-Ground</td><td>Line 4-5</td><td>3 cycles</td></tr>
+                        <tr><td>Line-Line</td><td>Line 7-8</td><td>5 cycles</td></tr>
+                        <tr><td>Loss of Gen</td><td>Gen 2</td><td>t=5s event</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: SYSTEM-2
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-system2">
+    <!-- INLINE EDITOR: System-2 -->
+    <div class="tab-editor" id="editor-system2">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">System-2 QIRL Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Decision Cycle</label>
+                <input type="number" data-cfg="s2_response_ms" step="1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>QIRL Speedup</label>
+                <input type="number" data-cfg="qirl_speedup" step="0.1" data-live="1">
+                <span class="field-unit">× vs DQN</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Learning Rate</label>
+                <input type="number" data-cfg="hirl_lr" step="0.0001" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Discount (γ)</label>
+                <input type="number" data-cfg="hirl_gamma" step="0.01" data-live="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">System-2: QIRL Deliberative Optimizer</div>
+    <div class="section-desc">
+        Quantum-Inspired Reinforcement Learning uses complex-valued policy amplitudes and quantum tunneling 
+        to escape local optima, achieving ≥2× faster convergence than standard DQN for economic dispatch.
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">QIRL Algorithm</div>
+                <span class="card-badge badge-purple">QUANTUM-INSPIRED</span>
+            </div>
+            <div class="eq-block">
+                <div class="eq-label">Policy Representation</div>
+                <div class="eq-line">ψ = Σᵢ αᵢ|aᵢ⟩   (complex-valued amplitudes)</div>
+                <div class="eq-line">P(aᵢ|s) = |αᵢ|²  (Born rule — probability)</div>
+                <div class="eq-label">Bellman Update</div>
+                <div class="eq-line">Q(s,a) ← Q(s,a) + lr·(r + γ·max Q(s',a') - Q(s,a))</div>
+                <div class="eq-label">Quantum Tunneling</div>
+                <div class="eq-line">αᵢ ← αᵢ - lr·∇L + β·T(αᵢ)</div>
+                <div class="eq-line">T = tunneling operator (quantum annealing analog)</div>
+                <div class="eq-line">β decays with temperature schedule: β(t) = β₀·e^(-t/τ)</div>
+                <div class="eq-label">Superposition Exploration</div>
+                <div class="eq-line">Multiple actions evaluated simultaneously via amplitude</div>
+                <div class="eq-line">interference: constructive for good, destructive for bad</div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-title">QIRL vs Classical RL Convergence</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart-qirl-convergence"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Control Tasks</div>
+                <table class="data-table mt-1">
+                    <thead><tr><th>Task</th><th>Objective</th><th>Cycle</th></tr></thead>
+                    <tbody>
+                        <tr><td>Economic Dispatch</td><td>min Σ cᵢ·Pᵢ</td><td>&lt; 50 ms</td></tr>
+                        <tr><td>VAR Optimization</td><td>min losses</td><td>&lt; 50 ms</td></tr>
+                        <tr><td>EV Scheduling</td><td>V2G fleet SoC</td><td>&lt; 100 ms</td></tr>
+                        <tr><td>Cyber Recovery</td><td>Restore control</td><td>&lt; 200 ms</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: PINN
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-pinn">
+    <!-- INLINE EDITOR: PINN -->
+    <div class="tab-editor" id="editor-pinn">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">PINN Safety Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Compliance Target</label>
+                <input type="number" data-cfg="pinn_compliance" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Max Violations</label>
+                <input type="number" data-cfg="max_violations" step="0.01" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">PINN Safety Layer</div>
+    <div class="section-desc">
+        Physics-Informed Neural Network enforces AC power flow equations (Kirchhoff's laws), 
+        voltage/current bounds, and SoC constraints on all control outputs. Target: &gt;99.8% compliance.
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Loss Function</div>
+                <span class="card-badge badge-emerald">PHYSICS</span>
+            </div>
+            <div class="eq-block">
+                <div class="eq-label">Total Loss</div>
+                <div class="eq-line">L = L_data + λ_pf · L_AC + λ_lim · L_constraints</div>
+                <div class="eq-label">AC Power Flow Residual</div>
+                <div class="eq-line">P_i = V_i Σⱼ V_j(G_ij cos θ_ij + B_ij sin θ_ij)</div>
+                <div class="eq-line">Q_i = V_i Σⱼ V_j(G_ij sin θ_ij - B_ij cos θ_ij)</div>
+                <div class="eq-line">L_AC = ‖F(V, θ, P, Q)‖²</div>
+                <div class="eq-label">Constraint Penalties</div>
+                <div class="eq-line">L_V = Σ max(0, V-V_max)² + max(0, V_min-V)²</div>
+                <div class="eq-line">L_I = Σ max(0, I-I_max)²</div>
+                <div class="eq-line">L_SoC = Σ max(0, SoC-0.95)² + max(0, 0.20-SoC)²</div>
+                <div class="eq-line">L_constraints = L_V + L_I + L_SoC</div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-title">Operational Limits</div>
+                <table class="data-table mt-1">
+                    <thead><tr><th>Constraint</th><th>Min</th><th>Max</th><th>Unit</th></tr></thead>
+                    <tbody>
+                        <tr><td>Bus Voltage</td><td>0.90</td><td>1.10</td><td>pu</td></tr>
+                        <tr><td>Line Current</td><td>—</td><td>1.05</td><td>pu (thermal)</td></tr>
+                        <tr><td>EV SoC</td><td>0.20</td><td>0.95</td><td>pu</td></tr>
+                        <tr><td>Frequency</td><td>59.5</td><td>60.5</td><td>Hz</td></tr>
+                        <tr><td>SVC Reactive</td><td>-100</td><td>+100</td><td>MVAR</td></tr>
+                        <tr><td>STATCOM</td><td>-50</td><td>+50</td><td>MVAR</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-title">Compliance Target</div>
+                <div class="mt-2 text-center">
+                    <div style="font-size: 3rem; font-weight: 900; background: var(--gradient-emerald); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        99.8%
+                    </div>
+                    <div class="text-muted mt-1">Constraint compliance across all test scenarios</div>
+                    <div class="text-muted" style="font-size:0.78rem;">(&lt; 0.2% violation rate — PhD Proposal Table 7)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: METACOGNITION
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-metacognition">
+    <!-- INLINE EDITOR: Metacognition -->
+    <div class="tab-editor" id="editor-metacognition">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Metacognition Thresholds</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>τ_c (Confidence)</label>
+                <input type="number" data-cfg="tau_c" step="0.05" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>τ_n (Novelty, σ)</label>
+                <input type="number" data-cfg="tau_n" step="0.1" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>τ_u (Urgency)</label>
+                <input type="number" data-cfg="tau_u" step="0.05" data-live="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Metacognitive Arbitration</div>
+    <div class="section-desc">
+        The metacognitive layer continuously monitors system state and CAPSM's own internal confidence, 
+        dynamically switching between System-1 (fast reflex) and System-2 (deliberative) control.
+    </div>
+
+    <div class="grid-3 mb-3">
+        <div class="card" style="border-left: 3px solid var(--accent-blue);">
+            <div class="card-title text-blue">Confidence (C<sub>t</sub>)</div>
+            <div class="eq-block mt-2">
+                <div class="eq-line">C_t = 1 - Var(Q-values) / Var_max</div>
+            </div>
+            <div class="mt-2 text-muted" style="font-size:0.82rem;">
+                High confidence → trust current policy. Threshold: τ_c = 0.7
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-purple);">
+            <div class="card-title text-purple">Novelty (N<sub>t</sub>)</div>
+            <div class="eq-block mt-2">
+                <div class="eq-line">N_t = ‖s - μ_buffer‖ / σ_buffer</div>
+            </div>
+            <div class="mt-2 text-muted" style="font-size:0.82rem;">
+                High novelty → unseen state, switch to System-2. Threshold: τ_n = 2.0σ
+            </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--accent-red);">
+            <div class="card-title text-red">Urgency (U<sub>t</sub>)</div>
+            <div class="eq-block mt-2">
+                <div class="eq-line">U_t = max(|ΔV/Δt|, |Δf/Δt|) / threshold</div>
+            </div>
+            <div class="mt-2 text-muted" style="font-size:0.82rem;">
+                High urgency → trigger System-1 reflex. Threshold: τ_u = 0.3
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Decision Rule</div>
+            <span class="card-badge badge-amber">MODE SWITCHING</span>
+        </div>
+        <div class="eq-block">
+            <div class="eq-label">Arbitration Function</div>
+            <div class="eq-line">α_t = 𝟙(C_t &gt; τ_c ∧ U_t &gt; τ_u)    →  1 = System-1, 0 = System-2</div>
+            <div class="eq-label">Blended Control Output</div>
+            <div class="eq-line">u(t) = α_t · u_System1(t) + (1 - α_t) · u_System2(t)</div>
+            <div class="eq-label">Safety Gate</div>
+            <div class="eq-line">u_safe(t) = PINN_project(u(t), grid_state(t))</div>
+        </div>
+        <div class="mt-3">
+            <div class="card-title">Simulated Mode Switching</div>
+            <div class="chart-wrapper mt-2">
+                <canvas id="chart-metacognition"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: TOPOLOGY
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-topology">
+    <!-- INLINE EDITOR: Topology -->
+    <div class="tab-editor" id="editor-topology">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">IEEE 9-Bus Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Base MVA</label>
+                <input type="number" data-cfg="base_mva" step="10" data-live="1">
+                <span class="field-unit">MVA</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Base kV</label>
+                <input type="number" data-cfg="base_kv" step="1" data-live="1">
+                <span class="field-unit">kV</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Frequency</label>
+                <input type="number" data-cfg="frequency" step="1" data-live="1">
+                <span class="field-unit">Hz</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Sim Time</label>
+                <input type="number" data-cfg="sim_time" step="1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">IEEE 9-Bus Test System Topology</div>
+    <div class="section-desc">
+        WSCC 3-generator, 9-bus reference system (Anderson & Fouad). Base: 100 MVA, 230 kV, 60 Hz.
+        Extended with FACTS (SVC Bus 5, STATCOM Bus 8) and EV/V2G aggregator at Bus 8.
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Network Topology</div>
+            <span class="card-badge badge-cyan">INTERACTIVE</span>
+        </div>
+        <div class="topology-container">
+            <svg id="topology-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;">
+                <!-- Transmission Lines -->
+                <line x1="350" y1="200" x2="500" y2="120" class="line-path" id="line-4-5"/>
+                <line x1="350" y1="200" x2="350" y2="350" class="line-path" id="line-4-6"/>
+                <line x1="500" y1="120" x2="680" y2="120" class="line-path" id="line-5-7"/>
+                <line x1="350" y1="350" x2="680" y2="350" class="line-path" id="line-6-9"/>
+                <line x1="680" y1="120" x2="680" y2="250" class="line-path" id="line-7-8"/>
+                <line x1="680" y1="250" x2="680" y2="350" class="line-path" id="line-8-9"/>
+
+                <!-- Transformer connections (dashed) -->
+                <line x1="150" y1="120" x2="350" y2="200" stroke="#5a6d8a" stroke-width="2" stroke-dasharray="6,4"/>
+                <line x1="850" y1="120" x2="680" y2="120" stroke="#5a6d8a" stroke-width="2" stroke-dasharray="6,4"/>
+                <line x1="850" y1="350" x2="680" y2="350" stroke="#5a6d8a" stroke-width="2" stroke-dasharray="6,4"/>
+
+                <!-- Line labels -->
+                <text x="410" y="150" fill="#5a6d8a" font-size="10" transform="rotate(-20,410,150)">L4-5</text>
+                <text x="330" y="280" fill="#5a6d8a" font-size="10">L4-6</text>
+                <text x="580" y="110" fill="#5a6d8a" font-size="10">L5-7</text>
+                <text x="510" y="340" fill="#5a6d8a" font-size="10">L6-9</text>
+                <text x="660" y="185" fill="#5a6d8a" font-size="10">L7-8</text>
+                <text x="660" y="305" fill="#5a6d8a" font-size="10">L8-9</text>
+
+                <!-- Transformer labels -->
+                <text x="230" y="145" fill="#f59e0b" font-size="10" font-weight="600">T1</text>
+                <text x="770" y="110" fill="#f59e0b" font-size="10" font-weight="600">T2</text>
+                <text x="770" y="340" fill="#f59e0b" font-size="10" font-weight="600">T3</text>
+
+                <!-- Generator nodes -->
+                <g class="bus-node" id="node-gen1">
+                    <circle cx="150" cy="120" r="28" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+                    <text x="150" y="115" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800">Gen1</text>
+                    <text x="150" y="130" text-anchor="middle" fill="#8b9dc3" font-size="8">16.5kV</text>
+                </g>
+                <g class="bus-node" id="node-gen2">
+                    <circle cx="850" cy="120" r="28" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+                    <text x="850" y="115" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800">Gen2</text>
+                    <text x="850" y="130" text-anchor="middle" fill="#8b9dc3" font-size="8">18kV</text>
+                </g>
+                <g class="bus-node" id="node-gen3">
+                    <circle cx="850" cy="350" r="28" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+                    <text x="850" y="345" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800">Gen3</text>
+                    <text x="850" y="360" text-anchor="middle" fill="#8b9dc3" font-size="8">13.8kV</text>
+                </g>
+
+                <!-- Bus nodes (transmission level) -->
+                <g class="bus-node" id="node-bus4">
+                    <circle cx="350" cy="200" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="350" y="204" text-anchor="middle" class="bus-label" fill="#60a5fa">4</text>
+                </g>
+                <g class="bus-node" id="node-bus5">
+                    <circle cx="500" cy="120" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="500" y="124" text-anchor="middle" class="bus-label" fill="#60a5fa">5</text>
+                </g>
+                <g class="bus-node" id="node-bus6">
+                    <circle cx="350" cy="350" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="350" y="354" text-anchor="middle" class="bus-label" fill="#60a5fa">6</text>
+                </g>
+                <g class="bus-node" id="node-bus7">
+                    <circle cx="680" cy="120" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="680" y="124" text-anchor="middle" class="bus-label" fill="#60a5fa">7</text>
+                </g>
+                <g class="bus-node" id="node-bus8">
+                    <circle cx="680" cy="250" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="680" y="254" text-anchor="middle" class="bus-label" fill="#60a5fa">8</text>
+                </g>
+                <g class="bus-node" id="node-bus9">
+                    <circle cx="680" cy="350" r="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+                    <text x="680" y="354" text-anchor="middle" class="bus-label" fill="#60a5fa">9</text>
+                </g>
+
+                <!-- Load indicators -->
+                <g>
+                    <rect x="470" y="155" width="60" height="28" rx="4" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+                    <text x="500" y="173" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">125MW</text>
+                    <line x1="500" y1="140" x2="500" y2="155" stroke="#10b981" stroke-width="1"/>
+                </g>
+                <g>
+                    <rect x="320" y="380" width="60" height="28" rx="4" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+                    <text x="350" y="398" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">90MW</text>
+                    <line x1="350" y1="370" x2="350" y2="380" stroke="#10b981" stroke-width="1"/>
+                </g>
+                <g>
+                    <rect x="710" y="235" width="60" height="28" rx="4" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1"/>
+                    <text x="740" y="253" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">100MW</text>
+                    <line x1="700" y1="250" x2="710" y2="250" stroke="#10b981" stroke-width="1"/>
+                </g>
+
+                <!-- SVC at Bus 5 -->
+                <g>
+                    <rect x="440" y="60" width="60" height="30" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.5"/>
+                    <text x="470" y="79" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="700">SVC</text>
+                    <line x1="470" y1="90" x2="490" y2="100" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3"/>
+                    <text x="440" y="55" fill="#5a6d8a" font-size="8">±100 MVAR</text>
+                </g>
+
+                <!-- STATCOM at Bus 8 -->
+                <g>
+                    <rect x="590" y="235" width="70" height="30" rx="4" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="625" y="254" text-anchor="middle" fill="#8b5cf6" font-size="9" font-weight="700">STATCOM</text>
+                    <line x1="660" y1="250" x2="665" y2="250" stroke="#8b5cf6" stroke-width="1"/>
+                    <text x="590" y="230" fill="#5a6d8a" font-size="8">±50 MVAR</text>
+                </g>
+
+                <!-- EV/V2G at Bus 8 -->
+                <g>
+                    <rect x="710" y="270" width="70" height="30" rx="4" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="1.5"/>
+                    <text x="745" y="289" text-anchor="middle" fill="#06b6d4" font-size="9" font-weight="700">EV/V2G</text>
+                    <text x="745" y="310" fill="#5a6d8a" font-size="8" text-anchor="middle">50 MW fleet</text>
+                </g>
+
+                <!-- Fault indicator at Bus 5 -->
+                <g>
+                    <text x="530" y="105" fill="#ef4444" font-size="14">⚡</text>
+                    <text x="545" y="105" fill="#ef4444" font-size="8" font-weight="600">Fault</text>
+                </g>
+
+                <!-- Legend -->
+                <g transform="translate(30,440)">
+                    <text x="0" y="0" fill="#e8edf5" font-size="11" font-weight="700">Legend:</text>
+                    <circle cx="10" cy="20" r="6" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="22" y="24" fill="#8b9dc3" font-size="9">Generator</text>
+                    <circle cx="110" cy="20" r="6" fill="rgba(37,99,235,0.3)" stroke="#2563eb" stroke-width="1.5"/>
+                    <text x="122" y="24" fill="#8b9dc3" font-size="9">Bus</text>
+                    <rect x="185" y="14" width="14" height="12" rx="2" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1"/>
+                    <text x="205" y="24" fill="#8b9dc3" font-size="9">Load</text>
+                    <rect x="260" y="14" width="14" height="12" rx="2" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="280" y="24" fill="#8b9dc3" font-size="9">FACTS</text>
+                    <rect x="340" y="14" width="14" height="12" rx="2" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="1"/>
+                    <text x="360" y="24" fill="#8b9dc3" font-size="9">EV/V2G</text>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Line Parameters Table -->
+    <div class="card mt-3">
+        <div class="card-header">
+            <div class="card-title">Transmission Line Parameters</div>
+            <span class="card-badge badge-blue">PER-UNIT (100 MVA, 230 kV)</span>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr><th>Line</th><th>From</th><th>To</th><th>R (pu)</th><th>X (pu)</th><th>B (pu)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>L4-5</td><td>Bus 4</td><td>Bus 5</td><td>0.0100</td><td>0.0850</td><td>0.1760</td></tr>
+                <tr><td>L4-6</td><td>Bus 4</td><td>Bus 6</td><td>0.0170</td><td>0.0920</td><td>0.1580</td></tr>
+                <tr><td>L5-7</td><td>Bus 5</td><td>Bus 7</td><td>0.0320</td><td>0.1610</td><td>0.3060</td></tr>
+                <tr><td>L6-9</td><td>Bus 6</td><td>Bus 9</td><td>0.0390</td><td>0.1700</td><td>0.3580</td></tr>
+                <tr><td>L7-8</td><td>Bus 7</td><td>Bus 8</td><td>0.0085</td><td>0.0720</td><td>0.1490</td></tr>
+                <tr><td>L8-9</td><td>Bus 8</td><td>Bus 9</td><td>0.0119</td><td>0.1008</td><td>0.2090</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: LOAD FLOW
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-loadflow">
+    <!-- INLINE EDITOR: Load Flow -->
+    <div class="tab-editor" id="editor-loadflow">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Load Flow Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Base MVA</label>
+                <input type="number" data-cfg="base_mva" step="10" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Base kV</label>
+                <input type="number" data-cfg="base_kv" step="1" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Frequency</label>
+                <input type="number" data-cfg="frequency" step="1" data-live="1">
+                <span class="field-unit">Hz</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Load Flow Analysis</div>
+    <div class="section-desc">
+        Steady-state AC power flow solution for the IEEE 9-Bus system (Anderson & Fouad reference data).
+        Total generation: 319.64 MW. System losses: 4.64 MW.
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Bus Data — Load Flow Results</div>
+            <span class="card-badge badge-emerald">SOLVED</span>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr><th>Bus</th><th>V (pu)</th><th>Angle (°)</th><th>P_gen (MW)</th><th>Q_gen (MVAR)</th><th>P_load (MW)</th><th>Q_load (MVAR)</th><th>Type</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>1.040</td><td>0.000</td><td>71.64</td><td>27.05</td><td>0</td><td>0</td><td><span class="card-badge badge-red">Slack</span></td></tr>
+                <tr><td>2</td><td>1.025</td><td>9.280</td><td>163.00</td><td>6.65</td><td>0</td><td>0</td><td><span class="card-badge badge-amber">PV</span></td></tr>
+                <tr><td>3</td><td>1.025</td><td>4.665</td><td>85.00</td><td>-10.86</td><td>0</td><td>0</td><td><span class="card-badge badge-amber">PV</span></td></tr>
+                <tr><td>4</td><td>1.026</td><td>-2.217</td><td>0</td><td>0</td><td>0</td><td>0</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+                <tr><td>5</td><td>0.996</td><td>-3.989</td><td>0</td><td>0</td><td>125</td><td>50</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+                <tr><td>6</td><td>1.013</td><td>-3.688</td><td>0</td><td>0</td><td>90</td><td>30</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+                <tr><td>7</td><td>1.026</td><td>3.720</td><td>0</td><td>0</td><td>0</td><td>0</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+                <tr><td>8</td><td>1.016</td><td>0.728</td><td>0</td><td>0</td><td>100</td><td>35</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+                <tr><td>9</td><td>1.032</td><td>1.967</td><td>0</td><td>0</td><td>0</td><td>0</td><td><span class="card-badge badge-blue">PQ</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid-2 mt-3">
+        <div class="card">
+            <div class="card-title">Voltage Magnitude Profile</div>
+            <div class="chart-wrapper mt-2">
+                <canvas id="chart-loadflow-voltage"></canvas>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Voltage Angle Profile</div>
+            <div class="chart-wrapper mt-2">
+                <canvas id="chart-loadflow-angle"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: FACTS
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-facts">
+    <!-- INLINE EDITOR: FACTS -->
+    <div class="tab-editor" id="editor-facts">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">FACTS Device Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>S1 Response</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>S2 Decision</label>
+                <input type="number" data-cfg="s2_response_ms" step="1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Frequency</label>
+                <input type="number" data-cfg="frequency" step="1" data-live="1">
+                <span class="field-unit">Hz</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">FACTS Devices</div>
+    <div class="section-desc">
+        Flexible AC Transmission Systems provide voltage regulation and reactive power support. 
+        Controlled by CAPSM's System-1 (fast reflex) and System-2 (optimization).
+    </div>
+
+    <div class="grid-2">
+        <div class="facts-card">
+            <div class="device-type text-amber">Static VAR Compensator</div>
+            <h3>SVC at Bus 5</h3>
+            <div class="facts-detail"><span class="label">Rating</span><span class="value">±100 MVAR</span></div>
+            <div class="facts-detail"><span class="label">V Reference</span><span class="value">1.0 pu</span></div>
+            <div class="facts-detail"><span class="label">Droop (Xs)</span><span class="value">0.03 pu</span></div>
+            <div class="facts-detail"><span class="label">Delay (Td)</span><span class="value">20 ms</span></div>
+            <div class="facts-detail"><span class="label">PI Gains</span><span class="value">Kp=5, Ki=100</span></div>
+            <div class="facts-detail"><span class="label">Function</span><span class="value text-emerald">Voltage regulation</span></div>
+            <div class="facts-detail"><span class="label">CAPSM Control</span><span class="value text-blue">System-1 + System-2</span></div>
+        </div>
+        <div class="facts-card">
+            <div class="device-type text-purple">Static Synchronous Compensator</div>
+            <h3>STATCOM at Bus 8</h3>
+            <div class="facts-detail"><span class="label">Rating</span><span class="value">±50 MVAR</span></div>
+            <div class="facts-detail"><span class="label">V Reference</span><span class="value">1.0 pu</span></div>
+            <div class="facts-detail"><span class="label">Droop (Xs)</span><span class="value">0.02 pu</span></div>
+            <div class="facts-detail"><span class="label">Delay (Td)</span><span class="value">5 ms</span></div>
+            <div class="facts-detail"><span class="label">PI Gains</span><span class="value">Kp=5, Ki=200</span></div>
+            <div class="facts-detail"><span class="label">Function</span><span class="value text-emerald">Fast reactive compensation</span></div>
+            <div class="facts-detail"><span class="label">CAPSM Control</span><span class="value text-blue">System-1 reflex (&lt;5 ms)</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: EV/V2G
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-ev">
+    <!-- INLINE EDITOR: EV/V2G -->
+    <div class="tab-editor" id="editor-ev">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">EV/V2G Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Fleet Size</label>
+                <input type="number" data-cfg="ev_fleet" step="100" data-live="1">
+                <span class="field-unit">EVs</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Total Capacity</label>
+                <input type="number" data-cfg="ev_capacity_mw" step="5" data-live="1">
+                <span class="field-unit">MW</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">EV/V2G Aggregator</div>
+    <div class="section-desc">
+        Vehicle-to-Grid fleet at Bus 8 — 1,000 EVs × 50 kW = 50 MW bidirectional capacity. 
+        Controlled by CAPSM System-2 QIRL for economic optimization.
+    </div>
+
+    <div class="ev-stats-grid">
+        <div class="ev-stat">
+            <div class="value">1,000</div>
+            <div class="label">EV Fleet Size</div>
+        </div>
+        <div class="ev-stat">
+            <div class="value">50 MW</div>
+            <div class="label">Total Capacity</div>
+        </div>
+        <div class="ev-stat">
+            <div class="value">150 MWh</div>
+            <div class="label">Energy Storage</div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-title">V2G System Parameters</div>
+            <table class="data-table mt-1">
+                <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+                <tbody>
+                    <tr><td>Bus Location</td><td>Bus 8</td></tr>
+                    <tr><td>Fleet Size (N_ev)</td><td>1,000 EVs</td></tr>
+                    <tr><td>Unit Capacity</td><td>50 kW per EV</td></tr>
+                    <tr><td>Total Capacity (P_max)</td><td>±50 MW</td></tr>
+                    <tr><td>Energy Capacity (E_cap)</td><td>150 MWh</td></tr>
+                    <tr><td>Efficiency (η)</td><td>95%</td></tr>
+                    <tr><td>Initial SoC</td><td>70%</td></tr>
+                    <tr><td>SoC Bounds</td><td>[20%, 95%]</td></tr>
+                    <tr><td>Controlled By</td><td>System-2 QIRL</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-title">SoC Dynamics</div>
+            <div class="eq-block mt-2">
+                <div class="eq-label">State of Charge Equation</div>
+                <div class="eq-line">d(SoC)/dt = -(η · P) / E_cap</div>
+                <div class="eq-label">Saturation Limits</div>
+                <div class="eq-line">P_ref ∈ [-50 MW, +50 MW]</div>
+                <div class="eq-line">SoC ∈ [0.20, 0.95]</div>
+                <div class="eq-label">QIRL Control</div>
+                <div class="eq-line">ΔP_EV = (0.6 - SoC) × 50 MW</div>
+                <div class="eq-line">Charge if SoC &lt; 0.6, Discharge if SoC &gt; 0.6</div>
+            </div>
+            <div class="chart-wrapper mt-2">
+                <canvas id="chart-ev-soc"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: PERFORMANCE
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-performance">
+    <!-- INLINE EDITOR: Performance -->
+    <div class="tab-editor" id="editor-performance">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Performance Targets</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>S1 Response</label>
+                <input type="number" data-cfg="s1_response_ms" step="0.1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>S2 Decision</label>
+                <input type="number" data-cfg="s2_response_ms" step="1" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Fault Accuracy</label>
+                <input type="number" data-cfg="fault_accuracy" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>PINN Compliance</label>
+                <input type="number" data-cfg="pinn_compliance" step="0.1" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>QIRL Speedup</label>
+                <input type="number" data-cfg="qirl_speedup" step="0.1" data-live="1">
+                <span class="field-unit">×</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Max Violations</label>
+                <input type="number" data-cfg="max_violations" step="0.01" data-live="1">
+                <span class="field-unit">%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Performance Targets</div>
+    <div class="section-desc">
+        Key performance indicators from the PhD proposal (Table 7 & 9). 
+        These benchmarks define success criteria for the CAPSM framework.
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card blue">
+            <div class="kpi-icon blue">⚡</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&lt; 5 ms</div>
+                <div class="kpi-label">System-1 Response Time</div>
+            </div>
+        </div>
+        <div class="kpi-card purple">
+            <div class="kpi-icon purple">🧠</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&lt; 50 ms</div>
+                <div class="kpi-label">System-2 Decision Cycle</div>
+            </div>
+        </div>
+        <div class="kpi-card emerald">
+            <div class="kpi-icon emerald">🛡️</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&lt; 0.2%</div>
+                <div class="kpi-label">Constraint Violations</div>
+            </div>
+        </div>
+        <div class="kpi-card amber">
+            <div class="kpi-icon amber">🎯</div>
+            <div class="kpi-content">
+                <div class="kpi-value">≥ 96.8%</div>
+                <div class="kpi-label">Fault Detection Accuracy</div>
+            </div>
+        </div>
+        <div class="kpi-card red">
+            <div class="kpi-icon red">🚀</div>
+            <div class="kpi-content">
+                <div class="kpi-value">≥ 2×</div>
+                <div class="kpi-label">QIRL Speedup vs DQN</div>
+            </div>
+        </div>
+        <div class="kpi-card cyan">
+            <div class="kpi-icon cyan">📐</div>
+            <div class="kpi-content">
+                <div class="kpi-value">&gt; 99.8%</div>
+                <div class="kpi-label">PINN Compliance Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Performance Comparison: CAPSM vs Baselines</div>
+        <div class="chart-wrapper mt-2">
+            <canvas id="chart-performance-comparison"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: CYBER
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-cyber">
+    <!-- INLINE EDITOR: Cyber Attacks -->
+    <div class="tab-editor" id="editor-cyber">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Cyber-Attack Scenarios</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>FDI Start</label>
+                <input type="number" data-cfg="fdi_start" step="0.1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>FDI End</label>
+                <input type="number" data-cfg="fdi_end" step="0.1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>DoS Start</label>
+                <input type="number" data-cfg="dos_start" step="0.1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>DoS Duration</label>
+                <input type="number" data-cfg="dos_duration" step="0.1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Comm Delay</label>
+                <input type="number" data-cfg="comm_delay" step="0.1" data-live="1">
+                <span class="field-unit">s</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Cyber-Attack Resilience</div>
+    <div class="section-desc">
+        CAPSM is validated against three cyber-attack scenarios targeting PMU measurements and control channels.
+        The metacognitive layer detects anomalies and triggers appropriate response modes.
+    </div>
+
+    <div class="attack-timeline">
+        <div class="attack-block fdi">
+            <h4 class="text-red">False Data Injection (FDI)</h4>
+            <div class="timing">t = 2.0s — 5.0s</div>
+            <p>Gaussian noise injected on Bus 5 PMU data with SNR = 20 dB. 
+               Tests System-1's anomaly detection and PINN's physics-based validation.</p>
+            <div class="mt-2 text-muted" style="font-size:0.78rem;">
+                Target: PMU measurements<br>
+                σ = 0.05 × max(|pmu_in|)
+            </div>
+        </div>
+        <div class="attack-block dos">
+            <h4 class="text-amber">Denial of Service (DoS)</h4>
+            <div class="timing">t = 8.0s — 8.5s</div>
+            <p>All PMU signals zeroed — complete communication blackout for 500 ms. 
+               Tests CAPSM's ability to maintain control using last-known-good state.</p>
+            <div class="mt-2 text-muted" style="font-size:0.78rem;">
+                Target: Communication channels<br>
+                All measurements → 0
+            </div>
+        </div>
+        <div class="attack-block delay">
+            <h4 class="text-purple">Communication Delay</h4>
+            <div class="timing">t = 12.0s — 20.0s</div>
+            <p>1.5-second delay injected on control signal communications. 
+               Tests System-2's robustness to delayed feedback loops.</p>
+            <div class="mt-2 text-muted" style="font-size:0.78rem;">
+                Target: Control loops<br>
+                Delay = 1.5 seconds
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-title">CAPSM Cyber-Attack Response Strategy</div>
+        <table class="data-table mt-2">
+            <thead><tr><th>Attack Type</th><th>Detection Method</th><th>Response Mode</th><th>Recovery</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>FDI</td>
+                    <td>PINN physics residual check — ‖F(V,θ)‖ &gt; threshold</td>
+                    <td>Switch to System-2 with filtered state</td>
+                    <td>Reject corrupted data, use PINN-validated estimates</td>
+                </tr>
+                <tr>
+                    <td>DoS</td>
+                    <td>Metacognitive novelty detector — zero-signal pattern</td>
+                    <td>System-1 hold-last-good + System-2 predictive model</td>
+                    <td>Resume normal operation on signal recovery</td>
+                </tr>
+                <tr>
+                    <td>Delay</td>
+                    <td>Timestamp analysis, round-trip time monitoring</td>
+                    <td>System-2 compensates with model-predictive control</td>
+                    <td>Adaptive delay compensation in QIRL policy</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: SCALING
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-scaling">
+    <!-- INLINE EDITOR: Scaling -->
+    <div class="tab-editor" id="editor-scaling">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Scaling Parameters</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>HIRL Regions</label>
+                <input type="number" data-cfg="hirl_regions" step="1" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Base MVA</label>
+                <input type="number" data-cfg="base_mva" step="10" data-live="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Test System Scaling</div>
+    <div class="section-desc">
+        CAPSM is validated across 4 IEEE standard test systems of increasing complexity, 
+        from 9-bus (core validation) to 300-bus (full-scale stress testing).
+    </div>
+
+    <div class="grid-4">
+        <div class="scale-card">
+            <div class="bus-count">9</div>
+            <h4>IEEE 9-Bus</h4>
+            <div class="stats">3 generators · 6 lines</div>
+            <div class="purpose">Core validation — System-1/System-2 integration testing</div>
+            <div class="status-badge status-built">BUILT ✓</div>
+        </div>
+        <div class="scale-card">
+            <div class="bus-count">39</div>
+            <h4>IEEE 39-Bus</h4>
+            <div class="stats">10 generators · 46 lines</div>
+            <div class="purpose">Gap 1 validation — dual-process scaling to mid-size grid</div>
+            <div class="status-badge status-planned">PLANNED</div>
+        </div>
+        <div class="scale-card">
+            <div class="bus-count">118</div>
+            <h4>IEEE 118-Bus</h4>
+            <div class="stats">54 generators · 186 lines</div>
+            <div class="purpose">Gap 4 — HMARL multi-agent coordination validation</div>
+            <div class="status-badge status-planned">PLANNED</div>
+        </div>
+        <div class="scale-card">
+            <div class="bus-count">300</div>
+            <h4>IEEE 300-Bus</h4>
+            <div class="stats">69 generators · 411 lines</div>
+            <div class="purpose">Full-scale CAPSM stress testing and benchmarking</div>
+            <div class="status-badge status-planned">PLANNED</div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-title">Scalability Chart</div>
+        <div class="chart-wrapper mt-2">
+            <canvas id="chart-scaling"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: TIMELINE
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-timeline">
+    <!-- INLINE EDITOR: Timeline -->
+    <div class="tab-editor" id="editor-timeline">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">Timeline Settings</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Year</label>
+                <input type="number" data-cfg="year" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Author</label>
+                <input type="text" data-cfg="author" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Sim Time (s)</label>
+                <input type="number" data-cfg="sim_time" step="1" data-live="1">
+            </div>
+            <div class="tab-editor-field" style="flex: 1 1 300px;">
+                <label>Notes</label>
+                <input type="text" data-cfg="notes" data-live="1" placeholder="Add notes...">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Research Timeline</div>
+    <div class="section-desc">
+        PhD research timeline spanning 30 months, with 5 major research objectives mapped to deliverables.
+    </div>
+
+    <div class="grid-2-1">
+        <div class="card">
+            <div class="card-title">Research Objectives Timeline</div>
+            <div class="timeline mt-3">
+                <div class="timeline-item completed">
+                    <h4>RO1: Cognitive Control Model</h4>
+                    <div class="time-range">Months 1-6</div>
+                    <p>Formalize dual-process cognitive control model with metacognitive arbitration. 
+                       Mathematical framework, mode-switching criteria, confidence/novelty/urgency equations.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>RO2: QIRL Algorithms</h4>
+                    <div class="time-range">Months 3-12</div>
+                    <p>Develop Quantum-Inspired RL algorithms with complex-valued amplitudes and tunneling. 
+                       Target: ≥2× convergence speedup over standard DQN.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>RO3: PINN Safety Layer</h4>
+                    <div class="time-range">Months 6-15</div>
+                    <p>Integrate physics-informed neural network for real-time AC power flow constraint enforcement. 
+                       Target: &gt;99.8% compliance rate.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>RO4: Multimodal Fusion + HMARL</h4>
+                    <div class="time-range">Months 12-24</div>
+                    <p>Multimodal sensor fusion (PMU, SCADA, weather, market) with Hierarchical Multi-Agent RL 
+                       for 118+ bus scalability.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>RO5: IEEE Test System Validation</h4>
+                    <div class="time-range">Months 18-30</div>
+                    <p>Comprehensive validation on IEEE 9-, 39-, 118-, 300-bus systems under fault, cyber-attack, 
+                       and high-DER penetration scenarios.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-title">Progress</div>
+                <div class="mt-2">
+                    <div class="mb-2">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>RO1: Cognitive Model</span><span class="text-emerald">100%</span>
+                        </div>
+                        <div class="progress-bar-container"><div class="progress-bar blue" style="width:100%"></div></div>
+                    </div>
+                    <div class="mb-2">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>RO2: QIRL</span><span class="text-blue">65%</span>
+                        </div>
+                        <div class="progress-bar-container"><div class="progress-bar purple" style="width:65%"></div></div>
+                    </div>
+                    <div class="mb-2">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>RO3: PINN</span><span class="text-amber">40%</span>
+                        </div>
+                        <div class="progress-bar-container"><div class="progress-bar emerald" style="width:40%"></div></div>
+                    </div>
+                    <div class="mb-2">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>RO4: HMARL</span><span class="text-amber">15%</span>
+                        </div>
+                        <div class="progress-bar-container"><div class="progress-bar amber" style="width:15%"></div></div>
+                    </div>
+                    <div class="mb-2">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>RO5: Validation</span><span class="text-muted">10%</span>
+                        </div>
+                        <div class="progress-bar-container"><div class="progress-bar blue" style="width:10%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Simulation Setup</div>
+                <table class="data-table mt-1">
+                    <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+                    <tbody>
+                        <tr><td>Mode</td><td>Phasor</td></tr>
+                        <tr><td>Stop Time</td><td>20 s</td></tr>
+                        <tr><td>Solver</td><td>ode23tb (stiff)</td></tr>
+                        <tr><td>Max Step</td><td>0.2 ms</td></tr>
+                        <tr><td>Rel Tolerance</td><td>1e-4</td></tr>
+                        <tr><td>Abs Tolerance</td><td>1e-6</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: HIRL FRAMEWORK
+     ═══════════════════════════════════════════════ -->
+<section class="section-page" id="page-hirl">
+    <!-- INLINE EDITOR: HIRL -->
+    <div class="tab-editor" id="editor-hirl">
+        <div class="tab-editor-header">
+            <div class="tab-editor-title">HIRL Configuration</div>
+            <button class="tab-editor-save" onclick="saveInline()">Save All</button>
+        </div>
+        <div class="tab-editor-fields">
+            <div class="tab-editor-field">
+                <label>Regions</label>
+                <input type="number" data-cfg="hirl_regions" step="1" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Global Update</label>
+                <input type="number" data-cfg="hirl_global_rate" step="50" data-live="1">
+                <span class="field-unit">ms</span>
+            </div>
+            <div class="tab-editor-field">
+                <label>Learning Rate</label>
+                <input type="number" data-cfg="hirl_lr" step="0.0001" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Discount (γ)</label>
+                <input type="number" data-cfg="hirl_gamma" step="0.01" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Consensus (ε)</label>
+                <input type="number" data-cfg="hirl_epsilon" step="0.001" data-live="1">
+            </div>
+            <div class="tab-editor-field">
+                <label>Primary Color</label>
+                <input type="color" data-cfg="color_purple" data-live="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">HIRL: Hierarchical Integrated Reinforcement Learning</div>
+    <div class="section-desc">
+        HIRL unifies QIRL's quantum-inspired exploration with hierarchical multi-agent coordination (HMARL) into
+        a single scalable RL framework that operates across multiple temporal and spatial resolutions. It bridges
+        System-2's QIRL optimizer with the HMARL scalability layer, creating a two-tier hierarchy.
+    </div>
+
+    <!-- Key Innovation Banner -->
+    <div class="hypothesis-banner" style="border-left-color: var(--accent-purple);">
+        <div class="label" style="color: var(--accent-purple);">Key Innovation</div>
+        <div class="text">
+            Regional agents use QIRL policies locally while a global coordinator merges strategies using
+            federated policy aggregation — enabling seamless scaling from 9-bus to 300+ bus systems
+            without retraining from scratch.
+        </div>
+    </div>
+
+    <!-- Hierarchy Diagram -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Three-Level HIRL Hierarchy</div>
+            <span class="card-badge badge-purple">HIERARCHICAL</span>
+        </div>
+        <div class="hirl-hierarchy">
+            <div class="hirl-level">
+                <div class="hirl-level-badge">☆ Global</div>
+                <h4>Global Coordinator</h4>
+                <div class="hirl-desc">
+                    Aggregates regional QIRL policies via federated averaging, resolves inter-region power flow conflicts,
+                    and dispatches global objectives (full-system economic dispatch, frequency regulation).
+                </div>
+                <div class="hirl-meta">
+                    <span>⏱ Update: 100–500 ms</span>
+                    <span>🔗 Federated QIRL + Consensus</span>
+                </div>
+            </div>
+            <div class="hirl-connector">⬇</div>
+            <div class="hirl-level">
+                <div class="hirl-level-badge">◆ Regional</div>
+                <h4>Regional Agents (Zone-Level QIRL)</h4>
+                <div class="hirl-desc">
+                    Each agent manages a zone (e.g., Bus 4-5-7 zone, Bus 6-8-9 zone). Executes local QIRL for
+                    VAR optimization, FACTS setpoints, and EV scheduling within its zone. Communicates with neighbors
+                    via gradient message passing.
+                </div>
+                <div class="hirl-meta">
+                    <span>⏱ Update: &lt;50 ms</span>
+                    <span>🔗 QIRL + Neighbor Messages</span>
+                </div>
+            </div>
+            <div class="hirl-connector">⬇</div>
+            <div class="hirl-level">
+                <div class="hirl-level-badge">● Device</div>
+                <h4>Device Controllers (Actuator-Level)</h4>
+                <div class="hirl-desc">
+                    Low-level actuator control: SVC droop, STATCOM response, EV charge/discharge rate.
+                    Fed by regional agent commands. Uses PI/PID controllers with QIRL-tuned gains.
+                </div>
+                <div class="hirl-meta">
+                    <span>⏱ Update: &lt;5 ms</span>
+                    <span>🔗 PI/PID + QIRL Gains</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <!-- HIRL Equations -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">HIRL Mathematical Formulation</div>
+                <span class="card-badge badge-purple">EQUATIONS</span>
+            </div>
+            <div class="eq-block">
+                <div class="eq-label">Federated Policy Aggregation</div>
+                <div class="eq-line">π_global = FedAvg({π_region_k})</div>
+                <div class="eq-line">with consensus: |π_k - π_global| &lt; ε</div>
+                <div class="eq-label">Regional Q-Update with Neighbor Messages</div>
+                <div class="eq-line">Q_k(s_k, a_k) ← Q_k + lr·(r_k + γ·max Q_k(s_k', a_k')</div>
+                <div class="eq-line">  - Q_k + λ·msg_neighbors)</div>
+                <div class="eq-label">Gradient Message Passing</div>
+                <div class="eq-line">msg_j→k = Σ_j w_jk · ∇Q_j(s_j, a_j)</div>
+                <div class="eq-label">Local QIRL Policy per Region</div>
+                <div class="eq-line">π_region_k: ψ_k = Σᵢ α_ki|a_ki⟩</div>
+                <div class="eq-label">Global Objective</div>
+                <div class="eq-line">min Σ_k c_k(P_k) + μ·Σ_{(j,k)} |ΔP_tie_{jk}|</div>
+            </div>
+        </div>
+
+        <!-- HIRL Training Pipeline -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Training Pipeline</div>
+                <span class="card-badge badge-cyan">4 STAGES</span>
+            </div>
+            <div class="hirl-pipeline">
+                <div class="hirl-stage">
+                    <div class="hirl-stage-num">1</div>
+                    <h5>Pre-training</h5>
+                    <p>Supervised learning on historical grid data + physics-guided curriculum</p>
+                    <div class="duration">~50k episodes</div>
+                </div>
+                <div class="hirl-stage">
+                    <div class="hirl-stage-num">2</div>
+                    <h5>Single-Agent QIRL</h5>
+                    <p>Train QIRL on IEEE 9-bus (single agent, full observability)</p>
+                    <div class="duration">~100k episodes</div>
+                </div>
+                <div class="hirl-stage">
+                    <div class="hirl-stage-num">3</div>
+                    <h5>Multi-Agent HIRL</h5>
+                    <p>Deploy regional agents on IEEE 39/118-bus with federated coordination</p>
+                    <div class="duration">~200k episodes</div>
+                </div>
+                <div class="hirl-stage">
+                    <div class="hirl-stage-num">4</div>
+                    <h5>Transfer + Fine-tune</h5>
+                    <p>Transfer policies to IEEE 300-bus, fine-tune with online learning</p>
+                    <div class="duration">~50k episodes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Targets -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">HIRL Performance vs Baselines</div>
+            <span class="card-badge badge-emerald">TARGETS</span>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr><th>Metric</th><th>HIRL Target</th><th>DQN Baseline</th><th>Independent Agents</th><th>Centralized</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Regional Convergence</td><td class="text-emerald">&lt;50k episodes</td><td>~200k</td><td>~150k</td><td>~300k</td></tr>
+                <tr><td>Coordination Overhead</td><td class="text-emerald">&lt;15%</td><td>N/A</td><td>~5%</td><td>~40%</td></tr>
+                <tr><td>Max Scalability (buses)</td><td class="text-emerald">300+</td><td>~50</td><td>~200</td><td>~30</td></tr>
+                <tr><td>Tie-Line Violation Rate</td><td class="text-emerald">&lt;0.5%</td><td>~3%</td><td>~3%</td><td>~0.8%</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- HIRL Convergence Chart -->
+    <div class="card">
+        <div class="card-title">HIRL Training Convergence</div>
+        <div class="chart-wrapper mt-2">
+            <canvas id="chart-hirl-convergence"></canvas>
+        </div>
+    </div>
+
+    <!-- Integration with CAPSM -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">HIRL Integration with CAPSM Layers</div>
+            <span class="card-badge badge-amber">INTEGRATION</span>
+        </div>
+        <div class="hirl-integration-grid">
+            <div class="hirl-int-card">
+                <div class="int-label text-blue">⚡ System-1 (CNN-LSTM)</div>
+                <p>Device controllers receive fast reflex commands from System-1 CNN-LSTM when urgency is high.
+                   HIRL's device-level tier seamlessly accepts System-1 override signals.</p>
+            </div>
+            <div class="hirl-int-card">
+                <div class="int-label text-purple">🧠 System-2 (QIRL)</div>
+                <p>Regional agents ARE the System-2 QIRL instances, operating in deliberative mode.
+                   HIRL extends System-2 from single-agent to multi-agent with federated coordination.</p>
+            </div>
+            <div class="hirl-int-card">
+                <div class="int-label text-amber">🔄 Metacognition</div>
+                <p>Global coordinator uses metacognitive confidence scores to decide between centralized
+                   vs distributed operation mode, adapting hierarchy depth in real time.</p>
+            </div>
+            <div class="hirl-int-card">
+                <div class="int-label text-emerald">🛡️ PINN Safety</div>
+                <p>Each regional agent's output passes through a local PINN safety check before actuation,
+                   ensuring zone-level physics compliance independently.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div><!-- /page-content -->
+</main>
+</div><!-- /dashboard-layout -->
+
+<!-- ═════════════════ SETTINGS PANEL ═════════════════ -->
+<div class="settings-overlay" id="settings-overlay" onclick="closeSettings()"></div>
+<div class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+        <h2>⚙️ Customize Dashboard</h2>
+        <button class="settings-close" onclick="closeSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+        <!-- Profile -->
+        <div class="settings-section">
+            <div class="settings-section-title">Profile & Identity</div>
+            <div class="settings-field">
+                <label>Author Name</label>
+                <input type="text" id="cfg-author" value="Mahmoud Kiasari" data-cfg="author">
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>University / Affiliation</label>
+                    <input type="text" id="cfg-affiliation" value="Dalhousie University" data-cfg="affiliation">
+                </div>
+                <div class="settings-field">
+                    <label>Degree</label>
+                    <input type="text" id="cfg-degree" value="PhD Candidate" data-cfg="degree">
+                </div>
+            </div>
+            <div class="settings-field">
+                <label>Project Title</label>
+                <input type="text" id="cfg-title" value="CAPSM: Cognitive Adaptive Power System Management" data-cfg="title">
+            </div>
+            <div class="settings-field">
+                <label>Subtitle / Tagline</label>
+                <input type="text" id="cfg-subtitle" value="A Dual-Process Metacognitive Framework for Resilient Power Grid Control" data-cfg="subtitle">
+            </div>
+            <div class="settings-field">
+                <label>Year</label>
+                <input type="number" id="cfg-year" value="2026" data-cfg="year">
+            </div>
+        </div>
+
+        <!-- Performance Targets -->
+        <div class="settings-section">
+            <div class="settings-section-title">Performance Targets</div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>System-1 Response (ms)</label>
+                    <input type="number" id="cfg-s1-response" value="5" step="0.1" data-cfg="s1_response_ms">
+                </div>
+                <div class="settings-field">
+                    <label>System-2 Decision (ms)</label>
+                    <input type="number" id="cfg-s2-response" value="50" step="1" data-cfg="s2_response_ms">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>Fault Detection Accuracy (%)</label>
+                    <input type="number" id="cfg-fault-acc" value="96.8" step="0.1" data-cfg="fault_accuracy">
+                </div>
+                <div class="settings-field">
+                    <label>PINN Compliance (%)</label>
+                    <input type="number" id="cfg-pinn-comp" value="99.8" step="0.1" data-cfg="pinn_compliance">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>QIRL Speedup (x vs DQN)</label>
+                    <input type="number" id="cfg-qirl-speedup" value="2.0" step="0.1" data-cfg="qirl_speedup">
+                </div>
+                <div class="settings-field">
+                    <label>Max Violations (%)</label>
+                    <input type="number" id="cfg-max-viol" value="0.2" step="0.01" data-cfg="max_violations">
+                </div>
+            </div>
+        </div>
+
+        <!-- Power System Config -->
+        <div class="settings-section">
+            <div class="settings-section-title">Power System Parameters</div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>Base MVA</label>
+                    <input type="number" id="cfg-base-mva" value="100" data-cfg="base_mva">
+                </div>
+                <div class="settings-field">
+                    <label>Base kV (Transmission)</label>
+                    <input type="number" id="cfg-base-kv" value="230" data-cfg="base_kv">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>Frequency (Hz)</label>
+                    <input type="number" id="cfg-freq" value="60" data-cfg="frequency">
+                </div>
+                <div class="settings-field">
+                    <label>Simulation Time (s)</label>
+                    <input type="number" id="cfg-sim-time" value="20" data-cfg="sim_time">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>EV Fleet Size</label>
+                    <input type="number" id="cfg-ev-fleet" value="1000" data-cfg="ev_fleet">
+                </div>
+                <div class="settings-field">
+                    <label>EV Total Capacity (MW)</label>
+                    <input type="number" id="cfg-ev-cap" value="50" data-cfg="ev_capacity_mw">
+                </div>
+            </div>
+        </div>
+
+        <!-- HIRL Parameters -->
+        <div class="settings-section">
+            <div class="settings-section-title">HIRL Configuration</div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>Number of Regions</label>
+                    <input type="number" id="cfg-hirl-regions" value="2" data-cfg="hirl_regions">
+                </div>
+                <div class="settings-field">
+                    <label>Global Update Rate (ms)</label>
+                    <input type="number" id="cfg-hirl-global-rate" value="200" data-cfg="hirl_global_rate">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>Learning Rate (QIRL)</label>
+                    <input type="number" id="cfg-hirl-lr" value="0.001" step="0.0001" data-cfg="hirl_lr">
+                </div>
+                <div class="settings-field">
+                    <label>Discount Factor (γ)</label>
+                    <input type="number" id="cfg-hirl-gamma" value="0.99" step="0.01" data-cfg="hirl_gamma">
+                </div>
+            </div>
+            <div class="settings-field">
+                <label>Consensus Threshold (ε)</label>
+                <input type="number" id="cfg-hirl-eps" value="0.01" step="0.001" data-cfg="hirl_epsilon">
+            </div>
+        </div>
+
+        <!-- Theme -->
+        <div class="settings-section">
+            <div class="settings-section-title">Theme & Appearance</div>
+            <div class="toggle-wrapper">
+                <span class="toggle-label">Dark Mode</span>
+                <input type="checkbox" class="toggle-switch" id="cfg-dark-mode" checked data-cfg="dark_mode">
+            </div>
+            <div class="toggle-wrapper">
+                <span class="toggle-label">Show Live Indicators</span>
+                <input type="checkbox" class="toggle-switch" id="cfg-live" checked data-cfg="show_live">
+            </div>
+            <div class="toggle-wrapper">
+                <span class="toggle-label">Auto-Refresh Charts (2s)</span>
+                <input type="checkbox" class="toggle-switch" id="cfg-auto-refresh" checked data-cfg="auto_refresh">
+            </div>
+            <div class="settings-field mt-2">
+                <label>Accent Colors</label>
+                <div class="settings-color-group">
+                    <div class="color-swatch">
+                        <input type="color" id="cfg-color-blue" value="#2563eb" data-cfg="color_blue">
+                        <span>Primary</span>
+                    </div>
+                    <div class="color-swatch">
+                        <input type="color" id="cfg-color-purple" value="#8b5cf6" data-cfg="color_purple">
+                        <span>HIRL</span>
+                    </div>
+                    <div class="color-swatch">
+                        <input type="color" id="cfg-color-emerald" value="#10b981" data-cfg="color_emerald">
+                        <span>Safety</span>
+                    </div>
+                    <div class="color-swatch">
+                        <input type="color" id="cfg-color-amber" value="#f59e0b" data-cfg="color_amber">
+                        <span>Warning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cyber Attack Config -->
+        <div class="settings-section">
+            <div class="settings-section-title">Cyber-Attack Scenarios</div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>FDI Start Time (s)</label>
+                    <input type="number" id="cfg-fdi-start" value="2.0" step="0.1" data-cfg="fdi_start">
+                </div>
+                <div class="settings-field">
+                    <label>FDI End Time (s)</label>
+                    <input type="number" id="cfg-fdi-end" value="5.0" step="0.1" data-cfg="fdi_end">
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>DoS Start Time (s)</label>
+                    <input type="number" id="cfg-dos-start" value="8.0" step="0.1" data-cfg="dos_start">
+                </div>
+                <div class="settings-field">
+                    <label>DoS Duration (s)</label>
+                    <input type="number" id="cfg-dos-dur" value="0.5" step="0.1" data-cfg="dos_duration">
+                </div>
+            </div>
+            <div class="settings-field">
+                <label>Comm Delay (s)</label>
+                <input type="number" id="cfg-delay" value="1.5" step="0.1" data-cfg="comm_delay">
+            </div>
+        </div>
+
+        <!-- Notes / Custom -->
+        <div class="settings-section">
+            <div class="settings-section-title">Custom Notes</div>
+            <div class="settings-field">
+                <label>Dashboard Notes (visible only to you)</label>
+                <textarea id="cfg-notes" data-cfg="notes" placeholder="Add personal notes, reminders, or TODO items..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-actions">
+        <button class="settings-btn primary" onclick="saveSettings()">Save Changes</button>
+        <button class="settings-btn secondary" onclick="resetSettings()">Reset Defaults</button>
+        <button class="settings-btn danger" onclick="clearAll()">Clear All</button>
+    </div>
+</div>
+
+<div class="settings-toast" id="settings-toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

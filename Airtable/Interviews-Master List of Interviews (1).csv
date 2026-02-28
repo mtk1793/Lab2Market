@@ -1,0 +1,605 @@
+Interview Count,Stakeholder being interviewed,Interview Date + Time,Note-taker,Key Insights,Which hypotheses were supported by this interview?,Which hypotheses were rejected by this interview?,PARTIALLY SUPPORTED,Notes
+65,Aaron Plamondon,2/13/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - ITB process is relational not bureaucratic (no formal application - pitch directly to defence primes)
+ - Navy AM adoption entirely blocked by leadership decision not yet made
+ - Feb 18 Fleet Admiral visit to Dalhousie AM lab - critical decision point for Navy AM
+ - Irving/MAMCE invested in AM but never produced single Navy part (multiple barriers)
+ - AOPS in-service support managed by Thales NOT Irving (clarifies customer map)
+ - MAMCE board stalled/inactive (Aaron hasn't been active in over a year)
+ - Data quality #1 blocker for AI in Navy maintenance (""data just isn't good enough"")
+ - L3 Harris leads on Navy predictive maintenance (IPMS incumbent for Halifax class & CSC)
+ - Integrated Logistics Support (ILS) concept maps to digital inventory modernization
+ - DeepSense at Dalhousie: data analytics potential collaboration
+ - Root causes of Navy AM failure: fear of risk, no certification standard, no testing infrastructure, no admiral signature, material trust uncertainty   ",,,,
+61,Adam Chubbs,2/11/2026 8:55am,Mahmoud Kiasari,"    **Key Insights:**
+ - Remote operations require N+1/N+2 redundancy (mining N+2 most desperate to avoid downtime)
+ - $4-5M inventory for $50M assets (8-10% ratio) - FIRST QUANTITATIVE DATA
+ - Arctic logistics: Sealift (summer) vs air freight (winter) - massive cost difference
+ - Utilities self-certify - CSA/UL not always required for non-public environments
+ - Digital inventory integration opportunity with Engineered Intelligence (AI asset platform)
+ - On-site fabrication already accepted - utilities/offshore have own machine shops
+ - Preservation costs hidden: $200K turbo requires ongoing preservation
+ - Data silos problem: maintenance data scattered, can't integrate for big picture
+ - Digital twins for offshore: Enamcos doing this for subsea equipment   
+
+Remote operations pain confirmed (N+1/N+2 redundancy),
+Arctic logistics validated (Sealift vs air freight massive cost difference),
+Certification flexibility confirmed (utilities self-certify),AI/predictive maintenance interest (digital twins asset health monitoring),Working capital validated ($4-5M inventory for $50M assets = 8-10%),On-site fabrication accepted (already trust locally fabricated parts),Data silos problem identified,Digital twins opportunity (Enamcos for offshore subsea)","""NH.29 -
+  Expediting/Freight Costs in Remote Locations"",""NH.30 - Arctic
+  Warehouse Heating Costs"",CP.3 - Certification Proof Difficulty,NH.5 - Predictive Maintenance + Digital Inventory Integration,""NH.26 - Working
+  Capital is Primary ROI Driver""",,,
+72,Adam Saxty,2/18/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - Complete 7-step AM certification pathway: (1) Design Review (2) Material Spec (3) Facility Qualification (4) Feedstock Qualification (5) Part Qualification prototype (6) Production Certification with test coupons (7) Installation Approval
+ 
+  - Steps 3-4 (facility) and Steps 1-2+5 (part design) are ONCE ONLY - validates pre-certified library architecture technically
+ 
+  - Every subsequent order = just print + test coupon not full re-certification process
+ 
+  - Marine vs Offshore = TWO SEPARATE certification tracks with different LR rules - build two platform workflows
+ 
+  - Machine variability is the critical unsolved problem for on-site printing: part qualified on one machine may not transfer to different offshore machine
+ 
+  - In-process monitoring (layer-by-layer) is LR R&D direction - future solution to machine variability - partnership opportunity with Dalhousie Dr. Ali Nasiri
+ 
+  - No universal AM material standards exist (MMPDS equivalent gap) - custom material spec required per part","""H60 - Pre-Certified
+  Parts Library"",""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries"",""H98 - LR 7-Step
+  Certification Framework Platform Architecture"",""H99 - Machine
+  Variability Blocks On-Site AM Certification"",""H100 - In-Process
+  Monitoring is Future of AM Certification""",,,
+70,Ali Mahmoudi,2/20/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Technology adoption is political not technical: companies prefer traditional methods; adoption triggered by (1) big name endorsement (2) government mandate (3) internal R&D legitimacy
+ - 10-15% ROI is hard minimum gate before companies seriously evaluate new technology (validates OMV Austria threshold)
+ - Deployment cost is hidden objection: installing machines, training people, regulatory engagement, IT integration all add to upfront cost paralyzing adoption despite long-run ROI
+ - Green/CO2 narrative is valid secondary motivator (ESG-reporting companies and European operators) - in logistics section not production
+ - Game theory framing: AM adoption is a coordination problem (Prisoner's Dilemma) - consortium model (NH.42) breaks the stalemate
+ - Focal point strategy: major industry events (Hannover Messe, ONS) can make AddManuChain the Schelling point industry coordinates around
+ - Pending leads promised by Ali - follow up required","""NH.19 - 15% ROI
+  Threshold for O&G Adoption"",""NH.42 -
+  Consortium/Cooperative Models Reduce Adoption Risk"",""H90 - Technology
+  Adoption is Political Not Technical"",""H91 - Game Theory
+  Consortium Model Breaks Coordination Stalemate"",""H92 - Industry Event
+  Focal Point Strategy (Schelling Point)""",,,
+46,Ali Nasiri,2/3/2026 8:43pm,Mahmoud Kiasari,"#### Key Insights:
+- Pre-certified parts library: Tronosjet certified laser part can be reproduced without re-certifying
+- Certification timeline: 2+ years for DNV/ABS/Lloyd's Register approval
+- In-process defect detection: US universities researching AI+IoT mid-print adjustment (no commercial product yet)
+- Halifax/offshore operators waste millions on reactive corrosion maintenance
+- AI-powered visual inspection (drones + computer vision) could predict failures and trigger AM orders
+- AM developed faster than authorities - regulatory gap is the main barrier","CP.3 - Certification Proof Difficulty,""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries"",""H60 - Pre-Certified
+  Parts Library"",""H61 - In-Process
+  Defect Detection (Research Opportunity)"",""H62 - Corrosion
+  Prediction for Offshore Assets"",""H69 -
+  Electronics/Non-Structural Parts Best Fit for AM""",,,Dr_Ali_Nasiri_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/0xk0TrrwCQxhzJf1s9Oi4A/qjNSC27xaF6ckToKkbGlVPxNykFhoJlKQINmslnOSnCBRBHou8OGgUpxlZfUFwbSV2a8-gBqpMuLy1svr25G2A-8VgNB9HYjrrbTefa6UIg-jJfarzHHp03aCg6DHDPJ8ybu_kmk_I1QmiRtwzdTZRDWSYebrNy5MLxkAfudcCA/4_AXaEwvdNgv1S05VwSZwOJhGvBnm8S6KN7znl5MsLM)
+53,Andreas Leitner,2/5/2026 8:51pm,Mahmoud Kiasari,"'- **6-month valve wait times** cause massive production losses - critical pain point
+- 15% business improvement + new customer acquisition required before adoption
+- ""People hide behind IP"" - IP concerns are real and pervasive
+- Safety is non-negotiable in O&G operations
+- Need proof from other sectors (Navy/Aerospace) before O&G will adopt
+- Specialized valves are high-value target for AM/digital inventory","CJ.1 - Source Certified Parts Quickly,CP.3 - Certification Proof Difficulty,""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.15 - Safety >
+  Time > Cost Priority Framework"",""NH.16 - On-Premise
+  Processing Required for IP Protection"",""NH.18 - AI for
+  Stock vs Print Decision is Key Differentiator"",""NH.19 - 15% ROI
+  Threshold for O&G Adoption"",""NH.20 - 6-Month
+  Valve Wait is Critical Pain Point""",,,Chris_OMV_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/f7bY12kxRhz3TC4OEMcSEw/WxdYTd7_ECm2RLwG_p39-n7fBlL1ZTJ0dV8uLMTaHLBevnjjY8L5JJBJdgtVod2w3ctubtZOhkM8Um5RwxhTE-JuIBlxs0BP6ufsFRLF0wBbXkxuuuq6qJfvVnEfXLlDCt0IY0ZtgLqkEB6TVuPPKI-7uMvYXugHelGjuFP4PJybtMmUetue4H4CYnYMbDgp/wQC02Sy8RWAqNp4VzyQJoBHFMoHSKJZs5p7P6JcvjC4)
+59,Andrew Smith,2/10/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - AM cost-effective for <50 units only (critical threshold)
+ - Certification cost >> manufacturing cost (Atlantic XL example: 2 orders of magnitude more)
+ - Oil & Gas operators have informal parts-sharing networks (helicopter coordination within 50-100km)
+ - Quality traceability same as CNC (not unique to AM) - don't over-engineer
+ - AI risky for QA (hallucination) but good for predictive maintenance
+ - Medtech → Energy regulatory parallel validated (essence same, improvement philosophy differs)
+ - Treat AM like CNC machining to reduce regulatory friction
+ - Narrow to one specific pain point - validate exact failure mode   ","""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries"",""NH.32 - Fully Digital
+  Warehouse is Unrealistic"",""NH.33 - Obsolete
+  Parts Have No IP Barriers"",""NH.37 - V&V can
+  be standardized"",""NH.39 -
+  Certification Cost Can Exceed Manufacturing Cost"",""NH.40 - AI Value is
+  Optimization/Prediction, Not Autonomous QA""","""NH.35 - Atlantic XL
+  meets quality standards""","""NH.36 - DfAM reduces
+  cost (only for <50 units)"",""NH.38 - O&G
+  Informal Parts-Sharing Networks Already Exist""",
+69,Bachar Elzein ,2/20/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - Space/rockets vs aviation completely different markets: airplane lives 40 years, rocket lives 4 minutes - AM trusted in space, not commercial aviation
+ 
+  - AM part consolidation: 30-40 part conventional rocket engine → 3 parts with AM (500-5000 typical, theirs has 3)
+ 
+  - 'Trust nobody, test everything' - certified parts fail spec sheets; Bachar's team corrected EOS manufacturer data sheet shared with 60 companies
+ 
+  - Outsourcing AM without pre-qualification: 6 weeks → 6 months (startup-killing delay) - validates vetting of Builder nodes
+ 
+  - Government AM funding accessible and real (IRAP/NRC-IRAP) - Reaction Dynamics received it
+ 
+  - AM repair via Directed Energy Deposition (DED) - can add material to worn parts - key question for Part 2
+ 
+  - Reaction Dynamics is Designer + Builder node, NOT Buyer node; potential ecosystem partner offering capacity between rocket builds","""H84 - Space/Rocket
+  Market is AM-Native Unlike Commercial Aviation"",""H85 - AM Part
+  Consolidation Creates Defensible Platform Assets"",""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries"",""H86 - Pre-Qualified
+  Builder Network Eliminates 6-Week-to-6-Month Risk"",""H87 - DED AM Can
+  Repair Worn Parts (Offshore Application)""",,,
+37,Bassey Amba,1/20/2026 9:23pm,Mahmoud Kiasari,,"CS.1 - Manufacturers Need Certified Local Suppliers ,CS.2 - Facilities Have Idle Capacity,CS.3 - Labs & Authorities Need Digital Compliance System,CJ.1 - Source Certified Parts Quickly,CJ.2 - Fill Machine Capacity,CJ.3 - Process Certifications Efficiently,CJ.4 - Enable Distributed Manufacturing,CP.1 - Weeks Wasted Finding Facilities,CP.2 - Expensive Distant Suppliers,CP.3 - Certification Proof Difficulty,CP.5 - High CAC Kills Margins,CP.6 - Paper-Based Chaos,CG.1 - Find Facilities in Minutes,CG.2 - Cut Shipping 40-60%,CG.4 - Maximize Machine Revenue,CG.5 - Reduce CAC by 50%+,VP.1 - Find Facilities in Minutes,VP.4 - Qualified Client Pipeline,VP.10 - Demand Forecasting & Pipeline Visibility,VP.9 - Real-Time Communication Platform,KR.1 - IoT/AI Quality System Integration,CG.9 - Scaling Playbooks and Benchmarks,VP.11 - Quality-Over-Quantity Matching Algorithm,VP.12 - Certification Body Decision Support,VP.13 - Multi-Role Collaboration Workspaces,VP.14 - Transparent Pricing/Budget Pre-Qualification","CS.4 - OEMs Want Distributed Manufacturing,CP.8 - Can't Trust Distributed Mfg","CS.4 - OEMs Want Distributed Manufacturing,CP.4 - Machines Sitting Empty,CP.7 - Reactive Enforcement Only,CP.8 - Can't Trust Distributed Mfg,CG.3 - Instant Proof of Compliance,CG.6 - 60% Less Admin Time,CG.7 - Real-Time Compliance Visibility,G.8 - Distributed Mfg with Quality Assurance,VP.2 - Prioritize Nearby Facilities,VP.3 - One-Click Compliance Proof,VP.5 - Build Credibility with Badges","Hypothesis_Validation_Summary_By_Number.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/IES5OBHMrGp40e338GBZtA/cUI6pmHA7z8uJR8xDgchFgBQO-iWTIJSLi903r6nwpXkKtqYLWwp2wtG4YnLa6lHMoy8Vm9m7rSh89ETgTngK4SosLi1iTw0SBl105PB-8a9YRpcU_W9Vp1lXixGkK_UOhqGhqCH6t5jZMmPyQ1se0Jyr46LfM0TTIYwM8Jyl4e4zX-3FWFi1PJyLP99F0jgYFlR0LcIZF2sSimXP5IBYA/BOM1jpHDf8uoNkoISLVpAVCSpEl4V7BMLBSF4dng5Bk),Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/RFckL3srcZol9v8_6hjPOg/3-0gaFZuR8430ZhJdA-4G9ew023V1GlYOZGhdVSJGbIGGfaKCo5uH7mSjFO2rFAEzEsPbTxAiIxfIh7ZcF3I-56tuzDlbkrd1yQ-51GCQgFNbqJiCb4ENWx6WdM7arDLIZo3Ub791136PbEgGmDG7jCSVSJSsx1S4akbYtq-CPm0JUZpMkxnNqqd5283QQ2koAQ7HJQrlaFDTho_sFcnpg/KQu8Da_haDAMJCxEu3RT2hHEWQnT_Td2GagEGctilVM)"
+60,Darren Wood,2/11/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Obsolescence happens ""all the time"" for 15-20 year old install bases
+ - 10-day emergency delivery example (Central Newfoundland motor failure)
+ - ERP integration exists (EDI systems, online ordering) but gaps remain in build-to-order parts
+ - Proax exploring AM for custom fabricated parts - value-add team already investigating
+ - US/Canada tariff uncertainty driving interest in local manufacturing
+ - Traceability loss: distributors don't always know where parts are installed
+ - Human error in rush orders: automation exists but emergency orders bypass it and fail
+ - Distributor inventory pain: ""what to stock?"" - potential partners not just intermediaries   
+
+Obsolescence pain confirmed (15-20 year install bases),
+Lead time challenges validated (10-day emergency delivery),
+ERP integration gaps in build-to-order parts,
+AM interest confirmed (value-add team exploring),
+Working capital hypothesis validated (cost-conscious customers ""roll the dice""),
+Business network theory validated (offered 3 major introductions)","""NH.2 - Obsolescence
+  is Primary AM Adoption Driver"",""NH.33 - Obsolete
+  Parts Have No IP Barriers""",,,
+73,Dave Whitehouse,2/18/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - SUBMARINE CASE STUDY: Canada's 4 Victoria-class submarines all custom-built differently; as-built parts required but OEM parts are gone; 20-30 year old ships with only 10 years of life left requiring full custom manufacturing for every part - use in every naval pitch
+ 
+  - Canadian Navy ship availability: 30-50% now vs target 70-80% - spare parts delay is a primary driver
+ 
+  - AOR/JSS vessels (Auxiliary Oiler Replenishment / Joint Support Ships) correct naval architecture for ship-based AM - designed for containerized modules; combat ships are wrong (vibration/motion)
+ 
+  - Arctic/DND = strongest government funding angle: 'The Arctic aspect always looks really good in a DND proposal'
+ 
+  - IP protection was raised BEFORE Michael reached that slide - must solve before OEM engagement
+ 
+  - Defense mandate overrides IP resistance: DND domestic spend mandate can flow down through supply chain like US DoD
+ 
+  - Mark Philpott referral (LR Ottawa) unlocked
+ 
+  - Canadian Naval Maintenance Symposium (Naval Quebec): DAVIE + Irving + Navy + LR attending - must-attend event","""NH.22 - Sovereign
+  Resilience is Defense Value Proposition"",""NH.10 - OEM IP
+  Release is Critical Blocker"",H65 - Defense Sector Digital Inventory (Canadian Navy),""H101 - Canadian Navy
+  Availability Gap 30-50 Actual vs 70-80 Target"",""H102 - AOR/JSS
+  Vessels Correct Naval AM Platform Not Combat Ships"",""H103 - Victoria-Class
+  Submarine Custom Obsolete Parts Crisis""",,,
+71,David Haire ,2/16/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - Labor/skills shortage is #1 challenge - 50% general labor + tradesmen + engineering/tech gaps (supply chain NOT top-5 problem at CME)
+ 
+  - Technology adoption slow in Atlantic Canada - must have strong value proposition and case studies before engagement
+ 
+  - Only 2-3 CME members serve external AM customers - Atlantic XL and PolyUnity are exceptions; most use AM internally for prototyping only
+ 
+  - CME NL willing to be distribution/validation partner: pilot programs, RAPID/Hannover Messe technology tours, 1000+ member network
+ 
+  - Canada Makes only reaches ~15% of Canadian manufacturers - 85% ecosystem connectivity gap
+ 
+  - Metal AM hardware ROI is hard: expensive machinery + powder + cleanup = difficult payback; buyers prefer to buy parts not equipment
+ 
+  - IP concern: 'When money starts changing hands it is a different world than just downloadable files'
+ 
+  - AI for Manufacturing: CME just launched program - goal 400 people trained - aligns with platform
+ 
+  - N3 Summit Toronto (ENGINE): March 30-31 & April 1 - 30 cluster leaders network opportunity","""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.25 - Only 20%
+  Engaged with Digital Transformation"",""H93 - CME NL as
+  Distribution Validation Partner"",H94 - Canada Makes 15 Percent Reach = 85 Percent Market Gap,""H95 - AM Ecosystem
+  Connectivity Gap Before Technology Gap""",,,
+39,David Waldbillig,1/28/2026 12:00am,Mahmoud Kiasari,"'- AM currently focused on education/testing, not production
+- Trust gap varies by stakeholder (supply chain communication biggest issue)
+- Post-processing (coatings) is critical for energy sector
+- Power generation is underserved market vs oil & gas
+- Canada lagging behind US/Singapore in on-site AM adoption
+
+**Competitive Intelligence:**
+- Fieldnode: Major competitor in oil & gas digital inventory
+- Baker Hughes: Service provider (potential partner, not competitor)
+- Pelagus 3D: Marine/offshore focus (Singapore-based)
+
+","VP.10 - Demand Forecasting & Pipeline Visibility,VP.13 - Multi-Role Collaboration Workspaces,H50 - Low-Risk Part Categorization System,H51 - Post-Processing Service Network Integration,H52 - Reverse Engineering Service Integration,H53 - Predictive Maintenance API Integration",,,Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/JbyrgLCsLoLVBIMk4odNPQ/4ruoFN_DpD0ctUrSTh3XWmolOQ9tJvPP2XNL6mhAbtOv6yt1n56_LNWub2qZLZ_a2cHPc7xThMZnKhM5CnLTQqfLHuCjuBa7oT98jpzhw0Ebl1-JRnkybhfCeFPAVH_xRUSH9PIlKa7RNS6vKHbuIeskfVi4zN20jlK5A7LWRgc_Pev-1YWKeQjJWh4CGCl6pBiWsyA0FS75S3zrDCtq6Q/GD5nnAgebIoZDrDb7ELtDjUtB71R36Ao8shgtFSDoRo)
+54,Fanny Charreteur,2/5/2026 8:53pm,Mahmoud Kiasari,"#### Key Insights:
+- **89% cite investment costs as barrier** to AM adoption (PRIMA Québec survey)
+- 55% cite ROI uncertainty - value proposition MUST lead with financial proof, not technology
+- 32% cite workforce shortage as barrier - platform must reduce workforce burden
+- Only 20% of manufacturers actively engaged with digital transformation
+- 80% are unaware or not ready - market education is prerequisite to sales
+- Digital Transformation Offensive data shows early adopter vs laggard split
+- **Target the 20% early adopters first**, not the 80% who need education","""NH.12 - Cost/ROI is
+  #1 Adoption Barrier (89%)"",""NH.24 - Workforce
+  Shortage Limits Adoption (32%)"",""NH.25 - Only 20%
+  Engaged with Digital Transformation""",,,Fanny_Charreteur_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/QrIGTuvuqBgi3gGrnDHMTw/YJi8IBn7y7HHA0Fj5JJtJvUpLAkjatB5otEhcznO-5mj8n09S0Mo6ad9Bug8VzVZ4yCE-WBhZgRwKLmfhn55YiICvQCjljDqyU5hX-zCsL9VoPlOcbADqZLTaRcep68azGRG99F1iEUKXTuUZIYKadEeuky2PGng5ObYggJ5v5zyUsNwChGMk8iBxUqCCJc4/99tH_AaIfyLMLH0pbcmd2eeXclGE1b8ruiAyJLX_nbE)
+75,Frank Defalco,2/3/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - Digital inventory gap VALIDATED for large OEMs: 'They have inventories of hundreds of thousands of parts... they don't really know what is... looking for solutions is digital inventory even a possibility?'
+ 
+  - Canada Makes Select AM Tool (led by Mark Kirby): AI identifies which parts of 100K+ are AM candidates - DON'T COMPETE PARTNER as 'next layer on top'
+ 
+  - NGen AI value chain mapping tool at only 65% accuracy (too low for market) - partnership opportunity to improve algorithms
+ 
+  - COVID supply chain lesson NOT learned: hospitals returned to China suppliers; Canadian domestic manufacturers went bankrupt - procurement behavior is the real barrier
+ 
+  - AM Demo Program: most demos don't convert to production - no systematic pilot-to-production tracking - H56 new hypothesis
+ 
+  - Onstream (Alberta) case study: $1M/year in titanium AM parts via Precision ADM for oil&gas pipeline inspection gauges - production AM in O&G validated
+ 
+  - Hannover Messe 2026 (April 20-24): NGen pavilion $2K booth 50% travel reimbursement 350+ Canadians defense pavilion - attend if budget allows
+ 
+  - Air Force actively asking Canada Makes about Canadian AM supply chain capabilities - defense is hot market now
+ 
+  - Sell to CFOs/procurement not engineers: sovereignty + risk mitigation + business continuity not technology features","""NH.1 - Post-COVID
+  Stock Depletion Creates AM Opportunity"",""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""NH.25 - Only 20%
+  Engaged with Digital Transformation"",""H108 - Canada Makes
+  Select AM Tool Partner Not Competitor"",""H109 - NGen as
+  Ecosystem Gateway 65 Percent Accuracy Gap""",,,
+51,Harvey Doane,2/5/2026 8:49pm,Mahmoud Kiasari,"#### Key Insights:
+- ""New Space"" (SpaceX model) embraces AM vs ""Old Space"" (Boeing/Lockheed) is risk-averse
+- Target satellite/rocket manufacturers, not launch sites
+- Safety > Time > Cost priority framework in regulated industries
+- Mission assurance and safety-focused value propositions succeed; cost-focused fail
+- Proof of concept path: Emergency use → Comfort → Regular use → Design innovation
+- Temporary solutions can become permanent if they prove reliable","""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.6 - AM Adoption
+  Evolution: Emergency ‚Üí Comfort ‚Üí Innovation"",""NH.14 - Space
+  Industry is AM-Native (New Space vs Old Space)"",""NH.15 - Safety >
+  Time > Cost Priority Framework"",""NH.21 - Breakdown
+  Insurance Positioning (Not Cost Savings)""",,,Harvey_Doane_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/jyS8YDqMFFDTT82b7FEsLg/HJOkA-_zkn0yuxraJqsk-CjkCMkfPIXHm8_la-T_8gH3F-YWHdVJIgyon9pSMHCOW-lf2_BT27PzvhnlNrVfz0iZx-1AeI-ui5eHUPBj1RMA03xNpaWk5j2_jTwQyklZoou2xL3Yqjm0DS_NMx9VD_azBA9gopCTGPBwDYvc7pr3kEp_-44OwwpPxfFm-0kb/i1ooZ6oF03Hh5T7kLj6ph92FMIuGSiByKIgvltADbfE)
+40,Jason Power,1/28/2026 10:50am,Mahmoud Kiasari,"**Key Insights:**
+- **CRITICAL PIVOT:** Target integrators (HMH, NOV, Baker Hughes), not operators
+- Risk categorization is THE primary decision factor
+- Downtime cost: $500K-$1M per day justifies $30-50M inventory
+- Predictive maintenance + supply chain integration is #1 unmet need
+- AI inventory optimization bigger opportunity than AM initially
+- Boom/bust cycles drive technology adoption timing
+
+**Strategic Impact:**
+- Changed target customer: Operators → Integrators/OEMs
+- Changed value prop: AM marketplace → AI optimization + AM integration
+- Changed product architecture: Platform → AI layer + AM layer",,,,Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/p9OFUiUTeTlpQ5SSfTGGQA/JVqm2LiBrMwtrw_jPd5ucK4lTf7w16rSPjhhsEKLDoOl3HVBtCQcy_g9MSKea8wyfGbaRM_WWDgsN61d7HuRi5wYogm3wSVLqu-_JQIS60ufpWWuxxrVsKbS5poHdqS-0qCIGUNvKGQayAXTZiMH7ye5wXP25ZMINIWX1qPtWumcZi6UNM6VFEsPh7O5Y0zMmgUwBJEM43h27rIqkf7IRw/ubCbQV5qbsH6BEX27FLz27wSFIwlSnmJpE3ENidRSPE)
+52,Jean-Michel Fortin,2/5/2026 8:50pm,Mahmoud Kiasari,"#### Key Insights:
+- **Mining is POOR FIT** for AM/digital inventory - validated negative hypothesis
+- Arctic mining needs 1000s of identical parts, not 10s of custom parts (volume mismatch)
+- AM only viable as breakdown insurance for unpredictable failures
+- Predictive maintenance already implemented - reduces emergency scenarios
+- Geographic isolation (Arctic) creates high logistics costs but volume negates AM economics
+- **EXCLUDE:** Mining operations with high-volume repetitive parts. **INCLUDE ONLY:** Emergency breakdown scenarios","CP.2 - Expensive Distant Suppliers,""NH.4 - Geographic
+  Isolation Amplifies Local Manufacturing Need"",""NH.21 - Breakdown
+  Insurance Positioning (Not Cost Savings)"",H53 - Predictive Maintenance API Integration","""NH.13 - Mining is
+  Poor Fit for AM/Digital Inventory""",,Jean_Michel_Fortin_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/Z_Uu0pqSeM-HoQ4oyx2PLg/fZvqsguR9SozG1SoyhvN3RckzAgup-YUB3MxqoDhngmzXOVPjrVhj9cJVahhbGAvivEjhkYo8OXvtWsXX35kINdh3l_edW2Z0D8FnRAVowDH1DrJOA9IxQ9J1g5yTbnoEyYNO7BGOWu0PDqi-K5kIVrTevNu_3DiVd9ai9cl2j0DFqtYyytc8XI63RNVn8uI/7-UUdOG9bHny32NBmVUMNcHFmqj9mWXjeDoAu0nGYLw)
+56,Jim Granger,2/5/2026 8:54pm,Mahmoud Kiasari,"#### Key Insights:
+- **15 years at GE** - IP is non-negotiable, closed data approach required
+- **Electronics/controllers/relays = YES** for marine AM. **Heavy metal structural = NO**
+- ""Stuff is heavy metal... there is additive manufacturing that's massive, but no.""
+- **2+ years** for DNV/ABS/Lloyd's Register certification timeline
+- AI is critical for predictive maintenance integration
+- **""Amazon model""** concept now understood by industrial customers - market education shorter than expected
+- Marine safety = airplane safety standards
+- Navy example validated temporary parts concept
+- Ship space is limited - same constraint as offshore vessels
+- Technical expertise loss driving AI adoption need","CS.4 - OEMs Want Distributed Manufacturing,KR.1 - IoT/AI Quality System Integration,NH.5 - Predictive Maintenance + Digital Inventory Integration,""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries"",""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.15 - Safety >
+  Time > Cost Priority Framework"",""NH.16 - On-Premise
+  Processing Required for IP Protection"",""NH.21 - Breakdown
+  Insurance Positioning (Not Cost Savings)"",""NH.24 - Workforce
+  Shortage Limits Adoption (32%)"",H53 - Predictive Maintenance API Integration,""H60 - Pre-Certified
+  Parts Library"",""H64 - Temporary AM
+  Parts for Non-Critical Applications"",""H66 - Space
+  Constraint on Vessels"",""H69 -
+  Electronics/Non-Structural Parts Best Fit for AM"",""H70 - Amazon Model
+  Resonates with Industrial Customers""",CS.4 - OEMs Want Distributed Manufacturing,,Jim_Granger_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/GSlgTv-5P4Sv_1tzn69UDw/TA4aI5v5_4KrYfT1BcyATTf6RfLQOJcvKXR7spVLPKfToo4bCNb6vxZBplJ2gTR9hsjKhtbIJI_IzPJvSHeaJ4v0YXDq950Rrof-GBPxEnu-oCoAYiaZC5PSbAZZT0g-E_SwLiUDPCMY-uht5xy3t4DOOG_wZ-GgBo93l7OXP7QX-Qot8p-6sV9si1dWfXJW/RI69aedZfPHj1NtXoLZKDZbQDfxr2JsMwynvTeYriVg)
+42,John Lidstone,1/30/2026 10:55am,Mahmoud Kiasari,"**Key Insights:**
+- Part-specific feasibility matters: Round parts = machining, complex/cast = AM
+- Digital inventory scanning can reduce lead time from months to weeks
+- **Critical blocker:** OEM must relinquish IP or prove it's void/expired/open
+- AI-based patent search could help identify open-source opportunities
+- Need OEM partnerships, not adversarial relationships
+
+**Strategic Value:**
+- Complements Sean's strategic view with ground-truth technical perspective
+- Validates whether platform would actually be used day-to-day by engineers
+- Early adopter profile assessment (digital native, comfortable with cloud tools)","""NH.8 - Feasibility +
+  Cost Drive AM Acceptance (Interview 6 - John Lidstone)"",""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""NH.10 - OEM IP
+  Release is Critical Blocker""",,,Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/hnhur7iYI9FbCIHcOl81ZA/BvBB7vybiKHGdRhtUrR7cutvbv4V2uQOxBAx6331j23qv94aC1HTtD-eTjYhWYzD3GfjlgGmeecMPcLqU2iwwljpeh7e9TRdXs6jK4CKgvC6pLDKqSpQI9qsbxpGAO-RcXwGQM0tF9OB8OGSREHdTbcJ7Y8vzY5XueJy7z8kyP3-qLQfIwArFt_g1rSNC2qhWydyqQlFRkiTBqaV-IgwcA/wdFw7Uc5olSyuahiOWafEaJECAasjRrlalyKRTl1y5Y)
+45,Jordan Cumming,2/2/2026 8:40pm,Mahmoud Kiasari,"#### Key Insights:
+- Canadian Navy AM challenge program: Thales + Cove working on Arctic Patrol Vessels
+- Offshore vessels run out of spare parts - need real-time inventory depletion monitoring
+- ""Temporary"" AM parts concept has value for non-critical systems to avoid catastrophic downtime
+- ROV operations and offshore platforms are prime use cases
+- Naval vessels face same digital inventory challenges as commercial offshore
+- Emergency/breakdown scenarios drive AM adoption more than planned use","""NH.2 - Obsolescence
+  is Primary AM Adoption Driver"",""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.4 - Geographic
+  Isolation Amplifies Local Manufacturing Need"",""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""H63 - Offshore
+  Inventory Depletion Monitoring"",""H64 - Temporary AM
+  Parts for Non-Critical Applications"",H65 - Defense Sector Digital Inventory (Canadian Navy)",,,Jordan_Cumming_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/Qn_TB3JghC1SXRMITuQ-3A/aEKQ8t3I0AS6v69pfT1bho4dyo-cidX3n7wWh7Lhk7xopFYBinApjKrNWqJgo43vnNRF5kzllc-F8mAMHK3msLdXAPagF8HB_XtpfzMWFi9qQuVs_AHsrZqCVlqIffYXa6VTTclJHyOtD9BXLM0Wfr8GABD9hK5MjgFw-PCZznPT-o8D-4OjWi-dhDGRvP4z/sFeghMp4XXpHkGlXShcMYAPKD3q0BhHhedUfF7268iM)
+57,Kay (Kwadwo) Ampofo,2/9/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - ERP integration feasible via MRP engine (first mover advantage - never done before)
+ - Working capital is the primary ROI driver (not just storage costs)
+ - Insurance stock is biggest opportunity for digital conversion
+ - AI should NOT be the focus - solve supply chain fundamentals first
+ - Obsolescence major pain point due to MOC process
+ - Atlantic Excel is direct competitor in Newfoundland
+ - Reverse engineering workaround for obsolete parts (no IP concerns)
+ - Kitting & warehouse operations require hybrid model (not fully digital)
+ - Arctic warehouse heating costs are hidden ROI driver   ","CP.3 - Certification Proof Difficulty,""NH.2 - Obsolescence
+  is Primary AM Adoption Driver"",""NH.6 - AM Adoption
+  Evolution: Emergency ‚Üí Comfort ‚Üí Innovation"",KR.1 - IoT/AI Quality System Integration,""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.12 - Cost/ROI is
+  #1 Adoption Barrier (89%)"",""NH.18 - AI for
+  Stock vs Print Decision is Key Differentiator"",""NH.26 - Working
+  Capital is Primary ROI Driver"",""NH.27 - Insurance
+  Stock Conversion is Highest-Value Entry Point"",""NH.28 - Finance/CFO
+  is the True Decision Owner"",""NH.29 -
+  Expediting/Freight Costs in Remote Locations"",""NH.30 - Arctic
+  Warehouse Heating Costs"",""NH.32 - Fully Digital
+  Warehouse is Unrealistic"",""NH.33 - Obsolete
+  Parts Have No IP Barriers""",,"""NH.15 - Safety >
+  Time > Cost Priority Framework""",
+58,Keith Healey,2/10/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Government R&D gatekeeper with ERINL funding access ($100K-$500K pilot opportunity)
+ - Equinor Bay du Nord is better beachhead than Suncor/ExxonMobil (Greenfield vs Brownfield)
+ - Must engage C-NLOPB during R&D (not after) to reduce certification timeline from year+ to months
+ - Consortium model + per-print royalty solution for OEM IP concerns
+ - Net-zero timeline realistic for decades not years - world still needs oil
+ - Regulatory pathway: C-NLOPB + DNV/Lloyd's/ABS + C-CORE validation
+ - Platform model validated - ""great service offering"" reduces operator risk   ","""NH.23 - Digital
+  Inventory is Not Uniquely AM (Mark Kirby Insight)"",""NH.22 - Sovereign
+  Resilience is Defense Value Proposition"",""NH.27 - Insurance
+  Stock Conversion is Highest-Value Entry Point"",""NH.28 - Finance/CFO
+  is the True Decision Owner"",""NH.30 - Arctic
+  Warehouse Heating Costs"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.41 - Greenfield
+  Offshore Projects Are Better Beachheads"",""NH.42 -
+  Consortium/Cooperative Models Reduce Adoption Risk"",""NH.43 - Royalty
+  Licensing Can Unlock OEM File Release"",""NH.44 - C-NLOPB
+  engagement during R&D reduces certification timeline""",,,
+38,Khashayar Morshed Behbahani,1/27/2026 9:45pm,Mahmoud Kiasari,,"CS.3 - Labs & Authorities Need Digital Compliance System,CJ.3 - Process Certifications Efficiently,CP.6 - Paper-Based Chaos,VP.16 - Cost/ROI Decision Support Tools for Labs,VP.17 - Feasibility Assessment & Project Planning Tools,VP.15 - Inter-Lab Secure Collaboration Network",,"CP.7 - Reactive Enforcement Only,CG.6 - 60% Less Admin Time,CG.7 - Real-Time Compliance Visibility",Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/eihwODJR0lxqm0Sz3jrYUg/s_ysXK6zQjkfTudPg51vnSSwZXagrFIU4arqXArWReAKv_uwIi0PnWcjho6I97og99Lzn8PAQHx_we-NPCEQiVgriXFNuwVQpDFg_RePDhgkoaYTmTdv2eDlsyDGxfafrWuMKCWYTW7hc9Qw5c__UOV-rWKI8u-G5nNybQKUqwJtJH7NtOXNB6sFvvUUVFgYgL3pgNWIF2ZIH2ldTQOUHw/sBDrXy2I2AvdRcsxzdm3JEk6XrZ0hCqNkl6tCerMMR0)
+48,Lee Vessey,2/4/2026 8:46pm,Mahmoud Kiasari,"#### Key Insights:
+- Canadian Navy $360K project with Thales for digital inventory/AM
+- Parts obsolescence drives AM adoption - AM becomes ONLY option, not just better option
+- Navy vessels face 3-6 month lead times for obsolete parts
+- ""Breakdown insurance"" positioning resonates better than cost savings
+- E-inventory vision: Digital catalog of certified parts ready to print
+- Sovereign resilience: Reducing dependence on foreign supply chains is defense value proposition
+- Circuit board AM for electronics obsolescence","CJ.1 - Source Certified Parts Quickly,""NH.2 - Obsolescence
+  is Primary AM Adoption Driver"",""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""NH.17 - Government
+  Anchor Tenant Solves Cold Start Problem"",""NH.21 - Breakdown
+  Insurance Positioning (Not Cost Savings)"",""NH.22 - Sovereign
+  Resilience is Defense Value Proposition""",,,Lee_Vessey_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/FDnK_BnEXqFEqgWLik_QkQ/ssL0zYjJbl-me5A_PXzHfuB-CX529S3hWS0huZLeee1lniMjnsctZVH2-KmXe0hSM067BJ59TtswhufKP5jzUPMzq-TVT5iWdHK2ZPI9Ul2iHP6rsSHz5cQ3-NULcMkmXueFhErqafndie0v597DyzcaFcVe91jNyxt4fNCYlBrriGL2s2iL18_yDFTQngRy/O8RGrCKiTXq_l3jSIFubS-MxIkUKbGi2pxLB_zWY8pU)
+68,Lonita D. Judge - Megan Clarke (ask your questions based on her) - ITs about Safety Certification for Digital Inventory Parts,2/20/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Downtime cost $50K-$100K/day confirmed by 10-year ship captain (Adam Mars) and maritime COO
+ - Horizon Maritime uses deduplication strategy not warehousing - $30-50M figure applies to large offshore platforms not vessel fleets
+ - DNV certifies at vessel/equipment level NOT individual part level - lowers AM certification barrier for vessels
+ - Non-OEM parts are already accepted at-spec in maritime - AM at-spec should be equally acceptable
+ - Lead time is #1 pain for Arctic/remote operations: 'If there's a long lead time, that's when we run into the problems' (Lonita Judge)
+ - Older vessel bespoke machined parts are objection - counter with non-critical standardized parts first
+ - KEY REFERRAL: Lonita offered shipyard contacts (Irving Shipbuilding / Davie level) - highest priority follow-up","""NH.9 - Digital
+  Inventory Reduces Lead Time from Months to Weeks"",""NH.21 - Breakdown
+  Insurance Positioning (Not Cost Savings)"",""H82 - Non-OEM At-Spec
+  Parts Already Accepted in Maritime"",""H83 - DNV Certifies
+  Vessel Level Not Part Level""",,,
+44,Mark Kirby,2/1/2026 8:33pm,Mahmoud Kiasari,"#### Key Insights:
+- Certification is the adoption gatekeeper - without it, AM cannot penetrate regulated industries
+- Academic perspective: AM developed faster than regulatory frameworks could adapt
+- Quality assurance standards need to catch up with technology capabilities
+- Testing labs are overwhelmed with certification backlog
+- Industry needs standardized certification processes across jurisdictions","""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries""",,,Mark_Kirby_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/oWgd6DdqpsTxQk7YqevtkA/mU6j0EvUoHEkRsAWVaUdnogM_nmx-FVXdeqmob5MFFPvrB_nzBIUXe-Oa5h5dDqQ4kAw9v3yRbD34Wnia_JQGaA_5Rm_N2Ym9U_q2YM4yW9lA01wj9EeaAq8BFk4Yi5PmoF0BKDpC7Fev4IysjfrIwhRrlF7KctxjMitCNJU4qqqcWoI8Qu5GjbL_CFRyZAi/w_r1PPy3ylEJbAUshU_wVZfjBBeo_cLgZ0TCqyQi0DU)
+74,Matthew Harding,2/18/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - In aerospace: PLATFORMS are certified (Boeing 737/FAA) NOT individual parts - major misconception corrected for our pitch
+ 
+  - FAA/EASA regulations are process and material agnostic - AM bracket = machined bracket from regulatory view
+ 
+  - MMPDS gap: no material database equivalent for AM - designer must generate own data per part - this is the real aerospace certification barrier not regulatory complexity
+ 
+  - Civilian aviation production is WRONG market: production rates are planned not on-demand - digital inventory irrelevant
+ 
+  - FAA PMA (Part Manufacturing Approval) = relevant pathway for AM replacement/aftermarket parts - Matthew achieved this at Tronosjet PEI (first metal AM PMA in Canada)
+ 
+  - IP cultural barrier in aerospace: GKN resists direct OEM data uplinks - each tier protects process knowledge aggressively
+ 
+  - Defense mandate overrides aerospace IP resistance if DND/US DoD mandates connectivity it flows down supply chain
+ 
+  - Don't lead with AI to aerospace - risk-averse industry requiring long substantiation
+ 
+  - Aerospace MRO (repair/overhaul) + defense aerospace = right markets; civilian aviation production = wrong market","""H84 - Space/Rocket
+  Market is AM-Native Unlike Commercial Aviation"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""H104 - Platform
+  Certification Not Part Certification in Aerospace"",""H105 - MMPDS Gap is
+  Real Aerospace Certification Barrier"",""H106 - FAA PMA
+  Pathway for AM Replacement Parts"",""H107 - Aerospace
+  Production Wrong Market MRO Defense Right""",,,
+62,Mike Paulin - Send Email the upcoming week for setting up a meeting,2/12/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Arctic 3-window access model: open water/solid ice/stranded (ice formation/breakup = helicopter only)
+ - Downtime up to $7M/day theoretical maximum (100,000 bbl/day × $70/barrel)
+ - Gulf of Mexico cooperative spare parts model exists (validates digital cooperative concept)
+ - C-CORE does design validation NOT component certification (misconception corrected)
+ - DNV/Lloyd's/ABS are real certification gatekeepers (not C-CORE)
+ - Bay du Nord: $10B project, 1000m depth, FPSO, billion-barrel potential
+ - AI/predictive maintenance: industry shift from prescriptive → performance-based
+ - AM ""bridge parts"" concept acceptable (temporary fix until OEM arrives)
+ - Offshore wind has OEM warranty barrier (harder than O&G for AM penetration)   ","""NH.27 - Insurance
+  Stock Conversion is Highest-Value Entry Point"",""NH.1 - Post-COVID
+  Stock Depletion Creates AM Opportunity"",""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.8 - Feasibility +
+  Cost Drive AM Acceptance (Interview 6 - John Lidstone)"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.11 - CQFA as
+  Quebec AM Ecosystem Gateway (Interview 7 - Fanny Charreteur)"",""NH.22 - Sovereign
+  Resilience is Defense Value Proposition""",,,
+50,Mikhail Gladkikh,2/4/2026 8:48pm,Mahmoud Kiasari,"#### Key Insights:
+- AI should be ""fully AI-based"" for inventory management decisions
+- 15% ROI threshold required for O&G technology adoption
+- AI automatically determines: stock physical inventory vs hold digital files for on-demand printing
+- Fast follower company - not early adopter, needs proof from aerospace/defense first
+- OMV has existing digital infrastructure - good fit for AI integration
+- Predictive maintenance integration is critical for proactive ordering","""NH.12 - Cost/ROI is
+  #1 Adoption Barrier (89%)"",""NH.18 - AI for
+  Stock vs Print Decision is Key Differentiator"",""NH.19 - 15% ROI
+  Threshold for O&G Adoption""",,,Mikhail_Gladkikh_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/gJp_WOpqmgBSj9LDwuUhMg/1dF-Oj73jbIxUXNjD_RhdOaW9cGfsV5NIts4IpvcUVTFGQLph7hiZlzBgvSbQRL5cGl1-AfhmVLApVes0uRGMc4FIYzU1WgZiFBuWFYPRdcwNo5cLXelrE7A_vl7vobqzcsgp8NLj2Xkxwfc4ny1m91guH_VdvimJR3yfAn9_u8dpK3FPos0tMeTeM7mIDiT/wDm_qj0oQhwjOFGPQ7izfbMMHctVMeEUF9zCfo9XjEk)
+67,Mohsen Mohammadi,2/20/2026 1:31pm,Mahmoud Kiasari,"    **Key Insights:**
+ 
+  - 2016 inflection point: AM adoption in marine/offshore began with automotive sector learnings (Laser Powder Bed Fusion) - but volume economics break down (2K-5K parts vs millions)
+ 
+  - Four-stage adoption model: Prime Contractors (Irving/Equinor) → SMEs → Defense OEMs (Thales/BAE) → Federal Government (DND/DRDC)
+ 
+  - NDT gap: 2D radiography/X-ray cannot detect internal AM defects; Micro-CT required but expensive and slow
+ 
+  - Qualification is machine-specific + powder-specific + process-specific - any change triggers full re-qualification
+ 
+  - Material anisotropy: same material printed in 3 directions has different failure profiles; fatigue testing to 10^6 cycles required
+ 
+  - HIP (Hot Isostatic Pressing) post-processing needed but adds cost and weeks; eliminates AM speed advantage
+ 
+  - FAT (Factory Acceptance Testing) by customers shows AM fatigue performance inferior to conventional - Navy/CAF won't approve
+ 
+  - $111 billion Canadian shipbuilding modernization over 30 years - regional Ontario manufacturing hub (Sarnia-Lambton) identified
+ 
+  - IP/cybersecurity: blueprint theft, process sabotage, and supply chain attack are three OEM concerns requiring secure infrastructure
+ 
+  - Certification cost approximately equals hardware cost - this is why adoption remains limited
+ 
+  - Future contacts mentioned: NDpower (wind AM) and Hydro-Québec (large-scale manufacturing)","""H77 - NDT Micro-CT
+  Required for AM Quality"",""H78 - Qualification
+  is Machine+Powder+Process Specific"",""H79 - FAT Results
+  Block Navy/CAF AM Adoption"",""H80 - HIP
+  Post-Processing Eliminates AM Speed Advantage"",""H81 - Certification
+  Cost Equals Hardware Cost""",,,
+66,Nathan Smeenk,2/13/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Gap in Canadian AM is FINANCE not technology (Canadian companies timid and underfinanced vs US peers)
+ - Agile plastic-focused only (SLA, SLS, FDM, MJM) - NO metal AM in-house
+ - Digital inventory ""already exists but poorly"" - file alone is useless (need full manufacturing recipe: machine parameters, material specs, process settings, QA data)
+ - Competitors identified: Spare Parts 3D (SP3D - Paris-based, DigiPART software, Brazil/Oman projects) and FieldNode consortium (ConocoPhillips, Equinor, Shell, TotalEnergies, ExxonMobil, BP)
+ - Agile demand-driven strategy: build what's requested not build-and-hope
+ - Goal: Agile outposts across Canada for local production (own network, not third-party platform)
+ - AI opportunity: file prep automation (build setup workflow optimization)
+ - Physical inventory has real value - COVID reality check (don't oversell digital replacement)
+ - Nathan doesn't know Lloyd's Register or DNV (operates outside marine/offshore certification ecosystem)
+ - ""How do you make it better?"" challenge - existing solutions need improvement not invention   ",,,,
+55,Nichelle Hubley,2/6/2026 8:53pm,Mahmoud Kiasari,"#### Key Insights:
+- **COMPETITIVE INTELLIGENCE:** Assembly Studio is competitor in PEI
+- Canadian AM ecosystem is **10+ years behind Europe/US**
+- European companies (Baker Hughes, France, Germany) already operational
+- IP is #1 barrier: Raspberry Pi local hardware, no cloud uploads
+- 90%+ know supply chain is broken but <10% know about AM solutions
+- ""Dinosaurs"" (Tier 1 O&G) won't move - target Tier 2/3 operators instead
+- Small companies cite cost + time as barriers
+- Canadian patriotism/sovereign resilience angle works for defense","""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.12 - Cost/ROI is
+  #1 Adoption Barrier (89%)"",""NH.16 - On-Premise
+  Processing Required for IP Protection"",""NH.22 - Sovereign
+  Resilience is Defense Value Proposition"",""NH.25 - Only 20%
+  Engaged with Digital Transformation"",""H71 - Big Companies
+  = Deep Pockets = No Urgency"",""H72 - Europe 10+
+  Years Ahead of Canada in AM Ecosystem""",,,Nichelle_Assembly_Studio_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/KeSTXmYZKKMXypLX-vSwKQ/p_8gLk4TyWNgclTp-AdIeJnvXVHYZR9Qt5oxqbZKQjlp7ox4JvhLfqEwVxuXfFeOEDmHu7RamZc-808ceR8pLF3X6Lwjnuj3mkxrBeVnj8jBdMRPTMGtnmCv3zUbKH-vK4PWDTnG4y5OpgCtDfP8-zPOuN8oOjs0fCBrbvua9KgPGNcORjhyGILsn2WMkmI-V39JZcVf6pS_8Tt2hpk5PQ/zkBUnVYGDf967PBiBFqHTK85_TXlAJSp0L6lmgXJsEg)
+49,Nicole Rathie,2/4/2026 8:47pm,Mahmoud Kiasari,"#### Key Insights:
+- NGen (Next Generation Manufacturing Canada) - Government funding ecosystem
+- Select AM model: On-premise processing for IP protection (not cloud-based)
+- IP protection is major concern - companies won't upload design files to cloud
+- Government anchor tenant needed to solve chicken-and-egg marketplace problem
+- Canadian Defense (DND) could de-risk platform for commercial customers
+- Distributed manufacturing requires quality control AND IP protection simultaneously","CJ.4 - Enable Distributed Manufacturing,""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.16 - On-Premise
+  Processing Required for IP Protection"",""NH.17 - Government
+  Anchor Tenant Solves Cold Start Problem""",,,Nicole_Rathie_Interview_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/QGKLLdmxEdQHJR86TvwGhw/5h228o9HOzoemWfd4jv2dC3uq0SpYfYIdy8DVZAOWXgSpr7Hm_anJA4HLC_BmR-NJa3tHBr-q80pD_tMxeqSL2PXBaB5R5F9YNSho6LOvTE5FkGAgNDqy7RqOmfdF8i36pXsNQOwKL4_nQwa6k_fn5ZiM2EkvP_dOgjboUTlmVDxegK1pZfksP6oI1wM85fb/uJfAHQ1iWI-UmKVeSjDgbR8LXqvKRWsRjN62drhkRvU)
+43,Priti Wanjara,1/30/2026 10:56am,Mahmoud Kiasari,"**Key Insights:**
+- CQFA (Carrefour québécois de la fabrication additive) is Quebec's AM ecosystem hub
+- Manages services, consultant networks, Sr&ED reporting expertise
+- **Partnership opportunity:** CQFA + AddManuChain collaboration could:
+  - Provide instant access to Quebec AM facilities
+  - Leverage government funding (Sr&ED expertise)
+  - Validate ecosystem-level challenges
+  - Create pilot partnership","""NH.11 - CQFA as
+  Quebec AM Ecosystem Gateway (Interview 7 - Fanny Charreteur)""",,,Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/9e1loEyvJxEp7Uw_g4S7hQ/baWxzpk0eY3aDb1DzPwSOhojwBp3unxk-LR462CwvdJT5UyEnQEM2X_p4e0WSV2d3SICFIVsQ5NtDTr6s89hG1ldT3uQI_5MHu-T16Ae3Z9XbiSC-lj4Cany6IdFmozEpNFFh0ILw7E2bdb0JEZdyPlXhdmnR6tITStjywfWaUJDs_XJAkuHS83EYCjZWtkC3vZA_1DmtChLMSbfw-IrtQ/nOm1m3eOlXKiPwTkmkX2CdzfAavEhYhQ9ZlKPM0-n1Q)
+78,"Scott Humber,Heather Davis",2/26/2026 10:28am,Mahmoud Kiasari,"'- Real end-to-end AM workflow exists globally
+- Workflow not yet formalized with Atlantic XL (region too nascent)
+- Formal AM screening process with 6 assessment criteria
+- Clients use FieldNode (digital inventory) - NOT competitor; different layer
+- Lloyd's qualifies facility for ALL criticality levels (competitive advantage)",,,,
+41,Sean Morgan,1/30/2026 10:51am,Mahmoud Kiasari,"**Key Insights:**
+- Atlantic XL acts as BOTH AM facility AND procurement agency (validates two-sided marketplace!)
+- **Post-COVID insight:** ""Nobody carries stock anymore"" - fundamental market shift
+- Obsolescence + lead time drive adoption (NOT innovation hype)
+- Geographic isolation (Newfoundland): Single freight carrier, weather delays
+- Predictive maintenance + digital inventory - Sean independently described entire vision!
+- Lloyd's Register qualification expected within 2 weeks (as of Jan 31, 2026)
+- Competitive landscape: Fieldnode and Pelagus 3D exist but ""haven't taken up yet"" - ""solid opportunity""","CS.1 - Manufacturers Need Certified Local Suppliers ,CS.2 - Facilities Have Idle Capacity,CS.3 - Labs & Authorities Need Digital Compliance System,CS.4 - OEMs Want Distributed Manufacturing,CJ.2 - Fill Machine Capacity,CJ.3 - Process Certifications Efficiently,CJ.4 - Enable Distributed Manufacturing,CP.2 - Expensive Distant Suppliers,CP.3 - Certification Proof Difficulty,CP.4 - Machines Sitting Empty,CP.6 - Paper-Based Chaos,CP.7 - Reactive Enforcement Only,CG.2 - Cut Shipping 40-60%,CG.3 - Instant Proof of Compliance,CG.5 - Reduce CAC by 50%+,CG.6 - 60% Less Admin Time,VP.2 - Prioritize Nearby Facilities,VP.5 - Build Credibility with Badges,VP.10 - Demand Forecasting & Pipeline Visibility,VP.12 - Certification Body Decision Support,VP.14 - Transparent Pricing/Budget Pre-Qualification,KR.1 - IoT/AI Quality System Integration,""NH.1 - Post-COVID
+  Stock Depletion Creates AM Opportunity"",""NH.2 - Obsolescence
+  is Primary AM Adoption Driver"",""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.4 - Geographic
+  Isolation Amplifies Local Manufacturing Need"",NH.5 - Predictive Maintenance + Digital Inventory Integration,""NH.6 - AM Adoption
+  Evolution: Emergency ‚Üí Comfort ‚Üí Innovation"",""NH.7 - Certification
+  is Primary Gatekeeper for Regulated Industries""",,,Hypothesis_Table_Update_Feb1_2026_10_23AM.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/4aoEBU0jU3lXg6WRCf8vuA/FkoTs05y9wAGtLo3hrUONvDTYXU83bMrtio_eX9qn4wHsSxgLSAS5mTRuHyMw4K13_7-3JSSLwVwgFvENPWhMB0yrkrQ0z_K5tXfqL1BxFT1h_FAszDeRlEJeeAH8kJlGLgDeyuTcaWOAwugYIOpICU62t7nEXon-0B64e7Ej00rnySsujfYSNHdOJLI3ARCB5JzV2QUuPimE3WQE3FLKw/mX8BBMmqZwgFDtEdIg_FuIw50PzTlWCJPU0vOzL-Xlo)
+63,Shawn Sooley,2/12/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - Active AM practitioner with paying industrial clients (valve stems, food processing components)
+ - Spare parts pain ""much more obvious in Newfoundland than anywhere else""
+ - AM perception barrier: seen as ""toy solution not industrial solution""
+ - Operators won't pursue certification themselves (""they're never going to do it"")
+ - Class societies work FOR operators (not against them) - real barrier is fear of extra work
+ - ""Aerospace First"" strategy: Hardest certification first → O&G objections vanish
+ - Don't sell AI - sell the solution to the problem (AI risks value perception issues)
+ - Industry credibility gap: need problem solver from the space (Atlantic XL cautionary tale)
+ - Digital inventory model already established at Shield Group - capacity constrained
+ - Exxon has Markforged/Onyx AM printers on rigs (underutilized - managed service opportunity)
+ - PEEK is aerospace gatekeeper material (""nobody wants to talk unless you print PEEK"")
+ - ""3D printer as photocopier"" vision - knowledge layer is the real product not hardware   
+
+Aerospace First strategy discovered,
+Industry credibility required for traction,
+AM perceived as toy not industrial solution,
+Operators won't pursue AM certification,
+Exxon has AM printers on rigs underutilized","""H76 -
+  Aerospace-First Certification Builds Cross-Sector Credibility"",""NH.1 - Post-COVID
+  Stock Depletion Creates AM Opportunity"",""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.11 - CQFA as
+  Quebec AM Ecosystem Gateway (Interview 7 - Fanny Charreteur)""",,"""NH.22 - Sovereign
+  Resilience is Defense Value Proposition""",
+47,Tony Jabbour,2/3/2026 8:45pm,Mahmoud Kiasari,"#### Key Insights:
+- **ACTIVE VESSEL AM USER** - Currently using plastic AM parts on fishing vessels
+- ""Print a part that helps us out of a jam"" - emergency use case validation
+- Space is the biggest challenge on vessels - can't justify printer footprint vs spare parts storage
+- Haven't found enough tangible benefits to scale despite operational use - ROI measurement gap
+- Successfully using plastic AM but uncertain about metal AM technology maturity and cost models
+- Need ""Metal AM Readiness Assessment"" to guide upgrade decisions
+- Pilot users exist but lack tools to quantify benefits (downtime saved, procurement costs avoided)","""NH.6 - AM Adoption
+  Evolution: Emergency ‚Üí Comfort ‚Üí Innovation"",""H64 - Temporary AM
+  Parts for Non-Critical Applications"",""H66 - Space
+  Constraint on Vessels"",H67 - AM ROI Measurement Gap,""H68 - Metal AM
+  Knowledge Gap"",""H69 -
+  Electronics/Non-Structural Parts Best Fit for AM"",""H71 - Big Companies
+  = Deep Pockets = No Urgency""",,,Clearwater_Seafoods_Analysis.md (https://v5.airtableusercontent.com/v3/u/50/50/1772301600000/RZ1ZJlt9X0mce4xVE9t3ng/4Sab1xd7SnRXGfd81PGw1kp_o0_68_03UdW8mU-Rp4_VQLYjFzFNMA0q4CkcfJaArtQtKEmmtCjDBkfq05BifUHsjS91zGX17XcqJsjUJRc6y3E4L4hNdCUSY_pWC5nlZgPG_Sop77GPE-sOCtOPTOgZKIQXbPz3jcEqUvPH7orOeywkzs5G-BYPHISuJb-P/3PjgBZEQBNaq5pZ0ZPoGjQRy1QX7dGV8CHBcKgIwSxc)
+64,Tyler Beatty,2/12/2026 12:00am,Mahmoud Kiasari,"    **Key Insights:**
+ - ""War on Inventory"" is official ExxonMobil internal term for spare parts cost battle
+ - Value-Capability-Permission Venn diagram: Value & Capability proven, Permission (certification) blocked
+ - ExxonMobil $17.5M investment in Memorial SMART Lab for metals additive manufacturing
+ - FieldNode member - actively monitoring AM market (""regrettable to not be watching"")
+ - Personnel on Board (POB) reduction is #1 technology driver (not cost savings)
+ - Digital inventory is ""natural table stakes"" - inevitable not optional
+ - Certifying authorities ""haven't led the charge"" on AM adoption (biggest stifling of innovation)
+ - Management of Change (MOC) process required for platform innovations
+ - Hot-shotting example: ""charter an aircraft for a doorknob""
+ - Central Technology Organization involved in AM research
+ - TRL 8→9 adoption path: de-risk in analogous environment then pilot on platform   
+
+
+FieldNode membership confirmed,Value-Capability-Permission framework,MOC process gatekeeper,POB reduction #1 tech driver,Metadata enrichment opportunity","""NH.1 - Post-COVID
+  Stock Depletion Creates AM Opportunity"",""NH.3 - Lead Time
+  Emergency Accelerates Adoption"",""NH.8 - Feasibility +
+  Cost Drive AM Acceptance (Interview 6 - John Lidstone)"",""NH.10 - OEM IP
+  Release is Critical Blocker"",""NH.11 - CQFA as
+  Quebec AM Ecosystem Gateway (Interview 7 - Fanny Charreteur)"",""NH.22 - Sovereign
+  Resilience is Defense Value Proposition"",""NH.27 - Insurance
+  Stock Conversion is Highest-Value Entry Point""",,,
+21,Arad Gharagozli (Galaxia Mission Systems),2/6/2026,Mahmoud Kiasari,Galaxia actively uses AM in production (space/rocket propulsion). Two-sided marketplace model immediately understood. IP security & controlled goods = #1 aerospace barrier. Audit trail addresses concern but need certified vetting layer. 30-40 part consolidation validates AM-native design.,"CS.2,CJ.2,CS.4,NH.10,H85,H86",,NH.16,Interviews/21/insights.md
+52,Scott Humber & Heather Davis (Aker Solutions),2/2/2026,Mahmoud Kiasari,Real end-to-end AM workflow exists globally. Formal AM screening with 6 criteria. Lloyd's qualifies facility for ALL criticality levels. Certification follows standard manufacturing process. Aker exploring formal NL workflow integration.,"CS.4,NH.7,H83,H98,VP.8",,,Interviews/52/insights.md
+53,Stephen Ryan (PolyUnity Tech - Co-Founder & CMO),2/25/2026,Mahmoud Kiasari,PolyUnity doing in healthcare exactly what AddManuChain doing in O&G/defense. 3-TIER PLATFORM MODEL. Multi-stage approval pipeline IS the product. Approval cascade eliminates 50% sales friction. Partnership explicit: We can't afford to compete. We need to raise all ships.,"H60,H74,H75,VP.3,NH.10,RS.2",,,Interviews/53/insights.md - PARTNERSHIP OPPORTUNITY
+55,André Simha (Mediterranean Shipping Company - CDIO),2/26/2026,Mahmoud Kiasari,Spare part supply centralized but distributed pragmatically. DATA QUALITY is real blocker - NOT technology. IoT deployed but under-utilized. Blockchain hype ended - APIs won. TRUST is #1 ecosystem killer.,"VP.10,NH.9,NH.1,H62,H88",,,Interviews/55/insights.md - C-LEVEL VALIDATION
+56,Sheila Paterson (NS Dept. Energy & Natural Resources - Former COVE COO),2/27/2026,Mahmoud Kiasari,COVID supply chain fragility CONFIRMED. OEMs may PREFER licensing model. IP security + quality assurance = top two barriers. Government is NOT buyer but direction-setter + accelerator. Canadian Navy availability gap: 30-50% actual vs 70-80% target.,"CS.4,NH.22,H82,H101,NH.1,H75",,,Interviews/56/insights.md - POLICY ECOSYSTEM + 8 PROGRAMS
