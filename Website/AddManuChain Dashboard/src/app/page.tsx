@@ -31,6 +31,7 @@ import {
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const { showOnboarding, isLoading, completeOnboarding } = useOnboarding()
 
   const getPageTitle = () => {
@@ -138,10 +139,12 @@ export default function Dashboard() {
         onTabChange={(t) => { setActiveTab(t); setMobileOpen(false); }}
         mobileOpen={mobileOpen}
         onMobileClose={() => setMobileOpen(false)}
+        collapsed={sidebarCollapsed}
+        onCollapsedChange={setSidebarCollapsed}
       />
 
       {/* Main Content */}
-      <div className="ml-0 md:ml-64 transition-all duration-300 min-h-screen w-full overflow-x-hidden">
+      <div className={`ml-0 transition-all duration-300 min-h-screen w-full overflow-x-hidden ${sidebarCollapsed ? 'md:ml-20' : 'md:ml-64'}`}>
         {/* Header */}
         <Header
           title={pageInfo.title}

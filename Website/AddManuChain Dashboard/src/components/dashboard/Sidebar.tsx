@@ -198,10 +198,12 @@ interface SidebarProps {
   onTabChange: (tab: string) => void
   mobileOpen?: boolean
   onMobileClose?: () => void
+  collapsed?: boolean
+  onCollapsedChange?: (collapsed: boolean) => void
 }
 
-export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: SidebarProps) {
-  const [collapsed, setCollapsed] = useState(false)
+export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose, collapsed = false, onCollapsedChange }: SidebarProps) {
+  const setCollapsed = (val: boolean) => onCollapsedChange?.(val)
   const [demoRole, setDemoRole] = useState('admin')
   const [showRolePicker, setShowRolePicker] = useState(false)
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(
