@@ -95,8 +95,7 @@ const rolePermissions: Record<string, string[]> = {
   // IP holders — blueprint licensing, royalties, print queue visibility, OEM analytics
   oem_partner: [
     'overview', 'print_queue',
-    'ip_library', 'blueprints', 'partners',
-    'digital_inventory',
+    'ip_library', 'blueprints',
     'certifications',
     'analytics',
     'settings',
@@ -104,7 +103,7 @@ const rolePermissions: Record<string, string[]> = {
   // Customers / operators — orders, shipments, inventory, peer printers, support
   end_user: [
     'overview', 'orders',
-    'peer_printers', 'shipments', 'physical_inventory', 'digital_inventory',
+    'peer_printers', 'shipments', 'physical_inventory',
     'services',
     'settings',
   ],
@@ -116,21 +115,21 @@ const rolePermissions: Record<string, string[]> = {
     'analytics',
     'settings',
   ],
-  // Research & testing labs — dedicated portal, materials, certifications, blueprints, IP read access
+  // Research & testing labs — dedicated portal, materials, certifications, blueprints
   lab: [
     'overview',
     'lab_portal',
-    'ip_library', 'blueprints',
+    'blueprints',
     'materials', 'digital_inventory', 'physical_inventory',
     'certifications',
     'analytics',
     'settings',
   ],
-  // Authorized AM facilities — print queue, orders, materials, inventory, peer printers
+  // Authorized AM facilities — print queue, orders, materials, inventory, shipments
   print_center: [
     'overview', 'orders', 'print_queue',
     'blueprints',
-    'materials', 'physical_inventory', 'digital_inventory', 'shipments', 'peer_printers', 'centers',
+    'materials', 'physical_inventory', 'digital_inventory', 'shipments',
     'settings',
   ],
 }

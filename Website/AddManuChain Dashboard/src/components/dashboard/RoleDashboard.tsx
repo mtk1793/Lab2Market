@@ -160,7 +160,7 @@ function OEMPartnerPanel() {
     { label: 'Check Royalties',     icon: DollarSign, color: 'bg-teal-50 text-teal-700 hover:bg-teal-100' },
     { label: 'Manage IP Licenses',  icon: BookMarked, color: 'bg-amber-50 text-amber-700 hover:bg-amber-100' },
     { label: 'View Analytics',      icon: BarChart3,  color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
-    { label: 'Partner Directory',   icon: Users,      color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
+    { label: 'View Certifications', icon: Award,      color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
   ]
 
   const alerts: AlertRow[] = [
@@ -263,7 +263,7 @@ function EndUserPanel() {
     { label: 'Track Shipments',     icon: Truck,     color: 'bg-teal-50 text-teal-700 hover:bg-teal-100' },
     { label: 'Browse Peer Printers', icon: Users,    color: 'bg-violet-50 text-violet-700 hover:bg-violet-100' },
     { label: 'Inventory Check',     icon: Boxes,     color: 'bg-amber-50 text-amber-700 hover:bg-amber-100' },
-    { label: 'Digital Twin Scan',   icon: Zap,       color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
+    { label: 'View Invoices',       icon: FileText,  color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
     { label: 'Contact Support',     icon: Users,     color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
   ]
 
@@ -461,8 +461,8 @@ function PrintCenterPanel() {
     { label: 'Log Material Batch',  icon: Boxes,     color: 'bg-amber-50 text-amber-700 hover:bg-amber-100' },
     { label: 'Machine Status',      icon: Factory,   color: 'bg-teal-50 text-teal-700 hover:bg-teal-100' },
     { label: 'Report QC Issue',     icon: AlertTriangle, color: 'bg-red-50 text-red-700 hover:bg-red-100' },
-    { label: 'View Certifications', icon: Award,     color: 'bg-violet-50 text-violet-700 hover:bg-violet-100' },
-    { label: 'Schedule Maintenance', icon: Settings, color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
+    { label: 'Track Shipments',     icon: Truck,     color: 'bg-violet-50 text-violet-700 hover:bg-violet-100' },
+    { label: 'Download Job Report', icon: Download,  color: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
   ]
 
   const alerts: AlertRow[] = [
