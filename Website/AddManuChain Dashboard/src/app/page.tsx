@@ -141,7 +141,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content */}
-      <div className="ml-0 md:ml-64 transition-all duration-300">
+      <div className="ml-0 md:ml-64 transition-all duration-300 min-h-screen w-full overflow-x-hidden">
         {/* Header */}
         <Header
           title={pageInfo.title}

@@ -227,10 +227,10 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: S
       )}
       <aside
         className={cn(
-          'fixed left-0 top-0 z-40 h-full bg-[#0F172A] border-r border-slate-800 transition-all duration-300 flex flex-col',
+          'fixed left-0 top-0 z-40 h-screen bg-[#0F172A] border-r border-slate-800 transition-all duration-300 flex flex-col',
           collapsed ? 'w-20' : 'w-64',
-          mobileOpen ? 'block' : 'hidden',
-          'md:block'
+          mobileOpen ? 'flex' : 'hidden',
+          'md:flex'
         )}
       >
         {/* Logo */}
@@ -284,7 +284,10 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: S
         )}
 
         {/* Navigation */}
-        <nav className="flex-1 min-h-0 overflow-y-auto px-3 py-3 space-y-1">
+        <nav
+          className="flex-1 min-h-0 overflow-y-auto px-3 py-3 space-y-1 overscroll-contain"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {menuSections.map(section => {
             const visibleItems = section.items.filter(item => allowed.includes(item.id))
             if (visibleItems.length === 0) return null
