@@ -117,14 +117,14 @@ export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMob
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 lg:gap-4 flex-shrink-0">
 
           {/* Search with live dropdown */}
           <div className="relative hidden md:block">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 z-10" />
             <Input
               placeholder="Search parts, orders..."
-              className="w-72 pl-10 pr-8 bg-white border-slate-200"
+              className="w-40 lg:w-64 xl:w-72 pl-10 pr-8 bg-white border-slate-200"
               value={query}
               onChange={e => setQuery(e.target.value)}
               onFocus={() => setFocused(true)}

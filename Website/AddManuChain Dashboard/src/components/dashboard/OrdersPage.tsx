@@ -289,7 +289,7 @@ export function OrdersPage() {
       )}
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-4">
         <Card className="bg-white border-slate-200">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-bold text-[#0F172A]">{stats.total}</p>
