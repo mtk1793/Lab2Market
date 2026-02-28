@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/Providers";
+import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,8 +15,15 @@ export const metadata: Metadata = {
   description: "When a part fails at sea, every hour costs $50,000–$100,000. AddManuChain connects OEM blueprint owners, certified 3D-printing centers, and offshore operators — delivering LR/DNV-certified parts in days, not weeks.",
   keywords: ["AddManuChain", "additive manufacturing", "3D printing", "offshore", "naval", "certified parts", "supply chain", "maritime", "remote operations", "DNV", "Lloyd's Register"],
   authors: [{ name: "AddManuChain Team" }],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "AddManuChain",
+  },
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='2'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>",
+    icon: "/icon-192.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "AddManuChain — On-Demand Certified Parts",
@@ -29,6 +37,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0EA5E9",
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,6 +55,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased bg-background text-foreground`}
       >
         <Providers>
+          <ServiceWorkerRegistration />
           {children}
           <Toaster />
         </Providers>
