@@ -30,7 +30,7 @@ const statusLabels: Record<string, string> = {
   expired: 'Expired',
 }
 
-export function CertificationsPage() {
+export function CertificationsPage({ role = 'admin' }: { role?: string }) {
   const stats = {
     total: certifications.length,
     active: certifications.filter(c => c.status === 'active').length,

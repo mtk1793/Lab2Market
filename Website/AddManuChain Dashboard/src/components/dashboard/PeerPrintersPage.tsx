@@ -295,7 +295,7 @@ const statusConfig: Record<PrinterStatus, { label: string; color: string; dot: s
 }
 
 // ── Main Component ────────────────────────────────────────────────────────────
-export function PeerPrintersPage() {
+export function PeerPrintersPage({ role = 'admin' }: { role?: string }) {
   const [printers] = useState<PeerPrinter[]>(peerPrinters)
   const [listings, setListings] = useState<MyListing[]>(myListings)
   const [searchQuery, setSearchQuery] = useState('')

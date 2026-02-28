@@ -210,7 +210,7 @@ function CanadaNetworkMap({ onSelectCenter }: { onSelectCenter: (c: CenterPin) =
 }
 
 // ─── Main Component ──────────────────────────────────────────────────────────
-export function DigitalInventoryPage() {
+export function DigitalInventoryPage({ role = 'admin' }: { role?: string }) {
   const [selectedBp, setSelectedBp] = useState<typeof blueprintRiskData[0] | null>(null)
   const [orderDialogOpen, setOrderDialogOpen] = useState(false)
   const [selectedCenter, setSelectedCenter] = useState<CenterPin | null>(null)

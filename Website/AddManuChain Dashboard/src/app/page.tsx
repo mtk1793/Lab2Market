@@ -90,41 +90,41 @@ export default function Dashboard() {
       case 'overview':
         return <RoleDashboard role={currentRole} />
       case 'orders':
-        return <OrdersPage />
+        return <OrdersPage role={currentRole} />
       case 'print_queue':
-        return <PrintApprovalPage />
+        return <PrintApprovalPage role={currentRole} />
       case 'physical_inventory':
-        return <PhysicalInventoryPage />
+        return <PhysicalInventoryPage role={currentRole} />
       case 'digital_inventory':
-        return <DigitalInventoryPage />
+        return <DigitalInventoryPage role={currentRole} />
       case 'blueprints':
-        return <BlueprintsPage />
+        return <BlueprintsPage role={currentRole} />
       case 'centers':
-        return <CentersPage />
+        return <CentersPage role={currentRole} />
       case 'peer_printers':
-        return <PeerPrintersPage />
+        return <PeerPrintersPage role={currentRole} />
       case 'shipments':
-        return <ShipmentsPage />
+        return <ShipmentsPage role={currentRole} />
       case 'materials':
-        return <MaterialsPage />
+        return <MaterialsPage role={currentRole} />
       case 'partners':
-        return <PartnersPage />
+        return <PartnersPage role={currentRole} />
       case 'analytics':
-        return <AnalyticsPage />
+        return <AnalyticsPage role={currentRole} />
       case 'audit':
-        return <AuditLogPage />
+        return <AuditLogPage role={currentRole} />
       case 'certifications':
-        return <CertificationsPage />
+        return <CertificationsPage role={currentRole} />
       case 'authorities':
-        return <AuthoritiesPage />
+        return <AuthoritiesPage role={currentRole} />
       case 'services':
-        return <CustomerSuccessPage />
+        return <CustomerSuccessPage role={currentRole} />
       case 'ip_library':
-        return <IPLibraryPage />
+        return <IPLibraryPage role={currentRole} />
       case 'lab_portal':
-        return <LabPage />
+        return <LabPage role={currentRole} />
       case 'settings':
-        return <SettingsPage />
+        return <SettingsPage role={currentRole} />
       default:
         return <OverviewPage />
     }

@@ -290,7 +290,7 @@ const priorityBadge = {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export function LabPage() {
+export function LabPage({ role = 'admin' }: { role?: string }) {
   const [activeTab, setActiveTab] = useState<'requests' | 'equipment' | 'reports'>('requests')
   const [searchQuery, setSearchQuery] = useState('')
   const [filterStatus, setFilterStatus] = useState<string>('all')

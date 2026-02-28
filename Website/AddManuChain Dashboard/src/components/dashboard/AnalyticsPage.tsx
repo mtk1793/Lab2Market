@@ -38,8 +38,12 @@ const categoryColors: Record<string, string> = {
   'Electrical': '#8B5CF6',
 }
 
-export function AnalyticsPage() {
-  const [selectedCustomer, setSelectedCustomer] = useState('CUST-001')
+export function AnalyticsPage({ role = 'admin' }: { role?: string }) {
+  // Role-specific default customer / view scope
+  const defaultCustomer = role === 'end_user' ? 'CUST-001'
+    : role === 'manager' ? 'CUST-002'
+    : 'CUST-001'
+  const [selectedCustomer, setSelectedCustomer] = useState(defaultCustomer)
   const { stats, isLoading: statsLoading } = useStats()
   const { orders } = useOrders()
   const { blueprints } = useBlueprints()
@@ -161,6 +165,28 @@ export function AnalyticsPage() {
 
   return (
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      {/* Role Context Banner */}
+      {role === 'end_user' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-sky-50 border-sky-200 text-sky-800 text-sm font-medium">
+          📦 Your Impact Dashboard — showing cost savings, lead time reductions, and environmental metrics for your orders.
+        </div>
+      )}
+      {role === 'print_center' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-teal-50 border-teal-200 text-teal-800 text-sm font-medium">
+          🏭 Facility Analytics — utilization, throughput, and quality metrics for your print center.
+        </div>
+      )}
+      {role === 'oem_partner' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-purple-50 border-purple-200 text-purple-800 text-sm font-medium">
+          🔑 IP Performance — royalty revenue, print counts by blueprint, and partner adoption trends.
+        </div>
+      )}
+      {(role === 'manager' || role === 'admin') && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-amber-50 border-amber-200 text-amber-800 text-sm font-medium">
+          📊 Platform-wide analytics — all customers, centers, and partners.
+        </div>
+      )}
+
       {/* Time Range Selector */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#0F172A]">Performance Analytics</h2>

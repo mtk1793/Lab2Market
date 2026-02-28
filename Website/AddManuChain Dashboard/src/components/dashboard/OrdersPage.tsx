@@ -146,7 +146,16 @@ function ApprovalTimeline({ order }: { order: Order }) {
   )
 }
 
-export function OrdersPage() {
+// Role-specific context config
+const ROLE_CONTEXT = {
+  end_user:    { banner: '🧑‍💼 Showing your orders only — submitted by your account', color: 'bg-sky-50 border-sky-200 text-sky-800', canCreate: true,  canAdmin: false },
+  print_center:{ banner: '🏭 Showing orders assigned to your print facility', color: 'bg-teal-50 border-teal-200 text-teal-800', canCreate: false, canAdmin: false },
+  oem_partner: { banner: '🔑 Showing all orders — grant or deny OEM IP approvals from the Print Queue tab', color: 'bg-purple-50 border-purple-200 text-purple-800', canCreate: false, canAdmin: false },
+  manager:     { banner: '📊 Full order management view — all accounts and facilities', color: 'bg-amber-50 border-amber-200 text-amber-800', canCreate: true,  canAdmin: true  },
+  admin:       { banner: '⚙️ Admin view — all orders, full control', color: 'bg-slate-50 border-slate-200 text-slate-700', canCreate: true,  canAdmin: true  },
+}
+
+export function OrdersPage({ role = 'admin' }: { role?: string }) {
   const [orders, setOrders] = useState<Order[]>(initialOrders)
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
@@ -168,7 +177,15 @@ export function OrdersPage() {
     centerId: '',
   })
 
-  const filteredOrders = orders.filter(order => {
+  // Scope data to what this role should see
+  const ctx = ROLE_CONTEXT[role as keyof typeof ROLE_CONTEXT] ?? ROLE_CONTEXT.admin
+  const scopedOrders = role === 'end_user'
+    ? orders.filter(o => o.requesterId === 'user-1')
+    : role === 'print_center'
+    ? orders.filter(o => o.centerId === 'pc-1' || o.centerId === 'pc-2')
+    : orders  // admin / manager / oem_partner see everything
+
+  const filteredOrders = scopedOrders.filter(order => {
     const matchesSearch = order.partName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.orderId.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter
@@ -177,15 +194,15 @@ export function OrdersPage() {
   })
 
   const stats = {
-    total: orders.length,
-    pending: orders.filter(o => o.status === 'pending').length,
-    printing: orders.filter(o => o.status === 'printing').length,
-    qualityCheck: orders.filter(o => o.status === 'quality_check').length,
-    shipped: orders.filter(o => o.status === 'shipped').length,
-    delivered: orders.filter(o => o.status === 'delivered').length,
+    total: scopedOrders.length,
+    pending: scopedOrders.filter(o => o.status === 'pending').length,
+    printing: scopedOrders.filter(o => o.status === 'printing').length,
+    qualityCheck: scopedOrders.filter(o => o.status === 'quality_check').length,
+    shipped: scopedOrders.filter(o => o.status === 'shipped').length,
+    delivered: scopedOrders.filter(o => o.status === 'delivered').length,
   }
 
-  const readyToPrint = orders.filter(o =>
+  const readyToPrint = scopedOrders.filter(o =>
     o.oemApproval.approved && o.certApproval.approved && !o.printAuthToken &&
     !['printing', 'quality_check', 'shipped', 'delivered'].includes(o.status)
   ).length
@@ -256,6 +273,12 @@ export function OrdersPage() {
 
   return (
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      {/* Role Context Banner */}
+      <div className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border text-sm font-medium ${ctx.color}`}>
+        <span>{ctx.banner}</span>
+        <span className="ml-auto text-xs opacity-70">{scopedOrders.length} orders in scope</span>
+      </div>
+
       {/* Token Display Banner */}
       {tokenVisible && (
         <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl animate-pulse">
@@ -362,6 +385,7 @@ export function OrdersPage() {
             <SelectItem value="high">High</SelectItem>
           </SelectContent>
         </Select>
+        {ctx.canCreate && (
         <Button
           onClick={() => setIsCreateOpen(true)}
           className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white"
@@ -369,6 +393,7 @@ export function OrdersPage() {
           <Plus className="w-4 h-4 mr-2" />
           New Order
         </Button>
+        )}
       </div>
 
       {/* Orders Table */}

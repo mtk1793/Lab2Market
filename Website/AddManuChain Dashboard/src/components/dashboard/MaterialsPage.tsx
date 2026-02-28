@@ -28,13 +28,30 @@ const statusLabels: Record<string, string> = {
   critical: 'Critical',
 }
 
-export function MaterialsPage() {
+export function MaterialsPage({ role = 'admin' }: { role?: string }) {
+  // print_center scope: Atlantic XL (pc-1) — show only materials stocked at their facility
+  const CENTER_NAME = 'Atlantic XL'
+  const scopedMaterials = role === 'print_center'
+    ? materials.filter(m => m.centerStocks?.some(cs => cs.centerName === CENTER_NAME))
+    : materials
+
+  // For print center, show their specific stock level, not global total
+  const displayStock = (material: typeof materials[0]) => {
+    if (role === 'print_center') {
+      const cs = material.centerStocks?.find(s => s.centerName === CENTER_NAME)
+      return cs ? `${cs.stock} ${material.unit}` : `${material.totalStock} ${material.unit}`
+    }
+    return `${material.totalStock} ${material.unit}`
+  }
+
+  const canOrder = ['admin', 'manager', 'print_center'].includes(role)
+
   const stats = {
-    total: materials.length,
-    adequate: materials.filter(m => m.status === 'adequate').length,
-    low: materials.filter(m => m.status === 'low').length,
-    critical: materials.filter(m => m.status === 'critical').length,
-    totalValue: materials.reduce((sum, m) => sum + (m.totalStock * m.unitCost), 0),
+    total: scopedMaterials.length,
+    adequate: scopedMaterials.filter(m => m.status === 'adequate').length,
+    low: scopedMaterials.filter(m => m.status === 'low').length,
+    critical: scopedMaterials.filter(m => m.status === 'critical').length,
+    totalValue: scopedMaterials.reduce((sum, m) => sum + (m.totalStock * m.unitCost), 0),
   }
 
   const getStockPercentage = (material: typeof materials[0]) => {
@@ -43,6 +60,19 @@ export function MaterialsPage() {
 
   return (
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+
+      {/* Role Banner */}
+      {role === 'print_center' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-teal-50 border-teal-200 text-teal-800 text-sm font-medium">
+          🏭 Facility View: {CENTER_NAME} — showing {scopedMaterials.length} materials stocked at your facility.
+        </div>
+      )}
+      {role === 'oem_partner' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-purple-50 border-purple-200 text-purple-800 text-sm font-medium">
+          🔑 Read-only: Material inventory managed by print centers. Ensure your blueprints specify compatible materials.
+        </div>
+      )}
+
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card className="bg-white border-slate-200">
@@ -126,9 +156,11 @@ export function MaterialsPage() {
                   Immediate reorder required: {materials.filter(m => m.status === 'critical').map(m => m.name).join(', ')}
                 </p>
               </div>
+              {canOrder && (
               <Button className="ml-auto bg-red-600 hover:bg-red-700">
                 Create Purchase Order
               </Button>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -156,7 +188,7 @@ export function MaterialsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {materials.map((material) => (
+              {scopedMaterials.map((material) => (
                 <TableRow key={material.id} className="hover:bg-slate-50">
                   <TableCell>
                     <div>
@@ -167,8 +199,8 @@ export function MaterialsPage() {
                   <TableCell>
                     <div className="w-40">
                       <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="font-medium text-[#0F172A]">{material.totalStock} {material.unit}</span>
-                        <span className="text-slate-500">max {material.maxStock}</span>
+                        <span className="font-medium text-[#0F172A]">{displayStock(material)}</span>
+                        <span className="text-slate-500">{role === 'print_center' ? `global: ${material.totalStock}` : `max ${material.maxStock}`}</span>
                       </div>
                       <Progress 
                         value={getStockPercentage(material)} 

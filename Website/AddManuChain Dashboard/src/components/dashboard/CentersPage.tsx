@@ -34,7 +34,7 @@ const statusColors: Record<string, string> = {
   offline: 'bg-slate-100 text-slate-500',
 }
 
-export function CentersPage() {
+export function CentersPage({ role = 'admin' }: { role?: string }) {
   const [centers, setCenters] = useState(initialCenters)
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')

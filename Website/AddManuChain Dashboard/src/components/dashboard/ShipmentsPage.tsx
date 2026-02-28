@@ -40,7 +40,7 @@ const statusIcons: Record<string, any> = {
   delayed: AlertCircle,
 }
 
-export function ShipmentsPage() {
+export function ShipmentsPage({ role = 'admin' }: { role?: string }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
 

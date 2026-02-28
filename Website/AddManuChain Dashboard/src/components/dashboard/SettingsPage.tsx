@@ -17,7 +17,7 @@ import { User, Building, Bell, Shield, CreditCard, Globe, HelpCircle, RotateCcw 
 import { toast } from 'sonner'
 import { clearAllSectionTutorials } from './SectionTutorial'
 
-export function SettingsPage() {
+export function SettingsPage({ role = 'admin' }: { role?: string }) {
   const handleRestartTutorial = () => {
     localStorage.removeItem('addmanuchain_onboarding_complete')
     clearAllSectionTutorials()

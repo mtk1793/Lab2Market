@@ -208,15 +208,22 @@ function ApprovalCard({ order, type, onApprove }: ApprovalCardProps) {
     )
 }
 
-export function PrintApprovalPage() {
+export function PrintApprovalPage({ role = 'admin' }: { role?: string }) {
     const [orders, setOrders] = useState(initialOrders)
     const [viewOrder, setViewOrder] = useState<Order | null>(null)
     const [approvingOrder, setApprovingOrder] = useState<{ id: string; type: 'oem' | 'cert' } | null>(null)
     const [isConfirmOpen, setIsConfirmOpen] = useState(false)
 
-    const pendingOEM = orders.filter(o => !o.oemApproval.approved && !['delivered'].includes(o.status))
-    const pendingCert = orders.filter(o => !o.certApproval.approved && !['delivered'].includes(o.status))
-    const readyToPrint = orders.filter(o => o.oemApproval.approved && o.certApproval.approved && !o.printAuthToken && !['printing', 'quality_check', 'shipped', 'delivered'].includes(o.status))
+    // Role-specific queue scoping:
+    // oem_partner sees only items needing OEM sign-off
+    // cert_authority sees only items needing cert sign-off
+    // print_center sees items at their facility ready for token issuance
+    const scopedForOEM  = orders.filter(o => !o.oemApproval.approved && !['delivered'].includes(o.status))
+    const scopedForCert = orders.filter(o => !o.certApproval.approved && !['delivered'].includes(o.status))
+
+    const pendingOEM  = role === 'oem_partner'    ? scopedForOEM  : orders.filter(o => !o.oemApproval.approved && !['delivered'].includes(o.status))
+    const pendingCert = role === 'cert_authority' ? scopedForCert : orders.filter(o => !o.certApproval.approved && !['delivered'].includes(o.status))
+    const readyToPrint = orders.filter(o => o.oemApproval.approved && o.certApproval.approved && !o.printAuthToken && !['printing','quality_check','shipped','delivered'].includes(o.status))
 
     const handleApproveClick = (orderId: string, type: 'oem' | 'cert') => {
         setApprovingOrder({ id: orderId, type })
@@ -252,6 +259,26 @@ export function PrintApprovalPage() {
 
     return (
         <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+            {/* Role Context Banner */}
+            {role === 'oem_partner' && (
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-purple-50 border-purple-200 text-purple-800 text-sm font-medium">
+                    <Building2 className="w-4 h-4 flex-shrink-0" />
+                    <span>IP License Queue — {scopedForOEM.length} orders awaiting your OEM approval. Review and grant IP licenses below.</span>
+                </div>
+            )}
+            {role === 'cert_authority' && (
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-800 text-sm font-medium">
+                    <Award className="w-4 h-4 flex-shrink-0" />
+                    <span>Certification Queue — {scopedForCert.length} orders awaiting your facility authorization.</span>
+                </div>
+            )}
+            {role === 'print_center' && (
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-teal-50 border-teal-200 text-teal-800 text-sm font-medium">
+                    <KeyRound className="w-4 h-4 flex-shrink-0" />
+                    <span>Your Print Queue — {readyToPrint.length} orders fully approved and ready to issue secure print tokens.</span>
+                </div>
+            )}
+
             {/* Header Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Card className="bg-gradient-to-br from-purple-600 to-purple-700 border-none text-white">

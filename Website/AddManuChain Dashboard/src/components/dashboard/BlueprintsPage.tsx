@@ -324,12 +324,16 @@ const statusLabels: Record<string, string> = {
 }
 
 // ── Main Page ──────────────────────────────────────────────────────────────
-export function BlueprintsPage() {
+export function BlueprintsPage({ role = 'admin' }: { role?: string }) {
   const [blueprints, setBlueprints] = useState<Blueprint[]>(initialBlueprints as Blueprint[])
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
   const [catFilter, setCatFilter] = useState('all')
   const [viewMode, setViewMode] = useState<'table' | 'grid'>('table')
+
+  // Role-specific access rules
+  const canAddEdit = ['admin', 'manager', 'oem_partner', 'lab'].includes(role)
+  const isReadOnly  = ['end_user', 'print_center'].includes(role)
 
   // View dialog
   const [isViewOpen, setIsViewOpen] = useState(false)
@@ -412,6 +416,18 @@ export function BlueprintsPage() {
   return (
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
 
+      {/* Role Context Banner */}
+      {role === 'oem_partner' && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-purple-50 border-purple-200 text-purple-800 text-sm font-medium">
+          🔑 IP Vault View — Register new blueprints, manage licensing, and track print usage across the network.
+        </div>
+      )}
+      {isReadOnly && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-sky-50 border-sky-200 text-sky-800 text-sm font-medium">
+          📚 Browse Mode — You can view and search blueprints. Contact your OEM partner to register or modify IP.
+        </div>
+      )}
+
       {/* ── Stats ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
@@ -476,9 +492,11 @@ export function BlueprintsPage() {
             <LayoutGrid className="w-4 h-4" />
           </button>
         </div>
+        {canAddEdit && (
         <Button onClick={() => setIsAddOpen(true)} className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white shrink-0">
           <Plus className="w-4 h-4 mr-2" />Add Blueprint
         </Button>
+        )}
       </div>
 
       {/* ── Table view ── */}

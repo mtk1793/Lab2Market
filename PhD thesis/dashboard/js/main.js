@@ -161,6 +161,44 @@ function getOrCreateChart(canvasId, config) {
     return chartInstances[canvasId];
 }
 
+function destroyChart(canvasId) {
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+        delete chartInstances[canvasId];
+    }
+}
+
+// Page → canvas IDs mapping — needed so reinitPageCharts knows what to destroy
+const PAGE_CHARTS = {
+    overview:      ['chart-bus-voltages', 'chart-gen-dispatch', 'chart-gaps-radar'],
+    system2:       ['chart-qirl-convergence'],
+    hirl:          ['chart-hirl-convergence'],
+    metacognition: ['chart-metacognition'],
+    loadflow:      ['chart-loadflow-voltage', 'chart-loadflow-angle'],
+    ev:            ['chart-ev-soc'],
+    performance:   ['chart-performance-comparison'],
+    scaling:       ['chart-scaling'],
+};
+
+// Destroy + recreate charts for a specific page
+function reinitPageCharts(page) {
+    // Destroy existing chart instances for this page first
+    (PAGE_CHARTS[page] || []).forEach(id => destroyChart(id));
+    initializedPages.delete(page);
+    initPageCharts(page);
+}
+
+// Reinitialize all charts that have been visited — called after global settings save
+function reinitAllInitializedCharts() {
+    const pagesToReinit = [...initializedPages];
+    initializedPages.clear();
+    Object.keys(chartInstances).forEach(id => {
+        chartInstances[id].destroy();
+        delete chartInstances[id];
+    });
+    pagesToReinit.forEach(page => initPageCharts(page));
+}
+
 // ─── Initialize Charts per Page ───
 const initializedPages = new Set();
 
@@ -311,7 +349,9 @@ function initOverviewCharts() {
 function initSystem2Charts() {
     // QIRL vs DQN Convergence
     const episodes = Array.from({length: 50}, (_, i) => (i + 1) * 20);
-    const qirl_reward = episodes.map(e => -500 * Math.exp(-e / 200) + 100 + 5 * Math.random());
+    const speedup = currentConfig.qirl_speedup || 2.0;
+    const qirl_decay = Math.round(400 / speedup);
+    const qirl_reward = episodes.map(e => -500 * Math.exp(-e / qirl_decay) + 100 + 5 * Math.random());
     const dqn_reward = episodes.map(e => -500 * Math.exp(-e / 400) + 80 + 8 * Math.random());
     const ppo_reward = episodes.map(e => -500 * Math.exp(-e / 350) + 90 + 6 * Math.random());
 
@@ -537,11 +577,12 @@ function initEVChart() {
     const t = Array.from({length: 200}, (_, i) => (i * 0.1).toFixed(1));
     const soc = [];
     let s = 0.70;
+    const capMW = (currentConfig.ev_capacity_mw || 50) * 1e6;
     for (let i = 0; i < 200; i++) {
         const dt = 0.1;
-        const P = (0.6 - s) * 50e6;
-        const Pclamp = Math.max(-50e6, Math.min(50e6, P));
-        s += -0.95 * Pclamp / 150e6 * dt * 0.05;
+        const P = (0.6 - s) * capMW;
+        const Pclamp = Math.max(-capMW, Math.min(capMW, P));
+        s += -0.95 * Pclamp / (capMW * 3) * dt * 0.05;
         s = Math.max(0.20, Math.min(0.95, s));
         soc.push(s);
     }
@@ -614,7 +655,13 @@ function initPerformanceChart() {
             datasets: [
                 {
                     label: 'CAPSM (Target)',
-                    data: [5, 50, 0.2, 96.8, 2.0],
+                    data: [
+                        currentConfig.s1_response_ms || 5,
+                        currentConfig.s2_response_ms || 50,
+                        currentConfig.max_violations || 0.2,
+                        currentConfig.fault_accuracy || 96.8,
+                        currentConfig.qirl_speedup || 2.0
+                    ],
                     backgroundColor: COLORS.blue,
                     borderRadius: 6,
                 },
@@ -981,6 +1028,9 @@ function applyConfig(cfg) {
 
     // Update all editable KPI values on overview page
     updateKPIValues(cfg);
+
+    // Reinitialize charts so they pick up new config values
+    reinitAllInitializedCharts();
 }
 
 function updateKPIValues(cfg) {
@@ -1022,6 +1072,13 @@ async function fetchLiveData() {
         if (voltRes) {
             const el = document.getElementById('live-voltage');
             if (el) el.textContent = voltRes.voltages.Bus_5?.toFixed(4) || '—';
+            // Update bus voltage chart live
+            const bvChart = chartInstances['chart-bus-voltages'];
+            if (bvChart) {
+                const busKeys = ['Bus_1','Bus_2','Bus_3','Bus_4','Bus_5','Bus_6','Bus_7','Bus_8','Bus_9'];
+                bvChart.data.datasets[0].data = busKeys.map(k => voltRes.voltages[k] || 0);
+                bvChart.update('none');
+            }
         }
         if (freqRes) {
             const el = document.getElementById('live-frequency');
@@ -1273,6 +1330,17 @@ function applyLiveInlineUpdate(key, value) {
         if (key === 'color_purple') root.style.setProperty('--accent-purple', value);
         if (key === 'color_emerald') root.style.setProperty('--accent-emerald', value);
         if (key === 'color_amber') root.style.setProperty('--accent-amber', value);
+    }
+
+    // --- Charts that depend on numeric config — reinit when changed ---
+    if (key === 'qirl_speedup' && initializedPages.has('system2')) {
+        reinitPageCharts('system2');
+    }
+    if ((key === 'ev_capacity_mw' || key === 'ev_fleet') && initializedPages.has('ev')) {
+        reinitPageCharts('ev');
+    }
+    if (['s1_response_ms', 's2_response_ms', 'max_violations', 'fault_accuracy', 'qirl_speedup'].includes(key) && initializedPages.has('performance')) {
+        reinitPageCharts('performance');
     }
 
     // --- HIRL parameters in description ---

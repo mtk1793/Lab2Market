@@ -50,7 +50,7 @@ const typeColors: Record<string, string> = {
   'Service Provider': 'bg-orange-100 text-orange-600',
 }
 
-export function PartnersPage() {
+export function PartnersPage({ role = 'admin' }: { role?: string }) {
   const [partners, setPartners] = useState(initialPartners)
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState('all')

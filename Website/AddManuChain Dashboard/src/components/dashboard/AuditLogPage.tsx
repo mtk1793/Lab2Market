@@ -66,7 +66,7 @@ function verifyHash(log: typeof auditLogs[0]): boolean {
   return log.logHash.length === 32 && /^[a-f0-9]+$/.test(log.logHash)
 }
 
-export function AuditLogPage() {
+export function AuditLogPage({ role = 'admin' }: { role?: string }) {
   const [actionFilter, setActionFilter] = useState('all')
   const [logs, setLogs] = useState(auditLogs)
   const [hashVerified, setHashVerified] = useState<Record<string, boolean>>({})

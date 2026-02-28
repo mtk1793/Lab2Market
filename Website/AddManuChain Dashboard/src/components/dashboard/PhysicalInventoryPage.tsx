@@ -178,7 +178,7 @@ function SiteCard({ site, parts, onClick }: { site: PhysicalSite; parts: Physica
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export function PhysicalInventoryPage() {
+export function PhysicalInventoryPage({ role = 'admin' }: { role?: string }) {
     const [parts, setParts] = useState<PhysicalPart[]>(physicalParts)
     const [txs, setTxs] = useState<InventoryTransaction[]>(inventoryTransactions)
 

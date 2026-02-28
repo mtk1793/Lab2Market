@@ -152,7 +152,7 @@ const statusColors: Record<string, string> = {
   cancelled: 'bg-red-100 text-red-600',
 }
 
-export function CustomerSuccessPage() {
+export function CustomerSuccessPage({ role = 'admin' }: { role?: string }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [phaseFilter, setPhaseFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')

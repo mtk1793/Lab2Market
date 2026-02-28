@@ -48,7 +48,7 @@ const requestStatusColors: Record<string, string> = {
   rejected: 'bg-red-100 text-red-600',
 }
 
-export function AuthoritiesPage() {
+export function AuthoritiesPage({ role = 'admin' }: { role?: string }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')

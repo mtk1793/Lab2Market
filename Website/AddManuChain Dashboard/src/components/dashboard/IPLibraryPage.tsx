@@ -272,7 +272,7 @@ const requestStatusConfig: Record<RequestStatus, { label: string; color: string;
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
-export function IPLibraryPage() {
+export function IPLibraryPage({ role = 'admin' }: { role?: string }) {
   const [assets] = useState<IPAsset[]>(ipAssets)
   const [requests, setRequests] = useState<LicenseRequest[]>(licenseRequests)
   const [searchQuery, setSearchQuery] = useState('')
