@@ -30,10 +30,107 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Users, Search, Filter, Plus, Eye, TrendingUp, Calendar, GraduationCap, CheckCircle2, Activity } from 'lucide-react'
+import { Users, Search, Filter, Plus, Eye, TrendingUp, Calendar, GraduationCap, CheckCircle2, Activity, ShieldCheck, AlertTriangle, Clock, XCircle, Download, BookOpen } from 'lucide-react'
 import { toast } from 'sonner'
 import { useEngagements, useTrainingSessions } from '@/hooks/use-dashboard'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
+// ── Trained Personnel Registry ───────────────────────────────────────────────
+
+type QualLevel = 'L1' | 'L2' | 'L3' | 'L4'
+type PersonnelStatus = 'active' | 'pending_renewal' | 'expired' | 'suspended'
+
+interface TrainedPerson {
+  id: string
+  fullName: string
+  organization: string
+  role: string
+  qualLevel: QualLevel
+  modulesCompleted: string[]
+  authorizedActions: string[]
+  qualifiedSince: string
+  renewalDue: string      // ISO date
+  status: PersonnelStatus
+}
+
+const TRAINING_MODULES = [
+  'Platform Fundamentals',
+  'DRM Workflow & IP Compliance',
+  'Blueprint Management',
+  'DRM Approver Certification',
+  'Cert Authority Procedures',
+  'Print Center Operations',
+  'Quality Inspection Protocol',
+  'Audit Log Interpretation',
+  'Materials Traceability',
+  'Lab & Testing Procedures',
+]
+
+const QUAL_LEVEL_META: Record<QualLevel, { label: string; color: string }> = {
+  L1: { label: 'L1 · Awareness',    color: 'bg-slate-100 text-slate-600' },
+  L2: { label: 'L2 · Operator',     color: 'bg-blue-100 text-blue-700' },
+  L3: { label: 'L3 · Approver',     color: 'bg-purple-100 text-purple-700' },
+  L4: { label: 'L4 · Administrator', color: 'bg-amber-100 text-amber-700' },
+}
+
+const PERSONNEL_STATUS_META: Record<PersonnelStatus, { color: string; icon: React.ReactNode }> = {
+  active:          { color: 'bg-teal-100 text-teal-700',   icon: <ShieldCheck className="w-3 h-3" /> },
+  pending_renewal: { color: 'bg-amber-100 text-amber-700', icon: <Clock className="w-3 h-3" /> },
+  expired:         { color: 'bg-red-100 text-red-600',     icon: <XCircle className="w-3 h-3" /> },
+  suspended:       { color: 'bg-slate-100 text-slate-500', icon: <AlertTriangle className="w-3 h-3" /> },
+}
+
+const INITIAL_PERSONNEL: TrainedPerson[] = [
+  {
+    id: 'p-001', fullName: 'Sarah Chen', organization: 'AddManuChain', role: 'admin',
+    qualLevel: 'L4',
+    modulesCompleted: TRAINING_MODULES,
+    authorizedActions: ['All actions'],
+    qualifiedSince: '2023-04-10', renewalDue: '2027-04-10', status: 'active',
+  },
+  {
+    id: 'p-002', fullName: 'John Okafor', organization: 'Wärtsilä Marine', role: 'oem',
+    qualLevel: 'L3',
+    modulesCompleted: ['Platform Fundamentals', 'DRM Workflow & IP Compliance', 'Blueprint Management', 'DRM Approver Certification'],
+    authorizedActions: ['DRM OEM Approval', 'Blueprint Upload', 'IP License Grant'],
+    qualifiedSince: '2023-09-01', renewalDue: '2025-09-01', status: 'expired',
+  },
+  {
+    id: 'p-003', fullName: 'Maria Torres', organization: 'DNV GL', role: 'cert_authority',
+    qualLevel: 'L3',
+    modulesCompleted: ['Platform Fundamentals', 'DRM Workflow & IP Compliance', 'Cert Authority Procedures', 'Audit Log Interpretation'],
+    authorizedActions: ['DRM Cert Approval', 'Certification Issuance', 'Center Suspension'],
+    qualifiedSince: '2024-01-15', renewalDue: '2026-03-20', status: 'pending_renewal',
+  },
+  {
+    id: 'p-004', fullName: 'Amir Khaled', organization: 'Halifax Print Hub', role: 'print_center',
+    qualLevel: 'L2',
+    modulesCompleted: ['Platform Fundamentals', 'Print Center Operations', 'Quality Inspection Protocol', 'Materials Traceability'],
+    authorizedActions: ['Print Job Execution', 'Quality Sign-off', 'Material Batch Recording'],
+    qualifiedSince: '2024-03-22', renewalDue: '2026-09-22', status: 'active',
+  },
+  {
+    id: 'p-005', fullName: 'Priya Nair', organization: 'Horizon Maritime', role: 'operator',
+    qualLevel: 'L2',
+    modulesCompleted: ['Platform Fundamentals', 'DRM Workflow & IP Compliance', 'Blueprint Management'],
+    authorizedActions: ['Order Creation', 'Blueprint View', 'Shipment Tracking'],
+    qualifiedSince: '2024-06-05', renewalDue: '2027-06-05', status: 'active',
+  },
+  {
+    id: 'p-006', fullName: 'Lucas Bergmann', organization: 'Bureau Veritas', role: 'cert_authority',
+    qualLevel: 'L3',
+    modulesCompleted: ['Platform Fundamentals', 'Cert Authority Procedures', 'Audit Log Interpretation', 'Lab & Testing Procedures'],
+    authorizedActions: ['DRM Cert Approval', 'Certification Issuance', 'Test Report Sign-off'],
+    qualifiedSince: '2023-11-30', renewalDue: '2026-11-30', status: 'active',
+  },
+  {
+    id: 'p-007', fullName: 'Fatima Al-Rashid', organization: 'Siemens Energy', role: 'oem',
+    qualLevel: 'L1',
+    modulesCompleted: ['Platform Fundamentals'],
+    authorizedActions: ['View Only'],
+    qualifiedSince: '2025-01-10', renewalDue: '2028-01-10', status: 'active',
+  },
+]
 
 const phases = ['assessment', 'adoption', 'integration', 'training', 'maintenance']
 const engagementStatuses = ['active', 'paused', 'completed']
@@ -63,6 +160,17 @@ export function CustomerSuccessPage() {
   const [isViewOpen, setIsViewOpen] = useState(false)
   const [isTrainingCreateOpen, setIsTrainingCreateOpen] = useState(false)
   const [selectedEngagement, setSelectedEngagement] = useState<any>(null)
+
+  // Personnel Registry state
+  const [personnel, setPersonnel] = useState<TrainedPerson[]>(INITIAL_PERSONNEL)
+  const [personnelSearch, setPersonnelSearch] = useState('')
+  const [personnelLevelFilter, setPersonnelLevelFilter] = useState('all')
+  const [personnelStatusFilter, setPersonnelStatusFilter] = useState('all')
+  const [isAddPersonOpen, setIsAddPersonOpen] = useState(false)
+  const [newPerson, setNewPerson] = useState({
+    fullName: '', organization: '', role: 'operator', qualLevel: 'L2' as QualLevel,
+    modulesCompleted: [] as string[], renewalDue: '',
+  })
   const [formData, setFormData] = useState({
     customerName: '',
     industry: 'Offshore Oil & Gas',
@@ -92,6 +200,46 @@ export function CustomerSuccessPage() {
     avgHealthScore: filteredEngagements.length > 0
       ? Math.round(filteredEngagements.reduce((sum: number, e: any) => sum + (e.healthScore || 0), 0) / filteredEngagements.length)
       : 0,
+  }
+
+  // Personnel stats
+  const personnelFiltered = personnel.filter(p => {
+    const matchSearch = p.fullName.toLowerCase().includes(personnelSearch.toLowerCase()) ||
+      p.organization.toLowerCase().includes(personnelSearch.toLowerCase()) ||
+      p.role.toLowerCase().includes(personnelSearch.toLowerCase())
+    const matchLevel = personnelLevelFilter === 'all' || p.qualLevel === personnelLevelFilter
+    const matchStatus = personnelStatusFilter === 'all' || p.status === personnelStatusFilter
+    return matchSearch && matchLevel && matchStatus
+  })
+  const personnelStats = {
+    total: personnel.length,
+    active: personnel.filter(p => p.status === 'active').length,
+    pendingRenewal: personnel.filter(p => p.status === 'pending_renewal').length,
+    expired: personnel.filter(p => p.status === 'expired' || p.status === 'suspended').length,
+  }
+
+  const handleAddPerson = () => {
+    if (!newPerson.fullName || !newPerson.organization || !newPerson.renewalDue) {
+      toast.error('Name, organization and renewal date are required')
+      return
+    }
+    const person: TrainedPerson = {
+      id: `p-${String(personnel.length + 1).padStart(3, '0')}`,
+      fullName: newPerson.fullName,
+      organization: newPerson.organization,
+      role: newPerson.role,
+      qualLevel: newPerson.qualLevel,
+      modulesCompleted: newPerson.modulesCompleted,
+      authorizedActions: newPerson.qualLevel === 'L1' ? ['View Only'] :
+        newPerson.qualLevel === 'L4' ? ['All actions'] : ['Per assigned role'],
+      qualifiedSince: new Date().toISOString().slice(0, 10),
+      renewalDue: newPerson.renewalDue,
+      status: 'active',
+    }
+    setPersonnel(prev => [...prev, person])
+    setIsAddPersonOpen(false)
+    setNewPerson({ fullName: '', organization: '', role: 'operator', qualLevel: 'L2', modulesCompleted: [], renewalDue: '' })
+    toast.success(`${person.fullName} added to the Personnel Registry`)
   }
 
   const trainingStats = {
@@ -232,11 +380,15 @@ export function CustomerSuccessPage() {
         </Card>
       </div>
 
-      {/* Tabs for Engagements and Training */}
+      {/* Tabs */}
       <Tabs defaultValue="engagements" className="w-full">
         <TabsList className="bg-white border border-slate-200">
           <TabsTrigger value="engagements">Customer Engagements</TabsTrigger>
           <TabsTrigger value="training">Training Sessions ({trainingStats.total})</TabsTrigger>
+          <TabsTrigger value="personnel" className="flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            Personnel Registry ({personnelStats.total})
+          </TabsTrigger>
         </TabsList>
 
         {/* Engagements Tab */}
@@ -503,7 +655,322 @@ export function CustomerSuccessPage() {
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* ── Personnel Registry Tab ─────────────────────────────────────── */}
+        <TabsContent value="personnel" className="space-y-4">
+          {/* Personnel Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Card className="bg-white border-slate-200">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#0EA5E9]/10 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-[#0EA5E9]" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-[#0F172A]">{personnelStats.total}</p>
+                    <p className="text-xs text-slate-500">Total Registered</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-slate-200">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-teal-100 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5 text-teal-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-[#0F172A]">{personnelStats.active}</p>
+                    <p className="text-xs text-slate-500">Active &amp; Qualified</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-slate-200">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-[#0F172A]">{personnelStats.pendingRenewal}</p>
+                    <p className="text-xs text-slate-500">Renewal Due</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white border-slate-200">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
+                    <XCircle className="w-5 h-5 text-red-500" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-[#0F172A]">{personnelStats.expired}</p>
+                    <p className="text-xs text-slate-500">Expired / Suspended</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Filters + Actions */}
+          <Card className="bg-white border-slate-200">
+            <CardContent className="p-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <input
+                    className="w-full pl-10 pr-3 py-2 text-sm border border-slate-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]/30"
+                    placeholder="Search by name, organization, or role…"
+                    value={personnelSearch}
+                    onChange={e => setPersonnelSearch(e.target.value)}
+                  />
+                </div>
+                <Select value={personnelLevelFilter} onValueChange={setPersonnelLevelFilter}>
+                  <SelectTrigger className="w-[170px]">
+                    <Filter className="w-4 h-4 mr-2" />
+                    <SelectValue placeholder="Qual Level" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Levels</SelectItem>
+                    <SelectItem value="L1">L1 · Awareness</SelectItem>
+                    <SelectItem value="L2">L2 · Operator</SelectItem>
+                    <SelectItem value="L3">L3 · Approver</SelectItem>
+                    <SelectItem value="L4">L4 · Administrator</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select value={personnelStatusFilter} onValueChange={setPersonnelStatusFilter}>
+                  <SelectTrigger className="w-[160px]">
+                    <SelectValue placeholder="Status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Status</SelectItem>
+                    <SelectItem value="active">Active</SelectItem>
+                    <SelectItem value="pending_renewal">Pending Renewal</SelectItem>
+                    <SelectItem value="expired">Expired</SelectItem>
+                    <SelectItem value="suspended">Suspended</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button
+                  onClick={() => setIsAddPersonOpen(true)}
+                  className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Person
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Personnel Table */}
+          <Card className="bg-white border-slate-200">
+            <CardContent className="p-0">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-slate-200">
+                    <TableHead className="font-semibold text-[#0F172A]">Name</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Organization</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Role</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Qualification</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Modules</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Renewal Due</TableHead>
+                    <TableHead className="font-semibold text-[#0F172A]">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {personnelFiltered.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={7} className="text-center py-10 text-slate-400">
+                        No personnel found matching your filters
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    personnelFiltered.map(person => {
+                      const meta = QUAL_LEVEL_META[person.qualLevel]
+                      const statusMeta = PERSONNEL_STATUS_META[person.status]
+                      const renewalDate = new Date(person.renewalDue)
+                      const daysUntilRenewal = Math.ceil((renewalDate.getTime() - Date.now()) / 86400000)
+                      return (
+                        <TableRow key={person.id} className="border-slate-200">
+                          <TableCell>
+                            <div>
+                              <div className="font-medium text-[#0F172A]">{person.fullName}</div>
+                              <div className="text-xs text-slate-400 font-mono">{person.id}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-sm text-slate-600">{person.organization}</span>
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-xs bg-slate-100 text-slate-600 rounded px-1.5 py-0.5 font-mono">{person.role}</span>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="secondary" className={`text-xs ${meta.color}`}>{meta.label}</Badge>
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-1.5">
+                              <div className="flex gap-0.5">
+                                {TRAINING_MODULES.map((mod, i) => (
+                                  <div
+                                    key={i}
+                                    title={mod}
+                                    className={`w-2 h-4 rounded-sm ${
+                                      person.modulesCompleted.includes(mod)
+                                        ? 'bg-teal-400'
+                                        : 'bg-slate-200'
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                              <span className="text-xs text-slate-500">
+                                {person.modulesCompleted.length}/{TRAINING_MODULES.length}
+                              </span>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className={`text-xs font-medium ${
+                              daysUntilRenewal < 0 ? 'text-red-600' :
+                              daysUntilRenewal < 30 ? 'text-amber-600' :
+                              'text-slate-600'
+                            }`}>
+                              {renewalDate.toLocaleDateString()}
+                              {daysUntilRenewal < 0 && (
+                                <span className="ml-1 text-red-500">(Overdue)</span>
+                              )}
+                              {daysUntilRenewal >= 0 && daysUntilRenewal < 30 && (
+                                <span className="ml-1 text-amber-500">({daysUntilRenewal}d)</span>
+                              )}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge
+                              variant="secondary"
+                              className={`flex items-center gap-1 w-fit text-xs ${statusMeta.color}`}
+                            >
+                              {statusMeta.icon}
+                              {person.status.replace('_', ' ')}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+
+          {/* Module Legend */}
+          <Card className="bg-white border-slate-200">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <BookOpen className="w-4 h-4 text-slate-500" />
+                <span className="text-sm font-semibold text-[#0F172A]">Training Module Legend</span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+                {TRAINING_MODULES.map((mod, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-2 h-4 rounded-sm bg-teal-400 flex-shrink-0" />
+                    <span className="text-xs text-slate-500 leading-tight">{mod}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
       </Tabs>
+
+      {/* Add Person Dialog */}
+      <Dialog open={isAddPersonOpen} onOpenChange={setIsAddPersonOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Add to Personnel Registry</DialogTitle>
+            <DialogDescription>Register a trained person and their qualifications</DialogDescription>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label>Full Name *</Label>
+              <Input
+                value={newPerson.fullName}
+                onChange={e => setNewPerson({ ...newPerson, fullName: e.target.value })}
+                placeholder="Dr. Jane Smith"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Organization *</Label>
+              <Input
+                value={newPerson.organization}
+                onChange={e => setNewPerson({ ...newPerson, organization: e.target.value })}
+                placeholder="Wärtsilä Marine"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Platform Role</Label>
+              <Select value={newPerson.role} onValueChange={v => setNewPerson({ ...newPerson, role: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="operator">Operator</SelectItem>
+                  <SelectItem value="oem">OEM Partner</SelectItem>
+                  <SelectItem value="cert_authority">Cert Authority</SelectItem>
+                  <SelectItem value="print_center">Print Center</SelectItem>
+                  <SelectItem value="admin">Administrator</SelectItem>
+                  <SelectItem value="viewer">Viewer</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>Qualification Level</Label>
+              <Select value={newPerson.qualLevel} onValueChange={v => setNewPerson({ ...newPerson, qualLevel: v as QualLevel })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="L1">L1 · Awareness</SelectItem>
+                  <SelectItem value="L2">L2 · Operator</SelectItem>
+                  <SelectItem value="L3">L3 · Approver</SelectItem>
+                  <SelectItem value="L4">L4 · Administrator</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 col-span-2">
+              <Label>Renewal Due Date *</Label>
+              <Input
+                type="date"
+                value={newPerson.renewalDue}
+                onChange={e => setNewPerson({ ...newPerson, renewalDue: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2 col-span-2">
+              <Label>Completed Training Modules</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {TRAINING_MODULES.map(mod => (
+                  <label key={mod} className="flex items-center gap-2 text-sm cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="rounded text-[#0EA5E9]"
+                      checked={newPerson.modulesCompleted.includes(mod)}
+                      onChange={e => {
+                        setNewPerson(prev => ({
+                          ...prev,
+                          modulesCompleted: e.target.checked
+                            ? [...prev.modulesCompleted, mod]
+                            : prev.modulesCompleted.filter(m => m !== mod),
+                        }))
+                      }}
+                    />
+                    <span className="text-slate-600">{mod}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsAddPersonOpen(false)}>Cancel</Button>
+            <Button onClick={handleAddPerson} className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90">
+              Add to Registry
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Create Engagement Dialog */}
       <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
