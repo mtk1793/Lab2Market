@@ -88,6 +88,7 @@ const rolePermissions: Record<string, string[]> = {
     'ip_library', 'blueprints', 'partners',
     'digital_inventory', 'physical_inventory', 'centers', 'peer_printers', 'shipments', 'materials',
     'certifications', 'authorities', 'audit',
+    'lab_portal',
     'analytics', 'services',
     'settings',
   ],
@@ -115,9 +116,10 @@ const rolePermissions: Record<string, string[]> = {
     'analytics',
     'settings',
   ],
-  // Research & testing labs — materials, certifications, blueprints, IP read access
+  // Research & testing labs — dedicated portal, materials, certifications, blueprints, IP read access
   lab: [
     'overview',
+    'lab_portal',
     'ip_library', 'blueprints',
     'materials', 'digital_inventory', 'physical_inventory',
     'certifications',
@@ -168,6 +170,12 @@ const menuSections = [
       { id: 'certifications', label: 'Certifications', icon: Shield },
       { id: 'authorities', label: 'Authorities', icon: Shield },
       { id: 'audit', label: 'Audit Logs', icon: FileText },
+    ],
+  },
+  {
+    title: 'Lab & Testing',
+    items: [
+      { id: 'lab_portal', label: 'Lab Portal', icon: FlaskConical },
     ],
   },
   {

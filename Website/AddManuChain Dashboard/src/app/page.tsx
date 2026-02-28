@@ -25,6 +25,7 @@ import {
   PhysicalInventoryPage,
   PeerPrintersPage,
   IPLibraryPage,
+  LabPage,
 } from '@/components/dashboard'
 
 export default function Dashboard() {
@@ -68,6 +69,8 @@ export default function Dashboard() {
         return { title: 'Customer Success', subtitle: 'End-to-end service and training management' }
       case 'ip_library':
         return { title: 'IP Library', subtitle: 'OEM intellectual property, licensing & royalty management' }
+      case 'lab_portal':
+        return { title: 'Lab & Testing Portal', subtitle: 'AM testing requests, equipment scheduling & certification reports' }
       case 'settings':
         return { title: 'Settings', subtitle: 'Manage your account preferences' }
       default:
@@ -111,6 +114,8 @@ export default function Dashboard() {
         return <CustomerSuccessPage />
       case 'ip_library':
         return <IPLibraryPage />
+      case 'lab_portal':
+        return <LabPage />
       case 'settings':
         return <SettingsPage />
       default:
