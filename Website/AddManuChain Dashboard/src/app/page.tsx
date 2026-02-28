@@ -23,6 +23,7 @@ import {
   DigitalInventoryPage,
   PrintApprovalPage,
   PhysicalInventoryPage,
+  PeerPrintersPage,
 } from '@/components/dashboard'
 
 export default function Dashboard() {
@@ -46,6 +47,8 @@ export default function Dashboard() {
         return { title: 'Blueprint Library', subtitle: 'Manage certified CAD blueprints' }
       case 'centers':
         return { title: 'Print Centers', subtitle: 'Monitor certified AM facilities' }
+      case 'peer_printers':
+        return { title: 'Peer Printers', subtitle: 'Airbnb-style peer-to-peer 3D printer network' }
       case 'shipments':
         return { title: 'Shipments', subtitle: 'Track delivery logistics' }
       case 'materials':
@@ -85,6 +88,8 @@ export default function Dashboard() {
         return <BlueprintsPage />
       case 'centers':
         return <CentersPage />
+      case 'peer_printers':
+        return <PeerPrintersPage />
       case 'shipments':
         return <ShipmentsPage />
       case 'materials':

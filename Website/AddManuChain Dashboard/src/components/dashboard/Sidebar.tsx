@@ -27,11 +27,11 @@ import { useSession } from 'next-auth/react'
 
 // Define which roles can access which menu items
 const rolePermissions: Record<string, string[]> = {
-  admin: ['overview', 'orders', 'print_queue', 'digital_inventory', 'physical_inventory', 'blueprints', 'centers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
-  customer_admin: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'materials', 'services', 'analytics', 'settings'],
-  operator: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'settings'],
-  oem_partner: ['overview', 'print_queue', 'digital_inventory', 'blueprints', 'analytics', 'certifications', 'settings'],
-  print_center: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'shipments', 'materials', 'settings'],
+  admin: ['overview', 'orders', 'print_queue', 'digital_inventory', 'physical_inventory', 'blueprints', 'centers', 'peer_printers', 'shipments', 'materials', 'partners', 'services', 'analytics', 'audit', 'certifications', 'authorities', 'settings'],
+  customer_admin: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'peer_printers', 'shipments', 'materials', 'services', 'analytics', 'settings'],
+  operator: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'peer_printers', 'shipments', 'settings'],
+  oem_partner: ['overview', 'print_queue', 'digital_inventory', 'blueprints', 'peer_printers', 'analytics', 'certifications', 'settings'],
+  print_center: ['overview', 'orders', 'digital_inventory', 'physical_inventory', 'blueprints', 'peer_printers', 'shipments', 'materials', 'settings'],
   cert_authority: ['overview', 'print_queue', 'digital_inventory', 'blueprints', 'certifications', 'authorities', 'audit', 'settings'],
 }
 
@@ -51,6 +51,7 @@ const menuSections = [
       { id: 'digital_inventory', label: 'Digital Inventory', icon: Sparkles },
       { id: 'physical_inventory', label: 'Physical Inventory', icon: Boxes },
       { id: 'centers', label: 'Print Centers', icon: Factory },
+      { id: 'peer_printers', label: 'Peer Printers', icon: Users },
       { id: 'shipments', label: 'Shipments', icon: Truck },
       { id: 'materials', label: 'Materials', icon: Boxes },
     ],
