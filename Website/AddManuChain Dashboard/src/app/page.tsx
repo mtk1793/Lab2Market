@@ -126,7 +126,7 @@ export default function Dashboard() {
   const pageInfo = getPageTitle()
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] overflow-x-hidden w-full">
       {/* Onboarding Tutorial for first-time users */}
       {!isLoading && showOnboarding && (
         <OnboardingTutorial onComplete={completeOnboarding} />
@@ -152,7 +152,7 @@ export default function Dashboard() {
         />
 
         {/* Page Content */}
-        <main className="min-h-[calc(100vh-64px)]">{renderPage()}</main>
+        <main className="min-h-[calc(100vh-64px)] w-full overflow-x-hidden">{renderPage()}</main>
       </div>
     </div>
   )

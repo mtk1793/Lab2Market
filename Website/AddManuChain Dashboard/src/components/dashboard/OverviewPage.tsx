@@ -122,10 +122,10 @@ export function OverviewPage() {
 
       {/* Alert banners */}
       {(drmReady > 0 || physOutOfStock > 0 || physLowStock > 0) && (
-        <div className="flex flex-wrap gap-3">
-          {drmReady > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 font-semibold"><ShieldCheck className="w-4 h-4" />{drmReady} order{drmReady > 1 ? 's' : ''} cleared — ready for Secure Print</div>}
-          {physOutOfStock > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 font-semibold"><AlertTriangle className="w-4 h-4" />{physOutOfStock} physical part{physOutOfStock > 1 ? 's' : ''} out of stock</div>}
-          {physLowStock > 0 && <div className="flex-1 min-w-48 flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 font-semibold"><Package className="w-4 h-4" />{physLowStock} part{physLowStock > 1 ? 's' : ''} below minimum stock</div>}
+        <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+          {drmReady > 0 && <div className="w-full sm:flex-1 flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 font-semibold"><ShieldCheck className="w-4 h-4 shrink-0" />{drmReady} order{drmReady > 1 ? 's' : ''} cleared — ready for Secure Print</div>}
+          {physOutOfStock > 0 && <div className="w-full sm:flex-1 flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 font-semibold"><AlertTriangle className="w-4 h-4 shrink-0" />{physOutOfStock} physical part{physOutOfStock > 1 ? 's' : ''} out of stock</div>}
+          {physLowStock > 0 && <div className="w-full sm:flex-1 flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 font-semibold"><Package className="w-4 h-4 shrink-0" />{physLowStock} part{physLowStock > 1 ? 's' : ''} below minimum stock</div>}
         </div>
       )}
 
@@ -173,9 +173,9 @@ export function OverviewPage() {
               </div>
             </CardHeader>
             <CardContent className="px-5 pb-5">
-              <div className="flex gap-6">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 {/* Bar chart */}
-                <div className="flex items-end gap-3">
+                <div className="flex items-end gap-3 shrink-0">
                   {statusBreakdown.map(s => (
                     <StatusBar key={s.status} label={STATUS_LABELS[s.status]} count={s.count} total={orders.length} color={STATUS_COLOR[s.status]} />
                   ))}
