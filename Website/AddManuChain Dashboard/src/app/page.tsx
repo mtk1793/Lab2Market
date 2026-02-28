@@ -6,6 +6,7 @@ import {
   Sidebar,
   Header,
   OverviewPage,
+  RoleDashboard,
   OnboardingTutorial,
   useOnboarding,
   SectionTutorial,
@@ -35,6 +36,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [currentRole, setCurrentRole] = useState('admin')
   const { showOnboarding, isLoading, completeOnboarding } = useOnboarding()
   const { tutorialSection, showTutorial, hideTutorial, isVisible: tutorialVisible } = useSectionTutorial(activeTab)
 
@@ -86,7 +88,7 @@ export default function Dashboard() {
   const renderPage = () => {
     switch (activeTab) {
       case 'overview':
-        return <OverviewPage />
+        return <RoleDashboard role={currentRole} />
       case 'orders':
         return <OrdersPage />
       case 'print_queue':
@@ -154,6 +156,8 @@ export default function Dashboard() {
         onMobileClose={() => setMobileOpen(false)}
         collapsed={sidebarCollapsed}
         onCollapsedChange={setSidebarCollapsed}
+        activeRole={currentRole}
+        onRoleChange={setCurrentRole}
       />
 
       {/* Main Content */}
@@ -173,7 +177,7 @@ export default function Dashboard() {
       </div>
 
       {/* AI Assistant floating chat widget */}
-      <AIAssistant />
+      <AIAssistant role={currentRole} />
     </div>
   )
 }

@@ -36,17 +36,29 @@ Your job:
 
 Tone: Professional but friendly. Be concise. Use bullet points for step-by-step instructions. Never make up features that don't exist.`
 
+const ROLE_CONTEXT: Record<string, string> = {
+  admin: 'You are speaking to the Platform Admin (Mahmoud K. — AddManuChain). They have full access to all platform features and are responsible for platform operations, user management, and compliance oversight.',
+  oem_partner: 'You are speaking to an OEM Partner (Johann Weber — Wärtsilä Marine). Their primary concerns are blueprint IP protection, DRM approvals, royalty tracking, and licensing. Focus answers on the IP Library, Blueprint Library, Print Queue approvals, and Analytics.',
+  end_user: 'You are speaking to an End User / Client (Capt. Sarah Leblanc — Horizon Maritime). They care about placing orders, tracking shipments, managing physical inventory on vessels and rigs, and accessing peer printers. Keep answers practical and order-focused.',
+  cert_authority: 'You are speaking to a Certification Authority representative (Dr. Priya Patel — DNV GL). They focus on DRM certification sign-offs, compliance auditing, print center accreditation, and certification management. Emphasize Audit Logs, Certifications, and the Print Queue.',
+  print_center: 'You are speaking to a 3D Print Facility operator (Michael Okafor — PolyUnity NL). Their focus is executing print jobs, managing machine utilisation, material stock, quality control, and shipment dispatch. Focus on Print Queue, Materials, Orders, and Shipments.',
+  lab: 'You are speaking to a Lab / Testing professional (Prof. Ahmad Osman — Dalhousie AM Lab). They handle test requests, equipment scheduling, non-conformance reports, and material analysis. Focus on the Lab & Testing Portal, Materials, Blueprints, and Certifications.',
+}
+
 export async function POST(req: NextRequest) {
   try {
     if (!OPENROUTER_API_KEY) {
       return NextResponse.json({ error: 'AI service not configured' }, { status: 500 })
     }
 
-    const { messages } = await req.json()
+    const { messages, role } = await req.json()
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
     }
+
+    const roleCtx = ROLE_CONTEXT[role ?? 'admin'] ?? ROLE_CONTEXT.admin
+    const fullSystemPrompt = `${SYSTEM_PROMPT}\n\n**Current user context:**\n${roleCtx}`
 
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -59,7 +71,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         model: 'openai/gpt-4o-mini',
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: fullSystemPrompt },
           ...messages,
         ],
         max_tokens: 1024,

@@ -184,7 +184,12 @@ function TypingDots() {
 
 // ─── MAIN AI ASSISTANT COMPONENT ─────────────────────────────────────────────
 
-export function AIAssistant() {
+interface AIAssistantProps {
+  /** Current active persona / role — injected into AI system context */
+  role?: string
+}
+
+export function AIAssistant({ role = 'admin' }: AIAssistantProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -238,7 +243,7 @@ export function AIAssistant() {
       const res = await fetch('/api/ai-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, role }),
       })
 
       const data = await res.json()

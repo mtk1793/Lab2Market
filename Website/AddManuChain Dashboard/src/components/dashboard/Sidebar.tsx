@@ -200,11 +200,16 @@ interface SidebarProps {
   onMobileClose?: () => void
   collapsed?: boolean
   onCollapsedChange?: (collapsed: boolean) => void
+  /** Controlled role — if provided, overrides internal state */
+  activeRole?: string
+  /** Called when the user switches demo persona */
+  onRoleChange?: (role: string) => void
 }
 
-export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose, collapsed = false, onCollapsedChange }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose, collapsed = false, onCollapsedChange, activeRole, onRoleChange }: SidebarProps) {
   const setCollapsed = (val: boolean) => onCollapsedChange?.(val)
-  const [demoRole, setDemoRole] = useState('admin')
+  const [internalRole, setInternalRole] = useState('admin')
+  const demoRole = activeRole ?? internalRole
   const [showRolePicker, setShowRolePicker] = useState(false)
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(
     Object.fromEntries(menuSections.map(s => [s.title, true]))
@@ -217,7 +222,8 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose, col
   const currentPersona = demoPersonas.find(p => p.role === demoRole)!
 
   const handleRoleSwitch = (role: string) => {
-    setDemoRole(role)
+    setInternalRole(role)
+    onRoleChange?.(role)
     setShowRolePicker(false)
     onTabChange('overview')
   }
