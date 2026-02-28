@@ -2,6 +2,12 @@
 **Interviewee:** Director of Strategic Priorities, NS Dept. of Energy & Natural Resources; former COO at COVE; 20+ years in marine, aerospace MRO, and clean tech.  
 **Project context:** AddManuChain — an ecosystem for additive manufacturing and 3D printing of spare parts, built around digital inventory, OEM IP management, and supply chain resilience for maritime and industrial sectors.
 
+**CAPSM/PhD context:** In parallel I’m developing the CAPSM framework (Cognitive-Adaptive Power System Management), a brain-inspired dual-process control architecture for electric grid control. You may hear me mention it in our conversation.
+
+### CAPSM Questions
+1. My PhD proposal – CAPSM – is a brain-inspired dual-process control architecture for power‑grid management. Do you see any relevance of that kind of fast/slow arbitration logic to the kinds of problems your group is solving, or any partners who might be interested in a software‑defined ‘reflex + planner’ platform?
+2. I’m looking for opportunities to pilot CAPSM algorithms on real systems (utility micro‑grids, DER fleets, etc.). Can you think of any industry contacts, testbeds or funding streams that would welcome a physics‑consistent reflex‑planning framework, or that are already exploring similar dual‑layer AI?
+
 ---
 
 ### Q1 — Supply chain resilience post-COVID from a government lens
