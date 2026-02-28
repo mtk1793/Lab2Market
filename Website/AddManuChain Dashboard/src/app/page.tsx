@@ -10,6 +10,7 @@ import {
   useOnboarding,
   SectionTutorial,
   useSectionTutorial,
+  AIAssistant,
   OrdersPage,
   BlueprintsPage,
   CentersPage,
@@ -170,6 +171,9 @@ export default function Dashboard() {
         {/* Page Content */}
         <main className="min-h-[calc(100vh-64px)]">{renderPage()}</main>
       </div>
+
+      {/* AI Assistant floating chat widget */}
+      <AIAssistant />
     </div>
   )
 }
