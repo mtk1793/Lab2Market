@@ -12,6 +12,7 @@ import {
   User,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   FileText,
   Users,
   Truck,
@@ -89,6 +90,20 @@ interface SidebarProps {
 
 export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
+  const { data: session } = useSession()
+
+  // Which section titles are expanded — all open by default
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(
+    Object.fromEntries(menuSections.map(s => [s.title, true]))
+  )
+
+  const toggleSection = (title: string) => {
+    setOpenSections(prev => ({ ...prev, [title]: !prev[title] }))
+  }
+
+  // Role-based item filtering
+  const role = (session?.user as { role?: string })?.role ?? 'admin'
+  const allowed = rolePermissions[role] ?? rolePermissions.admin
 
   return (
     <>
@@ -150,43 +165,76 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen, onMobileClose }: S
         )}
       </div>
 
-      {/* Navigation - Scrollable */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
-        {menuSections.map((section, sectionIdx) => (
-          <div key={sectionIdx}>
-            {!collapsed && (
-              <h3 className="px-3 mb-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                {section.title}
-              </h3>
-            )}
-            <div className="space-y-1">
-              {section.items.map((item) => (
+      {/* Navigation — scrollable */}
+      <nav className="flex-1 min-h-0 overflow-y-auto px-3 py-4 space-y-1 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
+        {menuSections.map((section) => {
+          const visibleItems = section.items.filter(item => allowed.includes(item.id))
+          if (visibleItems.length === 0) return null
+          const isOpen = openSections[section.title] ?? true
+
+          return (
+            <div key={section.title} className="mb-1">
+              {/* Section header — clickable to collapse, hidden in icon-only mode */}
+              {!collapsed && (
                 <button
-                  key={item.id}
-                  onClick={() => onTabChange(item.id)}
-                  className={cn(
-                    'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all',
-                    activeTab === item.id
-                      ? 'bg-[#0EA5E9]/20 text-[#0EA5E9]'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                  )}
+                  onClick={() => toggleSection(section.title)}
+                  className="w-full flex items-center justify-between px-3 py-1.5 mb-1 rounded-md group hover:bg-slate-800/60 transition-colors"
                 >
-                  <item.icon className="w-5 h-5 flex-shrink-0" />
-                  {!collapsed && (
-                    <>
-                      <span className="flex-1 text-left text-sm font-medium">{item.label}</span>
-                      {item.badge && (
-                        <span className="px-2 py-0.5 text-xs font-medium bg-[#F59E0B] text-white rounded-full">
-                          {item.badge}
-                        </span>
-                      )}
-                    </>
-                  )}
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider group-hover:text-slate-400 transition-colors">
+                    {section.title}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      'w-3.5 h-3.5 text-slate-600 group-hover:text-slate-400 transition-all duration-200',
+                      !isOpen && '-rotate-90'
+                    )}
+                  />
                 </button>
-              ))}
+              )}
+
+              {/* Section items */}
+              <div
+                className={cn(
+                  'space-y-0.5 overflow-hidden transition-all duration-200',
+                  !collapsed && !isOpen ? 'max-h-0 opacity-0' : 'max-h-[600px] opacity-100'
+                )}
+              >
+                {visibleItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      onTabChange(item.id)
+                      onMobileClose?.()
+                    }}
+                    title={collapsed ? item.label : undefined}
+                    className={cn(
+                      'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all',
+                      activeTab === item.id
+                        ? 'bg-[#0EA5E9]/20 text-[#0EA5E9]'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800',
+                      collapsed && 'justify-center px-0'
+                    )}
+                  >
+                    <item.icon className="w-5 h-5 flex-shrink-0" />
+                    {!collapsed && (
+                      <>
+                        <span className="flex-1 text-left text-sm font-medium">{item.label}</span>
+                        {item.badge && (
+                          <span className="px-2 py-0.5 text-xs font-medium bg-[#F59E0B] text-white rounded-full">
+                            {item.badge}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Divider between sections in collapsed mode */}
+              {collapsed && <div className="w-8 h-px bg-slate-800 mx-auto my-2" />}
             </div>
-          </div>
-        ))}
+          )
+        })}
       </nav>
 
       {/* User Section */}
