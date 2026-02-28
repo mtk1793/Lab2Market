@@ -24,6 +24,7 @@ import {
   PrintApprovalPage,
   PhysicalInventoryPage,
   PeerPrintersPage,
+  IPLibraryPage,
 } from '@/components/dashboard'
 
 export default function Dashboard() {
@@ -65,6 +66,8 @@ export default function Dashboard() {
         return { title: 'Certification Authorities', subtitle: 'Manage relationships with certifying bodies' }
       case 'services':
         return { title: 'Customer Success', subtitle: 'End-to-end service and training management' }
+      case 'ip_library':
+        return { title: 'IP Library', subtitle: 'OEM intellectual property, licensing & royalty management' }
       case 'settings':
         return { title: 'Settings', subtitle: 'Manage your account preferences' }
       default:
@@ -106,6 +109,8 @@ export default function Dashboard() {
         return <AuthoritiesPage />
       case 'services':
         return <CustomerSuccessPage />
+      case 'ip_library':
+        return <IPLibraryPage />
       case 'settings':
         return <SettingsPage />
       default:
