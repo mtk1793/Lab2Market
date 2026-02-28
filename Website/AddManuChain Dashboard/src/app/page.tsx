@@ -8,6 +8,8 @@ import {
   OverviewPage,
   OnboardingTutorial,
   useOnboarding,
+  SectionTutorial,
+  useSectionTutorial,
   OrdersPage,
   BlueprintsPage,
   CentersPage,
@@ -33,6 +35,7 @@ export default function Dashboard() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const { showOnboarding, isLoading, completeOnboarding } = useOnboarding()
+  const { tutorialSection, showTutorial, hideTutorial, isVisible: tutorialVisible } = useSectionTutorial(activeTab)
 
   const getPageTitle = () => {
     switch (activeTab) {
@@ -133,6 +136,15 @@ export default function Dashboard() {
         <OnboardingTutorial onComplete={completeOnboarding} />
       )}
 
+      {/* Per-section Tutorial */}
+      {!showOnboarding && (
+        <SectionTutorial
+          sectionId={tutorialSection ?? activeTab}
+          visible={tutorialVisible}
+          onClose={hideTutorial}
+        />
+      )}
+
       {/* Sidebar (mobile controlled) */}
       <Sidebar
         activeTab={activeTab}
@@ -150,6 +162,7 @@ export default function Dashboard() {
           title={pageInfo.title}
           subtitle={pageInfo.subtitle}
           onNavigate={setActiveTab}
+          onTutorialClick={() => showTutorial(activeTab)}
           mobileOpen={mobileOpen}
           setMobileOpen={setMobileOpen}
         />

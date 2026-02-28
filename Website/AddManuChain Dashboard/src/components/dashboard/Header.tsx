@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X, Menu } from 'lucide-react'
+import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X, Menu, HelpCircle } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
 import {
   DropdownMenu,
@@ -29,6 +29,7 @@ interface HeaderProps {
     onClick: () => void
   }
   onNavigate?: (tab: string) => void
+  onTutorialClick?: () => void
   mobileOpen?: boolean
   setMobileOpen?: (open: boolean) => void
 }
@@ -78,7 +79,7 @@ function buildSearchIndex() {
 
 const searchIndex = buildSearchIndex()
 
-export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMobileOpen }: HeaderProps) {
+export function Header({ title, subtitle, action, onNavigate, onTutorialClick, mobileOpen, setMobileOpen }: HeaderProps) {
   const { data: session } = useSession()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
@@ -164,6 +165,19 @@ export function Header({ title, subtitle, action, onNavigate, mobileOpen, setMob
               </div>
             )}
           </div>
+
+          {/* Tutorial help button */}
+          {onTutorialClick && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onTutorialClick}
+              title="Show section tutorial"
+              className="relative text-slate-500 hover:text-sky-600 hover:bg-sky-50"
+            >
+              <HelpCircle className="w-5 h-5" />
+            </Button>
+          )}
 
           {/* Notifications */}
           <Button variant="ghost" size="icon" className="relative">

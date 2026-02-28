@@ -15,11 +15,13 @@ import {
 } from '@/components/ui/select'
 import { User, Building, Bell, Shield, CreditCard, Globe, HelpCircle, RotateCcw } from 'lucide-react'
 import { toast } from 'sonner'
+import { clearAllSectionTutorials } from './SectionTutorial'
 
 export function SettingsPage() {
   const handleRestartTutorial = () => {
     localStorage.removeItem('addmanuchain_onboarding_complete')
-    toast.success('Tutorial reset! Refresh the page to see the onboarding guide.')
+    clearAllSectionTutorials()
+    toast.success('All tutorials reset! Navigate to any section to see its guide, or refresh for the welcome tour.')
   }
 
   return (
