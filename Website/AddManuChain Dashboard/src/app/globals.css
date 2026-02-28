@@ -167,10 +167,12 @@
 }
 
 /* ── Mobile: prevent any horizontal scroll ────────────────────────── */
-html,
+html {
+  overflow-x: clip;
+}
+
 body {
-  overflow-x: hidden;
-  max-width: 100%;
+  overflow-x: clip;
 }
 
 * {

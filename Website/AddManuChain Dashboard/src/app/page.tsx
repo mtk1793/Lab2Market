@@ -127,7 +127,7 @@ export default function Dashboard() {
   const pageInfo = getPageTitle()
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] overflow-x-hidden w-full">
+    <div className="min-h-screen bg-[#F8FAFC]">
       {/* Onboarding Tutorial for first-time users */}
       {!isLoading && showOnboarding && (
         <OnboardingTutorial onComplete={completeOnboarding} />
@@ -144,7 +144,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content */}
-      <div className={`ml-0 transition-all duration-300 min-h-screen w-full overflow-x-hidden ${sidebarCollapsed ? 'md:ml-20' : 'md:ml-64'}`}>
+      <div className={`ml-0 transition-all duration-300 ${sidebarCollapsed ? 'md:ml-20' : 'md:ml-64'}`}>
         {/* Header */}
         <Header
           title={pageInfo.title}
@@ -155,7 +155,7 @@ export default function Dashboard() {
         />
 
         {/* Page Content */}
-        <main className="min-h-[calc(100vh-64px)] w-full overflow-x-hidden">{renderPage()}</main>
+        <main className="min-h-[calc(100vh-64px)]">{renderPage()}</main>
       </div>
     </div>
   )
