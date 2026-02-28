@@ -50,6 +50,9 @@ import {
   Upload,
   X,
   FileCode,
+  Building2,
+  ClipboardCheck,
+  Lock,
 } from 'lucide-react'
 import { toast } from 'sonner'
 
@@ -80,6 +83,7 @@ interface PeerPrinter {
   available: string
   description: string
   certifications: string[]
+  oemPartners: string[]
   listedDate: string
   totalEarnings: number
   imageColor: string
@@ -124,6 +128,7 @@ const peerPrinters: PeerPrinter[] = [
     available: 'Mon–Sat, 8am–8pm',
     description: 'High-speed multi-material FDM printer. Ideal for functional prototypes and non-critical replacement parts. I can pick up your blueprint file and print same-day for urgent needs.',
     certifications: [],
+    oemPartners: [],
     listedDate: '2026-01-12',
     totalEarnings: 1035,
     imageColor: 'from-[#0EA5E9] to-[#14B8A6]',
@@ -151,6 +156,7 @@ const peerPrinters: PeerPrinter[] = [
     available: 'Weekdays, 9am–5pm',
     description: 'University-grade SLA printer with verified operator. Parts come with dimensional accuracy report. Suitable for marine hardware fittings, jigs, and moderate-criticality components.',
     certifications: ['ISO 9001 Print Operator', 'Dal AM Lab Certified'],
+    oemPartners: ['Rolls-Royce Marine', 'MAN Energy Solutions'],
     listedDate: '2025-11-05',
     totalEarnings: 3895,
     imageColor: 'from-[#8B5CF6] to-[#EC4899]',
@@ -178,6 +184,7 @@ const peerPrinters: PeerPrinter[] = [
     available: 'Evenings & weekends',
     description: 'Reliable workhorse printer for brackets, spacers, enclosures, and general functional parts. Contact me 24hr ahead to schedule.',
     certifications: [],
+    oemPartners: [],
     listedDate: '2026-02-01',
     totalEarnings: 360,
     imageColor: 'from-[#F59E0B] to-[#EF4444]',
@@ -205,6 +212,7 @@ const peerPrinters: PeerPrinter[] = [
     available: 'Mon–Fri, 8am–6pm',
     description: 'Industrial-grade continuous fiber printer. Produces parts stronger than aluminum at a fraction of the cost. Ideal for tooling, jigs, and structurally demanding replacements where certification is not yet required.',
     certifications: ['Markforged Certified Operator', 'Atlantic Composites QA'],
+    oemPartners: ['Wärtsilä', 'Atlas Copco Marine'],
     listedDate: '2026-01-28',
     totalEarnings: 1440,
     imageColor: 'from-[#14B8A6] to-[#0EA5E9]',
@@ -232,6 +240,7 @@ const peerPrinters: PeerPrinter[] = [
     available: 'Mon–Fri, 7am–7pm NST',
     description: 'PolyUnity partner node — certified for regulated print jobs in medical and marine sectors. Full chain of custody, OEM blueprint authentication, and signed quality report included. Part shipment to any Atlantic port within 48hr.',
     certifications: ['Health Canada AM Operator', 'DNV Type Approval', 'ISO 13485 (Medical)', 'Lloyd\'s Register AM Framework'],
+    oemPartners: ['Rolls-Royce Marine', 'Caterpillar Marine', 'Siemens Energy'],
     listedDate: '2025-09-15',
     totalEarnings: 20770,
     imageColor: 'from-[#10B981] to-[#059669]',
@@ -322,6 +331,8 @@ export function PeerPrintersPage() {
     urgency: 'standard',
     notes: '',
     blueprintRef: '',
+    oemAuthCode: '',
+    certBody: '',
   })
   const [uploadedFile, setUploadedFile] = useState<File | null>(null)
 
@@ -376,8 +387,12 @@ export function PeerPrintersPage() {
       toast.error('Part name and material are required')
       return
     }
+    if (selectedPrinter?.tier === 3 && (!requestForm.oemAuthCode || !requestForm.certBody)) {
+      toast.error('Tier 3 jobs require an OEM authorization code and a certifying body')
+      return
+    }
     setIsRequestOpen(false)
-    setRequestForm({ partName: '', quantity: '1', material: '', urgency: 'standard', notes: '', blueprintRef: '' })
+    setRequestForm({ partName: '', quantity: '1', material: '', urgency: 'standard', notes: '', blueprintRef: '', oemAuthCode: '', certBody: '' })
     setUploadedFile(null)
     toast.success(`Print request sent to ${selectedPrinter?.ownerName}! Expect a response within 2 hours.`)
   }
@@ -475,6 +490,41 @@ export function PeerPrintersPage() {
               View Tier Guide
             </Button>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* ── Compliance Chain ─────────────────────────────────────────── */}
+      <Card className="border-0 shadow-sm">
+        <CardContent className="p-4">
+          <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-1.5">
+            <Lock className="w-3.5 h-3.5 text-[#14B8A6]" />
+            Compliance &amp; Oversight Chain — Who is in Charge
+          </p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-0">
+            {[
+              { icon: Building2, label: 'OEM', sub: 'Blueprint auth & IP licensing', color: 'text-[#8B5CF6]', bg: 'bg-[#8B5CF6]/10' },
+              { icon: Lock, label: 'Platform', sub: 'Escrow + routing + traceability', color: 'text-[#0EA5E9]', bg: 'bg-[#0EA5E9]/10' },
+              { icon: Printer, label: 'Peer Printer', sub: 'Print + operator QA check', color: 'text-[#F59E0B]', bg: 'bg-[#F59E0B]/10' },
+              { icon: ClipboardCheck, label: 'Cert Body', sub: 'Inspection + sign-off (Tier 2/3)', color: 'text-[#14B8A6]', bg: 'bg-[#14B8A6]/10' },
+              { icon: Package, label: 'Customer', sub: 'Delivery + part traceability record', color: 'text-[#10B981]', bg: 'bg-[#10B981]/10' },
+            ].map(({ icon: Icon, label, sub, color, bg }, i, arr) => (
+              <div key={label} className="flex sm:flex-1 items-center gap-2 sm:gap-0">
+                <div className="flex flex-col items-center flex-1 min-w-0">
+                  <div className={`w-9 h-9 rounded-xl ${bg} flex items-center justify-center mb-1`}>
+                    <Icon className={`w-4 h-4 ${color}`} />
+                  </div>
+                  <p className="text-[10px] font-semibold text-slate-700 text-center">{label}</p>
+                  <p className="text-[10px] text-slate-400 text-center leading-tight mt-0.5">{sub}</p>
+                </div>
+                {i < arr.length - 1 && (
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 flex-shrink-0 mx-1 hidden sm:block" />
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-slate-400 mt-3 border-t pt-2">
+            <strong className="text-slate-500">Payment escrow:</strong> funds are held by the platform and released to the printer owner only after the certifying body approves the output. Tier 1 jobs release on delivery confirmation.
+          </p>
         </CardContent>
       </Card>
 
@@ -608,10 +658,21 @@ export function PeerPrintersPage() {
 
                       {/* Certifications (Tier 2/3) */}
                       {printer.certifications.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mb-3">
+                        <div className="flex flex-wrap gap-1 mb-2">
                           {printer.certifications.map(c => (
                             <span key={c} className="px-2 py-0.5 bg-[#14B8A6]/10 text-[#14B8A6] rounded text-[10px] flex items-center gap-1">
                               <Shield className="w-2.5 h-2.5" />{c}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* OEM Partners (Tier 2/3) */}
+                      {printer.oemPartners.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {printer.oemPartners.map(oem => (
+                            <span key={oem} className="px-2 py-0.5 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded text-[10px] flex items-center gap-1">
+                              <Building2 className="w-2.5 h-2.5" />{oem}
                             </span>
                           ))}
                         </div>
@@ -1007,6 +1068,64 @@ export function PeerPrintersPage() {
                 onChange={e => setRequestForm(f => ({ ...f, blueprintRef: e.target.value }))}
               />
             </div>
+
+            {/* ── Compliance — Tier-conditional ──────────────────────── */}
+            {selectedPrinter?.tier === 1 && (
+              <div className="rounded-md bg-amber-50 border border-amber-200 p-3">
+                <p className="text-[10px] font-semibold text-amber-700 flex items-center gap-1.5">
+                  <Zap className="w-3 h-3" /> Tier 1 — Non-Critical Only
+                </p>
+                <p className="text-[10px] text-amber-600 mt-0.5">No OEM authorization or certification body required. Parts must be non-critical, non-load-bearing, and unregulated. Payment releases automatically on delivery confirmation.</p>
+              </div>
+            )}
+            {selectedPrinter?.tier === 2 && (
+              <div className="rounded-md bg-blue-50 border border-blue-200 p-3 space-y-2">
+                <p className="text-[10px] font-semibold text-blue-700 flex items-center gap-1.5">
+                  <Shield className="w-3 h-3" /> Tier 2 — OEM Authorization Reference
+                </p>
+                <p className="text-[10px] text-blue-600">Provide an OEM blueprint auth code if available. Output is self-certified by the printer operator — no third-party inspection required. Payment releases when operator marks job complete.</p>
+                <Input
+                  className="h-8 text-xs bg-white"
+                  placeholder="OEM auth code or blueprint ID (optional)"
+                  value={requestForm.oemAuthCode}
+                  onChange={e => setRequestForm(f => ({ ...f, oemAuthCode: e.target.value }))}
+                />
+              </div>
+            )}
+            {selectedPrinter?.tier === 3 && (
+              <div className="rounded-md bg-teal-50 border border-teal-200 p-3 space-y-2">
+                <p className="text-[10px] font-semibold text-teal-700 flex items-center gap-1.5">
+                  <ClipboardCheck className="w-3 h-3" /> Tier 3 — Full Compliance Required
+                </p>
+                <p className="text-[10px] text-teal-600">OEM blueprint authentication and a certifying body are mandatory. Payment is held in escrow until the cert body approves the output and signs the quality report.</p>
+                <div>
+                  <Label className="text-[10px] font-semibold text-teal-700">OEM Authorization Code *</Label>
+                  <Input
+                    className="mt-1 h-8 text-xs bg-white"
+                    placeholder="e.g. RR-AM-2026-0047"
+                    value={requestForm.oemAuthCode}
+                    onChange={e => setRequestForm(f => ({ ...f, oemAuthCode: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <Label className="text-[10px] font-semibold text-teal-700">Certifying Body *</Label>
+                  <Select value={requestForm.certBody} onValueChange={v => setRequestForm(f => ({ ...f, certBody: v }))}>
+                    <SelectTrigger className="mt-1 h-8 text-xs bg-white"><SelectValue placeholder="Select certifying body..." /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="dnv">DNV — Det Norske Veritas</SelectItem>
+                      <SelectItem value="lloyds">Lloyd&apos;s Register</SelectItem>
+                      <SelectItem value="bureau_veritas">Bureau Veritas</SelectItem>
+                      <SelectItem value="class_nk">ClassNK</SelectItem>
+                      <SelectItem value="abs">ABS — American Bureau of Shipping</SelectItem>
+                      <SelectItem value="tc_canada">Transport Canada</SelectItem>
+                      <SelectItem value="health_canada">Health Canada (Medical)</SelectItem>
+                      <SelectItem value="iso_9001">ISO 9001 — Internal Audit Body</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            )}
+
             <div>
               <Label className="text-xs">Attach Print File (optional)</Label>
               <p className="text-[10px] text-muted-foreground mb-1">Supported: .stl, .obj, .step, .stp, .3mf</p>
