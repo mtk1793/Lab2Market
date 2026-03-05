@@ -1,3 +1,16 @@
+#---
+interviewee: "Nathalie Sykora"
+position: "Chief Marine and Digital Solutions Officer, The CSL Group Inc."
+focus_areas:
+   - Maritime supply chain
+   - Digital transformation
+   - Workforce management
+   - International operations
+interview_number: 57
+date: ""
+interviewer: ""
+tags: [maritime, supply-chain, digital]
+#---
 # Interview Questions: Nathalie Sykora
 **Position:** Chief Marine and Digital Solutions Officer, The CSL Group Inc.  
 **Focus Areas:** Maritime supply chain, digital transformation, workforce management, international operations

@@ -1,3 +1,15 @@
+#---
+interviewee: "Craig Dicken"
+position: "Materials Management Senior Principal, ExxonMobil Global Supply Chain"
+focus_areas:
+   - Procurement
+   - Supply chain operations
+   - Strategic sourcing
+interview_number: 60
+date: ""
+interviewer: ""
+tags: [energy, supply-chain, procurement]
+#---
 # Interview Questions: Craig Dicken
 **Position:** Materials Management Senior Principal, ExxonMobil Global Supply Chain  
 **Focus Areas:** Procurement, supply chain operations, strategic sourcing, MRO supply chain, energy sector logistics
