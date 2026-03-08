@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Bell, Search, Plus, User, LogOut, Settings, ChevronDown, X, Menu, HelpCircle } from 'lucide-react'
-import { useSession, signOut } from 'next-auth/react'
+import { Bell, Search, Plus, User, Settings, ChevronDown, X, Menu, HelpCircle } from 'lucide-react'
+// Authentication removed - no longer importing useSession, signOut
+// import { useSession, signOut } from 'next-auth/react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -80,7 +81,15 @@ function buildSearchIndex() {
 const searchIndex = buildSearchIndex()
 
 export function Header({ title, subtitle, action, onNavigate, onTutorialClick, mobileOpen, setMobileOpen }: HeaderProps) {
-  const { data: session } = useSession()
+  // Static user data since authentication is removed
+  const staticUser = {
+    name: 'John Anderson',
+    email: 'john@addmanuchain.com',
+    company: 'AddManuChain',
+    role: 'admin',
+    image: null
+  }
+  
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
 
@@ -196,20 +205,19 @@ export function Header({ title, subtitle, action, onNavigate, onTutorialClick, m
             </Button>
           )}
 
-          {/* User Menu */}
-          {session?.user && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-3 px-3 py-2 h-auto">
-                  <Avatar className="w-8 h-8">
-                    <AvatarImage src={session.user.image || undefined} />
-                    <AvatarFallback className="bg-[#0EA5E9] text-white text-xs">
-                      {getInitials(session.user.name || 'User')}
+          {/* User Menu - Always shown since authentication is removed */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-3 px-3 py-2 h-auto">
+                <Avatar className="w-8 h-8">
+                  <AvatarImage src={staticUser.image || undefined} />
+                  <AvatarFallback className="bg-[#0EA5E9] text-white text-xs">
+                    {getInitials(staticUser.name || 'User')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-left hidden lg:block">
-                    <p className="text-sm font-medium text-[#0F172A]">{session.user.name}</p>
-                    <p className="text-xs text-slate-500">{session.user.company}</p>
+                    <p className="text-sm font-medium text-[#0F172A]">{staticUser.name}</p>
+                    <p className="text-xs text-slate-500">{staticUser.company}</p>
                   </div>
                   <ChevronDown className="w-4 h-4 text-slate-400" />
                 </Button>
@@ -217,10 +225,10 @@ export function Header({ title, subtitle, action, onNavigate, onTutorialClick, m
               <DropdownMenuContent align="end" className="w-64">
                 <DropdownMenuLabel>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium">{session.user.name}</p>
-                    <p className="text-xs text-slate-500">{session.user.email}</p>
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium w-fit mt-2 ${getRoleBadgeColor(session.user.role)}`}>
-                      {getRoleLabel(session.user.role)}
+                    <p className="text-sm font-medium">{staticUser.name}</p>
+                    <p className="text-xs text-slate-500">{staticUser.email}</p>
+                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium w-fit mt-2 ${getRoleBadgeColor(staticUser.role)}`}>
+                      {getRoleLabel(staticUser.role)}
                     </span>
                   </div>
                 </DropdownMenuLabel>
@@ -233,17 +241,9 @@ export function Header({ title, subtitle, action, onNavigate, onTutorialClick, m
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="text-red-600 focus:text-red-600"
-                  onClick={() => signOut({ callbackUrl: '/login' })}
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
+                {/* Log out functionality removed since authentication is disabled */}
               </DropdownMenuContent>
             </DropdownMenu>
-          )}
         </div>
       </div>
     </header>
