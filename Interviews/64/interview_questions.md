@@ -1,182 +1,123 @@
-#---
-interviewee: "Jared Newcombe"
-position: "Chief Operating Officer, Horizon Naval Engineering"
-focus_areas:
-   - Shipbuilding operations
-   - Naval & government contracts
-   - Supply chain & parts sourcing
-   - Operational scaling
-   - Manufacturing execution
-interview_number: 64
-date: ""
-interviewer: ""
-tags: [shipbuilding, naval, operations, supply-chain, government-contracts, manufacturing, parts-sourcing]
-#---
-
-# Interview Questions: Jared Newcombe — Chief Operating Officer, Horizon Naval Engineering
-**Interviewee:** Jared Newcombe  
-**Position:** Chief Operating Officer, Horizon Naval Engineering  
-**Organization:** Horizon Naval Engineering (St. John's, Newfoundland and Labrador)  
-**Focus Areas:** Naval shipbuilding operations, government contract management, supply chain optimization, workforce scaling, parts sourcing  
-**Interview Purpose:** Understand critical parts sourcing challenges, lead time risks, manufacturing capacity constraints, and where on-demand manufacturing (additive or otherwise) could reduce operational friction in naval and commercial shipbuilding
+# Interview Questions — JP Hudon (Interview #64)
+**Interviewee:** JP Hudon  
+**Position:** Asset Integrity Manager, Glencore Canada  
+**Date:** TBD | **Interviewer:** Mahmoud Kiasari
 
 ---
 
-## SNAPSHOT SUMMARY: Interview 64 (Prepared)
+## SNAPSHOT
 
-**Interviewee Profile:** Jared Newcombe, COO at Horizon Naval Engineering (30+ years shipbuilding operations; previously CEO at Davie, Chief Commercial Officer at Ontario Shipyards)  
-**Interview Status:** Prepared; Ready to conduct  
-**Key Focus:** Specialized parts sourcing, lead times for critical naval components, supply chain fragmentation, on-demand manufacturing applicability, scaling without increasing inventory burden
+**Profile:** 13+ years in maintenance/reliability/asset management in mining & smelting. Leads 180 people, $40M OPEX, and major shutdowns at Glencore Canada. Deep RCA practitioner, CMMS operator, and vocal about fighting maintenance backlogs and downtime.
 
-**Background Context:**
-- **Current Role:** COO Horizon Naval Engineering (Aug 2025–Present)
-  - Responsibility: Day-to-day operations, strategic alignment, delivery execution
-  - Location: St. John's, NL (Arctic sovereignty & marine industry focus)
-- **Previous Experience:** 
-  - CEO, Davie (2016–2019): Led transformation of Canada's largest shipyard from receivership, scaled workforce from 0 to 1,500+, delivered MV Asterix conversion and dual-fuel ferry ($1B Halifax Class Frigate contract), achieved $8M annual cost savings (25% overhead reduction)
-  - Chief Commercial Officer, Ontario Shipyards (2024–2025): Commercial oversight, government contract strategy, supplier management ($100M+ contract portfolio)
-  - Chief Commercial Officer/Chief Strategy Officer, Ontario Shipyards (2020–2024): Scaling, commercial processes, multi-year programs
-  - 25 years at Irving Shipbuilding: Project management, naval programs (Mid-Shore Patrol Vessel = 9 vessels for Canadian Coast Guard), contract delivery
-- **Expertise:** Shipbuilding ops, government contract negotiation, workforce scaling, cost control, program delivery, supply chain strategy
-
-**Why This Interview Matters:**
-1. **Naval & Commercial Shipbuilding Supply Chain:** Works with parts that are mission-critical, highly specialized, long lead times, and often have unique certification requirements (marine, naval, arctic environments)
-2. **Scaled, Complex Operations:** Has managed organizations from 41 employees (post-receivership Davie) to 1,500+ employees; understands scaling without chaos
-3. **Government Contract Experience:** Knows how OEM parts sourcing, obsolescence, and supply chain resilience are contractually enforced (e.g., 10-year frigate contracts with strict delivery schedules)
-4. **Cost Pressure Under Scale:** Demonstrated $8M annual savings = knows where efficiency gains hurt most; parts/inventory strategy likely a leverage point
-5. **Arctic/Marine Context:** Horizon's focus on Arctic sovereignty and marine industry suggests cold-climate, corrosion-resistant, specialized material requirements that could benefit from on-demand manufacturing
+**Interview Goal:** Understand the real pain points in managing asset integrity at scale — where time, money, and data are lost — and validate whether a digital orchestration/intelligence layer would change how decisions are made.
 
 ---
 
-## Main Questions (7)
+## Main Questions (5)
 
 ---
 
-### Q1: Specialized Parts Sourcing in Naval Shipbuilding — Lead Times & Obsolescence
+### Q1: The Real Cost of Unplanned Downtime on Critical Assets
 
-**Key Question:**
-You've spent three decades managing parts sourcing across naval and commercial shipbuilding programs. Walk me through the reality: for a modern naval vessel program (like the Halifax Class Frigs you managed at Davie), what are the most painful categories of parts to source — compressors, valves, hydraulic systems, specialized fittings? And what's the typical lead time for these critical components when ordering from an OEM that's already qualified?
+> **"You've spoken about cutting critical asset downtime at Glencore. Can you walk me through what an unplanned failure on a critical asset actually costs — not just the repair bill, but the full cascade? How do you currently decide which assets get priority attention before they fail?"**
 
-**Sub-questions:**
-- For a 10-year contract like the Halifax Class Frigate Work Period, what's your sourcing strategy? Do you front-load materials procurement (stock 5+ years of projected parts), or manage it year-by-year? What's the risk of each approach?
-- When you encounter a part that's gone obsolete (OEM discontinued, no longer manufactured, lead time shifts from 6 weeks to 18 months), what are your current workarounds? Reverse engineering? Stockpiling before discontinuation? Finding alternate suppliers? Which is most costly?
-- How much of your parts inventory is specialized naval components (unique specs, marine certification, archival drawings) vs. standard industrial components (pumps, motors, actuators that multiple suppliers make)?
-- In your experience at Irving, Davie, and Ontario Shipyards, what's the procurement cost and timeline for a newly designed vessel's Bill of Materials? (e.g., 9 months, $10M in supplier negotiations?)
-- For Arctic operations (Horizon's focus), are there material or certification requirements that make parts even harder to source? (e.g., performance in cold environments, corrosion resistance, third-party testing?)
-- How much lead time variability are you experiencing now? (e.g., "We quote 8 weeks, sometimes get 6, sometimes 16"?) What drives the variance?
+**Probes:**
+- What is the estimated production loss per day when a critical asset like a converter or anode furnace goes down unexpectedly? (Order of magnitude: $100k/day? $500k/day?)
+- How do you currently identify which assets are approaching failure — is this data-driven, experience-based, or a combination?
+- What percentage of your $40M OPEX would you say is reactive (fixing failures) vs. proactive (preventing them)? Is that ratio improving?
+- What's the single biggest gap between knowing an asset is at risk and actually acting on it in time?
 
----
-
-### Q2: Supply Chain Fragmentation & Inventory Economics
-
-**Key Question:**
-Managing supply chains across three major shipyards (Irving, Davie, Ontario Shipyards now Horizon) means juggling parts suppliers, quality certifications, and inventory at multiple locations. At scale — especially with a 10-year government contract — how do you balance the economics of physical inventory (storage, obsolescence risk, capital tied up) vs. supply chain speed and reliability?
-
-**Sub-questions:**
-- What percentage of your critical parts inventory is held as safety stock (to buffer against lead time variability) vs. active build-in-progress stock? How much of that safety stock is dead? (parts ordered "just in case," never used)
-- At Davie when you scaled from 41 to 1,500+ people rapidly, how did your parts supply strategy change? Did you centralize sourcing, use regional depots, or something else?
-- For a contract like the Halifax Class Frigs (10-year, multi-vessel), did you negotiate blanket purchase orders with key suppliers, or manage procurement vessel-by-vessel? What was the cost/schedule/risk difference?
-- How much visibility do you have into your supplier's supply chain? (e.g., "I know my pump supplier, but do they have a reliable source for their castings?") Have you ever been hit by a tier-2 or tier-3 supply chain failure?
-- If you could reduce your physical spare parts inventory by 20% without increasing risk, what would that save annually? (And is that even realistic given the mission-critical nature of naval vessels?)
+**Why this matters:** Quantifies the problem statement. If downtime cost is high and the current system is lagging, there's strong ROI for early detection or smarter prioritization tooling.
 
 ---
 
-### Q3: Manufacturing Agility & On-Demand Alternatives to Traditional OEM Sourcing
+### Q2: Maintenance Backlogs — What Creates Them and What Does It Cost to Carry Them?
 
-**Key Question:**
-You've optimized costs and delivery at Davie by 25% overhead reduction. New manufacturing technologies — 3D printing, advanced machining, small-batch fabrication — are now competitive for specialized parts. In naval shipbuilding, where do you see an opportunity to replace traditional OEM lead times (12–24 weeks for custom valves, fittings, brackets) with on-demand local manufacturing (1–4 weeks)?
+> **"You've publicly talked about slashing maintenance backlogs. In your experience, what actually causes backlogs to build faster than teams can clear them — and what is the real organizational cost of carrying a large backlog (beyond just the deferred work)?"**
 
-**Sub-questions:**
-- Which categories of parts do you think would be good candidates for on-demand manufacturing? (e.g., structural brackets, non-pressure-bearing fittings, specialized adapters, spare parts for maintenance?)
-- What certification or validation barriers exist? If a 3D-printed component could be designed to spec, traced, and tested to meet naval standards, would that be acceptable? Or is there a blanket "that part must come from the OEM" rule?
-- At Horizon (Arctic/marine focus), are there parts that would benefit most from being producible on-demand in Newfoundland and Labrador vs. sourcing from distant OEMs? (e.g., brackets for cold-environment service, corrosion-resistant fittings?)
-- In a long-term contract scenario, if a supplier could produce a critical part on-demand (5-day turnaround) at 15–20% higher per-unit cost but eliminating your inventory holding costs and obsolescence risk, would that be a net win? What's your break-even threshold?
-- How would a parts manufacturer convince a naval program manager or the OEM that an on-demand alternative is safe enough? What documentation, testing, or traceability would need to exist?
+**Probes:**
+- Is the backlog problem primarily a resource issue (not enough people/time), a prioritization issue (don't know which work matters most), or a data/visibility issue (can't see the full picture)?
+- How much of your backlog is "invisible" — work that should exist but hasn't been identified or entered into the CMMS yet?
+- When a backlog grows, what's the risk profile change? Do you see a meaningful uptick in failures or incidents as backlog ages?
+- What tools or methods have worked best for you to reduce backlogs — was it process, technology, cultural change, or all three?
 
----
-
-### Q4: Workforce Scaling & Knowledge Transfer — How Do You Operationalize Growth Without Chaos?
-
-**Key Question:**
-You've scaled operations from 41 people (Davie post-receivership) to 1,500+ in 9 months. That kind of rapid scaling is operationally brutal. Walk me through how you managed parts sourcing, supplier qualification, and procurement processes while onboarding and training 1,400+ people. What broke? What lessons did you learn about scaling supply chains alongside workforce growth?
-
-**Sub-questions:**
-- When you're scaling a shipyard or marine facility, how do you maintain supplier relationships and part quality when the people who know "how we buy things" are suddenly a minority of the organization?
-- Did you standardize parts, simplify logistics, or introduce new systems during the scale-up? What would you do differently next time?
-- At Horizon, are you facing a similar growth or integration challenge? (You've been COO there since Aug 2025 — what's the operational priority?)
-- How much of your cost savings at Davie ($8M annually, 25% overhead reduction) came from supply chain/procurement improvements vs. labor efficiency vs. other operational changes?
-- If you had a digital system that helped maintain supplier relationships, track parts certifications, and streamline procurement during rapid scaling, how would that have helped in 2013–2016 at Davie?
+**Why this matters:** Validates the backlog problem as a major pain point and surfaces whether better data/visibility is the constraint vs. just more labor.
 
 ---
 
-### Q5: Government Contracting & The "Availability Guarantee" Problem
+### Q3: RCA in Practice — The Gap Between Identifying Root Cause and Fixing It Permanently
 
-**Key Question:**
-Long-term government contracts like the Halifax Class Frigate Work Period often include availability guarantees — you must keep equipment operational, spare parts available, response times defined. These clauses drive massive parts inventory and supplier contracts. What's the cost of these guarantees, and how would a more agile sourcing approach (on-demand manufacturing) change your contract strategy?
+> **"You're a serious advocate for RCA — your Deep Roots series shows the depth of your thinking here. But from your experience, where does RCA actually break down in practice? Do investigations happen too slowly, corrective actions get closed without being truly effective, or does the same failure recur because the organization doesn't fully execute the fix?"**
 
-**Sub-questions:**
-- For a 10-year naval support contract, what are the typical spare parts and availability requirements? (e.g., "Critical components must be replaceable within 72 hours"?)
-- What's the cost of maintaining that availability? (inventory, supplier contracts, warehousing, obsolescence management?)
-- Have you ever encountered a contract penalty for parts unavailability? How common is that actually?
-- If you could reduce lead times from 12 weeks to 2 weeks for most critical parts (via on-demand manufacturing), how would that change your spare parts strategy and potential contract profitability?
-- Are there suppliers or OEMs that leverage parts scarcity / long lead times as a revenue lever? (e.g., "We'll guarantee availability for a premium price"?) How do you negotiate around that?
+**Probes:**
+- What is a typical cycle time from a critical failure event to a completed RCA with validated corrective actions? (Days? Weeks? Months?)
+- What percentage of recurring failures at your sites would you say are truly "solved" after an RCA vs. temporarily patched?
+- Where is the biggest bottleneck — triggering the RCA, doing the investigation, implementing the fix, or verifying the fix worked?
+- If you could change one thing about how RCA is done in large industrial organizations, what would it be?
 
----
-
-### Q6: COTS vs. Custom Parts — Standardization as a Competitive Advantage
-
-**Key Question:**
-Shipbuilding is often a choice between Commercial Off-The-Shelf (COTS) components (standardized, fast, cheap) and custom-designed parts (optimized for the vessel, slower, more expensive). How do you make that trade-off at scale, and where might on-demand manufacturing shift that calculus?
-
-**Sub-questions:**
-- For a modern naval vessel design, what percentage of parts are COTS (standard pumps, motors, valves) vs. custom-designed (ship-specific brackets, hulls, specialized systems)? How has that ratio changed over your career?
-- When do you *have* to use custom parts vs. when could you standardize? What's the cost difference, and how do you quantify the trade-off?
-- Have you standardized parts across multiple vessel programs (e.g., "All Halifax Class Frigs use the same valve model in the fuel system")? What were the benefits and challenges?
-- If on-demand manufacturing made custom parts nearly as fast and cheap as COTS, would you design differently? (e.g., optimize for performance rather than standardization?)
-- At Horizon, working with Arctic/marine industry clients, are there performance requirements that demand custom parts? Could on-demand manufacturing be a competitive differentiator?
+**Why this matters:** JP is an expert here — this question gives him the floor to share deep insight. If recurrence and incomplete corrective actions are the gap, there's a product opportunity in tracking and closing that loop digitally.
 
 ---
 
-### Q7: Referrals & Strategic Alignment
+### Q4: CMMS Reality — What the Data Tells You vs. What You Actually Need
 
-**Key Question:**
-Two final asks: First, within Horizon Naval or your network (Ontario Shipyards, other Canadian maritime), who owns the supply chain, parts strategy, or procurement function? Who should I talk to about the pain points in sourcing specialized marine components?
+> **"You've managed CMMS systems across multiple Glencore North American sites. What does your CMMS do well — and where does it genuinely fall short in helping you make good maintenance and reliability decisions?"**
 
-Second: You've worked with government procurement (DND, coast guard, commercial clients). Are there decision-makers or procurement officers who evaluate technology and manufacturing alternatives for naval vessel projects that I should engage with?
+**Probes:**
+- How much of the data in your CMMS would you trust to make a strategic investment or shutdown-scope decision without manual verification?
+- What kinds of decisions still require you to go "outside the CMMS" — relying on experienced technicians, spreadsheets, or institutional knowledge?
+- What does a typical asset's data history look like in practice: clean and complete, or patchy with gaps, inconsistent tagging, and missing failure modes?
+- If your CMMS could do one thing it currently can't, what would be most valuable?
 
-**Sub-questions:**
-- Within Horizon Naval, who drives vendor selection and parts sourcing strategy?
-- Do you have relationships with other shipyards, marine suppliers, or maritime clusters (e.g., Canadian Shipbuilding and Ship Repair Association) that I should plug into?
-- In your network, who understands the pain of obsolescence, long lead times, and inventory costs? Who would benefit from an on-demand parts network?
-- Are there specific procurement challenges at Horizon that you're dealing with right now that an outside capability (on-demand manufacturing, digital inventory orchestration) could help solve?
-
----
-
-## KEY HYPOTHESES TO VALIDATE
-
-| # | Hypothesis | Validation Question | Jared's Role |
-|---|-----------|-------------------|-----------|
-| **HYP-1** | Naval & commercial shipbuilding has severe lead-time and obsolescence problems for specialized parts | Q1 | Core validation — how bad is the problem, quantify lead times & costs |
-| **HYP-2** | Supply chain fragmentation (multiple yards, suppliers, long-term contracts) creates inefficiency & inventory bloat | Q2 | Direct experience — quantify safety stock, dead inventory, contracting costs |
-| **HYP-3** | On-demand manufacturing (3D printing, advanced machining) is certification-feasible for non-critical naval components | Q3 | Procedural validation — what would it take to qualify an alternate supplier |
-| **HYP-4** | Rapid organizational scaling (workforce, facilities) breaks supply chain processes & knowledge transfer | Q4 | Operational validation — scaling lessons, where systems matter most |
-| **HYP-5** | Government contracts with availability guarantees (10-year support) drive excessive inventory and supplier lock-in | Q5 | Economic validation — cost of availability guarantees, contract flexibility |
-| **HYP-6** | Standardization trade-off (COTS vs. custom) shifts if on-demand manufacturing compresses custom part costs & timelines | Q6 | Strategic validation — design philosophy, competitive positioning |
-| **HYP-7** | Horizon Naval Engineering + Canadian maritime ecosystem has specific procurement challenges + referral pathways for AM-ecosystem engagement | Q7 | Engagement validation — identify key players, validate problem fit, activate network |
+**Why this matters:** Surfaces the real data quality/usability gap. If CMMS data is unreliable or incomplete, that creates an opening for a layer that structures, interprets, and augments it.
 
 ---
 
-## LOGISTICS & CONTEXT
+### Q5: Major Shutdowns — Where Does Time and Money Actually Disappear?
 
-**Pre-Interview Research:**
-- Review Horizon Naval Engineering website & recent project announcements
-- Investigate Ontario Shipyards & Davie relationships (supply chain, shared vendors?)
-- Identify Canadian Coast Guard, DND, and commercial vessel specs for parts/sourcing patterns
-- Map known marine/naval supply clusters (Irving, Davie, Ontario Shipyards, Seaspan, etc.)
+> **"You led the reduction of Horne Smelter's shutdown from 15+ days to 12 days using Lean. For organizations that haven't done that work yet, where does time and money disappear during a major shutdown — and how close are most industrial sites to running their shutdowns as efficiently as possible?"**
 
-**Post-Interview:**
-- Capture names of procurement contacts, OEMs, supply-chain decision-makers
-- Map Horizon's current sourcing challenges & contract portfolio
-- Assess receptiveness to on-demand manufacturing pilots or partnerships
-- Identify referral opportunities (other yards, government clients, industry associations)
+**Probes:**
+- In a typical major shutdown, what proportion of scope overruns, delays, or cost blowouts come from: (a) unexpected findings during disassembly, (b) poor pre-shutdown planning, (c) parts/material availability, (d) contractor coordination, (e) something else?
+- How much of shutdown scope is typically unplanned when work actually starts vs. what was predicted during planning?
+- What's the cost of a single-day overrun on a major shutdown at a Glencore-scale operation? ($500k? $1M+?)
+- What would need to be true — in terms of data, tools, or workflow — to consistently run shutdowns within scope and schedule?
 
+**Why this matters:** Shutdown overruns are a massive, quantifiable pain point. Understanding the root causes of overruns identifies where a planning/visibility solution could create direct financial value.
+
+---
+
+## Bonus Questions (2)
+
+---
+
+### B1: Digitalization Journey — Where Are Most Industrial Sites on the Maturity Curve?
+
+> **"From your cross-site experience at Glencore and with Jacobs, how would you characterize where most large industrial maintenance organizations actually are on the digital maturity curve — and what's genuinely holding them back from getting further?"**
+
+**Probes:**
+- Are most sites you've seen at the "data collection" stage, "reporting/dashboards" stage, or genuinely at "predictive/prescriptive" capability?
+- What's the #1 barrier: budget, talent, data quality, cultural resistance, or vendor solutions that don't fit operations reality?
+- Have you seen any digital tools that actually delivered on their promise in a heavy industrial environment? What made them work?
+
+**Why this matters:** Validates the market readiness and helps calibrate where early adopters vs. laggards are — and what your go-to-market positioning should be.
+
+---
+
+### B2: Buying Decisions — How Does a New Solution Get Adopted at Glencore?
+
+> **"If a company came to you with a tool that could genuinely help with asset health monitoring, backlog prioritization, or shutdown planning — what would it take to get from 'interesting demo' to actual implementation? Who needs to say yes, and what are the real blockers?"**
+
+**Probes:**
+- Is budget the primary constraint, or is it IT/OT integration complexity, change management, or proving ROI before commitment?
+- How long does a typical procurement cycle take for a new operational software tool at Glencore?
+- What would a pilot need to prove in the first 90 days for you to recommend scaling it?
+- Have you ever championed a new solution from the floor up — and what made that succeed or fail?
+
+**Why this matters:** Critical for understanding the real sales cycle, decision-maker map, and what a minimum viable proof of value looks like in this segment.
+
+---
+
+## Closing Prompt
+
+> *"Is there a challenge in asset integrity or maintenance that I haven't asked about — something that keeps you up at night that you don't think people outside the industry fully appreciate?"*
