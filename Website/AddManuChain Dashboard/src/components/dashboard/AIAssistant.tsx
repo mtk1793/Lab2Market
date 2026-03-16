@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   MessageSquare, X, Send, Bot, User, Loader2,
-  Trash2, ChevronDown, Sparkles, Copy, Check
+  Trash2, ChevronDown, Sparkles, Copy, Check, Zap, Navigation
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
@@ -13,20 +13,24 @@ import { Textarea } from '@/components/ui/textarea'
 
 interface Message {
   id: string
-  role: 'user' | 'assistant'
+  role: 'user' | 'assistant' | 'action'
   content: string
   timestamp: Date
+  actionLabel?: string
+  actionType?: string
 }
 
 // ─── Suggested starter prompts ────────────────────────────────────────────────
 
 const SUGGESTIONS = [
   'How do I create a new print order?',
-  'What is a DRM token?',
-  'Why can\'t I select my blueprint?',
-  'How do I restart the tutorial?',
   'Explain the DRM approval pipeline',
   'How does the AI risk score work?',
+  'What is a Secure Print Token?',
+  'How do certifications affect print approval?',
+  'What does the Audit Log hash chain do?',
+  'How do I register a new blueprint?',
+  'What are the 6 user roles?',
 ]
 
 // ─── Markdown-lite renderer ───────────────────────────────────────────────────
@@ -105,11 +109,36 @@ function inlineMarkdown(text: string): React.ReactNode {
 function MessageBubble({ msg }: { msg: Message }) {
   const [copied, setCopied] = useState(false)
   const isUser = msg.role === 'user'
+  const isAction = msg.role === 'action'
 
   const copyText = () => {
     navigator.clipboard.writeText(msg.content)
     setCopied(true)
     setTimeout(() => setCopied(false), 1500)
+  }
+
+  // Action card (navigate / created)
+  if (isAction) {
+    const isNavigate = msg.actionType === 'navigate'
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex justify-center"
+      >
+        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm border ${
+          isNavigate
+            ? 'bg-teal-50 border-teal-200 text-teal-700'
+            : 'bg-violet-50 border-violet-200 text-violet-700'
+        }`}>
+          {isNavigate
+            ? <Navigation className="w-3 h-3" />
+            : <Zap className="w-3 h-3" />
+          }
+          {msg.actionLabel}
+        </div>
+      </motion.div>
+    )
   }
 
   return (
@@ -185,11 +214,11 @@ function TypingDots() {
 // ─── MAIN AI ASSISTANT COMPONENT ─────────────────────────────────────────────
 
 interface AIAssistantProps {
-  /** Current active persona / role — injected into AI system context */
   role?: string
+  onNavigate?: (page: string) => void
 }
 
-export function AIAssistant({ role = 'admin' }: AIAssistantProps) {
+export function AIAssistant({ role = 'admin', onNavigate }: AIAssistantProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -248,6 +277,25 @@ export function AIAssistant({ role = 'admin' }: AIAssistantProps) {
 
       const data = await res.json()
       const reply = data.reply ?? 'Sorry, I encountered an issue. Please try again.'
+      const action = data.frontendAction as { type: string; page?: string; label?: string; entity?: string } | undefined
+
+      // Execute frontend action (navigate / show created badge)
+      if (action) {
+        if (action.type === 'navigate' && action.page && onNavigate) {
+          onNavigate(action.page)
+        }
+        setMessages(prev => [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            role: 'action',
+            content: '',
+            actionLabel: action.label ?? (action.type === 'navigate' ? `Navigated to ${action.page}` : 'Action completed'),
+            actionType: action.type,
+            timestamp: new Date(),
+          },
+        ])
+      }
 
       setMessages(prev => [
         ...prev,
@@ -325,7 +373,7 @@ export function AIAssistant({ role = 'admin' }: AIAssistantProps) {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white font-semibold text-sm">AddManuChain AI</p>
-                <p className="text-white/60 text-xs">Powered by GPT-4o mini</p>
+                <p className="text-white/60 text-xs">Powered by Claude 3.5 Haiku</p>
               </div>
               <div className="flex items-center gap-1">
                 {messages.length > 0 && (

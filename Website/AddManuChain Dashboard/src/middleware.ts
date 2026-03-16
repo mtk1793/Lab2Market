@@ -1,19 +1,6 @@
-// Authentication middleware disabled
-// import authMiddleware from 'next-auth/middleware'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-// export const middleware = authMiddleware
-// export default authMiddleware
-
-// export const config = {
-//   matcher: [
-//     /*
-//      * Match all request paths except for the ones starting with:
-//      * - api/auth (NextAuth API routes)
-//      * - _next/static (static files)
-//      * - _next/image (image optimization files)
-//      * - favicon.ico (favicon file)
-//      * - login (login page)
-//      */
-//     '/((?!api/auth|_next/static|_next/image|favicon.ico|login).*)',
-//   ],
-// }
+export function middleware(_request: NextRequest) {
+  return NextResponse.next()
+}

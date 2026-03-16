@@ -177,7 +177,7 @@ export default function Dashboard() {
       </div>
 
       {/* AI Assistant floating chat widget */}
-      <AIAssistant role={currentRole} />
+      <AIAssistant role={currentRole} onNavigate={setActiveTab} />
     </div>
   )
 }
