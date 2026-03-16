@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all certification authorities
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const type = searchParams.get('type')
@@ -40,6 +43,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new certification authority
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { authorityId, name, acronym, type, contactEmail, contactPhone, specializations, websiteUrl } = body
@@ -73,6 +78,8 @@ export async function POST(request: NextRequest) {
 
 // DELETE a certification authority
 export async function DELETE(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')

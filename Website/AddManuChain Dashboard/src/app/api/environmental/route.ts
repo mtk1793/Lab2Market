@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET environmental impact records
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const orderId = searchParams.get('orderId')
@@ -27,6 +30,8 @@ export async function GET(request: NextRequest) {
 
 // GET aggregated environmental stats
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const allImpacts = await db.environmentalImpact.findMany()
     

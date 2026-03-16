@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all customization requests
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const status = searchParams.get('status')
@@ -32,6 +35,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new customization request
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { requestId, blueprintId, requesterId, requesterName, description, justification, estimatedCost, estimatedTime } = body
@@ -63,6 +68,8 @@ export async function POST(request: NextRequest) {
 
 // PUT update customization request
 export async function PUT(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { id, status, assignedTo, estimatedCost, estimatedTime } = body
@@ -91,6 +98,8 @@ export async function PUT(request: NextRequest) {
 
 // DELETE a customization request
 export async function DELETE(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')

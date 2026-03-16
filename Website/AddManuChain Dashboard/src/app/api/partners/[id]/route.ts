@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // DELETE a partner
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     
@@ -25,6 +28,8 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     
@@ -48,6 +53,8 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     const body = await request.json()

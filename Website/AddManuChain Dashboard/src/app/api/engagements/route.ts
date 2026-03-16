@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all customer engagements
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const phase = searchParams.get('phase')
@@ -43,6 +46,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new customer engagement
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { customerId, customerName, industry, accountManager, rigCount, notes } = body
@@ -74,6 +79,8 @@ export async function POST(request: NextRequest) {
 
 // PUT update customer engagement
 export async function PUT(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { id, phase, healthScore, status, notes, assessmentDate, adoptionDate, integrationDate, trainingDate, maintenanceStartDate } = body
@@ -107,6 +114,8 @@ export async function PUT(request: NextRequest) {
 
 // DELETE a customer engagement
 export async function DELETE(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')

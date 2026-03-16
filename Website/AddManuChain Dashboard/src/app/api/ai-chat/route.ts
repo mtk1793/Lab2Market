@@ -1,6 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { requireAuth } from '@/lib/require-auth'
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
+
+// ─── Rate limiter — 20 req/min per IP ─────────────────────────────────────────
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const entry = rateLimitMap.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 60_000 })
+    return true
+  }
+  if (entry.count >= 20) return false
+  entry.count++
+  return true
+}
 
 // ─── Tool definitions (OpenAI format — used by OpenRouter) ────────────────────
 
@@ -388,6 +403,14 @@ async function executeTool(
 
 export async function POST(req: NextRequest) {
   try {
+    const { session, error } = await requireAuth()
+    if (error) return error
+
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json({ error: 'Too many requests. Please wait before trying again.' }, { status: 429 })
+    }
+
     if (!OPENROUTER_API_KEY) {
       return NextResponse.json({ error: 'AI service not configured' }, { status: 500 })
     }

@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all orders
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const status = searchParams.get('status')
@@ -40,6 +43,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new order
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { partName, quantity, priority, notes, blueprintId, centerId, requesterId } = body

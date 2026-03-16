@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all certification requests
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const status = searchParams.get('status')
@@ -35,6 +38,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new certification request
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { requestId, blueprintId, authorityId, notes } = body
@@ -62,6 +67,8 @@ export async function POST(request: NextRequest) {
 
 // PUT update certification request
 export async function PUT(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { id, status, notes, reviewerName, documentUrl } = body

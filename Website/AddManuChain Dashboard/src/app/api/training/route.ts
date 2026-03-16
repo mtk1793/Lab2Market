@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all training sessions
 export async function GET(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const searchParams = request.nextUrl.searchParams
     const customerId = searchParams.get('customerId')
@@ -40,6 +43,8 @@ export async function GET(request: NextRequest) {
 
 // POST create new training session
 export async function POST(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { sessionId, customerId, title, type, scheduledDate, duration, trainer, location, attendees, materials } = body
@@ -73,6 +78,8 @@ export async function POST(request: NextRequest) {
 
 // PUT update training session
 export async function PUT(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const body = await request.json()
     const { id, status, feedback, attendees } = body
@@ -100,6 +107,8 @@ export async function PUT(request: NextRequest) {
 
 // DELETE a training session
 export async function DELETE(request: NextRequest) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')

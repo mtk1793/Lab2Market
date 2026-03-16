@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET all materials with stock information
 export async function GET() {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const materials = await db.material.findMany({
       orderBy: { name: 'asc' },

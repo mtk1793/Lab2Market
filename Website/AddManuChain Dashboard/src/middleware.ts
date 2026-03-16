@@ -1,6 +1,18 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { withAuth } from 'next-auth/middleware'
 
-export function middleware(_request: NextRequest) {
-  return NextResponse.next()
+export default withAuth(
+  function middleware() {
+    return undefined
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => !!token,
+    },
+  }
+)
+
+export const config = {
+  matcher: [
+    '/((?!api/auth|api/contact|_next/static|_next/image|favicon|icon|manifest|apple-touch-icon|login).*)',
+  ],
 }

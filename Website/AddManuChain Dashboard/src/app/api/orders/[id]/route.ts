@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET single order
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     const order = await db.order.findUnique({
@@ -36,6 +39,8 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     const body = await request.json()
@@ -77,6 +82,8 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     const { id } = await params
     

@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { requireAuth } from '@/lib/require-auth'
 
 // GET dashboard stats
 export async function GET() {
+  const { session, error } = await requireAuth()
+  if (error) return error
   try {
     // Get real counts from database
     const [
