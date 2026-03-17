@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AddManuChain — Platform v2</title>
+<style>
+:root{
+  --bg:#0b0f1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d45;
+  --red:#e02020;--red2:#ff4444;--accent:#e02020;
+  --blue:#3b82f6;--cyan:#06b6d4;--green:#10b981;--yellow:#f59e0b;
+  --purple:#8b5cf6;--orange:#f97316;
+  --text:#e2e8f0;--muted:#64748b;--card:#141e30;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── LANDING ── */
+#landing{display:flex;flex-direction:column;min-height:100vh;}
+.land-header{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(0,0,0,.4);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);}
+.land-logo{font-size:22px;font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;gap:10px;}
+.land-logo-icon{width:36px;height:36px;background:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.land-logo span{color:var(--red);}
+.land-badge{font-size:10px;background:rgba(224,32,32,.15);color:var(--red);border:1px solid rgba(224,32,32,.3);padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.5px;}
+.land-cta-btn{background:var(--red);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
+.land-cta-btn:hover{background:var(--red2);transform:translateY(-1px);}
+
+/* hero */
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;flex:1;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(224,32,32,.08) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(224,32,32,.1);border:1px solid rgba(224,32,32,.3);color:var(--red);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:24px;text-transform:uppercase;letter-spacing:1px;}
+.hero h1{font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.15;max-width:800px;margin-bottom:18px;}
+.hero h1 span{color:var(--red);}
+.hero p{font-size:16px;color:var(--muted);max-width:580px;line-height:1.7;margin-bottom:36px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-red{background:var(--red);color:#fff;border:none;padding:13px 28px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(224,32,32,.3);}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);padding:13px 28px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-outline:hover{border-color:var(--red);color:var(--red);}
+
+/* stats strip */
+.stats-strip{display:flex;justify-content:center;gap:0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:22px 40px;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-val{font-size:28px;font-weight:800;color:var(--red);}
+.stat-label{font-size:11px;color:var(--muted);margin-top:3px;text-align:center;}
+
+/* problem/solution strip */
+.ps-section{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1100px;margin:60px auto;padding:0 40px;}
+.ps-col{padding:32px 36px;}
+.ps-col-left{background:var(--surface);border-radius:14px 0 0 14px;border:1px solid var(--border);}
+.ps-col-right{background:linear-gradient(135deg,rgba(224,32,32,.08),rgba(224,32,32,.03));border-radius:0 14px 14px 0;border:1px solid rgba(224,32,32,.25);border-left:none;}
+.ps-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px;}
+.ps-col-left .ps-title{color:var(--muted);}
+.ps-col-right .ps-title{color:var(--red);}
+.ps-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;}
+.ps-item:last-child{border-bottom:none;}
+.ps-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+/* ecosystem */
+.eco-section{max-width:1100px;margin:0 auto 60px;padding:0 40px;}
+.eco-title{text-align:center;font-size:22px;font-weight:700;margin-bottom:8px;}
+.eco-sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:32px;}
+.eco-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.eco-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.eco-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:all .3s;}
+.eco-card:hover{transform:translateY(-3px);border-color:rgba(224,32,32,.4);}
+.eco-card:hover::before{background:var(--red);}
+.eco-icon{font-size:28px;margin-bottom:10px;}
+.eco-name{font-size:13px;font-weight:700;margin-bottom:4px;}
+.eco-role{font-size:10px;color:var(--muted);line-height:1.4;}
+.eco-badge{display:inline-block;font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;margin-top:8px;}
+.launch-btn{width:100%;padding:9px;background:rgba(224,32,32,.1);border:1px solid rgba(224,32,32,.3);color:var(--red);border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;margin-top:10px;transition:all .2s;}
+.launch-btn:hover{background:var(--red);color:#fff;}
+
+/* ── APP SHELL ── */
+#app{display:none;height:100vh;flex-direction:column;}
+.app-header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.app-logo{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px;}
+.app-logo-dot{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.app-logo span{color:var(--red);}
+.app-body{display:flex;flex:1;overflow:hidden;}
+
+/* SIDEBAR */
+.sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;}
+.persona-pill{display:flex;align-items:center;gap:9px;padding:14px 14px 10px;}
+.persona-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.persona-name{font-size:12px;font-weight:600;line-height:1.2;}
+.persona-role{font-size:10px;color:var(--muted);}
+.sidebar-divider{height:1px;background:var(--border);margin:6px 0;}
+.nav-group-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:8px 14px 4px;}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 14px;font-size:12px;cursor:pointer;border-radius:0;transition:all .2s;color:var(--muted);border-left:3px solid transparent;}
+.nav-item:hover{background:rgba(255,255,255,.04);color:var(--text);}
+.nav-item.active{background:rgba(224,32,32,.08);color:var(--text);border-left-color:var(--red);}
+.nav-icon{font-size:14px;width:18px;text-align:center;}
+.sidebar-footer{margin-top:auto;padding:12px 14px;border-top:1px solid var(--border);}
+.back-btn{width:100%;padding:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);border-radius:7px;font-size:11px;cursor:pointer;transition:all .2s;}
+.back-btn:hover{color:var(--text);border-color:var(--text);}
+
+/* MAIN CONTENT */
+.main{flex:1;overflow-y:auto;padding:20px 24px;}
+.page{display:none;}
+.page.active{display:block;}
+.page-title{font-size:20px;font-weight:700;margin-bottom:4px;}
+.page-sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:16px 18px;position:relative;overflow:hidden;}
+.kpi-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.kpi-val{font-size:24px;font-weight:800;margin-bottom:2px;}
+.kpi-label{font-size:11px;color:var(--muted);}
+.kpi-change{font-size:10px;margin-top:5px;font-weight:600;}
+.kpi-change.up{color:var(--green);}
+.kpi-change.warn{color:var(--yellow);}
+.kpi-change.crit{color:var(--red);}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;font-size:12px;}
+.data-table th{padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);}
+.data-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);}
+.data-table tr:hover td{background:rgba(255,255,255,.02);}
+.data-table tr:last-child td{border-bottom:none;}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;}
+.badge-red{background:rgba(224,32,32,.15);color:#f87171;}
+.badge-green{background:rgba(16,185,129,.15);color:#6ee7b7;}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fcd34d;}
+.badge-blue{background:rgba(59,130,246,.15);color:#93c5fd;}
+.badge-purple{background:rgba(139,92,246,.15);color:#c4b5fd;}
+.badge-cyan{background:rgba(6,182,212,.15);color:#67e8f9;}
+.badge-muted{background:rgba(100,116,139,.15);color:var(--muted);}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:18px;}
+.card-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+
+/* PIPELINE MINI */
+.pipeline-mini{display:flex;align-items:center;gap:0;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:14px 20px;margin-bottom:14px;overflow-x:auto;}
+.pipe-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:80px;}
+.pipe-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--border);background:var(--surface2);transition:all .3s;}
+.pipe-dot.done{background:rgba(16,185,129,.2);border-color:var(--green);}
+.pipe-dot.active{background:rgba(224,32,32,.15);border-color:var(--red);animation:rpulse 2s infinite;}
+.pipe-dot.waiting{background:rgba(245,158,11,.15);border-color:var(--yellow);}
+@keyframes rpulse{0%,100%{box-shadow:0 0 0 0 rgba(224,32,32,.4);}50%{box-shadow:0 0 0 6px rgba(224,32,32,0);}}
+.pipe-label{font-size:9px;color:var(--muted);text-align:center;max-width:70px;line-height:1.3;}
+.pipe-line{flex:1;height:2px;background:var(--border);min-width:20px;align-self:center;margin-bottom:18px;}
+.pipe-line.done{background:var(--green);}
+
+/* FORM ELEMENTS */
+.form-group{margin-bottom:14px;}
+.form-label{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:5px;display:block;text-transform:uppercase;letter-spacing:.5px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13px;transition:border .2s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--red);}
+.form-textarea{min-height:70px;resize:vertical;}
+.form-select option{background:var(--surface2);}
+.submit-btn{background:var(--red);color:#fff;border:none;padding:11px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
+.submit-btn:hover{background:var(--red2);}
+.action-btn{background:var(--surface2);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
+.action-btn:hover{border-color:var(--red);color:var(--red);}
+.action-btn.green{border-color:rgba(16,185,129,.4);color:var(--green);}
+
+/* PROGRESS BAR */
+.prog-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-top:5px;}
+.prog-fill{height:100%;border-radius:3px;transition:width .8s ease;}
+
+/* STATUS DOT */
+.sdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;}
+
+/* TOAST */
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:6px;}
+.toast{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);padding:10px 14px;border-radius:9px;font-size:11px;max-width:260px;box-shadow:0 8px 24px rgba(0,0,0,.4);animation:tin .4s ease,tout .4s ease forwards;animation-delay:0s,3s;}
+.toast.green{border-left-color:var(--green);}
+@keyframes tin{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
+@keyframes tout{from{opacity:1;}to{opacity:0;transform:translateX(16px);}}
+.toast-title{font-weight:700;margin-bottom:2px;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ LANDING ═══════════════════ -->
+<div id="landing">
+  <div class="land-header">
+    <div class="land-logo">
+      <div class="land-logo-icon">🔗</div>
+      AddManu<span>Chain</span>
+    </div>
+    <div class="land-badge">IRAP DEMO · MARCH 2026</div>
+    <button class="land-cta-btn" onclick="showEco()">Launch Platform →</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">🛢️ Metal 3D-Printing for Remote Industries</div>
+    <h1>Your Spare Parts. <span>On-Demand.</span><br/>No Warehouse. Fully Certified.</h1>
+    <p>AddManuChain eliminates 9–14 week lead times for remote industries by connecting operators directly to certified 3D-printing centres with IP-protected blueprints, real-time lab testing, and tamper-evident audit chains.</p>
+    <div class="hero-actions">
+      <button class="btn-red" onclick="showEco()">Explore the Platform →</button>
+      <button class="btn-outline" onclick="window.open('https://addmanuchain.vercel.app','_blank')">Live Site ↗</button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat-item"><div class="stat-val">$88M</div><div class="stat-label">Annual downtime cost per rig<br/>(GE Oil & Gas)</div></div>
+    <div class="stat-item"><div class="stat-val">80%</div><div class="stat-label">Physical inventory unused<br/>($4.5B waste · Equinor)</div></div>
+    <div class="stat-item"><div class="stat-val">9–14 wks</div><div class="stat-label">Conventional spare parts<br/>lead time</div></div>
+    <div class="stat-item"><div class="stat-val">3 days</div><div class="stat-label">AddManuChain<br/>delivery target</div></div>
+    <div class="stat-item"><div class="stat-val">$1.4B</div><div class="stat-label">Global TAM<br/>(6,000 drilling rigs)</div></div>
+  </div>
+
+  <!-- PROBLEM vs SOLUTION -->
+  <div class="ps-section">
+    <div class="ps-col ps-col-left">
+      <div class="ps-title">❌ The Problem — Remote Industry Today</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#ef4444"></div>Parts must be flown in by helicopter or supply vessel — costly & slow</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#ef4444"></div>OEMs have 9–14 week lead times with zero flexibility</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#ef4444"></div>Companies hold 80% unused inventory "just in case"</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#ef4444"></div>One critical part failure = process shutdown + $500K+/day downtime</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#ef4444"></div>Certification stamps owned by OEMs — no alternative supply path</div>
+    </div>
+    <div class="ps-col ps-col-right">
+      <div class="ps-title">✅ The Solution — AddManuChain</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#10b981"></div>Digital blueprint vault — order any certified part on-demand</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#10b981"></div>Pre-certified personnel, machines & materials ready to print</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#10b981"></div>Automatic DRM: OEM IP protected, royalty auto-disbursed</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#10b981"></div>Lab-tested witness coupons + DNV GL certification per build</div>
+      <div class="ps-item"><div class="ps-dot" style="background:#10b981"></div>Immutable audit chain — every print traceable, tamper-evident</div>
+    </div>
+  </div>
+
+  <!-- ECOSYSTEM / ROLE SELECTOR -->
+  <div class="eco-section" id="eco-anchor">
+    <div class="eco-title">Platform Ecosystem — Choose Your Role</div>
+    <div class="eco-sub">AddManuChain connects five entities in a single certified pipeline. Click a role to enter its dashboard.</div>
+    <div class="eco-grid">
+
+      <div class="eco-card" onclick="enterRole('operator')">
+        <div class="eco-icon">⛽</div>
+        <div class="eco-name">Operator / End User</div>
+        <div class="eco-role">Offshore Oil & Gas · Mining · Marine · Remote Industry</div>
+        <span class="eco-badge" style="background:rgba(59,130,246,.15);color:#93c5fd;">End User</span>
+        <button class="launch-btn">Enter Dashboard →</button>
+      </div>
+
+      <div class="eco-card" onclick="enterRole('oem')">
+        <div class="eco-icon">🏭</div>
+        <div class="eco-name">OEM / IP Owner</div>
+        <div class="eco-role">Blueprint Vault · Licence Management · Royalty Tracking</div>
+        <span class="eco-badge" style="background:rgba(139,92,246,.15);color:#c4b5fd;">IP Partner</span>
+        <button class="launch-btn">Enter Dashboard →</button>
+      </div>
+
+      <div class="eco-card" onclick="enterRole('print')">
+        <div class="eco-icon">🖨️</div>
+        <div class="eco-name">Print Centre</div>
+        <div class="eco-role">Certified LPBF Facility · Job Queue · Material Stock</div>
+        <span class="eco-badge" style="background:rgba(16,185,129,.15);color:#6ee7b7;">Manufacturer</span>
+        <button class="launch-btn">Enter Dashboard →</button>
+      </div>
+
+      <div class="eco-card" onclick="enterRole('cert')">
+        <div class="eco-icon">🏛️</div>
+        <div class="eco-name">Certification Body</div>
+        <div class="eco-role">DNV GL · Lloyd's · Bureau Veritas · Sign-off Authority</div>
+        <span class="eco-badge" style="background:rgba(245,158,11,.15);color:#fcd34d;">Regulator</span>
+        <button class="launch-btn">Enter Dashboard →</button>
+      </div>
+
+      <div class="eco-card" onclick="enterRole('lab')">
+        <div class="eco-icon">🔬</div>
+        <div class="eco-name">Testing Lab</div>
+        <div class="eco-role">Coupon Testing · NDT · Mechanical · Reports · Dalhousie</div>
+        <span class="eco-badge" style="background:rgba(249,115,22,.15);color:#fdba74;">Lab</span>
+        <button class="launch-btn">Enter Dashboard →</button>
+      </div>
+
+    </div>
+  </div>
+</div><!-- end landing -->
+
+<!-- ═══════════════════ APP SHELL ═══════════════════ -->
+<div id="app">
+  <div class="app-header">
+    <div class="app-logo"><div class="app-logo-dot">🔗</div>AddManu<span>Chain</span></div>
+    <div id="app-persona-badge" style="font-size:11px;color:var(--muted);"></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:10px;color:var(--muted);">v2 · NRC IRAP Demo · March 2026</span>
+      <button onclick="exitApp()" style="background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;">← Exit</button>
+    </div>
+  </div>
+  <div class="app-body">
+    <div class="sidebar" id="sidebar"></div>
+    <div class="main" id="main-content"></div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const ROLES = {
+  operator:{
+    name:'Mike Lenart', org:'Greenstone Gold Mines', icon:'⛽', color:'#3b82f6',
+    badge:'Operator / End User', initials:'ML',
+    nav:[
+      {id:'op-overview',icon:'📊',label:'Overview'},
+      {id:'op-order',icon:'➕',label:'Order a Part'},
+      {id:'op-orders',icon:'📦',label:'My Orders'},
+      {id:'op-inventory',icon:'📋',label:'Digital Inventory'},
+    ]
+  },
+  oem:{
+    name:'Johann Weber', org:'Wärtsilä Marine OEM', icon:'🏭', color:'#8b5cf6',
+    badge:'OEM / IP Owner', initials:'JW',
+    nav:[
+      {id:'oem-overview',icon:'📊',label:'Overview'},
+      {id:'oem-blueprints',icon:'📐',label:'Blueprint Vault'},
+      {id:'oem-licences',icon:'🔑',label:'Licence Requests'},
+      {id:'oem-royalties',icon:'💰',label:'Royalties'},
+    ]
+  },
+  print:{
+    name:'James Okafor', org:'Atlantic XL Halifax', icon:'🖨️', color:'#10b981',
+    badge:'Print Centre', initials:'JO',
+    nav:[
+      {id:'pc-overview',icon:'📊',label:'Overview'},
+      {id:'pc-jobs',icon:'⚙️',label:'Job Queue'},
+      {id:'pc-machines',icon:'🖨️',label:'Machines'},
+      {id:'pc-materials',icon:'🧪',label:'Materials'},
+    ]
+  },
+  cert:{
+    name:'Dr. Priya Patel', org:'DNV GL — Class Society', icon:'🏛️', color:'#f59e0b',
+    badge:'Certification Body', initials:'PP',
+    nav:[
+      {id:'cb-overview',icon:'📊',label:'Overview'},
+      {id:'cb-pending',icon:'📋',label:'Pending Reviews'},
+      {id:'cb-issued',icon:'✅',label:'Issued Certs'},
+      {id:'cb-facilities',icon:'🏭',label:'Approved Facilities'},
+    ]
+  },
+  lab:{
+    name:'Dr. A. Kaur', org:'Dalhousie AM Lab', icon:'🔬', color:'#f97316',
+    badge:'Testing Lab', initials:'AK',
+    nav:[
+      {id:'lab-overview',icon:'📊',label:'Overview'},
+      {id:'lab-queue',icon:'🧫',label:'Test Queue'},
+      {id:'lab-results',icon:'📊',label:'Results'},
+      {id:'lab-reports',icon:'📄',label:'Reports'},
+    ]
+  }
+};
+
+let currentRole = null;
+let currentPage = null;
+
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function showEco(){document.getElementById('eco-anchor').scrollIntoView({behavior:'smooth'});}
+
+function enterRole(role){
+  currentRole = role;
+  const r = ROLES[role];
+  document.getElementById('landing').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('app-persona-badge').textContent = r.badge + ' — ' + r.name + ' · ' + r.org;
+  buildSidebar(role);
+  navigateTo(r.nav[0].id);
+}
+
+function exitApp(){
+  document.getElementById('landing').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+function buildSidebar(role){
+  const r = ROLES[role];
+  let html = `<div class="persona-pill">
+    <div class="persona-avatar" style="background:${r.color}22;color:${r.color};">${r.initials}</div>
+    <div><div class="persona-name">${r.name}</div><div class="persona-role">${r.org}</div></div>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="nav-group-label">Navigation</div>`;
+  r.nav.forEach(n=>{
+    html += `<div class="nav-item" id="nav-${n.id}" onclick="navigateTo('${n.id}')"><span class="nav-icon">${n.icon}</span>${n.label}</div>`;
+  });
+  html += `<div class="sidebar-divider"></div>
+  <div class="nav-group-label">Platform</div>
+  <div class="nav-item" onclick="showToast('Pipeline Demo','Opening pipeline demo...','')"><span class="nav-icon">🔄</span>Pipeline Demo</div>
+  <div class="nav-item" onclick="showToast('AI Assistant','Connecting to AI assistant...','')"><span class="nav-icon">🤖</span>AI Assistant</div>
+  <div class="sidebar-footer"><button class="back-btn" onclick="exitApp()">← Back to Home</button></div>`;
+  document.getElementById('sidebar').innerHTML = html;
+}
+
+function navigateTo(pageId){
+  currentPage = pageId;
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const ni = document.getElementById('nav-'+pageId);
+  if(ni) ni.classList.add('active');
+  document.getElementById('main-content').innerHTML = getPage(pageId);
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(title,body,type){
+  const w=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className='toast'+(type==='green'?' green':'');
+  t.innerHTML=`<div class="toast-title">${title}</div><div style="color:var(--muted)">${body}</div>`;
+  w.appendChild(t);
+  setTimeout(()=>t.remove(),3700);
+}
+
+// ── PAGE RENDERER ─────────────────────────────────────────────────────────────
+function getPage(id){
+  if(id==='op-overview') return pageOpOverview();
+  if(id==='op-order')    return pageOpOrder();
+  if(id==='op-orders')   return pageOpOrders();
+  if(id==='op-inventory')return pageOpInventory();
+  if(id==='oem-overview')  return pageOemOverview();
+  if(id==='oem-blueprints')return pageOemBlueprints();
+  if(id==='oem-licences')  return pageOemLicences();
+  if(id==='oem-royalties') return pageOemRoyalties();
+  if(id==='pc-overview')  return pagePcOverview();
+  if(id==='pc-jobs')      return pagePcJobs();
+  if(id==='pc-machines')  return pagePcMachines();
+  if(id==='pc-materials') return pagePcMaterials();
+  if(id==='cb-overview')  return pageCbOverview();
+  if(id==='cb-pending')   return pageCbPending();
+  if(id==='cb-issued')    return pageCbIssued();
+  if(id==='cb-facilities')return pageCbFacilities();
+  if(id==='lab-overview') return pageLabOverview();
+  if(id==='lab-queue')    return pageLabQueue();
+  if(id==='lab-results')  return pageLabResults();
+  if(id==='lab-reports')  return pageLabReports();
+  return '<div style="padding:40px;color:var(--muted);">Page not found</div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// OPERATOR PAGES
+// ════════════════════════════════════════════════════════════
+function pageOpOverview(){return `
+<div class="page-title">Good morning, Mike 👋</div>
+<div class="page-sub">Greenstone Gold Mine · Geraldton, ON · Critical Equipment Monitor</div>
+<div class="kpi-grid">
+  <div class="kpi-card" style="border-top:2px solid var(--red);">
+    <div class="kpi-val" style="color:var(--red);">1</div>
+    <div class="kpi-label">Critical Part Needed</div>
+    <div class="kpi-change crit">⚠ Mill Bearing Housing — urgent</div>
+  </div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);">
+    <div class="kpi-val" style="color:var(--blue);">3</div>
+    <div class="kpi-label">Active Orders</div>
+    <div class="kpi-change up">↑ 2 in production</div>
+  </div>
+  <div class="kpi-card" style="border-top:2px solid var(--green);">
+    <div class="kpi-val" style="color:var(--green);">$2.1M</div>
+    <div class="kpi-label">Downtime Saved (YTD)</div>
+    <div class="kpi-change up">↑ vs. conventional supply</div>
+  </div>
+  <div class="kpi-card" style="border-top:2px solid var(--yellow);">
+    <div class="kpi-val" style="color:var(--yellow);">47</div>
+    <div class="kpi-label">Digital Parts Available</div>
+    <div class="kpi-change up">↑ 5 new blueprints this month</div>
+  </div>
+</div>
+<div class="pipeline-mini">
+  <div class="pipe-step"><div class="pipe-dot done">📋</div><div class="pipe-label">Order Placed</div></div>
+  <div class="pipe-line done"></div>
+  <div class="pipe-step"><div class="pipe-dot done">🔎</div><div class="pipe-label">DRM Verified</div></div>
+  <div class="pipe-line done"></div>
+  <div class="pipe-step"><div class="pipe-dot active">🖨️</div><div class="pipe-label">Printing</div></div>
+  <div class="pipe-line"></div>
+  <div class="pipe-step"><div class="pipe-dot">🔬</div><div class="pipe-label">Lab Tests</div></div>
+  <div class="pipe-line"></div>
+  <div class="pipe-step"><div class="pipe-dot">🏛️</div><div class="pipe-label">Cert Sign-Off</div></div>
+  <div class="pipe-line"></div>
+  <div class="pipe-step"><div class="pipe-dot">🚚</div><div class="pipe-label">Shipped</div></div>
+  <div class="pipe-line"></div>
+  <div class="pipe-step"><div class="pipe-dot">✅</div><div class="pipe-label">Delivered</div></div>
+</div>
+<div class="two-col">
+  <div class="card">
+    <div class="card-title">Active Orders</div>
+    <table class="data-table">
+      <thead><tr><th>Part</th><th>Status</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr><td>Mill Bearing Housing</td><td><span class="badge badge-blue">🖨️ Printing</span></td><td style="color:var(--green);">Mar 20</td></tr>
+        <tr><td>Pump Seal Ring #3</td><td><span class="badge badge-yellow">🔬 Testing</span></td><td>Mar 19</td></tr>
+        <tr><td>Valve Body V-220</td><td><span class="badge badge-cyan">🚚 Shipped</span></td><td>Mar 18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title">Just-in-Time vs. Just-in-Case</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:12px;">Physical inventory you no longer need to carry:</div>
+    <div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Bearing Housings (12 SKUs)</span><span style="color:var(--green);">Digitized ✓</span></div>
+      <div class="prog-bar"><div class="prog-fill" style="width:85%;background:var(--green);"></div></div>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Pump Components (8 SKUs)</span><span style="color:var(--green);">Digitized ✓</span></div>
+      <div class="prog-bar"><div class="prog-fill" style="width:60%;background:var(--blue);"></div></div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Valve Bodies (23 SKUs)</span><span style="color:var(--yellow);">In Progress</span></div>
+      <div class="prog-bar"><div class="prog-fill" style="width:35%;background:var(--yellow);"></div></div>
+    </div>
+  </div>
+</div>`;}
+
+function pageOpOrder(){return `
+<div class="page-title">Order a Part</div>
+<div class="page-sub">Select a certified blueprint — platform verifies personnel, machine & material before printing</div>
+<div class="two-col">
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-title">Part Details</div>
+      <div class="form-group"><label class="form-label">Part Number</label>
+        <input class="form-input" value="MBH-4420-GLD" placeholder="e.g. MBH-4420-GLD"/></div>
+      <div class="form-group"><label class="form-label">Blueprint</label>
+        <select class="form-select">
+          <option>BP-7741-STEEL — Mill Bearing Housing (316L SS)</option>
+          <option>BP-5512-TI — Pump Impeller (Ti-6Al-4V)</option>
+          <option>BP-3390-IN — Valve Body (Inconel 625)</option>
+        </select></div>
+      <div class="form-group"><label class="form-label">Qty</label>
+        <input class="form-input" type="number" value="1"/></div>
+      <div class="form-group"><label class="form-label">Priority</label>
+        <select class="form-select"><option>🔴 Critical — next available slot</option><option>🟡 Standard — 5 day window</option><option>🟢 Planned — schedule flexible</option></select></div>
+      <div class="form-group"><label class="form-label">Notes</label>
+        <textarea class="form-textarea">Mill shutdown — urgent replacement needed. Downtime cost ~$500K/day.</textarea></div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-title">Pre-Certification Status — Atlantic XL Halifax</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:7px;">
+          <span>👷 James Okafor — DNV GL AM Operator L2</span><span class="badge badge-green">✓ Cert</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:7px;">
+          <span>⚙️ EOS M 290 #ATL-01 — DNV Type Approved</span><span class="badge badge-green">✓ Cal.</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:7px;">
+          <span>🧪 316L SS Batch B447 — DNV MC-2025-1122</span><span class="badge badge-green">✓ Stock</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Order Summary</div>
+      <div style="font-size:12px;display:flex;flex-direction:column;gap:7px;">
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Print Centre</span><span>Atlantic XL, Halifax NS</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Cert Standard</span><span>DNV GL Part 6</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Est. Lead Time</span><span style="color:var(--green);font-weight:700;">3–5 days</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">vs. Conventional</span><span style="color:var(--red);">9–14 weeks</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Part Cost</span><span>$4,200</span></div>
+        <div style="display:flex;justify-content:space-between;padding-top:7px;border-top:1px solid var(--border);font-weight:700;"><span>Downtime Avoided</span><span style="color:var(--green);">~$2.5M</span></div>
+      </div>
+      <button class="submit-btn" style="width:100%;margin-top:14px;" onclick="submitOrder()">Submit Order →</button>
+    </div>
+  </div>
+</div>`;}
+
+function pageOpOrders(){return `
+<div class="page-title">My Orders</div>
+<div class="page-sub">All orders placed through AddManuChain — each backed by certified personnel, machine & material</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Order ID</th><th>Part</th><th>Blueprint</th><th>Print Centre</th><th>Status</th><th>Cert</th><th>ETA</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">ORD-2026-0317-041</td>
+        <td>Mill Bearing Housing</td>
+        <td style="font-family:monospace;font-size:10px;">BP-7741</td>
+        <td>Atlantic XL, NS</td>
+        <td><span class="badge badge-blue">🖨️ Printing</span></td>
+        <td><span class="badge badge-yellow">Pending</span></td>
+        <td style="color:var(--green);">Mar 20</td>
+        <td><button class="action-btn">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">ORD-2026-0314-038</td>
+        <td>Pump Seal Ring #3</td>
+        <td style="font-family:monospace;font-size:10px;">BP-5512</td>
+        <td>Atlantic XL, NS</td>
+        <td><span class="badge badge-orange">🔬 Lab Testing</span></td>
+        <td><span class="badge badge-yellow">In Review</span></td>
+        <td>Mar 19</td>
+        <td><button class="action-btn">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">ORD-2026-0312-031</td>
+        <td>Valve Body V-220</td>
+        <td style="font-family:monospace;font-size:10px;">BP-3390</td>
+        <td>PolyUnity NL</td>
+        <td><span class="badge badge-cyan">🚚 Shipped</span></td>
+        <td><span class="badge badge-green">DNV ✓</span></td>
+        <td>Mar 18</td>
+        <td><button class="action-btn">Track</button></td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">ORD-2026-0301-022</td>
+        <td>Drill Collar Stabilizer</td>
+        <td style="font-family:monospace;font-size:10px;">BP-2201</td>
+        <td>Atlantic XL, NS</td>
+        <td><span class="badge badge-green">✅ Delivered</span></td>
+        <td><span class="badge badge-green">DNV ✓</span></td>
+        <td>Mar 6</td>
+        <td><button class="action-btn">Certificate</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageOpInventory(){return `
+<div class="page-title">Digital Inventory</div>
+<div class="page-sub">Physical warehouse replaced by certified digital blueprints — print on-demand, just-in-time</div>
+<div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">47</div><div class="kpi-label">Digital Blueprints Available</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--red);"><div class="kpi-val" style="color:var(--red);">$0</div><div class="kpi-label">Physical Inventory Carrying Cost</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--cyan);"><div class="kpi-val" style="color:var(--cyan);">83%</div><div class="kpi-label">Inventory Reduction vs. Before</div></div>
+</div>
+<div class="card">
+  <div class="card-title">Available Blueprints — Certified for Your Facility</div>
+  <table class="data-table">
+    <thead><tr><th>Blueprint ID</th><th>Part Name</th><th>Material</th><th>Cert Standard</th><th>OEM Owner</th><th>Lead Time</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-7741-STEEL</td><td>Mill Bearing Housing</td><td>316L SS</td><td><span class="badge badge-yellow">DNV GL</span></td><td>Wärtsilä</td><td style="color:var(--green);">3 days</td><td><button class="action-btn" onclick="navigateTo('op-order')">Order →</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-5512-TI</td><td>Pump Impeller</td><td>Ti-6Al-4V</td><td><span class="badge badge-yellow">DNV GL</span></td><td>Sulzer</td><td style="color:var(--green);">4 days</td><td><button class="action-btn" onclick="navigateTo('op-order')">Order →</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-3390-IN</td><td>Valve Body V-220</td><td>Inconel 625</td><td><span class="badge badge-blue">Lloyd's</span></td><td>Cameron</td><td style="color:var(--green);">5 days</td><td><button class="action-btn" onclick="navigateTo('op-order')">Order →</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-2201-SS</td><td>Drill Collar Stabilizer</td><td>316L SS</td><td><span class="badge badge-yellow">DNV GL</span></td><td>NOV</td><td style="color:var(--green);">3 days</td><td><button class="action-btn" onclick="navigateTo('op-order')">Order →</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-1188-TI</td><td>Centrifugal Pump Shaft</td><td>Ti-6Al-4V</td><td><span class="badge badge-green">BV</span></td><td>KSB</td><td style="color:var(--green);">4 days</td><td><button class="action-btn" onclick="navigateTo('op-order')">Order →</button></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+// ════════════════════════════════════════════════════════════
+// OEM PAGES
+// ════════════════════════════════════════════════════════════
+function pageOemOverview(){return `
+<div class="page-title">OEM Partner Dashboard</div>
+<div class="page-sub">Wärtsilä Marine OEM · Manage IP, licences & royalties on AddManuChain</div>
+<div class="kpi-grid">
+  <div class="kpi-card" style="border-top:2px solid var(--purple);"><div class="kpi-val" style="color:var(--purple);">23</div><div class="kpi-label">Active Blueprints</div><div class="kpi-change up">↑ 3 new this month</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--yellow);"><div class="kpi-val" style="color:var(--yellow);">7</div><div class="kpi-label">Pending Licence Requests</div><div class="kpi-change warn">Needs review</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">$48.2K</div><div class="kpi-label">Royalties — March 2026</div><div class="kpi-change up">↑ 22% vs. Feb</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);"><div class="kpi-val" style="color:var(--blue);">156</div><div class="kpi-label">Parts Printed YTD</div><div class="kpi-change up">Zero IP violations</div></div>
+</div>
+<div class="two-col">
+  <div class="card">
+    <div class="card-title">Top Blueprints by Revenue</div>
+    <table class="data-table">
+      <thead><tr><th>Blueprint</th><th>Prints</th><th>Revenue</th></tr></thead>
+      <tbody>
+        <tr><td>BP-7741 Mill Bearing</td><td>34</td><td style="color:var(--green);">$12,800</td></tr>
+        <tr><td>BP-5512 Pump Impeller</td><td>28</td><td style="color:var(--green);">$9,400</td></tr>
+        <tr><td>BP-3390 Valve Body</td><td>19</td><td style="color:var(--green);">$7,100</td></tr>
+        <tr><td>BP-2201 Drill Collar</td><td>41</td><td style="color:var(--green);">$11,200</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title">Pending Licence Requests</div>
+    <table class="data-table">
+      <thead><tr><th>Requester</th><th>Blueprint</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Greenstone Gold Mines</td><td>BP-7741</td><td><button class="action-btn green" onclick="showToast('Licence Approved ✓','BP-7741 granted to Greenstone Gold Mines','green')">Approve</button></td></tr>
+        <tr><td>Equinor Offshore</td><td>BP-5512</td><td><button class="action-btn green" onclick="showToast('Licence Approved ✓','BP-5512 granted to Equinor','green')">Approve</button></td></tr>
+        <tr><td>Horizon Maritime</td><td>BP-3390</td><td><button class="action-btn green" onclick="showToast('Licence Approved ✓','BP-3390 granted to Horizon','green')">Approve</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>`;}
+
+function pageOemBlueprints(){return `
+<div class="page-title">Blueprint Vault</div>
+<div class="page-sub">All your IP-protected CAD files — DRM enforced on every print, one-time token per build</div>
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <div class="card-title" style="margin-bottom:0;">23 Active Blueprints</div>
+    <button class="submit-btn" style="padding:7px 16px;font-size:11px;" onclick="showToast('Blueprint Upload','Upload feature — coming in full release','')">+ Upload Blueprint</button>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>ID</th><th>Part Name</th><th>Material</th><th>Cert Standard</th><th>Approved Centres</th><th>Prints</th><th>Revenue</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-7741</td><td>Mill Bearing Housing</td><td>316L SS</td><td>DNV GL Part 6</td><td>3 centres</td><td>34</td><td style="color:var(--green);">$12,800</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-5512</td><td>Pump Impeller</td><td>Ti-6Al-4V</td><td>DNV GL Part 6</td><td>2 centres</td><td>28</td><td style="color:var(--green);">$9,400</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-3390</td><td>Valve Body V-220</td><td>Inconel 625</td><td>Lloyd's Register</td><td>1 centre</td><td>19</td><td style="color:var(--green);">$7,100</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-2201</td><td>Drill Collar Stabilizer</td><td>316L SS</td><td>DNV GL Part 6</td><td>4 centres</td><td>41</td><td style="color:var(--green);">$11,200</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-1188</td><td>Centrifugal Pump Shaft</td><td>Ti-6Al-4V</td><td>Bureau Veritas</td><td>2 centres</td><td>22</td><td style="color:var(--green);">$6,900</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">BP-0891</td><td>Riser Clamp Body</td><td>316L SS</td><td>DNV GL Part 6</td><td>0 centres</td><td>0</td><td style="color:var(--muted);">—</td><td><span class="badge badge-yellow">Pending Cert</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageOemLicences(){return `
+<div class="page-title">Licence Requests</div>
+<div class="page-sub">Each approved licence generates a one-time DRM token — your IP cannot be reused or shared</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Date</th><th>Requester</th><th>Blueprint</th><th>Centre</th><th>Qty</th><th>Royalty</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>Mar 17</td><td>Greenstone Gold Mines</td><td>BP-7741</td><td>Atlantic XL</td><td>1</td><td style="color:var(--green);">$1,890</td><td><button class="action-btn green" onclick="showToast('✓ Approved','Token issued for BP-7741','green')">Approve</button></td></tr>
+      <tr><td>Mar 17</td><td>Equinor Offshore</td><td>BP-5512</td><td>PolyUnity NL</td><td>2</td><td style="color:var(--green);">$3,600</td><td><button class="action-btn green" onclick="showToast('✓ Approved','Token issued for BP-5512','green')">Approve</button></td></tr>
+      <tr><td>Mar 16</td><td>Horizon Maritime</td><td>BP-3390</td><td>Atlantic XL</td><td>1</td><td style="color:var(--green);">$2,250</td><td><button class="action-btn green" onclick="showToast('✓ Approved','Token issued for BP-3390','green')">Approve</button></td></tr>
+      <tr><td>Mar 15</td><td>Nexen Offshore</td><td>BP-7741</td><td>Atlantic XL</td><td>3</td><td style="color:var(--green);">$5,670</td><td><span class="badge badge-green">Approved</span></td></tr>
+      <tr><td>Mar 14</td><td>Suncor Energy</td><td>BP-2201</td><td>PolyUnity NL</td><td>1</td><td style="color:var(--green);">$890</td><td><span class="badge badge-green">Approved</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageOemRoyalties(){return `
+<div class="page-title">Royalty Tracker</div>
+<div class="page-sub">90% of each print fee auto-disbursed to OEM — platform retains 10%</div>
+<div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">$48.2K</div><div class="kpi-label">March 2026 Royalties</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);"><div class="kpi-val" style="color:var(--blue);">$284K</div><div class="kpi-label">YTD 2026</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--purple);"><div class="kpi-val" style="color:var(--purple);">156</div><div class="kpi-label">Prints Licenced YTD</div></div>
+</div>
+<div class="card">
+  <div class="card-title">Recent Disbursements</div>
+  <table class="data-table">
+    <thead><tr><th>Date</th><th>Order ID</th><th>Part</th><th>Requester</th><th>Print Fee</th><th>Royalty (90%)</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Mar 17</td><td style="font-family:monospace;font-size:10px;">ORD-041</td><td>Mill Bearing</td><td>Greenstone Mines</td><td>$2,100</td><td style="color:var(--green);font-weight:700;">$1,890</td><td><span class="badge badge-yellow">Pending delivery</span></td></tr>
+      <tr><td>Mar 14</td><td style="font-family:monospace;font-size:10px;">ORD-038</td><td>Pump Seal Ring</td><td>Greenstone Mines</td><td>$1,400</td><td style="color:var(--green);font-weight:700;">$1,260</td><td><span class="badge badge-blue">In transit</span></td></tr>
+      <tr><td>Mar 12</td><td style="font-family:monospace;font-size:10px;">ORD-031</td><td>Valve Body</td><td>Greenstone Mines</td><td>$2,500</td><td style="color:var(--green);font-weight:700;">$2,250</td><td><span class="badge badge-green">Disbursed ✓</span></td></tr>
+      <tr><td>Mar 8</td><td style="font-family:monospace;font-size:10px;">ORD-024</td><td>Drill Collar</td><td>Nexen Offshore</td><td>$1,800</td><td style="color:var(--green);font-weight:700;">$1,620</td><td><span class="badge badge-green">Disbursed ✓</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+// ════════════════════════════════════════════════════════════
+// PRINT CENTRE PAGES
+// ════════════════════════════════════════════════════════════
+function pagePcOverview(){return `
+<div class="page-title">Print Centre Dashboard</div>
+<div class="page-sub">Atlantic XL Halifax · DNV GL Approved Facility · Operator: James Okafor (L2 Cert)</div>
+<div class="kpi-grid">
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">2</div><div class="kpi-label">Active Builds</div><div class="kpi-change up">EOS M 290 #ATL-01 running</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--yellow);"><div class="kpi-val" style="color:var(--yellow);">4</div><div class="kpi-label">Jobs Queued</div><div class="kpi-change warn">Next slot: Mar 18 AM</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);"><div class="kpi-val" style="color:var(--blue);">72%</div><div class="kpi-label">Capacity Utilisation</div><div class="kpi-change up">↑ 8% vs. last week</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--red);"><div class="kpi-val" style="color:var(--red);">1</div><div class="kpi-label">Low Material Alert</div><div class="kpi-change crit">Inconel 625 — reorder</div></div>
+</div>
+<div class="two-col">
+  <div class="card">
+    <div class="card-title">Machine Status</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="padding:10px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:12px;font-weight:600;">EOS M 290 #ATL-01</span><span class="badge badge-blue">🖨️ Printing</span></div>
+        <div style="font-size:10px;color:var(--muted);">Job: Mill Bearing Housing · BP-7741 · 68% complete</div>
+        <div class="prog-bar" style="margin-top:6px;"><div class="prog-fill" style="width:68%;background:var(--green);"></div></div>
+      </div>
+      <div style="padding:10px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:600;">EOS M 290 #ATL-02</span><span class="badge badge-yellow">⏸ Idle</span></div>
+        <div style="font-size:10px;color:var(--muted);">Next job: Pump Seal Ring · Scheduled Mar 18 06:00</div>
+      </div>
+      <div style="padding:10px 12px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);border-radius:8px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:600;">SLM Solutions 280HL</span><span class="badge badge-blue">🔧 Maintenance</span></div>
+        <div style="font-size:10px;color:var(--muted);">Scheduled PM · Back online Mar 19</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Pre-Certification Readiness</div>
+    <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;">
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span>👷 James Okafor — DNV GL L2</span><span class="badge badge-green">Valid Jan 2028</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span>🔬 Dr. A. Kaur — NDT Level II</span><span class="badge badge-green">Valid Mar 2027</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span>📐 Sarah Belmont — ISO 9712</span><span class="badge badge-green">Valid Sep 2026</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span>⚙️ EOS M 290 #ATL-01</span><span class="badge badge-green">Cal. Feb 2026</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);"><span>🔍 CT Scanner Nikon XT H 225</span><span class="badge badge-green">Cal. Jan 2026</span></div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;"><span>🧪 316L SS Batch B447</span><span class="badge badge-green">In Stock · Cert</span></div>
+    </div>
+  </div>
+</div>`;}
+
+function pagePcJobs(){return `
+<div class="page-title">Job Queue</div>
+<div class="page-sub">All builds require a valid platform token before machine start — DRM enforced</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Job ID</th><th>Order</th><th>Part</th><th>Machine</th><th>Operator</th><th>Material</th><th>Coupons</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">JOB-041</td><td style="font-family:monospace;font-size:10px;">ORD-041</td><td>Mill Bearing Housing</td><td>ATL-01</td><td>J. Okafor</td><td>316L B447</td><td><span style="color:var(--green);">6 ✓</span></td><td><span class="badge badge-blue">🖨️ 68%</span></td><td><button class="action-btn">View Log</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">JOB-040</td><td style="font-family:monospace;font-size:10px;">ORD-038</td><td>Pump Seal Ring #3</td><td>ATL-02</td><td>J. Okafor</td><td>Ti-64 B312</td><td><span style="color:var(--green);">4 ✓</span></td><td><span class="badge badge-yellow">Scheduled</span></td><td><button class="action-btn">View Log</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">JOB-039</td><td style="font-family:monospace;font-size:10px;">ORD-035</td><td>Centrifugal Pump Shaft</td><td>ATL-01</td><td>J. Okafor</td><td>Ti-64 B312</td><td>—</td><td><span class="badge badge-muted">Queued</span></td><td><button class="action-btn">View Log</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">JOB-037</td><td style="font-family:monospace;font-size:10px;">ORD-031</td><td>Valve Body V-220</td><td>ATL-01</td><td>J. Okafor</td><td>IN625 B089</td><td><span style="color:var(--green);">6 ✓</span></td><td><span class="badge badge-green">✅ Complete</span></td><td><button class="action-btn">Certificate</button></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pagePcMachines(){return `
+<div class="page-title">Machine Status</div>
+<div class="page-sub">All machines must be DNV GL Type Approved and within calibration window to accept jobs</div>
+<div class="three-col">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-size:14px;font-weight:700;">EOS M 290 #ATL-01</div><div style="font-size:10px;color:var(--muted);">LPBF · 250×250×325mm build volume</div></div><span class="badge badge-blue">Printing</span></div>
+    <div style="font-size:11px;display:flex;flex-direction:column;gap:5px;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">DNV GL Status</span><span style="color:var(--green);">Type Approved ✓</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Last Calibration</span><span>Feb 2026</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Process Quals</span><span>316L · Ti-64 · IN625</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Current Job</span><span style="color:var(--blue);">JOB-041 · 68%</span></div>
+    </div>
+    <div class="prog-bar" style="margin-top:10px;"><div class="prog-fill" style="width:68%;background:var(--green);"></div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-size:14px;font-weight:700;">EOS M 290 #ATL-02</div><div style="font-size:10px;color:var(--muted);">LPBF · 250×250×325mm</div></div><span class="badge badge-yellow">Idle</span></div>
+    <div style="font-size:11px;display:flex;flex-direction:column;gap:5px;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">DNV GL Status</span><span style="color:var(--green);">Type Approved ✓</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Last Calibration</span><span>Jan 2026</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Next Job</span><span>Mar 18 06:00</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-size:14px;font-weight:700;">SLM Solutions 280HL</div><div style="font-size:10px;color:var(--muted);">LPBF · 280×280×365mm</div></div><span class="badge badge-red">Maintenance</span></div>
+    <div style="font-size:11px;display:flex;flex-direction:column;gap:5px;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">DNV GL Status</span><span style="color:var(--green);">Type Approved ✓</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Back Online</span><span style="color:var(--yellow);">Mar 19</span></div>
+    </div>
+  </div>
+</div>`;}
+
+function pagePcMaterials(){return `
+<div class="page-title">Material Stock</div>
+<div class="page-sub">All powder batches are pre-certified with DNV GL material certificates before use</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Material</th><th>Batch</th><th>Supplier</th><th>Stock (kg)</th><th>DNV Cert</th><th>Standard</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>316L Stainless Steel</td><td style="font-family:monospace;font-size:10px;">SS316L-B447</td><td>Höganäs</td><td style="color:var(--green);">24.8 kg</td><td style="font-family:monospace;font-size:10px;">MC-2025-1122</td><td>ASTM A276</td><td><span class="badge badge-green">✓ Certified</span></td></tr>
+      <tr><td>Ti-6Al-4V ELI</td><td style="font-family:monospace;font-size:10px;">TI64-B312</td><td>AP&C</td><td style="color:var(--green);">18.2 kg</td><td style="font-family:monospace;font-size:10px;">MC-2025-0988</td><td>ASTM F3001</td><td><span class="badge badge-green">✓ Certified</span></td></tr>
+      <tr><td>Inconel 625</td><td style="font-family:monospace;font-size:10px;">IN625-B089</td><td>Carpenter</td><td style="color:var(--red);font-weight:700;">2.4 kg ⚠</td><td style="font-family:monospace;font-size:10px;">MC-2024-0741</td><td>AMS 5666</td><td><span class="badge badge-yellow">⚠ Low Stock</span></td></tr>
+      <tr><td>AlSi10Mg</td><td style="font-family:monospace;font-size:10px;">AL10-B201</td><td>Eckart</td><td style="color:var(--green);">31.0 kg</td><td style="font-family:monospace;font-size:10px;">MC-2025-1044</td><td>DIN EN 1706</td><td><span class="badge badge-green">✓ Certified</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+// ════════════════════════════════════════════════════════════
+// CERT BODY PAGES
+// ════════════════════════════════════════════════════════════
+function pageCbOverview(){return `
+<div class="page-title">DNV GL — Certification Dashboard</div>
+<div class="page-sub">Reviewing lab coupon results, pre-certs, and process logs before issuing certificates</div>
+<div class="kpi-grid">
+  <div class="kpi-card" style="border-top:2px solid var(--yellow);"><div class="kpi-val" style="color:var(--yellow);">3</div><div class="kpi-label">Pending Reviews</div><div class="kpi-change warn">Lab results received</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">41</div><div class="kpi-label">Certs Issued — March</div><div class="kpi-change up">100% pass rate</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);"><div class="kpi-val" style="color:var(--blue);">12</div><div class="kpi-label">Approved Facilities</div><div class="kpi-change up">3 pending renewal</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--red);"><div class="kpi-val" style="color:var(--red);">0</div><div class="kpi-label">Violations Detected</div><div class="kpi-change up">Audit chain intact</div></div>
+</div>
+<div class="card">
+  <div class="card-title">5-Pillar Review Checklist — ORD-2026-0317-041</div>
+  <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;"><span>① Operator Certification — James Okafor, DNV GL AM L2, valid to Jan 2028</span><span class="badge badge-green">✓ Confirmed</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;"><span>② Machine Qualification — EOS M 290 #ATL-01, DNV Type Approved, calibrated Feb 2026</span><span class="badge badge-green">✓ Confirmed</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;"><span>③ Material Lot Certificate — SS316L Batch B447, DNV MC-2025-1122</span><span class="badge badge-green">✓ Confirmed</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;"><span>④ Coupon Test Results — 6/6 tests passed, Report LAB-2026-0317-041</span><span class="badge badge-green">✓ Confirmed</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px;"><span>⑤ Process Parameter Log — In-situ monitoring data uploaded</span><span class="badge badge-yellow">Reviewing</span></div>
+  </div>
+  <div style="margin-top:14px;"><button class="submit-btn" onclick="showToast('Certificate Issued ✓','DNV-2026-0317-M issued for ORD-041','green')">Issue Certificate → DNV-2026-0317-M</button></div>
+</div>`;}
+
+function pageCbPending(){return `
+<div class="page-title">Pending Reviews</div>
+<div class="page-sub">All 5 pillars must pass before a certificate can be issued</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Order</th><th>Part</th><th>Lab Report</th><th>Operator</th><th>Machine</th><th>Material</th><th>Coupons</th><th>Process Log</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">ORD-041</td><td>Mill Bearing</td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">6/6</span></td><td><span class="badge badge-yellow">Review</span></td><td><button class="submit-btn" style="padding:5px 12px;font-size:10px;" onclick="showToast('Cert Issued ✓','DNV-2026-0317-M','green')">Issue Cert</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">ORD-038</td><td>Pump Seal Ring</td><td><span class="badge badge-yellow">Pending</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td>—</td><td>—</td><td><span class="badge badge-muted">Awaiting Lab</span></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">ORD-035</td><td>Pump Shaft</td><td><span class="badge badge-yellow">Pending</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td><span class="badge badge-green">✓</span></td><td>—</td><td>—</td><td><span class="badge badge-muted">Awaiting Lab</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageCbIssued(){return `
+<div class="page-title">Issued Certificates</div>
+<div class="page-sub">Every certificate includes an immutable SHA-256 audit hash</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Cert ID</th><th>Order</th><th>Part</th><th>Standard</th><th>Facility</th><th>Issued</th><th>Valid Until</th><th>Audit</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">DNV-2026-0312-M</td><td style="font-family:monospace;font-size:10px;">ORD-031</td><td>Valve Body</td><td>DNV GL Part 6</td><td>Atlantic XL</td><td>Mar 14</td><td style="color:var(--green);">Mar 2028</td><td><button class="action-btn">View Hash</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">DNV-2026-0301-M</td><td style="font-family:monospace;font-size:10px;">ORD-022</td><td>Drill Collar</td><td>DNV GL Part 6</td><td>Atlantic XL</td><td>Mar 5</td><td style="color:var(--green);">Mar 2028</td><td><button class="action-btn">View Hash</button></td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">DNV-2026-0225-M</td><td style="font-family:monospace;font-size:10px;">ORD-018</td><td>Bearing Housing</td><td>DNV GL Part 6</td><td>PolyUnity NL</td><td>Feb 27</td><td style="color:var(--green);">Feb 2028</td><td><button class="action-btn">View Hash</button></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageCbFacilities(){return `
+<div class="page-title">Approved Facilities</div>
+<div class="page-sub">Only pre-approved facilities with qualified personnel and machines can receive print tokens</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Facility</th><th>Location</th><th>Machines</th><th>Operators</th><th>Materials Qualified</th><th>Cert Expiry</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Atlantic XL</td><td>Halifax, NS</td><td>EOS M 290 ×2 · SLM 280HL</td><td>3 certified</td><td>316L · Ti-64 · IN625 · AlSi</td><td style="color:var(--green);">Dec 2026</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td>PolyUnity NL</td><td>St. John's, NL</td><td>EOS M 290 · Renishaw 500M</td><td>2 certified</td><td>316L · Ti-64</td><td style="color:var(--green);">Oct 2026</td><td><span class="badge badge-green">Active</span></td></tr>
+      <tr><td>Ocean3D Toronto</td><td>Toronto, ON</td><td>EOS M 300-4</td><td>2 certified</td><td>316L · AlSi</td><td style="color:var(--yellow);">Apr 2026</td><td><span class="badge badge-yellow">Renewal Due</span></td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+// ════════════════════════════════════════════════════════════
+// LAB PAGES
+// ════════════════════════════════════════════════════════════
+function pageLabOverview(){return `
+<div class="page-title">Dalhousie AM Lab</div>
+<div class="page-sub">DNV GL Accredited Testing Lab · Inspector: Dr. A. Kaur · 6-point coupon test suite</div>
+<div class="kpi-grid">
+  <div class="kpi-card" style="border-top:2px solid var(--orange);"><div class="kpi-val" style="color:var(--orange);">3</div><div class="kpi-label">Tests Assigned</div><div class="kpi-change warn">1 in progress</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--green);"><div class="kpi-val" style="color:var(--green);">38</div><div class="kpi-label">Reports Issued — March</div><div class="kpi-change up">100% on-time</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--blue);"><div class="kpi-val" style="color:var(--blue);">99.1%</div><div class="kpi-label">Pass Rate YTD</div><div class="kpi-change up">↑ Industry avg: 94%</div></div>
+  <div class="kpi-card" style="border-top:2px solid var(--purple);"><div class="kpi-val" style="color:var(--purple);">6</div><div class="kpi-label">Test Types per Build</div><div class="kpi-change up">Tensile · NDT · Chem · Dim · Fatigue · Thermal</div></div>
+</div>
+<div class="card">
+  <div class="card-title">Why Coupon Testing? — Even With Pre-Certified Materials & Machines</div>
+  <div style="font-size:12px;color:var(--muted);background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:9px;padding:13px 15px;line-height:1.7;">
+    Pre-certification of materials (batch chemistry) and machines (process qualification) establishes the <strong style="color:var(--text);">expected baseline</strong>. Witness coupons printed <em>in the same build</em> confirm the <strong style="color:var(--text);">actual as-built properties</strong> — accounting for real build conditions: layer sequencing, thermal gradients, residual stress, and operator variables. DNV GL Part 6 mandates this separation. The lab tests the build; the cert body verifies all five pillars together.
+  </div>
+</div>`;}
+
+function pageLabQueue(){return `
+<div class="page-title">Test Queue</div>
+<div class="page-sub">Witness coupons received from print centre — 6 tests per build</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Ref</th><th>Order</th><th>Part</th><th>Coupons</th><th>Assigned To</th><th>Tests</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">LAB-041</td>
+        <td style="font-family:monospace;font-size:10px;">ORD-041</td>
+        <td>Mill Bearing Housing</td>
+        <td>6 received</td>
+        <td>Dr. A. Kaur</td>
+        <td>Tensile · NDT · Chem · Dim · Fatigue · Thermal</td>
+        <td><span class="badge badge-blue">In Progress</span></td>
+        <td><button class="action-btn" onclick="navigateTo('lab-results')">Results →</button></td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">LAB-040</td>
+        <td style="font-family:monospace;font-size:10px;">ORD-038</td>
+        <td>Pump Seal Ring #3</td>
+        <td>4 expected</td>
+        <td>Dr. A. Kaur</td>
+        <td>Tensile · NDT · Chem · Dim</td>
+        <td><span class="badge badge-muted">Awaiting Coupons</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:10px;">LAB-037</td>
+        <td style="font-family:monospace;font-size:10px;">ORD-031</td>
+        <td>Valve Body V-220</td>
+        <td>6 received</td>
+        <td>Dr. A. Kaur</td>
+        <td>All 6</td>
+        <td><span class="badge badge-green">✅ Complete</span></td>
+        <td><button class="action-btn" onclick="navigateTo('lab-reports')">Report →</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>`;}
+
+function pageLabResults(){return `
+<div class="page-title">Test Results — LAB-041</div>
+<div class="page-sub">Mill Bearing Housing · ORD-2026-0317-041 · Witness coupons from EOS M 290 #ATL-01 · Batch SS316L-B447</div>
+<div class="three-col">
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">💪</div>
+      <div style="font-weight:700;font-size:13px;">Tensile / Hardness</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">UTS: 580 MPa · YS: 430 MPa<br/>Hardness: 88 HRB</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🔍</div>
+      <div style="font-weight:700;font-size:13px;">NDT / CT Scan</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">No voids >0.1mm<br/>Density: 99.6%</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">⚗️</div>
+      <div style="font-weight:700;font-size:13px;">Chemistry Verify</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">Within ±0.1% of spec<br/>SS316L composition ✓</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">📐</div>
+      <div style="font-weight:700;font-size:13px;">Dimensional CMM</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">All dims ±0.15mm<br/>of blueprint ✓</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🔩</div>
+      <div style="font-weight:700;font-size:13px;">Fatigue / Fracture</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">Life >10⁷ cycles<br/>at design load ✓</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(16,185,129,.3);">
+    <div style="text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🌡️</div>
+      <div style="font-weight:700;font-size:13px;">Thermal Analysis</div>
+      <div style="font-size:11px;color:var(--muted);margin:6px 0;">16.2 W/m·K<br/>Spec: ≥15.5 ✓</div>
+      <span class="badge badge-green" style="font-size:11px;">✓ PASS</span>
+    </div>
+  </div>
+</div>
+<div style="margin-top:4px;"><button class="submit-btn" onclick="showToast('Report Issued ✓','LAB-2026-0317-041 sent to DNV GL','green')">Issue Report to DNV GL →</button></div>`;}
+
+function pageLabReports(){return `
+<div class="page-title">Lab Reports</div>
+<div class="page-sub">All reports are hash-signed and transmitted directly to DNV GL via secure API</div>
+<div class="card">
+  <table class="data-table">
+    <thead><tr><th>Report ID</th><th>Order</th><th>Part</th><th>Inspector</th><th>Tests</th><th>Result</th><th>Issued</th><th>Cert Body</th></tr></thead>
+    <tbody>
+      <tr><td style="font-family:monospace;font-size:10px;">LAB-2026-0317-041</td><td style="font-family:monospace;font-size:10px;">ORD-041</td><td>Mill Bearing</td><td>Dr. A. Kaur</td><td>6/6</td><td><span class="badge badge-green">All PASS</span></td><td>Mar 17</td><td>DNV GL</td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">LAB-2026-0314-037</td><td style="font-family:monospace;font-size:10px;">ORD-031</td><td>Valve Body</td><td>Dr. A. Kaur</td><td>6/6</td><td><span class="badge badge-green">All PASS</span></td><td>Mar 14</td><td>DNV GL</td></tr>
+      <tr><td style="font-family:monospace;font-size:10px;">LAB-2026-0306-022</td><td style="font-family:monospace;font-size:10px;">ORD-022</td><td>Drill Collar</td><td>Dr. A. Kaur</td><td>6/6</td><td><span class="badge badge-green">All PASS</span></td><td>Mar 6</td><td>DNV GL</td></tr>
+    </tbody>
+  </table>
+</div>`;}
+
+// ── ACTIONS ───────────────────────────────────────────────────────────────────
+function submitOrder(){
+  showToast('Order Submitted ✓','ORD-2026-0317-041 created · DRM verification starting...','green');
+  setTimeout(()=>showToast('🔑 Token Issued','SPT bound to ATL-01 + Batch B447 + J. Okafor',''),1500);
+  setTimeout(()=>navigateTo('op-orders'),2500);
+}
+</script>
+</body>
+</html>
