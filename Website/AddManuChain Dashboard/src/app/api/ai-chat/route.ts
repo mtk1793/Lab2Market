@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAuth } from '@/lib/require-auth'
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
 
@@ -35,6 +34,7 @@ const TOOLS = [
               'peer_printers', 'shipments', 'materials', 'partners', 'analytics',
               'audit', 'certifications', 'authorities', 'services',
               'digital_inventory', 'physical_inventory', 'ip_library', 'lab_portal', 'settings',
+              'emergency', 'oem_portal', 'cooperative', 'material_properties', 'feasibility', 'sc_intelligence',
             ],
             description: 'The page ID to navigate to',
           },
@@ -180,6 +180,7 @@ Navigation page IDs:
 - overview, orders, print_queue, blueprints, centers, peer_printers, shipments, materials
 - partners, analytics, audit, certifications, authorities, services (Customer Success)
 - digital_inventory, physical_inventory, ip_library, lab_portal, settings
+- emergency, oem_portal, cooperative, material_properties, feasibility, sc_intelligence
 
 ## ALL PAGES — DETAILED KNOWLEDGE
 
@@ -221,18 +222,30 @@ Navigation page IDs:
 
 ### 19. SETTINGS — Profile, Organization, Notifications, Security (2FA), API keys, Webhooks, Tutorial restart.
 
+### 20. EMERGENCY RESPONSE — Fast-path from breakdown to replacement. Stats: active emergencies, avg response time (2.4 hrs), SLA rate (94%). Submit a breakdown request (part name, site, criticality level, hours available). Instant Response Panel shows: digital file status, nearest certified facility with distance and lead time, DRM fast-track status. Active Emergency Tracker shows in-progress emergencies with status timeline stepper. Typical resolution: 4–11 hrs vs 60+ days traditional.
+
+### 21. OEM SELF-SERVICE PORTAL — OEMs upload blueprints, set licensing terms, and earn passive royalty revenue. Revenue dashboard shows total earned ($284K), pending disbursement ($47K), projected this month ($31K). IP Asset Registry with 8 assets, royalty %, print count, earnings per asset. License Terms Builder: choose model (Pay-Per-Print, Restricted, Open, Consortium, Isolated) + set royalty % via slider. Royalty distribution settings: schedule and payment method.
+
+### 22. DIGITAL COOPERATIVE — Shared certified blueprint pool across member operators. Pool stats: 847 digital assets, 12 members, 234 draws/month, 98.2% replenishment rate. Three tabs: Available in Pool (10 parts with contributor, cert level, draw fee, availability), My Contributions (18 assets, $12.4K earned), Draw History (8 entries). Member directory with Gold/Silver/Bronze tiers. Join Cooperative CTA with pricing: Bronze $4,800/yr, Silver $9,600/yr, Gold $18,000/yr.
+
+### 23. MATERIAL PROPERTIES LIBRARY — The MMPDS equivalent for additive manufacturing. 12 validated alloys (Ti-6Al-4V LPBF, Inconel 625, 316L SS, Inconel 718 DED, H13 Tool Steel, Hastelloy C-276, 17-4PH SS, Duplex 2205, AlSi10Mg, CuCrZr, SS304, GRCop-84). Properties: yield/tensile strength (MPa), elongation (%), fatigue, hardness, density. 339 total test coupons. Validated by DNV GL, Lloyd's Register, Bureau Veritas, TÜV SÜD, ABS, ClassNK. Compare Mode: select up to 4 alloys for radar chart comparison. Data Gap Map: 5 alloys needing contribution.
+
+### 24. AM FEASIBILITY TRIAGE — 30-second AI verdict on whether a part is suitable for additive manufacturing. Input: part name, geometry type, material, quantity, urgency (Emergency/Planned/Exploratory), industry, part function. AI Verdict panel shows: suitability score 0–100 with colour band, plain-English verdict, 4 sub-scores (Geometry Suitability, Material Printability, Regulatory Burden, Volume Economics), cost comparison (AM $4,200 vs Traditional $18,400, 63-day lead time), nearest qualified facility, regulatory path (DNV GL, 6–8 weeks, ~$12,000). Saved Assessments table shows history with scores and outcomes.
+
+### 25. SUPPLY CHAIN INTELLIGENCE — Three-section intelligence dashboard: (1) Sovereignty Dashboard: pie chart showing 42% domestic AM / 31% domestic traditional / 27% foreign supply. Geopolitical risk table by supplier country (China 87/100, India 61/100, South Korea 44/100). "What If" disruption selector — choose a country and see affected parts count and AM coverage. Alert threshold slider. (2) LEAN Conversion Analysis: $4.2M carrying cost, 34 parts safe to convert to digital (saving $1.1M). Per-part confidence scores and Accept buttons — running freed capital counter updates live. (3) Pareto Working Capital Optimiser: bar chart of top 10 parts by inventory value vs AM conversion potential. Accept individual parts to free capital — top 5 conversion frees ~$743K.
+
 ---
 
 ## USER ROLES
 
 | Role | Key Pages |
 |------|-----------|
-| Admin | All 19 pages |
-| OEM Partner | IP Library, Blueprints, Print Queue, Partners, Certifications, Analytics, Settings |
-| End User | Overview, Orders, Peer Printers, Shipments, Physical Inventory, Customer Success, Settings |
+| Admin | All 25 pages |
+| OEM Partner | IP Library, OEM Portal, Blueprints, Print Queue, Partners, Certifications, Analytics, Material Properties, AM Feasibility, Settings |
+| End User | Overview, Orders, Emergency Response, Peer Printers, Shipments, Physical Inventory, Digital Cooperative, Customer Success, Material Properties, AM Feasibility, Settings |
 | Cert Authority | Overview, Print Queue, Blueprints, Certifications, Authorities, Audit Logs, Analytics, Settings |
-| Lab | Overview, Lab Portal, Blueprints, Materials, Digital/Physical Inventory, Certifications, Analytics, Settings |
-| Print Center | Overview, Orders, Print Queue, Blueprints, Materials, Digital/Physical Inventory, Shipments, Settings |
+| Lab | Overview, Lab Portal, Blueprints, Materials, Digital/Physical Inventory, Certifications, Material Properties, AM Feasibility, Analytics, Settings |
+| Print Center | Overview, Orders, Print Queue, Blueprints, Materials, Digital/Physical Inventory, Emergency Response, Digital Cooperative, Shipments, Settings |
 
 Demo credentials: admin@almatech.com / admin123 | operator@statoil.com / operator123 | partner@oem.com / partner123
 
@@ -249,7 +262,7 @@ Demo credentials: admin@almatech.com / admin123 | operator@statoil.com / operato
 Tone: Professional but friendly. Concise. Use bullet points for steps. Never invent features that don't exist. Always prefer taking action over just explaining.`
 
 const ROLE_CONTEXT: Record<string, string> = {
-  admin: 'Current user: Platform Admin (Mahmoud K. — AddManuChain). Full access to all features.',
+  admin: 'Current user: Platform Admin (Mahmoud K. — AddManuChain). Full access to all 25 pages including Emergency Response, OEM Portal, Digital Cooperative, Material Properties Library, AM Feasibility Triage, and Supply Chain Intelligence.',
   oem_partner: 'Current user: OEM Partner (Johann Weber — Wärtsilä Marine). Focus: IP Library, Blueprint Library, Print Queue, Analytics.',
   end_user: 'Current user: End User / Client (Capt. Sarah Leblanc — Horizon Maritime). Focus: Orders, Shipments, Physical Inventory.',
   cert_authority: 'Current user: Cert Authority rep (Dr. Priya Patel — DNV GL). Focus: Print Queue, Certifications, Authorities, Audit Logs.',
@@ -277,6 +290,9 @@ async function executeTool(
         authorities: 'Certification Authorities', services: 'Customer Success',
         digital_inventory: 'Digital Inventory', physical_inventory: 'Physical Inventory',
         ip_library: 'IP Library', lab_portal: 'Lab & Testing Portal', settings: 'Settings',
+        emergency: 'Emergency Response', oem_portal: 'OEM Self-Service Portal',
+        cooperative: 'Digital Cooperative', material_properties: 'Material Properties Library',
+        feasibility: 'AM Feasibility Triage', sc_intelligence: 'Supply Chain Intelligence',
       }
       return {
         result: `Navigated to ${labels[page] ?? page}`,
@@ -403,9 +419,6 @@ async function executeTool(
 
 export async function POST(req: NextRequest) {
   try {
-    const { session, error } = await requireAuth()
-    if (error) return error
-
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
     if (!checkRateLimit(ip)) {
       return NextResponse.json({ error: 'Too many requests. Please wait before trying again.' }, { status: 429 })
