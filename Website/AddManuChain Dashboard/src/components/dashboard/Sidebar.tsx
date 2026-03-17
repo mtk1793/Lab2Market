@@ -25,6 +25,10 @@ import {
   BookMarked,
   FlaskConical,
   ChevronsUpDown,
+  Zap,
+  Database,
+  Globe,
+  HandshakeIcon,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -84,27 +88,29 @@ const demoPersonas = [
 const rolePermissions: Record<string, string[]> = {
   // Full access to everything
   admin: [
-    'overview', 'orders', 'print_queue',
-    'ip_library', 'blueprints', 'partners',
-    'digital_inventory', 'physical_inventory', 'centers', 'peer_printers', 'shipments', 'materials',
+    'overview', 'orders', 'print_queue', 'emergency',
+    'ip_library', 'blueprints', 'partners', 'oem_portal',
+    'digital_inventory', 'physical_inventory', 'centers', 'peer_printers', 'shipments', 'materials', 'cooperative',
     'certifications', 'authorities', 'audit',
-    'lab_portal',
-    'analytics', 'services',
+    'lab_portal', 'material_properties',
+    'analytics', 'services', 'feasibility', 'sc_intelligence',
     'settings',
   ],
   // IP holders — blueprint licensing, royalties, print queue visibility, OEM analytics
   oem_partner: [
     'overview', 'print_queue',
-    'ip_library', 'blueprints',
+    'ip_library', 'blueprints', 'oem_portal',
     'certifications',
-    'analytics',
+    'material_properties',
+    'analytics', 'feasibility',
     'settings',
   ],
   // Customers / operators — orders, shipments, inventory, peer printers, support
   end_user: [
-    'overview', 'orders',
-    'peer_printers', 'shipments', 'physical_inventory',
-    'services',
+    'overview', 'orders', 'emergency',
+    'peer_printers', 'shipments', 'physical_inventory', 'digital_inventory', 'cooperative',
+    'material_properties',
+    'services', 'feasibility', 'sc_intelligence',
     'settings',
   ],
   // DNV, Lloyd's, etc — print queue inspection, certifications, audit, authorities
@@ -112,24 +118,26 @@ const rolePermissions: Record<string, string[]> = {
     'overview', 'print_queue',
     'blueprints',
     'certifications', 'authorities', 'audit',
-    'analytics',
+    'material_properties',
+    'analytics', 'feasibility',
     'settings',
   ],
   // Research & testing labs — dedicated portal, materials, certifications, blueprints
   lab: [
     'overview',
-    'lab_portal',
+    'lab_portal', 'material_properties',
     'blueprints',
     'materials', 'digital_inventory', 'physical_inventory',
     'certifications',
-    'analytics',
+    'analytics', 'feasibility',
     'settings',
   ],
   // Authorized AM facilities — print queue, orders, materials, inventory, shipments
   print_center: [
-    'overview', 'orders', 'print_queue',
+    'overview', 'orders', 'print_queue', 'emergency',
     'blueprints',
-    'materials', 'physical_inventory', 'digital_inventory', 'shipments',
+    'materials', 'physical_inventory', 'digital_inventory', 'shipments', 'cooperative',
+    'material_properties', 'feasibility',
     'settings',
   ],
 }
@@ -142,6 +150,7 @@ const menuSections = [
       { id: 'overview', label: 'Overview', icon: LayoutDashboard },
       { id: 'orders', label: 'Orders', icon: Package, badge: 3 },
       { id: 'print_queue', label: 'Print Queue', icon: KeyRound, badge: 5 },
+      { id: 'emergency', label: 'Emergency Response', icon: Zap, badge: 3 },
     ],
   },
   {
@@ -150,6 +159,7 @@ const menuSections = [
       { id: 'ip_library', label: 'IP Library', icon: BookMarked },
       { id: 'blueprints', label: 'Blueprint Library', icon: FileBox },
       { id: 'partners', label: 'OEM Partners', icon: Users },
+      { id: 'oem_portal', label: 'OEM Portal', icon: HandshakeIcon },
     ],
   },
   {
@@ -158,6 +168,7 @@ const menuSections = [
       { id: 'digital_inventory', label: 'Digital Inventory', icon: Sparkles },
       { id: 'physical_inventory', label: 'Physical Inventory', icon: Boxes },
       { id: 'centers', label: 'Print Centers', icon: Factory },
+      { id: 'cooperative', label: 'Digital Cooperative', icon: Globe },
       { id: 'peer_printers', label: 'Peer Printers', icon: Users },
       { id: 'shipments', label: 'Shipments', icon: Truck },
       { id: 'materials', label: 'Materials', icon: Boxes },
@@ -175,6 +186,7 @@ const menuSections = [
     title: 'Lab & Testing',
     items: [
       { id: 'lab_portal', label: 'Lab Portal', icon: FlaskConical },
+      { id: 'material_properties', label: 'Material Properties', icon: Database },
     ],
   },
   {
@@ -182,6 +194,8 @@ const menuSections = [
     items: [
       { id: 'analytics', label: 'Analytics', icon: BarChart3 },
       { id: 'services', label: 'Customer Success', icon: GraduationCap },
+      { id: 'feasibility', label: 'AM Feasibility', icon: Zap },
+      { id: 'sc_intelligence', label: 'Supply Chain Intel', icon: Globe },
     ],
   },
   {

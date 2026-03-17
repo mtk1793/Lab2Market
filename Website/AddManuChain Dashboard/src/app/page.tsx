@@ -30,6 +30,12 @@ import {
   PeerPrintersPage,
   IPLibraryPage,
   LabPage,
+  EmergencyResponsePage,
+  OEMPortalPage,
+  DigitalCooperativePage,
+  MaterialPropertiesPage,
+  AMFeasibilityPage,
+  SupplyChainIntelligencePage,
 } from '@/components/dashboard'
 
 export default function Dashboard() {
@@ -78,6 +84,18 @@ export default function Dashboard() {
         return { title: 'IP Library', subtitle: 'OEM intellectual property, licensing & royalty management' }
       case 'lab_portal':
         return { title: 'Lab & Testing Portal', subtitle: 'AM testing requests, equipment scheduling & certification reports' }
+      case 'emergency':
+        return { title: 'Emergency Response', subtitle: 'Fast-path from breakdown to replacement — every minute counts' }
+      case 'oem_portal':
+        return { title: 'OEM Self-Service Portal', subtitle: 'Upload blueprints, set licensing terms, and earn passive royalty revenue' }
+      case 'cooperative':
+        return { title: 'Digital Cooperative', subtitle: 'Shared certified blueprint pool — draw any part, print at any member facility' }
+      case 'material_properties':
+        return { title: 'Material Properties Library', subtitle: 'Tested AM material mechanical data — the MMPDS equivalent for additive manufacturing' }
+      case 'feasibility':
+        return { title: 'AM Feasibility Triage', subtitle: '30-second AI verdict on whether your part is suitable for additive manufacturing' }
+      case 'sc_intelligence':
+        return { title: 'Supply Chain Intelligence', subtitle: 'Sovereignty dashboard, LEAN analysis, and Pareto working capital optimiser' }
       case 'settings':
         return { title: 'Settings', subtitle: 'Manage your account preferences' }
       default:
@@ -123,6 +141,18 @@ export default function Dashboard() {
         return <IPLibraryPage role={currentRole} />
       case 'lab_portal':
         return <LabPage role={currentRole} />
+      case 'emergency':
+        return <EmergencyResponsePage role={currentRole} />
+      case 'oem_portal':
+        return <OEMPortalPage role={currentRole} />
+      case 'cooperative':
+        return <DigitalCooperativePage role={currentRole} />
+      case 'material_properties':
+        return <MaterialPropertiesPage role={currentRole} />
+      case 'feasibility':
+        return <AMFeasibilityPage role={currentRole} />
+      case 'sc_intelligence':
+        return <SupplyChainIntelligencePage role={currentRole} />
       case 'settings':
         return <SettingsPage role={currentRole} />
       default:

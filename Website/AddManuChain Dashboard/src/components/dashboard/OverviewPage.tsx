@@ -129,6 +129,43 @@ export function OverviewPage() {
         </div>
       )}
 
+      {/* Emergency Alert Panel */}
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
+            <Flame className="w-3.5 h-3.5 text-red-500" />
+            Emergency Alerts
+          </p>
+          <span className="text-xs text-slate-400">3 active</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="flex items-start gap-3 p-3 bg-red-50 border border-red-200 rounded-xl">
+            <div className="w-2 h-2 rounded-full bg-red-500 mt-1 flex-shrink-0 animate-pulse" />
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold text-red-800">Production Stopped</p>
+              <p className="text-[10px] text-red-700 truncate">Pump Impeller — Hibernia Platform</p>
+              <p className="text-[10px] text-red-500">No digital file found · 4h window</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-xl">
+            <div className="w-2 h-2 rounded-full bg-amber-400 mt-1 flex-shrink-0 animate-pulse" />
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold text-amber-800">Degraded Operations</p>
+              <p className="text-[10px] text-amber-700 truncate">Valve Seat DN80 — FPSO Atlantic</p>
+              <p className="text-[10px] text-amber-500">Blueprint found · Printing · 18h window</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 bg-green-50 border border-green-200 rounded-xl">
+            <div className="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold text-green-800">Resolved ✓</p>
+              <p className="text-[10px] text-green-700 truncate">Bearing Housing — Suncor Upgrader</p>
+              <p className="text-[10px] text-green-500">Delivered in 7.2 hrs · Within SLA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* KPI row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {kpis.map((kpi, i) => (
@@ -391,6 +428,36 @@ export function OverviewPage() {
 
         </div>
       </div>
+
+      {/* Platform Trust Layer */}
+      <div className="pt-2">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
+            <Award className="w-3.5 h-3.5 text-amber-500" />
+            Trusted By
+          </p>
+          <span className="text-xs text-slate-400">6 organisations</span>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+          {[
+            { name: "Lloyd's Register", type: 'Regulatory Partner', color: '#0EA5E9' },
+            { name: 'DNV GL', type: 'Regulatory Partner', color: '#0EA5E9' },
+            { name: 'ExxonMobil', type: 'Pilot Participant', color: '#8B5CF6' },
+            { name: 'Suncor Energy', type: 'Active Customer', color: '#10B981' },
+            { name: 'Dalhousie University', type: 'Research Partner', color: '#F59E0B' },
+            { name: 'NRC Canada', type: 'Research Partner', color: '#F59E0B' },
+          ].map(e => (
+            <div key={e.name} className="flex flex-col items-center gap-1.5 p-3 bg-white border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${e.color}15` }}>
+                <ShieldCheck className="w-4 h-4" style={{ color: e.color }} />
+              </div>
+              <p className="text-[10px] font-semibold text-slate-700 text-center leading-tight">{e.name}</p>
+              <span className="text-[9px] text-slate-400 text-center">{e.type}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   )
 }
