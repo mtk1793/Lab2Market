@@ -94,7 +94,7 @@ export function OEMPortalPage({ role = 'admin' }: { role?: string }) {
       </div>
 
       {/* Revenue Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard icon={DollarSign} label="Total Royalties Earned" value="$284K" sub="Since platform launch" color="#10B981" />
         <StatCard icon={Clock} label="Pending Disbursement" value="$47K" sub="Processing this week" color="#F59E0B" />
         <StatCard icon={TrendingUp} label="Projected This Month" value="$31K" sub="↑ 21% vs last month" color="#0EA5E9" />
@@ -190,7 +190,7 @@ export function OEMPortalPage({ role = 'admin' }: { role?: string }) {
             </Button>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0 overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent">

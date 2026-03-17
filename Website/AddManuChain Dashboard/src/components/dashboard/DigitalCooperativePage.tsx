@@ -109,7 +109,7 @@ export function DigitalCooperativePage({ role = 'admin' }: { role?: string }) {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard icon={Package} label="Digital Assets in Pool" value="847" sub="Across 12 members" color="#14B8A6" />
         <StatCard icon={Users} label="Member Organisations" value="12" sub="Atlantic Canada / Arctic" color="#0EA5E9" />
         <StatCard icon={ArrowDownToLine} label="Draws This Month" value="234" sub="↑ 31% vs last month" color="#10B981" />
@@ -121,7 +121,7 @@ export function DigitalCooperativePage({ role = 'admin' }: { role?: string }) {
         {/* Main Content — Tabbed */}
         <div className="lg:col-span-2 space-y-4">
           {/* Tab Bar */}
-          <div className="flex gap-1 p-1 bg-slate-100 rounded-lg w-fit">
+          <div className="flex flex-wrap gap-1 p-1 bg-slate-100 rounded-lg w-fit">
             {tabs.map(t => (
               <button
                 key={t.key}
@@ -139,7 +139,7 @@ export function DigitalCooperativePage({ role = 'admin' }: { role?: string }) {
 
           {activeTab === 'pool' && (
             <Card className="border-0 shadow-sm">
-              <CardContent className="p-0">
+              <CardContent className="p-0 overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="hover:bg-transparent">
@@ -234,7 +234,7 @@ export function DigitalCooperativePage({ role = 'admin' }: { role?: string }) {
 
           {activeTab === 'history' && (
             <Card className="border-0 shadow-sm">
-              <CardContent className="p-0">
+              <CardContent className="p-0 overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="hover:bg-transparent">

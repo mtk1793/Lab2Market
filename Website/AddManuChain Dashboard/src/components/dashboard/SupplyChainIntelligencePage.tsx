@@ -115,7 +115,7 @@ export function SupplyChainIntelligencePage({ role = 'admin' }: { role?: string 
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard icon={Globe} label="Foreign Dependency" value="27%" sub="12 parts at risk" color="#EF4444" />
         <StatCard icon={ShieldCheck} label="Domestic AM Coverage" value="42%" sub="↑ 8% vs last quarter" color="#10B981" />
         <StatCard icon={DollarSign} label="Total Inventory Value" value="$4.2M" sub="Across all sites" color="#0EA5E9" />
@@ -257,7 +257,7 @@ export function SupplyChainIntelligencePage({ role = 'admin' }: { role?: string 
           <Layers className="w-4 h-4 text-indigo-500" />
           LEAN Conversion Analysis
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           {[
             { label: 'Total Carrying Cost', value: '$4.2M', sub: 'All sites, all parts', color: '#64748b' },
             { label: 'Safe to Convert to Digital', value: '34 parts', sub: 'Confidence ≥ 70%', color: '#8B5CF6' },

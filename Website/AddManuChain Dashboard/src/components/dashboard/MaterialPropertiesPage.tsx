@@ -174,7 +174,7 @@ export function MaterialPropertiesPage({ role = 'admin' }: { role?: string }) {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: 'Alloys in Database', value: '12', sub: 'Offshore-relevant', color: '#0EA5E9' },
           { label: 'Validated Datasets', value: '9', sub: 'Class society reviewed', color: '#10B981' },
@@ -193,7 +193,7 @@ export function MaterialPropertiesPage({ role = 'admin' }: { role?: string }) {
 
       {/* Toolbar */}
       <div className="flex items-center gap-3 flex-wrap">
-        <div className="relative flex-1 min-w-48">
+        <div className="relative flex-1 min-w-0 sm:min-w-48">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -243,7 +243,7 @@ export function MaterialPropertiesPage({ role = 'admin' }: { role?: string }) {
 
       {/* Materials Table */}
       <Card className="border-0 shadow-sm">
-        <CardContent className="p-0">
+        <CardContent className="p-0 overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent">

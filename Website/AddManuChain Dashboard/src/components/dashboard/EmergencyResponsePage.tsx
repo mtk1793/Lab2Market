@@ -101,7 +101,7 @@ export function EmergencyResponsePage({ role = 'admin' }: { role?: string }) {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard icon={AlertTriangle} label="Active Emergencies" value="3" sub="1 critical" color="#EF4444" />
         <StatCard icon={Clock} label="Avg Response Time" value="2.4 hrs" sub="↓ 18% vs last month" color="#0EA5E9" />
         <StatCard icon={CheckCircle} label="Resolved Within SLA" value="94%" sub="Last 30 days" color="#10B981" />
@@ -144,7 +144,7 @@ export function EmergencyResponsePage({ role = 'admin' }: { role?: string }) {
                   </div>
                   <div>
                     <label className="text-xs font-medium text-slate-600 mb-2 block">Operational Criticality</label>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {Object.entries(CRITICALITY_MAP).map(([key, val]) => (
                         <button
                           key={key}
@@ -220,7 +220,7 @@ export function EmergencyResponsePage({ role = 'admin' }: { role?: string }) {
                         </div>
                         <Badge className="bg-green-100 text-green-700 text-xs">Available Now</Badge>
                       </div>
-                      <div className="grid grid-cols-3 gap-2 text-xs text-slate-500">
+                      <div className="flex flex-wrap gap-3 text-xs text-slate-500">
                         <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />340 km</span>
                         <span className="flex items-center gap-1"><Clock className="w-3 h-3" />~11 hrs total</span>
                         <span className="flex items-center gap-1"><Shield className="w-3 h-3" />DNV GL</span>
@@ -244,7 +244,7 @@ export function EmergencyResponsePage({ role = 'admin' }: { role?: string }) {
                     <p className="text-xs text-violet-700 mt-1">Emergency orders skip standard queue. OEM pre-authorisation initiated automatically.</p>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <Button className="flex-1 bg-sky-600 hover:bg-sky-700 text-white text-sm">
                       <Truck className="w-4 h-4 mr-2" />
                       Confirm & Trigger Priority Order

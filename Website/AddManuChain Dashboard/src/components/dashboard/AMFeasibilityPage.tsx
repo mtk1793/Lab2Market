@@ -102,7 +102,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
                   required
                 />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-medium text-slate-600 mb-1 block">Geometry Type</label>
                   <select
@@ -128,7 +128,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
                   </select>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-medium text-slate-600 mb-1 block">Industry / Regulatory Context</label>
                   <select
@@ -164,7 +164,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
               </div>
               <div>
                 <label className="text-xs font-medium text-slate-600 mb-2 block">Urgency</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {URGENCY_OPTIONS.map(u => (
                     <button
                       key={u.key}
@@ -214,7 +214,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
               {/* Score + Verdict */}
               <Card className="border-0 shadow-sm border-2 border-green-200 bg-green-50">
                 <CardContent className="p-5">
-                  <div className="flex items-start gap-5">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-5">
                     <ScoreBand score={78} />
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
@@ -251,7 +251,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                       <p className="text-xs text-slate-500 mb-1">AddManuChain (AM)</p>
                       <p className="text-2xl font-black text-green-700">$4,200</p>
@@ -274,7 +274,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
               </Card>
 
               {/* Nearest Facility + Regulatory Path */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Card className="border-0 shadow-sm">
                   <CardContent className="p-3">
                     <p className="text-xs font-semibold text-slate-600 mb-2 flex items-center gap-1">
@@ -304,7 +304,7 @@ export function AMFeasibilityPage({ role = 'admin' }: { role?: string }) {
               </div>
 
               {/* Actions */}
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Button className="flex-1 bg-sky-600 hover:bg-sky-700 text-white text-sm">
                   Proceed to Order <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
