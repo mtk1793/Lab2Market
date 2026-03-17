@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AddManuChain — Live Order Pipeline Demo</title>
+<style>
+  :root {
+    --bg:#0a0f1e;--surface:#111827;--surface2:#1a2235;--border:#1e2d45;
+    --accent:#3b82f6;--accent2:#06b6d4;--green:#10b981;--yellow:#f59e0b;
+    --red:#ef4444;--purple:#8b5cf6;--orange:#f97316;--text:#e2e8f0;
+    --muted:#64748b;--card:#141e30;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;}
+
+  /* HEADER */
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.5px;}
+  .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .logo span{color:var(--accent2);}
+
+  /* SHELL */
+  .shell{display:grid;grid-template-columns:330px 1fr 290px;height:calc(100vh - 61px);gap:0;}
+
+  /* PANELS */
+  .left-panel,.right-panel{overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;}
+  .left-panel{background:var(--surface);border-right:1px solid var(--border);}
+  .right-panel{background:var(--surface);border-left:1px solid var(--border);}
+  .center-panel{overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:16px;}
+  .panel-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;padding:0 2px;}
+
+  /* ── PRE-CERT READINESS SECTION (top of left panel) ── */
+  .precert-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .precert-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .precert-row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .precert-row:last-child{border-bottom:none;padding-bottom:0;}
+  .precert-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+  .precert-info{flex:1;}
+  .precert-name{font-size:12px;font-weight:600;}
+  .precert-detail{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4;}
+  .precert-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;flex-shrink:0;margin-top:2px;}
+  .pb-green{background:rgba(16,185,129,.15);color:#6ee7b7;}
+  .pb-yellow{background:rgba(245,158,11,.15);color:#fcd34d;}
+  .pb-grey{background:rgba(100,116,139,.15);color:var(--muted);}
+
+  /* ACTOR CARDS */
+  .actor-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;transition:all .3s;position:relative;overflow:hidden;}
+  .actor-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--border);transition:all .3s;}
+  .actor-card.active::before{background:var(--accent);}
+  .actor-card.active{border-color:rgba(59,130,246,.4);box-shadow:0 0 18px rgba(59,130,246,.12);}
+  .actor-card.waiting::before{background:var(--yellow);}
+  .actor-card.waiting{border-color:rgba(245,158,11,.3);}
+  .actor-card.done::before{background:var(--green);}
+  .actor-card.done{border-color:rgba(16,185,129,.3);opacity:.8;}
+  .actor-header{display:flex;align-items:center;gap:9px;margin-bottom:8px;}
+  .actor-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .actor-name{font-weight:600;font-size:12px;}
+  .actor-role{font-size:10px;color:var(--muted);}
+  .actor-status{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:600;}
+  .status-idle{background:rgba(100,116,139,.2);color:var(--muted);}
+  .status-active{background:rgba(59,130,246,.2);color:#93c5fd;}
+  .status-waiting{background:rgba(245,158,11,.2);color:#fcd34d;}
+  .status-done{background:rgba(16,185,129,.2);color:#6ee7b7;}
+  .status-dot{width:5px;height:5px;border-radius:50%;animation:pdot 1.5s infinite;}
+  .status-active .status-dot{background:var(--accent);}
+  .status-waiting .status-dot{background:var(--yellow);}
+  .status-done .status-dot{background:var(--green);animation:none;}
+  .status-idle .status-dot{background:var(--muted);animation:none;}
+  @keyframes pdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+  .actor-action{font-size:10px;color:var(--text);background:rgba(255,255,255,.04);border-radius:5px;padding:5px 7px;margin-top:7px;line-height:1.45;min-height:26px;transition:all .3s;}
+
+  /* PIPELINE HEADER */
+  .pipeline-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .pipeline-header h2{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .btn{padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;box-shadow:0 4px 12px rgba(59,130,246,.3);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,130,246,.4);}
+  .btn-secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+  .btn-secondary:hover{background:var(--border);}
+  .speed-control{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+  .speed-control select{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:4px 7px;border-radius:6px;font-size:11px;}
+
+  /* PROGRESS */
+  .progress-track{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;}
+  .progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px;}
+  .progress-bar-wrap{height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;}
+  .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;width:0%;transition:width 1.2s ease;box-shadow:0 0 10px rgba(59,130,246,.4);}
+
+  /* ── PRECERT READINESS PANEL (center top) ── */
+  .readiness-panel{background:var(--card);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:14px 18px;}
+  .readiness-title{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+  .readiness-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .readiness-col{background:rgba(0,0,0,.2);border-radius:9px;padding:10px 12px;border:1px solid var(--border);}
+  .readiness-col-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .readiness-item{display:flex;align-items:flex-start;gap:7px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+  .readiness-item:last-child{border-bottom:none;padding-bottom:0;}
+  .ri-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+  .ri-green{background:var(--green);}
+  .ri-yellow{background:var(--yellow);}
+  .ri-text{font-size:10px;line-height:1.4;}
+  .ri-name{font-weight:600;}
+  .ri-sub{color:var(--muted);font-size:9px;}
+
+  /* STAGES */
+  .stages-wrap{display:flex;flex-direction:column;gap:9px;}
+  .stage{background:var(--card);border:1px solid var(--border);border-radius:11px;overflow:hidden;transition:all .4s;}
+  .stage.active{border-color:rgba(59,130,246,.5);box-shadow:0 0 22px rgba(59,130,246,.13);}
+  .stage.done{opacity:.78;border-color:rgba(16,185,129,.3);}
+  .stage.pending{opacity:.42;}
+  .stage-header{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;user-select:none;}
+  .stage-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:rgba(255,255,255,.06);border:2px solid var(--border);flex-shrink:0;transition:all .3s;}
+  .stage.active .stage-num{background:rgba(59,130,246,.2);border-color:var(--accent);color:#93c5fd;animation:npulse 2s infinite;}
+  .stage.done .stage-num{background:rgba(16,185,129,.2);border-color:var(--green);color:var(--green);}
+  @keyframes npulse{0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4);}50%{box-shadow:0 0 0 5px rgba(59,130,246,0);}}
+  .stage-info{flex:1;}
+  .stage-title{font-weight:600;font-size:13px;}
+  .stage-subtitle{font-size:10px;color:var(--muted);margin-top:2px;}
+  .stage-badge{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600;}
+  .badge-pending{background:rgba(100,116,139,.2);color:var(--muted);}
+  .badge-active{background:rgba(59,130,246,.2);color:#93c5fd;}
+  .badge-done{background:rgba(16,185,129,.2);color:#6ee7b7;}
+  .stage-body{display:none;padding:0 16px 14px;animation:slin .3s ease;}
+  .stage.active .stage-body,.stage.done .stage-body{display:block;}
+  @keyframes slin{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+  /* STAGE BODY ELEMENTS */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
+  .info-cell{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:7px;padding:9px 10px;}
+  .info-cell-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+  .info-cell-value{font-size:12px;font-weight:600;margin-top:3px;}
+
+  /* ── PRECERT VERIFICATION BLOCK (inside stage 3) ── */
+  .precert-verify{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25);border-radius:9px;padding:11px 13px;margin-bottom:10px;}
+  .precert-verify-title{font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.8px;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+  .pv-row{display:flex;align-items:center;gap:9px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;}
+  .pv-row:last-child{border-bottom:none;padding-bottom:0;}
+  .pv-icon{font-size:14px;flex-shrink:0;}
+  .pv-text{flex:1;}
+  .pv-cert{font-size:9px;color:var(--muted);}
+  .pv-check{font-size:13px;flex-shrink:0;transition:all .4s;}
+
+  /* DRM FLOW */
+  .drm-flow{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.2);border-radius:9px;padding:11px 13px;flex-wrap:wrap;}
+  .drm-node{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:7px;font-size:10px;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,.03);transition:all .4s;white-space:nowrap;}
+  .drm-node.drm-done{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.1);color:#6ee7b7;}
+  .drm-node.drm-active{border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.1);color:#93c5fd;animation:gpulse 1.5s infinite;}
+  @keyframes gpulse{0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.3);}50%{box-shadow:0 0 7px 3px rgba(59,130,246,.12);}}
+  .drm-arrow{color:var(--muted);font-size:13px;}
+
+  /* TOKEN BOX */
+  .token-box{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.4);border-radius:9px;padding:11px 13px;font-family:'Courier New',monospace;font-size:10px;color:#c4b5fd;word-break:break-all;line-height:1.6;}
+  .token-label{font-size:9px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+
+  /* TEST GRID */
+  .test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:9px;}
+  .test-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center;font-size:10px;transition:all .4s;}
+  .test-item.pass{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.08);}
+  .test-item.running{border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.08);animation:gpulse 1.5s infinite;}
+  .test-icon{font-size:18px;margin-bottom:3px;}
+  .test-name{color:var(--muted);font-size:10px;}
+  .test-result{font-weight:700;margin-top:2px;font-size:11px;}
+  .test-item.pass .test-result{color:var(--green);}
+  .test-item.running .test-result{color:#93c5fd;}
+
+  /* COUPON NOTE */
+  .coupon-note{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.25);border-radius:8px;padding:9px 11px;font-size:10px;color:var(--text);margin-bottom:8px;line-height:1.5;}
+
+  /* AUDIT */
+  .audit-section{background:var(--card);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
+  .audit-title{padding:11px 16px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;}
+  .audit-entries{max-height:150px;overflow-y:auto;}
+  .audit-entry{display:flex;align-items:flex-start;gap:11px;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,.03);animation:ein .4s ease;}
+  @keyframes ein{from{opacity:0;transform:translateX(-8px);}to{opacity:1;transform:translateX(0);}}
+  .audit-hash{font-family:monospace;font-size:9px;color:var(--accent2);flex-shrink:0;padding-top:2px;}
+  .audit-text{font-size:11px;}
+  .audit-time{font-size:9px;color:var(--muted);margin-top:1px;}
+
+  /* RIGHT PANEL ELEMENTS */
+  .order-card,.timeline,.kpi-grid-wrap{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:14px;}
+  .section-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:11px;}
+  .order-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;font-size:11px;border-bottom:1px solid rgba(255,255,255,.04);}
+  .order-row:last-child{border-bottom:none;}
+  .order-key{color:var(--muted);}
+  .order-val{font-weight:500;text-align:right;max-width:140px;font-size:11px;}
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+  .kpi-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:9px;padding:11px;text-align:center;}
+  .kpi-val{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .kpi-label{font-size:9px;color:var(--muted);margin-top:2px;}
+  .tl-item{display:flex;gap:10px;padding-bottom:12px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:11px;}
+  .tl-dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--border);background:var(--surface2);flex-shrink:0;transition:all .4s;margin-top:2px;}
+  .tl-dot.tl-done{background:var(--green);border-color:var(--green);}
+  .tl-dot.tl-active{background:var(--accent);border-color:var(--accent);animation:pdot 1.5s infinite;}
+  .tl-line{flex:1;width:2px;background:var(--border);margin-top:3px;min-height:18px;transition:background .4s;}
+  .tl-line.tl-done{background:rgba(16,185,129,.4);}
+  .tl-content{flex:1;}
+  .tl-label{font-size:11px;font-weight:500;}
+  .tl-time{font-size:9px;color:var(--muted);margin-top:1px;}
+
+  /* COMPLETE BANNER */
+  .complete-banner{display:none;background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(6,182,212,.09));border:1px solid rgba(16,185,129,.4);border-radius:12px;padding:20px 22px;text-align:center;animation:slin .5s ease;}
+  .complete-banner.show{display:block;}
+  .complete-banner h3{font-size:17px;font-weight:700;color:var(--green);margin-bottom:5px;}
+  .complete-banner p{font-size:12px;color:var(--muted);}
+  .complete-stats{display:flex;justify-content:center;gap:28px;margin-top:14px;flex-wrap:wrap;}
+  .cs-val{font-size:20px;font-weight:700;color:var(--accent2);}
+  .cs-label{font-size:10px;color:var(--muted);}
+
+  /* TOAST */
+  .toast-wrap{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:7px;z-index:999;}
+  .toast{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:9px;padding:11px 14px;max-width:280px;font-size:11px;box-shadow:0 8px 24px rgba(0,0,0,.4);animation:tin .4s ease,tout .4s ease forwards;animation-delay:0s,3.2s;}
+  .toast.green{border-left-color:var(--green);}
+  .toast.yellow{border-left-color:var(--yellow);}
+  .toast.purple{border-left-color:var(--purple);}
+  .toast.orange{border-left-color:var(--orange);}
+  .toast-title{font-weight:700;margin-bottom:2px;font-size:12px;}
+  @keyframes tin{from{opacity:0;transform:translateX(18px);}to{opacity:1;transform:translateX(0);}}
+  @keyframes tout{from{opacity:1;}to{opacity:0;transform:translateX(18px);}}
+
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🔗</div>
+    AddManu<span>Chain</span>
+  </div>
+  <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Live Order Pipeline — Interactive Demo</div>
+  <div style="font-size:11px;color:var(--muted);">MVP · March 2026</div>
+</header>
+
+<div class="shell">
+
+  <!-- ═══ LEFT PANEL ═══ -->
+  <div class="left-panel">
+
+    <!-- Pre-Certification Readiness -->
+    <div class="panel-title">✅ Pre-Certification Status</div>
+    <div class="precert-box">
+      <div class="precert-title">🏭 Personnel — Atlantic XL Halifax</div>
+
+      <div class="precert-row">
+        <div class="precert-icon">👷</div>
+        <div class="precert-info">
+          <div class="precert-name">James Okafor — Lead Operator</div>
+          <div class="precert-detail">DNV GL AM Operator L2 · ASTM F42 Qualified<br/>Last recertified: Jan 2026 · Expires Jan 2028</div>
+          <span class="precert-badge pb-green">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">🔬</div>
+        <div class="precert-info">
+          <div class="precert-name">Dr. A. Kaur — Lab Technician</div>
+          <div class="precert-detail">Dalhousie AM Lab · DNV GL Accredited Inspector<br/>Certified: NDT Level II · Mechanical Testing</div>
+          <span class="precert-badge pb-green">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">📐</div>
+        <div class="precert-info">
+          <div class="precert-name">Sarah Belmont — QC Inspector</div>
+          <div class="precert-detail">Lloyd's Register Certified Inspector · ISO 9712<br/>Dimensional metrology · CT scanning qualified</div>
+          <span class="precert-badge pb-green">✓ Certified</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="precert-box">
+      <div class="precert-title">🖨️ Machines — Atlantic XL Halifax</div>
+
+      <div class="precert-row">
+        <div class="precert-icon">⚙️</div>
+        <div class="precert-info">
+          <div class="precert-name">EOS M 290 — Unit #ATL-01</div>
+          <div class="precert-detail">LPBF · DNV GL Type Approved · Calibrated Feb 2026<br/>Process Qual: 316L SS · Ti-6Al-4V · Inconel 625</div>
+          <span class="precert-badge pb-green">✓ Qualified</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">🔍</div>
+        <div class="precert-info">
+          <div class="precert-name">CT Scanner — Nikon XT H 225</div>
+          <div class="precert-detail">NDT equipment · Calibrated Jan 2026<br/>ISO 15708 compliant · Used for coupon verification</div>
+          <span class="precert-badge pb-green">✓ Calibrated</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">📏</div>
+        <div class="precert-info">
+          <div class="precert-name">CMM — Zeiss Contura G2</div>
+          <div class="precert-detail">Dimensional metrology · Traceable to NIST standards<br/>ISO 10360-2 verified · Calibration current</div>
+          <span class="precert-badge pb-green">✓ Calibrated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="precert-box">
+      <div class="precert-title">🧪 Materials — Certified Powder Stock</div>
+
+      <div class="precert-row">
+        <div class="precert-icon">🔩</div>
+        <div class="precert-info">
+          <div class="precert-name">316L Stainless Steel Powder</div>
+          <div class="precert-detail">Batch SS316L-B447 · Höganäs supplier<br/>Lot tested: tensile, hardness, chemistry, PSD<br/>DNV GL Material Cert MC-2025-1122</div>
+          <span class="precert-badge pb-green">✓ In Stock · Cert</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">🔬</div>
+        <div class="precert-info">
+          <div class="precert-name">Ti-6Al-4V ELI Powder</div>
+          <div class="precert-detail">Batch TI64-B312 · AP&C supplier<br/>ASTM F3001 compliant · AMS 4928 chemistry</div>
+          <span class="precert-badge pb-green">✓ In Stock · Cert</span>
+        </div>
+      </div>
+
+      <div class="precert-row">
+        <div class="precert-icon">⚠️</div>
+        <div class="precert-info">
+          <div class="precert-name">Inconel 625 Powder</div>
+          <div class="precert-detail">Batch IN625-B089 · Low stock (2.4 kg remaining)<br/>Reorder triggered · ETA: March 22</div>
+          <span class="precert-badge pb-yellow">⚠ Low Stock</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actors -->
+    <div class="panel-title" style="margin-top:6px;">🧑‍💼 Platform Actors</div>
+
+    <div class="actor-card" id="actor-operator">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(59,130,246,.2);">⛽</div>
+        <div><div class="actor-name">Mike Lenart</div><div class="actor-role">Maintenance Supt · Greenstone Gold Mines</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Idle</span>
+      <div class="actor-action">Monitoring mill equipment status...</div>
+    </div>
+
+    <div class="actor-card" id="actor-oem">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(139,92,246,.2);">🏭</div>
+        <div><div class="actor-name">OEM Blueprint Owner</div><div class="actor-role">IP Licence Holder · Royalty Partner</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Idle</span>
+      <div class="actor-action">Blueprint vault secured, awaiting licence requests...</div>
+    </div>
+
+    <div class="actor-card" id="actor-cert">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(245,158,11,.2);">🏛️</div>
+        <div><div class="actor-name">DNV GL</div><div class="actor-role">Certification Authority · Marine & Offshore</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Idle</span>
+      <div class="actor-action">Monitoring active certifications...</div>
+    </div>
+
+    <div class="actor-card" id="actor-print">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(16,185,129,.2);">🖨️</div>
+        <div><div class="actor-name">Atlantic XL Halifax</div><div class="actor-role">Certified Print Centre · Nova Scotia</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Online · 72% capacity</span>
+      <div class="actor-action">Certified personnel + machines on standby...</div>
+    </div>
+
+    <div class="actor-card" id="actor-lab">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(249,115,22,.2);">🔬</div>
+        <div><div class="actor-name">Dalhousie AM Lab</div><div class="actor-role">Accredited Testing Lab · DNV / Lloyd's</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Idle</span>
+      <div class="actor-action">Pre-certified equipment ready for coupon testing...</div>
+    </div>
+
+    <div class="actor-card" id="actor-platform">
+      <div class="actor-header">
+        <div class="actor-avatar" style="background:rgba(6,182,212,.2);">🔗</div>
+        <div><div class="actor-name">AddManuChain Platform</div><div class="actor-role">AI Orchestration · DRM · Audit Chain</div></div>
+      </div>
+      <span class="actor-status status-idle"><span class="status-dot"></span>Running</span>
+      <div class="actor-action">All pre-certifications verified. Monitoring 0 orders...</div>
+    </div>
+
+  </div><!-- end left -->
+
+  <!-- ═══ CENTER PANEL ═══ -->
+  <div class="center-panel">
+
+    <!-- Controls -->
+    <div class="pipeline-header">
+      <h2>🔄 Order Pipeline</h2>
+      <div class="controls">
+        <div class="speed-control">
+          Speed:
+          <select id="speed-select" onchange="updateSpeed(this.value)">
+            <option value="1">1× Normal</option>
+            <option value="2">2× Fast</option>
+            <option value="4">4× Demo</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" onclick="resetDemo()">↺ Reset</button>
+        <button class="btn btn-primary" id="start-btn" onclick="startDemo()">▶ Run Full Demo</button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-track">
+      <div class="progress-label">
+        <span id="progress-text">Ready to start — all pre-certifications verified</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    </div>
+
+    <!-- PRE-CERT READINESS SUMMARY (always visible at top) -->
+    <div class="readiness-panel">
+      <div class="readiness-title">✅ Pre-Certified Foundation — Verified Before Any Order</div>
+      <div class="readiness-grid">
+
+        <div class="readiness-col">
+          <div class="readiness-col-title" style="color:#93c5fd;">👷 Personnel</div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">Lead Operator (L2)</div><div class="ri-sub">DNV GL AM Cert · Valid to Jan 2028</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">Lab Technician</div><div class="ri-sub">DNV Accredited · NDT Level II</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">QC Inspector</div><div class="ri-sub">Lloyd's Register · ISO 9712</div></div></div>
+        </div>
+
+        <div class="readiness-col">
+          <div class="readiness-col-title" style="color:#6ee7b7;">⚙️ Machines</div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">EOS M 290 (LPBF)</div><div class="ri-sub">DNV Type Approved · Cal. Feb 2026</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">CT Scanner</div><div class="ri-sub">ISO 15708 · Cal. Jan 2026</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">CMM Zeiss</div><div class="ri-sub">NIST Traceable · ISO 10360-2</div></div></div>
+        </div>
+
+        <div class="readiness-col">
+          <div class="readiness-col-title" style="color:#fcd34d;">🧪 Materials</div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">316L SS Powder</div><div class="ri-sub">Batch B447 · DNV MC-2025-1122</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-green"></div><div class="ri-text"><div class="ri-name">Ti-6Al-4V ELI</div><div class="ri-sub">Batch B312 · ASTM F3001</div></div></div>
+          <div class="readiness-item"><div class="ri-dot ri-yellow"></div><div class="ri-text"><div class="ri-name">Inconel 625</div><div class="ri-sub">⚠ Low stock — reorder active</div></div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STAGES -->
+    <div class="stages-wrap">
+
+      <!-- STAGE 1 -->
+      <div class="stage pending" id="stage-1">
+        <div class="stage-header" onclick="toggleStage(1)">
+          <div class="stage-num">1</div>
+          <div class="stage-info">
+            <div class="stage-title">Part Failure Detected</div>
+            <div class="stage-subtitle">Operator identifies critical worn component on-site</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-1">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Part</div><div class="info-cell-value">Mill Bearing Housing</div></div>
+            <div class="info-cell"><div class="info-cell-label">Part Number</div><div class="info-cell-value">MBH-4420-GLD</div></div>
+            <div class="info-cell"><div class="info-cell-label">Site</div><div class="info-cell-value">Greenstone Mine, ON</div></div>
+            <div class="info-cell"><div class="info-cell-label">Priority</div><div class="info-cell-value" style="color:var(--red);">🔴 Critical</div></div>
+          </div>
+          <div class="info-cell" style="margin-bottom:7px;"><div class="info-cell-label">Traditional Lead Time</div><div class="info-cell-value" style="color:var(--red);">9–14 weeks · $500K+/day downtime risk</div></div>
+          <div class="info-cell"><div class="info-cell-label">AddManuChain ETA</div><div class="info-cell-value" style="color:var(--green);">3–5 days — pre-certified centre ready</div></div>
+        </div>
+      </div>
+
+      <!-- STAGE 2 -->
+      <div class="stage pending" id="stage-2">
+        <div class="stage-header" onclick="toggleStage(2)">
+          <div class="stage-num">2</div>
+          <div class="stage-info">
+            <div class="stage-title">Order Placed via Blueprint Library</div>
+            <div class="stage-subtitle">Operator selects certified CAD blueprint and submits order</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-2">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Blueprint ID</div><div class="info-cell-value">BP-7741-STEEL</div></div>
+            <div class="info-cell"><div class="info-cell-label">Material</div><div class="info-cell-value">316L Stainless Steel</div></div>
+            <div class="info-cell"><div class="info-cell-label">Cert Standard</div><div class="info-cell-value">DNV GL Part 6</div></div>
+            <div class="info-cell"><div class="info-cell-label">Print Centre</div><div class="info-cell-value">Atlantic XL, Halifax</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--muted);padding:8px 10px;background:rgba(255,255,255,.03);border-radius:6px;border:1px solid var(--border);">
+            📋 <strong>Order ID:</strong> ORD-2026-0317-041 &nbsp;·&nbsp; Qty: 1 &nbsp;·&nbsp; <em>"Mill shutdown — urgent replacement needed"</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3 — DRM + PRE-CERT VERIFICATION -->
+      <div class="stage pending" id="stage-3">
+        <div class="stage-header" onclick="toggleStage(3)">
+          <div class="stage-num">3</div>
+          <div class="stage-info">
+            <div class="stage-title">DRM Pipeline + Pre-Cert Verification</div>
+            <div class="stage-subtitle">Platform verifies personnel, machine & material certs · OEM licences IP · Token issued</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-3">Pending</span>
+        </div>
+        <div class="stage-body">
+
+          <!-- Pre-cert verification check -->
+          <div class="precert-verify" id="pv-block">
+            <div class="precert-verify-title">🔎 Platform Verifying Pre-Certification Status</div>
+            <div class="pv-row">
+              <div class="pv-icon">👷</div>
+              <div class="pv-text"><strong>Lead Operator James Okafor</strong><div class="pv-cert">DNV GL AM Operator L2 · Valid to Jan 2028</div></div>
+              <div class="pv-check" id="pv-person">⏳</div>
+            </div>
+            <div class="pv-row">
+              <div class="pv-icon">⚙️</div>
+              <div class="pv-text"><strong>EOS M 290 #ATL-01</strong><div class="pv-cert">DNV GL Type Approved · Calibrated Feb 2026 · Process qual: 316L SS ✓</div></div>
+              <div class="pv-check" id="pv-machine">⏳</div>
+            </div>
+            <div class="pv-row">
+              <div class="pv-icon">🧪</div>
+              <div class="pv-text"><strong>316L SS Batch B447</strong><div class="pv-cert">DNV Material Cert MC-2025-1122 · Chemistry + PSD verified · In stock</div></div>
+              <div class="pv-check" id="pv-material">⏳</div>
+            </div>
+          </div>
+
+          <!-- DRM flow -->
+          <div class="drm-flow" id="drm-flow">
+            <div class="drm-node" id="drm-1">📥 Submitted</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="drm-2">✅ Pre-Certs OK</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="drm-3">🏭 OEM Licence</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="drm-4">🏛️ DNV Verified</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="drm-5">🔐 Token Issued</div>
+          </div>
+
+          <div class="token-box" id="token-box" style="display:none;margin-top:10px;">
+            <div class="token-label">🔑 Secure Print Token — One-Time · Auto-Expires 30s</div>
+            SPT-8f4a2c91-3be7-44d1-9fc2-a0e15b73d820<br/>
+            <span style="font-size:9px;color:var(--muted);">Bound: BP-7741-STEEL + ATL-01 + Batch B447 + James Okafor · Single-use · SHA-256</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 4 — PRINTING -->
+      <div class="stage pending" id="stage-4">
+        <div class="stage-header" onclick="toggleStage(4)">
+          <div class="stage-num">4</div>
+          <div class="stage-info">
+            <div class="stage-title">Print Centre Manufacturing</div>
+            <div class="stage-subtitle">Token validated · Certified operator starts build · Test coupons printed alongside part</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-4">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="coupon-note">
+            ⚙️ <strong>Why test coupons?</strong> Even though the material batch (B447) is pre-certified and the machine (ATL-01) is pre-qualified, DNV GL Part 6 requires witness coupons printed <em>in the same build</em> to confirm actual as-built properties — not just nominal batch properties. This ensures every print is independently verifiable.
+          </div>
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Operator</div><div class="info-cell-value">James Okafor (L2)</div></div>
+            <div class="info-cell"><div class="info-cell-label">Machine</div><div class="info-cell-value">EOS M 290 #ATL-01</div></div>
+            <div class="info-cell"><div class="info-cell-label">Material Batch</div><div class="info-cell-value">SS316L-B447 ✓</div></div>
+            <div class="info-cell"><div class="info-cell-label">Witness Coupons</div><div class="info-cell-value" style="color:var(--green);">6 coupons included</div></div>
+            <div class="info-cell"><div class="info-cell-label">Build Time</div><div class="info-cell-value">14.5 hours</div></div>
+            <div class="info-cell"><div class="info-cell-label">In-Process Monitor</div><div class="info-cell-value" style="color:var(--green);">ASTM-aligned ✓</div></div>
+          </div>
+          <div id="print-progress-wrap" style="display:none;margin-top:8px;">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:5px;">Build progress:</div>
+            <div style="height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;">
+              <div id="print-fill" style="height:100%;width:0%;background:linear-gradient(90deg,#10b981,#06b6d4);border-radius:3px;transition:width 2s ease;box-shadow:0 0 8px rgba(16,185,129,.4);"></div>
+            </div>
+            <div id="print-pct-text" style="font-size:10px;color:var(--green);margin-top:3px;font-weight:600;">0% complete</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 5 — LAB TESTING (on printed coupons) -->
+      <div class="stage pending" id="stage-5">
+        <div class="stage-header" onclick="toggleStage(5)">
+          <div class="stage-num">5</div>
+          <div class="stage-info">
+            <div class="stage-title">Lab Testing — Build-Specific Coupon Tests</div>
+            <div class="stage-subtitle">Dalhousie AM Lab tests witness coupons from this build · 6 test types · DNV GL accredited</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-5">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="coupon-note">
+            🔬 <strong>Scope:</strong> Pre-certified material (batch B447) and machine (ATL-01) establish baseline. These coupon tests confirm <em>this specific build</em> achieved those properties — accounting for real build conditions (layer sequence, thermal gradients, residual stress). Assigned to Dr. A. Kaur (DNV Accredited Inspector).
+          </div>
+          <div class="test-grid" id="test-grid">
+            <div class="test-item" id="test-mech"><div class="test-icon">💪</div><div class="test-name">Tensile / Hardness</div><div class="test-result">—</div></div>
+            <div class="test-item" id="test-ndt"><div class="test-icon">🔍</div><div class="test-name">NDT / CT Scan</div><div class="test-result">—</div></div>
+            <div class="test-item" id="test-chem"><div class="test-icon">⚗️</div><div class="test-name">Chemistry Verify</div><div class="test-result">—</div></div>
+            <div class="test-item" id="test-dim"><div class="test-icon">📐</div><div class="test-name">Dimensional CMM</div><div class="test-result">—</div></div>
+            <div class="test-item" id="test-fatigue"><div class="test-icon">🔩</div><div class="test-name">Fatigue / Fracture</div><div class="test-result">—</div></div>
+            <div class="test-item" id="test-thermal"><div class="test-icon">🌡️</div><div class="test-name">Thermal Analysis</div><div class="test-result">—</div></div>
+          </div>
+          <div id="lab-report-box" style="display:none;margin-top:9px;padding:9px 11px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:10px;">
+            📋 <strong>Report #LAB-2026-0317-041</strong> · Issued: Dalhousie AM Lab · Inspector: Dr. A. Kaur<br/>
+            <span style="color:var(--green);font-weight:700;">ALL 6 COUPON TESTS PASSED</span> · As-built properties meet DNV GL Part 6 requirements · Ready for cert sign-off
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 6 — CERTIFICATION -->
+      <div class="stage pending" id="stage-6">
+        <div class="stage-header" onclick="toggleStage(6)">
+          <div class="stage-num">6</div>
+          <div class="stage-info">
+            <div class="stage-title">DNV GL Certification Sign-Off</div>
+            <div class="stage-subtitle">All pre-certs + coupon results reviewed · Certificate issued · Audit hash locked</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-6">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="coupon-note">
+            🏛️ <strong>DNV GL reviews:</strong> ① Operator cert (James Okafor L2) ② Machine qualification (ATL-01 DNV Type Approved) ③ Material lot cert (Batch B447) ④ Coupon test results ⑤ Process parameter log. All five pillars confirmed → certificate issued.
+          </div>
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Certificate ID</div><div class="info-cell-value">DNV-2026-0317-M</div></div>
+            <div class="info-cell"><div class="info-cell-label">Standard</div><div class="info-cell-value">DNV GL Part 6</div></div>
+            <div class="info-cell"><div class="info-cell-label">Valid Until</div><div class="info-cell-value">March 2028</div></div>
+            <div class="info-cell"><div class="info-cell-label">Audit Chain</div><div class="info-cell-value" style="color:var(--green);">✓ Verified</div></div>
+          </div>
+          <div id="cert-hash" style="display:none;font-family:monospace;font-size:9px;color:var(--accent2);margin-top:9px;background:rgba(0,0,0,.3);padding:9px;border-radius:6px;">
+            AUDIT HASH: 3a8f1c9e2b7d4f6a0e5c1b9f3d7e2a4c8b6f0d3e9a7c5b1f4d2e8a6c0b4f7e3<br/>
+            PREV HASH:  7d3b9f1a4c6e2b8d0f5c3a7e1b9f4d2c8a6e0b3f7d5c9a1e4b6f2d8a0c3e7b5<br/>
+            <span style="color:rgba(16,185,129,.8);">■ CHAIN INTEGRITY: VERIFIED · 9 LINKED ENTRIES</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 7 — SHIPMENT -->
+      <div class="stage pending" id="stage-7">
+        <div class="stage-header" onclick="toggleStage(7)">
+          <div class="stage-num">7</div>
+          <div class="stage-info">
+            <div class="stage-title">Shipment — Halifax to Greenstone Mine</div>
+            <div class="stage-subtitle">Part ships with digital certificate + full audit trail attached</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-7">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Tracking ID</div><div class="info-cell-value">TRK-ATL-0317-041</div></div>
+            <div class="info-cell"><div class="info-cell-label">Carrier</div><div class="info-cell-value">FedEx Priority</div></div>
+            <div class="info-cell"><div class="info-cell-label">Route</div><div class="info-cell-value">Halifax → Geraldton, ON</div></div>
+            <div class="info-cell"><div class="info-cell-label">ETA</div><div class="info-cell-value" style="color:var(--green);">March 20, 2026</div></div>
+          </div>
+          <div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+            <div class="drm-node" id="ship-1">📦 Packaging</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="ship-2">🚚 In Transit</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="ship-3">🏭 Out for Delivery</div>
+            <div class="drm-arrow">→</div>
+            <div class="drm-node" id="ship-4">✅ Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 8 — DELIVERED -->
+      <div class="stage pending" id="stage-8">
+        <div class="stage-header" onclick="toggleStage(8)">
+          <div class="stage-num">8</div>
+          <div class="stage-info">
+            <div class="stage-title">Delivered — Certified, Traced, Trusted</div>
+            <div class="stage-subtitle">Operator receives part + certificate · OEM royalty auto-disbursed · 9 audit entries locked</div>
+          </div>
+          <span class="stage-badge badge-pending" id="badge-8">Pending</span>
+        </div>
+        <div class="stage-body">
+          <div class="info-grid">
+            <div class="info-cell"><div class="info-cell-label">Total Lead Time</div><div class="info-cell-value" style="color:var(--green);font-size:15px;">3 Days</div></div>
+            <div class="info-cell"><div class="info-cell-label">vs. Traditional</div><div class="info-cell-value" style="color:var(--red);">9–14 Weeks</div></div>
+            <div class="info-cell"><div class="info-cell-label">OEM Royalty</div><div class="info-cell-value" style="color:var(--accent2);">$1,890 (90%)</div></div>
+            <div class="info-cell"><div class="info-cell-label">Platform Fee</div><div class="info-cell-value" style="color:var(--accent);">$210 (10%)</div></div>
+          </div>
+          <div style="margin-top:9px;padding:10px 13px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.28);border-radius:8px;font-size:11px;line-height:1.7;">
+            📦 Received by <strong>Mike Lenart</strong> · Greenstone Gold Mines · Geraldton ON<br/>
+            🏛️ Certificate: DNV GL Part 6 · DNV-2026-0317-M<br/>
+            👷 Printed by: James Okafor (L2 Cert) · Machine: ATL-01 (DNV Type Approved)<br/>
+            🧪 Material: Batch SS316L-B447 (DNV Cert MC-2025-1122)<br/>
+            🔗 Immutable audit trail: 9 linked hash entries · Tamper-evident
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end stages -->
+
+    <!-- Audit log -->
+    <div class="audit-section">
+      <div class="audit-title">🔒 Immutable Audit Log <span style="font-weight:400;color:var(--muted);">(SHA-256 Hash Chain)</span></div>
+      <div class="audit-entries" id="audit-log">
+        <div style="padding:14px 16px;font-size:11px;color:var(--muted);text-align:center;">No entries yet — press Run Full Demo</div>
+      </div>
+    </div>
+
+    <!-- Complete banner -->
+    <div class="complete-banner" id="complete-banner">
+      <h3>✅ Order Complete — On-Demand. Certified. Delivered.</h3>
+      <p>From part failure to delivery in 3 days — backed by pre-certified personnel, machines, and materials.</p>
+      <div class="complete-stats">
+        <div><div class="cs-val">3 days</div><div class="cs-label">Lead Time</div></div>
+        <div><div class="cs-val">81%</div><div class="cs-label">Time Saved</div></div>
+        <div><div class="cs-val">$1,890</div><div class="cs-label">OEM Royalty</div></div>
+        <div><div class="cs-val">9</div><div class="cs-label">Audit Entries</div></div>
+        <div><div class="cs-val">0</div><div class="cs-label">Counterfeit Risk</div></div>
+      </div>
+    </div>
+
+  </div><!-- end center -->
+
+  <!-- ═══ RIGHT PANEL ═══ -->
+  <div class="right-panel">
+
+    <div class="panel-title">📋 Live Order Details</div>
+
+    <div class="order-card">
+      <div class="section-title">Order Summary</div>
+      <div class="order-row"><span class="order-key">Order ID</span><span class="order-val" style="font-family:monospace;font-size:10px;">ORD-2026-0317-041</span></div>
+      <div class="order-row"><span class="order-key">Part</span><span class="order-val">Mill Bearing Housing</span></div>
+      <div class="order-row"><span class="order-key">Status</span><span class="order-val" id="live-status" style="color:var(--muted);">Not Started</span></div>
+      <div class="order-row"><span class="order-key">Priority</span><span class="order-val" style="color:var(--red);">🔴 Critical</span></div>
+      <div class="order-row"><span class="order-key">Blueprint</span><span class="order-val" style="font-family:monospace;font-size:10px;">BP-7741-STEEL</span></div>
+      <div class="order-row"><span class="order-key">Material</span><span class="order-val">316L SS · Batch B447</span></div>
+      <div class="order-row"><span class="order-key">Operator</span><span class="order-val">James Okafor (L2)</span></div>
+      <div class="order-row"><span class="order-key">Machine</span><span class="order-val">EOS M 290 #ATL-01</span></div>
+      <div class="order-row"><span class="order-key">Cert Standard</span><span class="order-val">DNV GL Part 6</span></div>
+      <div class="order-row"><span class="order-key">ETA</span><span class="order-val" id="live-eta" style="color:var(--muted);">—</span></div>
+    </div>
+
+    <div class="kpi-grid-wrap">
+      <div class="section-title">Live KPIs</div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-val" id="kpi-leadtime">—</div><div class="kpi-label">Lead Time</div></div>
+        <div class="kpi-card"><div class="kpi-val" id="kpi-stage">0/8</div><div class="kpi-label">Pipeline Stage</div></div>
+        <div class="kpi-card"><div class="kpi-val" id="kpi-certs">5/5</div><div class="kpi-label">Certs Verified</div></div>
+        <div class="kpi-card"><div class="kpi-val" id="kpi-tests">0/6</div><div class="kpi-label">Tests Passed</div></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="section-title">Pipeline Timeline</div>
+      <div id="tl-wrap">
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-1"></div><div class="tl-line" id="tlline-1"></div></div><div class="tl-content"><div class="tl-label">Part Failure</div><div class="tl-time" id="tltime-1">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-2"></div><div class="tl-line" id="tlline-2"></div></div><div class="tl-content"><div class="tl-label">Order Placed</div><div class="tl-time" id="tltime-2">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-3"></div><div class="tl-line" id="tlline-3"></div></div><div class="tl-content"><div class="tl-label">DRM + Pre-Cert Check</div><div class="tl-time" id="tltime-3">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-4"></div><div class="tl-line" id="tlline-4"></div></div><div class="tl-content"><div class="tl-label">Printing (+ Coupons)</div><div class="tl-time" id="tltime-4">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-5"></div><div class="tl-line" id="tlline-5"></div></div><div class="tl-content"><div class="tl-label">Lab Coupon Tests</div><div class="tl-time" id="tltime-5">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-6"></div><div class="tl-line" id="tlline-6"></div></div><div class="tl-content"><div class="tl-label">DNV GL Sign-Off</div><div class="tl-time" id="tltime-6">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-7"></div><div class="tl-line" id="tlline-7"></div></div><div class="tl-content"><div class="tl-label">Shipped</div><div class="tl-time" id="tltime-7">—</div></div></div>
+        <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot" id="tldot-8"></div></div><div class="tl-content"><div class="tl-label">Delivered ✓</div><div class="tl-time" id="tltime-8">—</div></div></div>
+      </div>
+    </div>
+
+  </div><!-- end right -->
+
+</div><!-- end shell -->
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script>
+let BASE_DELAY = 2200;
+let running = false;
+let auditCount = 0;
+let testsPassed = 0;
+const startTime = new Date(2026, 2, 17, 8, 14, 0);
+let simMinutes = 0;
+
+function updateSpeed(v){ BASE_DELAY = 2200 / parseFloat(v); }
+function sleep(ms){ return new Promise(r => setTimeout(r, ms * (BASE_DELAY / 2200))); }
+function getSimTime(){
+  const d = new Date(startTime.getTime() + simMinutes * 60000);
+  return d.toLocaleTimeString('en-CA', {hour:'2-digit', minute:'2-digit', hour12:false});
+}
+
+/* ── UI helpers ── */
+function setProgress(pct, label){
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-text').textContent = label;
+}
+function setStage(n, state){
+  const el = document.getElementById('stage-' + n);
+  el.className = 'stage ' + state;
+  const b = document.getElementById('badge-' + n);
+  if(state === 'active'){ b.className = 'stage-badge badge-active'; b.textContent = '⚡ Active'; }
+  else if(state === 'done'){ b.className = 'stage-badge badge-done'; b.textContent = '✓ Done'; }
+  el.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function setActor(id, state, action){
+  const card = document.getElementById(id);
+  if(!card) return;
+  card.className = 'actor-card ' + state;
+  const span = card.querySelector('.actor-status');
+  const labels = {active:'Active', waiting:'Waiting', done:'Done', idle:'Idle'};
+  const cls = {active:'status-active', waiting:'status-waiting', done:'status-done', idle:'status-idle'};
+  if(span){
+    span.className = 'actor-status ' + (cls[state] || 'status-idle');
+    span.innerHTML = '<span class="status-dot"></span>' + (labels[state] || 'Idle');
+  }
+  const a = card.querySelector('.actor-action');
+  if(a && action) a.textContent = action;
+}
+function setTimeline(n, state, time){
+  const dot = document.getElementById('tldot-' + n);
+  const line = document.getElementById('tlline-' + n);
+  const tm = document.getElementById('tltime-' + n);
+  if(dot) dot.className = 'tl-dot tl-' + state;
+  if(line) line.className = 'tl-line ' + (state === 'done' ? 'tl-done' : '');
+  if(tm && time) tm.textContent = time;
+}
+function addAudit(action, detail){
+  auditCount++;
+  document.getElementById('kpi-stage').textContent = auditCount + '/9';
+  const hash = Math.random().toString(16).slice(2,10).toUpperCase();
+  const log = document.getElementById('audit-log');
+  if(auditCount === 1) log.innerHTML = '';
+  const e = document.createElement('div');
+  e.className = 'audit-entry';
+  e.innerHTML = `<div class="audit-hash">#${String(auditCount).padStart(2,'0')}<br/>${hash}...</div><div><div class="audit-text"><strong>${action}</strong> · ${detail}</div><div class="audit-time">${getSimTime()} · ORD-2026-0317-041</div></div>`;
+  log.prepend(e);
+}
+function showToast(title, body, color){
+  const w = document.getElementById('toast-wrap');
+  const t = document.createElement('div');
+  t.className = 'toast ' + (color || '');
+  t.innerHTML = `<div class="toast-title">${title}</div><div>${body}</div>`;
+  w.appendChild(t);
+  setTimeout(() => t.remove(), 3700);
+}
+function setDrm(n, state){ const e = document.getElementById('drm-' + n); if(e) e.className = 'drm-node drm-' + state; }
+function setShip(n, state){ const e = document.getElementById('ship-' + n); if(e) e.className = 'drm-node drm-' + state; }
+function setTest(id, state, result){
+  const e = document.getElementById('test-' + id);
+  if(!e) return;
+  e.className = 'test-item ' + state;
+  e.querySelector('.test-result').textContent = result;
+  if(state === 'pass'){
+    testsPassed++;
+    document.getElementById('kpi-tests').textContent = testsPassed + '/6';
+  }
+}
+function setPVCheck(id, val){ const e = document.getElementById(id); if(e) e.textContent = val; }
+function setLiveStatus(text, color){ const e = document.getElementById('live-status'); e.textContent = text; e.style.color = color || 'var(--text)'; }
+function toggleStage(n){
+  const s = document.getElementById('stage-' + n);
+  if(s.classList.contains('done')){
+    const b = s.querySelector('.stage-body');
+    if(b) b.style.display = b.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+/* ── MAIN DEMO ── */
+async function startDemo(){
+  if(running) return;
+  running = true;
+  document.getElementById('start-btn').disabled = true;
+  document.getElementById('start-btn').textContent = '⏳ Running...';
+  document.getElementById('complete-banner').classList.remove('show');
+
+  // STAGE 1 ─────────────────────────────────────────────
+  setProgress(6, 'Stage 1 — Part failure detected');
+  setStage(1, 'active');
+  setTimeline(1, 'active');
+  setActor('actor-operator', 'active', 'Part failure detected: Mill Bearing Housing MBH-4420-GLD. Logging into AddManuChain...');
+  setActor('actor-platform', 'active', 'Incident detected — checking nearest pre-certified print centres...');
+  setLiveStatus('⚡ Incident Reported', 'var(--yellow)');
+  simMinutes += 5;
+  showToast('⛽ Operator Alert', 'Critical part failure — Greenstone Gold Mine', 'yellow');
+  addAudit('INCIDENT_LOGGED', 'Mill Bearing Housing MBH-4420-GLD · Critical priority · Greenstone Mine');
+  await sleep(2200);
+  setStage(1, 'done');
+  setActor('actor-operator', 'waiting', 'Browsing Blueprint Library for matching certified blueprint...');
+  setTimeline(1, 'done', getSimTime());
+
+  // STAGE 2 ─────────────────────────────────────────────
+  setProgress(18, 'Stage 2 — Operator placing order');
+  setStage(2, 'active');
+  setTimeline(2, 'active');
+  setLiveStatus('📋 Order Submitted', 'var(--accent)');
+  document.getElementById('live-eta').textContent = 'March 20, 2026';
+  simMinutes += 8;
+  showToast('📋 New Order', 'ORD-2026-0317-041 · BP-7741-STEEL · Critical', '');
+  addAudit('ORDER_CREATED', 'ORD-2026-0317-041 · Blueprint BP-7741-STEEL · Atlantic XL Halifax selected');
+  await sleep(2200);
+  setStage(2, 'done');
+  setActor('actor-operator', 'done', 'Order submitted. Tracking in dashboard...');
+  setTimeline(2, 'done', getSimTime());
+
+  // STAGE 3 — DRM + Pre-Cert Verification ───────────────
+  setProgress(34, 'Stage 3 — Pre-cert verification + DRM pipeline');
+  setStage(3, 'active');
+  setTimeline(3, 'active');
+  setDrm(1, 'active');
+  setLiveStatus('🔎 Verifying Pre-Certs', 'var(--accent2)');
+  setActor('actor-platform', 'active', 'Checking operator cert (James Okafor L2)...');
+  showToast('🔎 Pre-Cert Check', 'Platform verifying personnel, machine & material certs', '');
+  addAudit('PRECERT_CHECK_STARTED', 'Verifying: Operator L2 · Machine ATL-01 · Material Batch B447');
+  await sleep(1000);
+
+  // Check personnel
+  setPVCheck('pv-person', '⏳');
+  await sleep(700);
+  setPVCheck('pv-person', '✅');
+  setActor('actor-platform', 'active', 'Operator cert valid ✓ · Checking machine qualification...');
+  await sleep(600);
+
+  // Check machine
+  setPVCheck('pv-machine', '⏳');
+  await sleep(700);
+  setPVCheck('pv-machine', '✅');
+  setActor('actor-platform', 'active', 'Machine ATL-01 DNV approved ✓ · Checking material batch...');
+  await sleep(600);
+
+  // Check material
+  setPVCheck('pv-material', '⏳');
+  await sleep(700);
+  setPVCheck('pv-material', '✅');
+  setActor('actor-platform', 'active', 'All 5 pre-certifications verified ✓ · Entering DRM pipeline...');
+  addAudit('PRECERT_VERIFIED', 'All 5 pre-certs confirmed: Operator L2 · Machine ATL-01 · Material B447 · Lab · QC Inspector');
+  showToast('✅ Pre-Certs Verified', 'Operator, machine & material all certified — entering DRM', 'green');
+  simMinutes += 10;
+  await sleep(1200);
+
+  // DRM flow
+  setDrm(1, 'done');
+  setDrm(2, 'active');
+  await sleep(600);
+  setDrm(2, 'done');
+  setDrm(3, 'active');
+  setActor('actor-oem', 'active', 'Licence request received for BP-7741-STEEL. Reviewing...');
+  await sleep(1800);
+  setDrm(3, 'done');
+  setDrm(4, 'active');
+  setActor('actor-oem', 'done', '✓ IP licence granted · Royalty $1,890 will auto-disburse on completion.');
+  setActor('actor-cert', 'active', 'Confirming Atlantic XL facility authorisation for DNV GL Part 6...');
+  addAudit('OEM_APPROVED', 'IP licence granted for BP-7741-STEEL · Royalty rate: 90%');
+  showToast('🏭 OEM Approved', 'IP licence granted for BP-7741-STEEL', 'green');
+  simMinutes += 8;
+  await sleep(1600);
+  setDrm(4, 'done');
+  setDrm(5, 'active');
+  setActor('actor-cert', 'done', '✓ Atlantic XL Halifax authorised. Facility cert valid for this job.');
+  addAudit('CERT_APPROVED', 'DNV GL authorised Atlantic XL Halifax for this print job');
+  await sleep(1200);
+
+  // Token issued
+  setDrm(5, 'done');
+  document.getElementById('token-box').style.display = 'block';
+  addAudit('PRINT_TOKEN_ISSUED', 'SPT-8f4a2c91 · Bound: BP-7741 + ATL-01 + B447 + James Okafor · One-time');
+  showToast('🔑 Token Issued', 'Secure Print Token bound to certified operator + machine + batch', 'purple');
+  await sleep(2000);
+  setStage(3, 'done');
+  setTimeline(3, 'done', getSimTime());
+
+  // STAGE 4 — PRINTING ─────────────────────────────────
+  setProgress(52, 'Stage 4 — Manufacturing at Atlantic XL');
+  setStage(4, 'active');
+  setTimeline(4, 'active');
+  setLiveStatus('🖨️ Printing', 'var(--accent2)');
+  setActor('actor-print', 'active', 'Token validated by James Okafor (L2). Loading BP-7741 to EOS M 290 #ATL-01. Witness coupons added to build plate...');
+  document.getElementById('print-progress-wrap').style.display = 'block';
+  simMinutes += 20;
+  addAudit('PRINT_EXECUTED', 'Build started · EOS M 290 #ATL-01 · Operator: James Okafor (L2) · 6 witness coupons included');
+  showToast('🖨️ Build Started', 'EOS M 290 · James Okafor (L2) · 6 witness coupons in build', '');
+
+  const pf = document.getElementById('print-fill');
+  const pp = document.getElementById('print-pct-text');
+  let pct = 0;
+  const pi = setInterval(() => {
+    pct = Math.min(pct + 12, 100);
+    pf.style.width = pct + '%';
+    pp.textContent = pct + '% complete';
+    if(pct >= 100) clearInterval(pi);
+  }, BASE_DELAY / 8);
+
+  await sleep(BASE_DELAY * 3.5);
+  setStage(4, 'done');
+  setActor('actor-print', 'waiting', '✓ Build complete. Part post-processed. 6 witness coupons sent to Dalhousie AM Lab...');
+  setTimeline(4, 'done', getSimTime());
+  addAudit('BUILD_COMPLETE', 'Part + 6 witness coupons completed · Post-processing done · Dispatched to lab');
+
+  // STAGE 5 — LAB TESTING ──────────────────────────────
+  setProgress(66, 'Stage 5 — Coupon testing at Dalhousie AM Lab');
+  setStage(5, 'active');
+  setTimeline(5, 'active');
+  setLiveStatus('🔬 Lab Testing', 'var(--orange)');
+  setActor('actor-lab', 'active', 'Coupons received from ATL-01 build. Dr. A. Kaur assigned. Running 6-point test suite on as-built coupons...');
+  simMinutes += 30;
+  addAudit('LAB_TEST_STARTED', 'Coupon tests initiated · Dalhousie AM Lab · Dr. A. Kaur (DNV Accredited)');
+  showToast('🔬 Coupon Tests', 'Dalhousie Lab testing as-built witness coupons', 'orange');
+
+  const tests = [
+    {id:'mech', delay:650, label:'Tensile: 580 MPa UTS · Hardness: 88 HRB'},
+    {id:'ndt', delay:750, label:'CT Scan: No voids >0.1mm · Density >99.5%'},
+    {id:'chem', delay:600, label:'Chemistry matches SS316L spec within ±0.1%'},
+    {id:'dim', delay:550, label:'All dimensions within ±0.15mm of blueprint'},
+    {id:'fatigue', delay:900, label:'Fatigue life >10⁷ cycles at design load'},
+    {id:'thermal', delay:700, label:'Thermal conductivity: 16.2 W/m·K ✓'}
+  ];
+
+  for(const t of tests){
+    setTest(t.id, 'running', '⏳ Running');
+    await sleep(t.delay);
+    setTest(t.id, 'pass', '✓ Pass');
+    showToast('✅ ' + t.id.toUpperCase() + ' Test', t.label, 'green');
+    await sleep(200);
+  }
+
+  await sleep(700);
+  document.getElementById('lab-report-box').style.display = 'block';
+  addAudit('LAB_TEST_COMPLETE', 'All 6 coupon tests PASSED · As-built properties confirmed · Report LAB-2026-0317-041');
+  showToast('📋 Lab Report Issued', 'All 6 tests passed — ready for DNV GL sign-off', 'green');
+  await sleep(1200);
+  setStage(5, 'done');
+  setActor('actor-lab', 'done', '✓ All 6 coupon tests passed. Lab report issued. DNV GL notified.');
+  setTimeline(5, 'done', getSimTime());
+
+  // STAGE 6 — CERTIFICATION ────────────────────────────
+  setProgress(78, 'Stage 6 — DNV GL certification sign-off');
+  setStage(6, 'active');
+  setTimeline(6, 'active');
+  setLiveStatus('🏛️ Certification', 'var(--yellow)');
+  setActor('actor-cert', 'active', 'Reviewing: ① Operator cert ② Machine qual ③ Material cert ④ Coupon results ⑤ Process log. All 5 pillars confirmed...');
+  simMinutes += 12;
+  showToast('🏛️ DNV GL Reviewing', '5 pillars: operator · machine · material · coupons · process log', 'yellow');
+  await sleep(2400);
+  document.getElementById('cert-hash').style.display = 'block';
+  addAudit('CERT_ISSUED', 'Certificate DNV-2026-0317-M issued · All 5 certification pillars confirmed · Valid to Mar 2028');
+  showToast('🏛️ Certified!', 'DNV-2026-0317-M issued — all 5 pillars verified', 'green');
+  setActor('actor-cert', 'done', '✓ Certificate DNV-2026-0317-M issued and hash-logged in audit chain.');
+  setTimeline(6, 'done', getSimTime());
+  setStage(6, 'done');
+
+  // STAGE 7 — SHIPMENT ─────────────────────────────────
+  setProgress(90, 'Stage 7 — Shipping to Greenstone Mine');
+  setStage(7, 'active');
+  setTimeline(7, 'active');
+  setLiveStatus('🚚 In Transit', 'var(--accent2)');
+  setActor('actor-print', 'active', 'Packaging part with digital certificate. Handing to FedEx Priority...');
+  simMinutes += 15;
+  addAudit('SHIPMENT_CREATED', 'TRK-ATL-0317-041 · Halifax → Geraldton ON · FedEx Priority · Cert attached');
+
+  setShip(1, 'active'); await sleep(700);
+  setShip(1, 'done'); setShip(2, 'active');
+  showToast('📦 Shipped', 'TRK-ATL-0317-041 Halifax → Geraldton ON', '');
+  await sleep(900);
+  setShip(2, 'done'); setShip(3, 'active');
+  await sleep(800);
+  setShip(3, 'done'); setShip(4, 'active');
+  await sleep(700);
+  setShip(4, 'done');
+  addAudit('DELIVERED', 'Part delivered to Greenstone Gold Mines · Geraldton ON');
+  setStage(7, 'done');
+  setActor('actor-print', 'done', '✓ Part shipped and confirmed delivered.');
+  setTimeline(7, 'done', getSimTime());
+
+  // STAGE 8 — DELIVERED ─────────────────────────────────
+  setProgress(100, '✅ Complete — Part delivered in 3 days!');
+  setStage(8, 'active');
+  setTimeline(8, 'active');
+  setLiveStatus('✅ Delivered', 'var(--green)');
+  setActor('actor-operator', 'active', 'Part received! Installing certified Mill Bearing Housing. Mill coming back online...');
+  setActor('actor-oem', 'done', '✓ Royalty $1,890 auto-disbursed.');
+  setActor('actor-platform', 'done', 'Order complete. 9 audit entries. Hash chain verified. All pre-certs logged.');
+  document.getElementById('kpi-leadtime').textContent = '3 days';
+  simMinutes += 5;
+  addAudit('ORDER_COMPLETE', 'Delivered · Certified · Logged · OEM royalty disbursed · 3 days vs 9–14 weeks traditional');
+  showToast('🎉 Order Complete!', 'Mill back online — 3 days, fully certified & traced', 'green');
+  await sleep(1500);
+  setStage(8, 'done');
+  setTimeline(8, 'done', getSimTime());
+  setActor('actor-operator', 'done', '✓ Mill Bearing Housing installed. Greenstone Mine operational.');
+  await sleep(800);
+  document.getElementById('complete-banner').classList.add('show');
+  document.getElementById('complete-banner').scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  running = false;
+  document.getElementById('start-btn').disabled = false;
+  document.getElementById('start-btn').textContent = '▶ Run Again';
+}
+
+/* ── RESET ── */
+function resetDemo(){
+  if(running) return;
+  auditCount = 0; testsPassed = 0; simMinutes = 0;
+  for(let i=1;i<=8;i++){
+    document.getElementById('stage-'+i).className='stage pending';
+    const b=document.getElementById('badge-'+i); b.className='stage-badge badge-pending'; b.textContent='Pending';
+    const dot=document.getElementById('tldot-'+i); if(dot) dot.className='tl-dot';
+    const line=document.getElementById('tlline-'+i); if(line) line.className='tl-line';
+    const tm=document.getElementById('tltime-'+i); if(tm) tm.textContent='—';
+  }
+  const actors=[
+    ['actor-operator','Monitoring mill equipment status...'],
+    ['actor-oem','Blueprint vault secured, awaiting licence requests...'],
+    ['actor-cert','Monitoring active certifications...'],
+    ['actor-print','Certified personnel + machines on standby...'],
+    ['actor-lab','Pre-certified equipment ready for coupon testing...'],
+    ['actor-platform','All pre-certifications verified. Monitoring 0 orders...']
+  ];
+  actors.forEach(([id,action]) => {
+    const card=document.getElementById(id); if(!card) return;
+    card.className='actor-card';
+    const span=card.querySelector('.actor-status');
+    if(span){span.className='actor-status status-idle';span.innerHTML='<span class="status-dot"></span>Idle';}
+    const a=card.querySelector('.actor-action'); if(a) a.textContent=action;
+  });
+  // Reset print centre status text
+  const pc=document.getElementById('actor-print');
+  const ps=pc.querySelector('.actor-status');
+  if(ps){ps.innerHTML='<span class="status-dot"></span>Online · 72% capacity';}
+
+  document.getElementById('progress-fill').style.width='0%';
+  document.getElementById('progress-pct').textContent='0%';
+  document.getElementById('progress-text').textContent='Ready to start — all pre-certifications verified';
+  document.getElementById('live-status').textContent='Not Started';
+  document.getElementById('live-status').style.color='var(--muted)';
+  document.getElementById('live-eta').textContent='—';
+  document.getElementById('kpi-leadtime').textContent='—';
+  document.getElementById('kpi-stage').textContent='0/9';
+  document.getElementById('kpi-tests').textContent='0/6';
+
+  for(let i=1;i<=5;i++){ const n=document.getElementById('drm-'+i); if(n) n.className='drm-node'; }
+  const tb=document.getElementById('token-box'); if(tb) tb.style.display='none';
+  ['pv-person','pv-machine','pv-material'].forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent='⏳'; });
+
+  const pp=document.getElementById('print-progress-wrap'); if(pp) pp.style.display='none';
+  const pf=document.getElementById('print-fill'); if(pf) pf.style.width='0%';
+  const ppt=document.getElementById('print-pct-text'); if(ppt) ppt.textContent='0% complete';
+
+  ['mech','ndt','chem','dim','fatigue','thermal'].forEach(id=>{
+    const e=document.getElementById('test-'+id);
+    if(e){e.className='test-item'; e.querySelector('.test-result').textContent='—';}
+  });
+  const lr=document.getElementById('lab-report-box'); if(lr) lr.style.display='none';
+  const ch=document.getElementById('cert-hash'); if(ch) ch.style.display='none';
+  for(let i=1;i<=4;i++){ const n=document.getElementById('ship-'+i); if(n) n.className='drm-node'; }
+
+  document.getElementById('audit-log').innerHTML='<div style="padding:14px 16px;font-size:11px;color:var(--muted);text-align:center;">No entries yet — press Run Full Demo</div>';
+  document.getElementById('complete-banner').classList.remove('show');
+  document.getElementById('start-btn').disabled=false;
+  document.getElementById('start-btn').textContent='▶ Run Full Demo';
+}
+</script>
+</body>
+</html>
