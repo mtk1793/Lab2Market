@@ -1,0 +1,547 @@
+{
+  "generated_at": "2026-03-17T21:35:33.525165",
+  "summary": {
+    "total_checked": 77,
+    "folders_found": 65,
+    "with_insights": 37,
+    "missing_insights": 28,
+    "folders_not_found": [
+      1,
+      2,
+      3,
+      4,
+      36,
+      37,
+      38,
+      49,
+      74,
+      75,
+      76,
+      77
+    ]
+  },
+  "with_insights": [
+    {
+      "interview_num": 5,
+      "name": "Executive_Summary",
+      "has_analysis_file": true,
+      "analysis_filename": "Executive_Summary.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Executive_Summary.md"
+    },
+    {
+      "interview_num": 8,
+      "name": "Frank_DeFalco",
+      "has_analysis_file": true,
+      "analysis_filename": "Frank_DeFalco_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Frank_DeFalco_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 9,
+      "name": "Mark_Kirby",
+      "has_analysis_file": true,
+      "analysis_filename": "Mark_Kirby_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Mark_Kirby_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 10,
+      "name": "Jordan_Cumming",
+      "has_analysis_file": true,
+      "analysis_filename": "Jordan_Cumming_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Jordan_Cumming_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 11,
+      "name": "Dr_Ali_Nasiri",
+      "has_analysis_file": true,
+      "analysis_filename": "Dr_Ali_Nasiri_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Dr_Ali_Nasiri_Analysis.md"
+    },
+    {
+      "interview_num": 12,
+      "name": "Clearwater_Seafoods",
+      "has_analysis_file": true,
+      "analysis_filename": "Clearwater_Seafoods_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Clearwater_Seafoods_Analysis.md"
+    },
+    {
+      "interview_num": 13,
+      "name": "Lee_Vessey",
+      "has_analysis_file": true,
+      "analysis_filename": "Lee_Vessey_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Lee_Vessey_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 14,
+      "name": "Lee_Vessey",
+      "has_analysis_file": true,
+      "analysis_filename": "Lee_Vessey_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Lee_Vessey_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 15,
+      "name": "Mikhail_Gladkikh",
+      "has_analysis_file": true,
+      "analysis_filename": "Mikhail_Gladkikh_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Mikhail_Gladkikh_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 16,
+      "name": "Harvey_Doane",
+      "has_analysis_file": true,
+      "analysis_filename": "Harvey_Doane_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Harvey_Doane_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 17,
+      "name": "Jean_Michel_Fortin",
+      "has_analysis_file": true,
+      "analysis_filename": "Jean_Michel_Fortin_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Jean_Michel_Fortin_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 18,
+      "name": "Chris_OMV",
+      "has_analysis_file": true,
+      "analysis_filename": "Chris_OMV_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Chris_OMV_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 19,
+      "name": "Fanny_Charreteur",
+      "has_analysis_file": true,
+      "analysis_filename": "Fanny_Charreteur_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Fanny_Charreteur_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 20,
+      "name": "Nichelle_Assembly_Studio",
+      "has_analysis_file": true,
+      "analysis_filename": "Nichelle_Assembly_Studio_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Nichelle_Assembly_Studio_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 21,
+      "name": "Arad_Gharagozli",
+      "has_analysis_file": true,
+      "analysis_filename": "Arad_Gharagozli_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Arad_Gharagozli_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 23,
+      "name": "Jim_Granger",
+      "has_analysis_file": true,
+      "analysis_filename": "Jim_Granger_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Jim_Granger_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 25,
+      "name": "Kwadwo_Ampofo",
+      "has_analysis_file": true,
+      "analysis_filename": "Kwadwo_Ampofo_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Kwadwo_Ampofo_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 27,
+      "name": "Keith_Healey",
+      "has_analysis_file": true,
+      "analysis_filename": "Keith_Healey_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Keith_Healey_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 28,
+      "name": "Andrew_Smith",
+      "has_analysis_file": true,
+      "analysis_filename": "Andrew_Smith_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Andrew_Smith_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 31,
+      "name": "Mike_Paulin",
+      "has_analysis_file": true,
+      "analysis_filename": "Mike_Paulin_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Mike_Paulin_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 32,
+      "name": "Shawn_Sooley",
+      "has_analysis_file": true,
+      "analysis_filename": "Shawn_Sooley_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Shawn_Sooley_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 33,
+      "name": "Tyler_Beatty",
+      "has_analysis_file": true,
+      "analysis_filename": "Tyler_Beatty_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Tyler_Beatty_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 34,
+      "name": "Aaron_Plamondon",
+      "has_analysis_file": true,
+      "analysis_filename": "Aaron_Plamondon_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Aaron_Plamondon_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 35,
+      "name": "Nathan_Smeenk",
+      "has_analysis_file": true,
+      "analysis_filename": "Nathan_Smeenk_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Nathan_Smeenk_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 39,
+      "name": "David_Haire",
+      "has_analysis_file": true,
+      "analysis_filename": "David_Haire_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: David_Haire_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 41,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    },
+    {
+      "interview_num": 42,
+      "name": "Lloyd_Register",
+      "has_analysis_file": true,
+      "analysis_filename": "Lloyd_Register_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Lloyd_Register_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 43,
+      "name": "GKN_Aerospace",
+      "has_analysis_file": true,
+      "analysis_filename": "GKN_Aerospace_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: GKN_Aerospace_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 45,
+      "name": "Adam_Saxty_LR",
+      "has_analysis_file": true,
+      "analysis_filename": "Adam_Saxty_LR_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Adam_Saxty_LR_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 46,
+      "name": "Dave_Whitehouse_LR",
+      "has_analysis_file": true,
+      "analysis_filename": "Dave_Whitehouse_LR_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Dave_Whitehouse_LR_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 52,
+      "name": "Aker_Solutions",
+      "has_analysis_file": true,
+      "analysis_filename": "Aker_Solutions_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Aker_Solutions_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 53,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    },
+    {
+      "interview_num": 56,
+      "name": "Sheila_Paterson",
+      "has_analysis_file": true,
+      "analysis_filename": "Sheila_Paterson_Interview_Analysis.md",
+      "in_insights_folder": true,
+      "status_message": "Found: Sheila_Paterson_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 57,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    },
+    {
+      "interview_num": 58,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    },
+    {
+      "interview_num": 59,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    },
+    {
+      "interview_num": 60,
+      "name": "insights",
+      "has_analysis_file": true,
+      "analysis_filename": "insights.md",
+      "in_insights_folder": true,
+      "status_message": "Found: insights.md"
+    }
+  ],
+  "missing_insights": [
+    {
+      "interview_num": 6,
+      "name": "John_Lidstone",
+      "has_analysis_file": true,
+      "analysis_filename": "John_Lidstone_Interview_Profile.md",
+      "in_insights_folder": false,
+      "status_message": "Missing: John_Lidstone_Interview_Profile.md"
+    },
+    {
+      "interview_num": 7,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 22,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 24,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 26,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 29,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 30,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 40,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 44,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 47,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 48,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 50,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 51,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 54,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 55,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 61,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 62,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 63,
+      "name": "Jens_Kroeger",
+      "has_analysis_file": true,
+      "analysis_filename": "Jens_Kroeger_Interview_Analysis.md",
+      "in_insights_folder": false,
+      "status_message": "Missing: Jens_Kroeger_Interview_Analysis.md"
+    },
+    {
+      "interview_num": 64,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 65,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 66,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 67,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 68,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 69,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 70,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 71,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 72,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    },
+    {
+      "interview_num": 73,
+      "name": "Unknown",
+      "has_analysis_file": false,
+      "analysis_filename": null,
+      "in_insights_folder": false,
+      "status_message": "No analysis file found"
+    }
+  ]
+}
