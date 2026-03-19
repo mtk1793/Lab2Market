@@ -4,8 +4,9 @@
 **Title:** Mill Maintenance Superintendent  
 **Company:** Greenstone Gold Mines  
 **Location:** Geraldton, Ontario, Canada  
-**Interview Status:** 🟡 Pre-Interview Research Complete - Ready to Schedule  
+**Interview Status:** ✅ Interview Complete — Insights Documented
 **Date Created:** March 19, 2026
+**Interview Date:** March 19, 2026
 
 ---
 
@@ -98,7 +99,8 @@ From Mike's experience, we want to understand:
 |------|---------|--------|
 | Pre_Interview_Research_Mike_Lenart.md | Career analysis, pain points, talking points | ✅ Done |
 | Interview_Questions_Mike_Lenart.md | 5 main + 2 bonus questions (ENG + Farsi) | ✅ Done |
-| README.md | This file - overview & next steps | ✅ Done |
+| Interview_76_Insights_Mike_Lenart.md | Full insights analysis, pain validation, follow-up actions | ✅ Done |
+| README.md | This file - overview & next steps | ✅ Updated |
 
 ---
 
@@ -143,19 +145,20 @@ From Mike's experience, we want to understand:
 
 ## CANDIDATE READINESS ASSESSMENT
 
-**Likelihood of Interest:** 🟡 **MODERATE-HIGH**
-- **Pros:** Remote location validates need, 25+ years suggests pragmatism, faces real supply chain pain
-- **Cons:** May be cautious about unproven technology, operational constraints may limit pilot scope
+**Likelihood of Interest:** 🟢 **HIGH** *(confirmed post-interview)*
+- Strong pain validation: $15 part / $5,000 shipping example
+- Already using 3D scanning + reverse engineering — no tech skepticism
+- Gave explicit permission for follow-up meeting
 
 **Pilot Potential:** 🟢 **HIGH**
-- Remote Geraldton location = perfect for on-site capabilities
-- Equipment maintenance = constant need for spare parts
-- Downtime economics = strong ROI justification
+- Remote Geraldton location validated; mine now generating revenue (investment mode)
+- Entry point: polymer consumables (caps, seals, electrical components)
+- Already has 3D scanning capability — low onboarding friction
 
 **Timeline to Commitment:** 🟡 **2-3 WEEKS**
-- Interview → insights (Week 1)
-- Develop pilot proposal (Week 2)
-- Internal stakeholder approval (Week 3+)
+- Send follow-up + 1-page pilot concept (Week 1)
+- Confirm procurement decision-maker (Week 1-2)
+- Pilot proposal (Week 2-3)
 
 ---
 
