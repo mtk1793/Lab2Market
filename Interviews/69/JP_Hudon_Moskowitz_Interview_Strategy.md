@@ -125,19 +125,6 @@ He is likely not looking for surface-level tools. He likely values:
 
 **Why This Matters:** Determines whether this is a single-site opportunity or strategic multi-site wedge.
 
----
-
-## SIDE QUESTIONS (Use Selectively)
-
-### SIDE QUESTION A: Repeat-Failure Stress Test
-
-> **"You mentioned [specific failure mode]. Over the past 24 months, how many times did this or a close variant recur, and what part of the prevention chain failed each time: detection, diagnosis, planning, execution, or follow-through?"**
-
-**Purpose:** Clarifies if the core issue is prediction quality, execution reliability, or governance discipline.
-
----
-
-### SIDE QUESTION B: External Benchmark & Competitive Urgency
 
 > **"Relative to peers with similar smelting complexity, where do you believe Glencore currently sits on reliability maturity, and what one capability would move you into a clear top-tier position over the next 18 months?"**
 
